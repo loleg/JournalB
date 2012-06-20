@@ -17,6 +17,179 @@
 /* #Site Styles
 ================================================== */
 
+    .main {
+        margin-top: 10px;
+    }
+
+    .newsrow {
+        overflow: hidden;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    .newsbox {
+        position: relative;
+    }
+    .newsbox info {
+        position: absolute;
+        width: 100%;
+    }
+    .newsbox info h3 {
+        font-size: 12px;
+    }
+    .newsbox .favorite {
+        width: 23px;
+        height: 45px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background: url(/images/favorite-wrapper.png);
+        padding-top: 8px;
+        padding-left: 30px;
+    }
+    .newsboxcontent {
+        display: block;
+        padding-top: 10px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .newsbox.layout1 info {
+        bottom: 12px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .newsbox.layout1 h3 {
+        padding-right: 10px;
+    }
+
+    .newsbox.layout2 {
+        background-position: top left;
+        background-repeat: no-repeat;
+    }
+    .newsbox.layout2 info {
+        bottom: 0px;
+        left: 0px;
+        text-align: center;
+        padding: 10px;
+        color: #000000;
+
+        background-color: rgb(255, 255, 255);
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+    .newsbox.layout2 .bg {
+        background-color: #ffffff;
+        opacity: 0.25;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        position: absolute;
+        z-index: 0;
+    }
+    .newsbox.layout2 h3 {
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: bold;
+        display: inline;
+        color: #000000;
+    }
+
+    .section-alltag {
+        background-color: #cde2ff;
+    }
+    .section-politik {
+        background-color: #c6ffd8;
+    }
+    .section-kultur {
+        background-color: #ffbe98;
+    }
+
+    .nav li {
+        float: left;
+        display: inline;
+        width: 20%;
+        text-align: center;
+    }
+    .nav a {
+        display: inline-block;
+        padding-bottom: 40px;
+        padding-left: 8px;
+        padding-right: 8px;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center;
+        min-width: 63px;
+    }
+    .nav li.nav-front a{
+        background: url(/images/nav-shape-front.png) bottom center no-repeat;
+    }
+    .nav li.nav-alltag a{
+        background: url(/images/nav-shape-alltag.png) bottom center no-repeat;
+    }
+    .nav li.nav-kultur a{
+        background: url(/images/nav-shape-kultur.png) bottom center no-repeat;
+    }
+    .nav li.nav-politik a{
+        background: url(/images/nav-shape-politik.png) bottom center no-repeat;
+    }
+    .nav li.nav-fav a{
+        background: url(/images/nav-shape-favorite.png) bottom center no-repeat;
+    }
+
+
+    .header {
+        position: relative;
+        margin-top: 6px;
+    }
+    .header .widget {
+        position: absolute;
+        left: 0px;
+    }
+    .header .logo {
+        text-align: center;
+    }
+    .header .logo h1 {
+        font-size: 84px;
+        font-weight: bold;
+        display: inline;
+    }
+    .header .logo a {
+        text-decoration: none;
+    }
+    .header .search {
+        position: absolute;
+        right: 48px;
+        top: 16px;
+    }
+
+    .header .subtitle {
+        padding-top: 10px;
+    }
+    .header .subtitle fieldset {
+        border: 0 none;
+        border-top: 2px solid #000000;
+     }
+    .header .subtitle legend {
+        text-align: center;
+        padding-left: 8px;
+        padding-right: 8px;
+        color: #000000;
+        letter-spacing: 1px;
+    }
+    .header .aare {
+        position: absolute;
+        left: 30px;
+        top: -10px;
+        color: #999999;
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+        line-height: 24px;
+    }
+
+
+
 /* #Page Styles
 ================================================== */
 

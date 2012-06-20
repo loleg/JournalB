@@ -76,8 +76,8 @@
 
     /* Note: Design for a width of 768px */
 
-    @media only screen and (min-width: 768px) and (max-width: 959px) {
-        .container                                  { width: 768px; }
+    @media only screen and (min-width: 768px) {
+        .container                                  { width: 712px; padding-left: 28px; padding-right: 28px; }
         .container .column,
         .container .columns                         { margin-left: 10px; margin-right: 10px;  }
         .column.alpha, .columns.alpha               { margin-left: 0; margin-right: 10px; }
@@ -101,6 +101,9 @@
         .container .fourteen.columns                { width: 652px; }
         .container .fifteen.columns                 { width: 700px; }
         .container .sixteen.columns                 { width: 748px; }
+
+        .container .newsbox                         { width: 345px; height: 245px; }
+        .container .sidebar                         { display: none; }
 
         .container .one-third.column                { width: 236px; }
         .container .two-thirds.column               { width: 492px; }
@@ -239,4 +242,14 @@
       visibility: hidden;
       width: 0;
       height: 0;
+    }
+
+    .content-left {
+        float: left;
+        display: inline;
+    }
+
+    .content-right {
+        float: right;
+        display: inline;
     }

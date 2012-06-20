@@ -31,94 +31,102 @@
 
 <div class="container">
 
-	<div class="row nav">
-		<ul>
-			<li class="three columns nav-front"><a href="#">Front</a></li>
-			<li class="three columns nav-alltag"><a href="#">Alltag</a></li>
-			<li class="three columns nav-politik"><a href="#">Politik</a></li>
-			<li class="three columns nav-kultur"><a href="#">Kultur</a></li>
-			<li class="four columns nav-fav"><a href="#">Favoriten</a></li>
-		</ul>
-	</div>
-	
-	<div class="row header">
-		<div class="three columns widget">
-			<div class="aare">
-				<b>Aare</b>
-				16°
-			</div>
-			<date></date>			
-		</div>
-		<div class="ten columns logo"><center>
-			<h1 class="logo">Journal B</h1>
-			<h5 class="subtitle">die neue digitale Zeitung für Bern</h5>
-		</center></div>
-		<div class="three columns search">
-			<input type="text" />
-		</div>
-	</div>
-	
-	<div class="row content">
-		<div class="eight columns content-left">
-		
-			<section class="newsbox section-politik">
-				<h3>Pflegen fur einen Hungerlohn</h3>
-				<p>Der Personenkult um den russischen Präsidenten wird immer grotestker. Ein ehemaliger Genosse erzählt. Occusam eicabore, nis nienihit ilit fuga. Doleseque nam iunt et molorundae pra- tiam ratatusapis dolor si torum nos molup</p>
-				
-				<time>17:53</time> | 
-				<author class="name">Matthias Schriftsteller</author> - 
-				<author class="role">Buchling</author></p>
-			</section>
-			
-			<section class="newsbox section-politik">
-				<h3>Immunitat von Blocher: Entscheid widerspricht Verfassung</h3>
-				<p>Der Schweizer Urs Fischer avanciert von der Öffentlichkeit fast unbemerkt in diesen Tagen zum teuerst gehandelten zeitgenössischen Künstler. At L. Eheba- tiem. Avenatid cresum quam furenatius mo</p>
-				<date>03. 5. 2012</date> | 
-				<author class="name">Matthias Schriftsteller</author> - 
-				<author class="role">Buchling</author></p>
-			</section>
-			
-			<section class="newsbox section-alltag">
-				<h3>Schneider-Ammann guckt in fremde Rohren</h3>
-				<p>Der Personenkult um den russischen Präsidenten wird immer grotestker. Ein ehemaliger Genosse erzählt.</p>
-				
-				<date>20. 4. 2012</date> | 
-				<author class="name">Matthias Schriftsteller</author> - 
-				<author class="role">Buchling</author></p>
-			</section>
-			
-		</div>
-		<div class="eight columns content-right">
-			
-			<section class="newsbox section-kultur">
-				<h3>Der Blogger von Bern</h3>
-				<p>Der Schweizer Urs Fischer avanciert von der Öffentlichkeit fast unbemerkt in diesen Tagen zum teuerst gehandelten zeitgenössischen Künstler. At L. Eheba- tiem. Avenatid cresum quam furenatius mo Der Schweizer Urs Fischer avanciert von der Öffentlichkeit fast unbemerkt in.</p>
-				
-				<time>18:45</time> | 
-				<author class="name">Matthias Schriftsteller</author> - 
-				<author class="role">Buchling</author></p>
-			</section>
-			
-			<section class="newsbox section-alltag">
-				<h3>10 Gramm konnen einen Menschen verandern</h3>
-				<p>Der Personenkult um den russischen Präsidenten wird immer grotestker. Ein ehemaliger Genosse erzählt.</p>
-				
-				<date>01. 5. 2012</date> | 
-				<author class="name">Matthias Schriftsteller</author> - 
-				<author class="role">Buchling</author></p>
-			</section>
-			
-			<section class="newsbox section-kultur">
-				<h3>Assad erklart Diplomaten zu Personas non gratas</h3>
-				<p>Der Schweizer Urs Fischer avanciert von der Öffentlichkeit fast unbemerkt in diesen Tagen zum teuerst gehandelten zeitgenössischen Künstler. At L. Eheba- tiem. Avenatid cresum quam furenatius mo</p>
-				
-				<date>30. 4. 2012</date> | 
-				<author class="name">Matthias Schriftsteller</author> - 
-				<author class="role">Buchling</author></p>
-			</section>
-			
-		</div>
-	</div>
+    <div class="main">
+
+        <div class="row nav">
+            <ul>
+                <li class="nav-front"><a href="#">Front</a></li>
+                <li class="nav-alltag"><a href="#">Alltag</a></li>
+                <li class="nav-politik"><a href="#">Politik</a></li>
+                <li class="nav-kultur"><a href="#">Kultur</a></li>
+                <li class="nav-fav"><a href="#">Favoriten</a></li>
+            </ul>
+        </div>
+
+        <div class="row header">
+            <div class="widget">
+                <div class="aare">
+                    Aare<br>
+                    16°<br>
+                    04.05.2012
+                </div>
+                <date></date>
+            </div>
+            <div class="logo">
+                <a href="/"><h1>Journal B</h1></a>
+            </div>
+            <div class="search">
+                <img src="/images/search.png" />
+            </div>
+            <div class="subtitle"><fieldset><legend align="center">die neue digitale Zeitung Bern</legend></fieldset></div>
+        </div>
+
+        <div class="row content">
+
+            <div class="row newsrow">
+
+                <div class="content-left newsbox section-politik layout1">
+                    <div class="newsboxcontent">
+                        <h3>Pflegen fur einen Hungerlohn</h3>
+                        <p>Der Personenkult um den russischen Präsidenten wird immer grotestker. Ein ehemaliger Genosse erzählt. Occusam eicabore, nis nienihit ilit fuga. Doleseque nam iunt et molorundae pra- tiam ratatusapis dolor</p>
+                    </div>
+                    <info>
+                        <time>17:53</time> |
+                        <author class="name">Matthias Schriftsteller</author> -
+                        <author class="role">Buchling</author>
+                    </info>
+                    <div class="favorite"><img src="/images/favorite-politik.png" /></div>
+                </div>
+
+                <div class="content-right newsbox section-alltag layout1">
+                    <div class="newsboxcontent">
+                        <h3>Der Blogger von Bern</h3>
+                        <p>Der Schweizer Urs Fischer avanciert von der Öffentlichkeit fast unbemerkt in diesen Tagen zum teuerst gehandelten zeitgenössischen Künstler. At L. Eheba- tiem. Avenatid cresum quam furenatius mo Der Schweizer Urs Fischer avanciert von der Öffentlichkeit fas.</p>
+                    </div>
+                    <info>
+                        <time>18:45</time> |
+                        <author class="name">Matthias Schriftsteller</author> -
+                        <author class="role">Buchling</author>
+                    </info>
+                    <div class="favorite"><img src="/images/favorite-off.png" /></div>
+                </div>
+
+            </div>
+
+            <div class="row newsrow">
+
+                <div class="content-left newsbox section-kultur layout1">
+                    <div class="newsboxcontent">
+                        <h3>Immunitat von Blocher: Entscheid widerspricht Verfassung</h3>
+                        <p>Der Schweizer Urs Fischer avanciert von der Öffentlichkeit fast unbemerkt in diesen Tagen zum teuerst gehandelten zeitgenössischen Künstler. At L. Eheba- tiem. Avenatid crao</p>
+                    </div>
+                    <info>
+                        <date>03.5.2012</date> |
+                        <author class="name">Matthias Schriftsteller</author> -
+                        <author class="role">Buchling</author>
+                    </info>
+                    <div class="favorite"><img src="/images/favorite-kultur.png" /></div>
+                </div>
+
+                <div class="content-right newsbox section-alltag layout2" style="background-image: url(/images/data/img1.png);">
+                    <div class="newsboxcontent">
+                        <div class="favorite"><img src="/images/favorite-alltag.png" /></div>
+                    </div>
+                    <info>
+                        <date>03.5.2012</date> |
+                        <time>17:53</time> |
+                        <h3>Verwahrung muss regelmassig gepruft werden</h3>
+                    </info>
+                </div>
+
+            </div>
+
+    </div>
+
+    <div class="sidebar">
+        asd
+    </div>
+
 </div><!-- /container -->
 
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
