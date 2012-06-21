@@ -48,13 +48,15 @@
 		border-collapse: collapse;
 		border-spacing: 0; }
 
-
+    h3 a {
+        color: #000000 !important;
+    }
 /* #Basic Styles
 ================================================== */
 	body {
 		background: #fff;
 		font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-		color: #444;
+		color: #000000;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 		-webkit-text-size-adjust: 100%;
  }
@@ -95,7 +97,7 @@
 
 /* #Links
 ================================================== */
-	a, a:visited { color: #333; text-decoration: underline; outline: 0; }
+	a, a:visited { color: #000; text-decoration: underline; outline: 0; }
 	a:hover, a:focus { color: #000; }
 	p a, p a:visited { line-height: inherit; }
 

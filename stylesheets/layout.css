@@ -18,7 +18,7 @@
 ================================================== */
 
     .main {
-        margin-top: 10px;
+
     }
 
     .newsrow {
@@ -29,6 +29,12 @@
     .newsbox {
         position: relative;
     }
+    .newsbox.content-double {
+        width: 100% !important;
+        height: 490px !important;
+        position: relative;
+    }
+
     .newsbox info {
         position: absolute;
         width: 100%;
@@ -76,21 +82,41 @@
         background-color: rgb(255, 255, 255);
         background-color: rgba(255, 255, 255, 0.25);
     }
-    .newsbox.layout2 .bg {
-        background-color: #ffffff;
-        opacity: 0.25;
-        width: 100%;
-        height: 100%;
-        top: 0px;
-        left: 0px;
-        position: absolute;
-        z-index: 0;
-    }
     .newsbox.layout2 h3 {
         font-size: 16px;
         line-height: 18px;
         font-weight: bold;
         display: inline;
+        color: #000000;
+    }
+
+    .newsbox.layout3 .newsboxcontent {
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        background-color: rgb(255, 255, 255);
+        background-color: rgba(255, 255, 255, 0.25);
+        padding: 10px 10px 30px 10px;
+    }
+    .newsbox.layout3 h3 {
+        display: block;
+        float: left;
+        width: 45%;
+        text-align: center;
+        color: #000000;
+        font-size: 32px;
+        font-weight: bold;
+        line-height: 40px;
+    }
+    .newsbox.layout3 description {
+        display: block;
+        float: right;
+        width: 45%;
+        color: #000000;
+    }
+    .newsbox.layout3 info {
+        bottom: 6px;
+        margin-left: 20px;
         color: #000000;
     }
 
@@ -104,15 +130,16 @@
         background-color: #ffbe98;
     }
 
+    .nav {
+        height: 60px;
+    }
     .nav li {
         float: left;
-        display: inline;
         width: 20%;
         text-align: center;
     }
     .nav a {
         display: inline-block;
-        padding-bottom: 40px;
         padding-left: 8px;
         padding-right: 8px;
         text-transform: uppercase;
@@ -121,32 +148,38 @@
         text-align: center;
         min-width: 63px;
     }
-    .nav li.nav-front a{
+    .nav li.active a{
+        padding-bottom: 40px;
+    }
+    .nav li.nav-front.active a{
         background: url(/images/nav-shape-front.png) bottom center no-repeat;
     }
-    .nav li.nav-alltag a{
+    .nav li.nav-alltag.active a{
         background: url(/images/nav-shape-alltag.png) bottom center no-repeat;
     }
-    .nav li.nav-kultur a{
+    .nav li.nav-kultur.active a{
         background: url(/images/nav-shape-kultur.png) bottom center no-repeat;
     }
-    .nav li.nav-politik a{
+    .nav li.nav-politik.active a{
         background: url(/images/nav-shape-politik.png) bottom center no-repeat;
     }
-    .nav li.nav-fav a{
+    .nav li.nav-fav a.active{
         background: url(/images/nav-shape-favorite.png) bottom center no-repeat;
     }
 
 
     .header {
         position: relative;
-        margin-top: 6px;
+        border-bottom: 2px solid #000000;
+        height: 175px;
+        padding-top: 10px;
     }
     .header .widget {
         position: absolute;
         left: 0px;
     }
     .header .logo {
+        padding-top: 12px;
         text-align: center;
     }
     .header .logo h1 {
@@ -159,36 +192,239 @@
     }
     .header .search {
         position: absolute;
-        right: 48px;
-        top: 16px;
+        right: 52px;
+        top: 104px;
     }
-
     .header .subtitle {
-        padding-top: 10px;
-    }
-    .header .subtitle fieldset {
-        border: 0 none;
-        border-top: 2px solid #000000;
-     }
-    .header .subtitle legend {
+        position: absolute;
+        left: 50%;
+        margin-left: -120px;
+        bottom: -10px;
+        background-color: #ffffff;
+        width: 240px;
         text-align: center;
-        padding-left: 8px;
-        padding-right: 8px;
         color: #000000;
         letter-spacing: 1px;
     }
     .header .aare {
         position: absolute;
-        left: 30px;
-        top: -10px;
+        left: 40px;
+        top: 74px;
+        color: #000000;
+        font-size: 16px;
+        text-align: center;
+        line-height: 32px;
+        font-size: 14px;
+        background: url(/images/aare.png) center center no-repeat;
+        width: 64px;
+    }
+    .header date {
+        display: block;
+        position: absolute;
         color: #999999;
         font-weight: bold;
         font-size: 16px;
-        text-align: center;
-        line-height: 24px;
+        bottom: 22px;
+        left: 30px;
     }
 
 
+    .sidebar .content {
+        padding-left: 28px;
+    }
+
+    .commentbox {
+        padding: 15px;
+        background-color: #c3c2c1;
+        border-radius: 6px;
+        position: relative;
+    }
+    .commentbox icon {
+        position: absolute;
+        top: 9px;
+        right: 9px;
+    }
+    .commentbox .bg {
+        position: absolute;
+        right: -13px;
+        bottom: -6px;
+    }
+
+    .commentbox.layouttwitter .image {
+        display: block;
+        float: left;
+        margin-right: 10px;
+    }
+    .commentbox.layouttwitter .image img {
+         width: 55px;
+    }
+    .commentbox.layouttwitter info {
+        display: block;
+        float: left;
+        width: 90px;
+    }
+    .commentbox.layouttwitter author {
+        font-weight: bold;
+        font-size: 14px;
+        color: #000000;
+        display: block;
+        width: 90px;
+    }
+    .commentbox.layouttwitter date {
+        font-size: 12px;
+        display: block;
+        width: 140px;
+    }
+    .commentbox.layouttwitter description {
+        display: block;
+        padding-top: 8px;
+    }
+
+    .commentbox.layoutsimple author {
+        font-weight: bold;
+        font-size: 14px;
+        color: #000000;
+        display: block;
+    }
+    .commentbox.layoutsimple description {
+        display: block;
+        padding-top: 8px;
+        font-style: italic;
+    }
+    .commentbox.layoutsimple date {
+        display: block;
+        font-size: 11px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+    .commentbox.layoutsimple .dop {
+        display: block;
+        font-size: 16px;
+        color: #ffffff;
+        font-weight: bold;
+    }
+    .commentbox.layoutsimple title {
+        display: block;
+    }
+    .commentbox.layoutsimple title, .commentbox.layoutsimple title a {
+        font-size: 26px;
+        line-height: 28px;
+        color: #000000;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .adbox {
+        padding: 15px;
+        position: relative;
+        border-bottom: 4px solid #cecdcc;
+        color: #000000;
+    }
+    .adbox .caption {
+        display: inline-block;
+        font-weight: bold;
+        color: #a19e9c;
+        font-size: 15px;
+        margin-bottom: 6px;
+    }
+    .adbox .caption.underline {
+        border-bottom: 2px solid #a19e9c;
+        padding-bottom: 4px;
+        text-decoration: none !important;
+    }
+    .adbox title {
+        display: block;
+        color: #000000;
+        font-weight: bold;
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+    .adbox description {
+        display: block;
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+    .adbox site {
+        display: block;
+        color: #000000;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .adbox date {
+        font-size: 11px;
+    }
+    .adbox p {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
+    .socialbox {
+        padding: 15px 0px;
+        position: relative;
+        border-top: 4px solid #cecdcc;
+        border-bottom: 4px solid #cecdcc;
+        font-size: 12px;
+    }
+    .socialbox a {
+        text-decoration: none;
+    }
+
+    .addbar {
+        float: left;
+        width: 110px;
+        padding-top: 20px;
+        margin-right: 20px;
+    }
+    .addbar2 {
+        float: left;
+        width: 110px;
+        padding-top: 20px;
+        margin-left: 20px;
+    }
+    .contentbar {
+        float: left;
+        width: 580px;
+        padding-top: 10px;
+    }
+    .mcontentbar {
+        width: 450px;
+        border-bottom: 2px solid #000000;
+        padding-bottom: 20px;
+    }
+
+    .controlicons {
+        text-align: center;
+    }
+    .controlicon {
+        margin-bottom: 20px;
+    }
+
+    .addbar author {
+        font-weight: bold;
+        display: block;
+        text-align: center;
+        margin-top: 50px;
+    }
+    .addbar date {
+        display: block;
+        text-align: center;
+    }
+
+    .leftimage {
+        margin: 20px 20px 20px -130px;
+    }
+    .rightimage {
+        margin: 20px -130px 20px 20px;
+    }
+    .addbardescription {
+        position: absolute;
+        width: 100px;
+        left: 25px;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
 
 /* #Page Styles
 ================================================== */

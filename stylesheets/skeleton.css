@@ -10,7 +10,7 @@
 
 /* Table of Contents
 ==================================================
-    #Base 960 Grid
+    #Base 1024 Grid
     #Tablet (Portrait)
     #Mobile (Portrait)
     #Mobile (Landscape)
@@ -18,10 +18,10 @@
 
 
 
-/* #Base 960 Grid
+/* #Base 1024 Grid
 ================================================== */
 
-    .container                                  { position: relative; width: 960px; margin: 0 auto; padding: 0; }
+    .container                                  { position: relative; width: 968px; margin: 0 auto; padding-left: 28px; padding-right: 28px; }
     .container .column,
     .container .columns                         { float: left; display: inline; margin-left: 10px; margin-right: 10px; }
     .row                                        { margin-bottom: 20px; }
@@ -48,6 +48,10 @@
     .container .fourteen.columns                { width: 820px; }
     .container .fifteen.columns                 { width: 880px; }
     .container .sixteen.columns                 { width: 940px; }
+
+    .container .main                            { width: 710px; float: left; }
+    .container .newsbox                         { width: 345px; height: 245px; }
+    .container .sidebar                         { width: 256px; float: left; }
 
     .container .one-third.column                { width: 300px; }
     .container .two-thirds.column               { width: 620px; }
@@ -76,7 +80,7 @@
 
     /* Note: Design for a width of 768px */
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 768px) and (max-width: 959px) {
         .container                                  { width: 712px; padding-left: 28px; padding-right: 28px; }
         .container .column,
         .container .columns                         { margin-left: 10px; margin-right: 10px;  }
