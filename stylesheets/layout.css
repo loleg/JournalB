@@ -9,17 +9,15 @@
 
 /* Table of Content
 ==================================================
-	#Site Styles
-	#Page Styles
+	#Front Page Styles
+	#Header Styles
+	#Sidebar Styles
+	#Article Page Styles
 	#Media Queries
 	#Font-Face */
 
-/* #Site Styles
+/* #Front Page Styles
 ================================================== */
-
-    .main {
-
-    }
 
     .newsrow {
         overflow: hidden;
@@ -27,6 +25,7 @@
         position: relative;
     }
     .newsbox {
+        height: 245px;
         position: relative;
     }
     .newsbox.content-double {
@@ -34,13 +33,9 @@
         height: 490px !important;
         position: relative;
     }
-
     .newsbox info {
         position: absolute;
         width: 100%;
-    }
-    .newsbox info h3 {
-        font-size: 12px;
     }
     .newsbox .favorite {
         width: 23px;
@@ -59,6 +54,7 @@
         padding-right: 16px;
     }
 
+    /*Layout 1 - simple layout*/
     .newsbox.layout1 info {
         bottom: 12px;
         padding-left: 16px;
@@ -68,6 +64,7 @@
         padding-right: 10px;
     }
 
+    /*Layout 2 - layout with background image*/
     .newsbox.layout2 {
         background-position: top left;
         background-repeat: no-repeat;
@@ -78,7 +75,6 @@
         text-align: center;
         padding: 10px;
         color: #000000;
-
         background-color: rgb(255, 255, 255);
         background-color: rgba(255, 255, 255, 0.25);
     }
@@ -90,6 +86,7 @@
         color: #000000;
     }
 
+    /*Layout 3 - full width layout with background image*/
     .newsbox.layout3 .newsboxcontent {
         width: 100%;
         position: absolute;
@@ -120,6 +117,7 @@
         color: #000000;
     }
 
+    /*Newsbox styles for different sections*/
     .section-alltag {
         background-color: #cde2ff;
     }
@@ -130,6 +128,19 @@
         background-color: #ffbe98;
     }
 
+
+
+/* #Header Styles
+================================================== */
+
+    .header {
+        position: relative;
+        border-bottom: 2px solid #000000;
+        height: 175px;
+        padding-top: 10px;
+    }
+
+    /*Top menu*/
     .nav {
         height: 60px;
     }
@@ -168,12 +179,6 @@
     }
 
 
-    .header {
-        position: relative;
-        border-bottom: 2px solid #000000;
-        height: 175px;
-        padding-top: 10px;
-    }
     .header .widget {
         position: absolute;
         left: 0px;
@@ -229,9 +234,10 @@
     }
 
 
-    .sidebar .content {
-        padding-left: 28px;
-    }
+
+
+/* #Sidebar Styles
+================================================== */
 
     .commentbox {
         padding: 15px;
@@ -369,36 +375,19 @@
         text-decoration: none;
     }
 
+
+
+
+/* #Article Page Styles
+================================================== */
+
+    /*Left information bar*/
     .addbar {
         float: left;
         width: 110px;
         padding-top: 20px;
         margin-right: 20px;
     }
-    .addbar2 {
-        float: left;
-        width: 110px;
-        padding-top: 20px;
-        margin-left: 20px;
-    }
-    .contentbar {
-        float: left;
-        width: 580px;
-        padding-top: 10px;
-    }
-    .mcontentbar {
-        width: 450px;
-        border-bottom: 2px solid #000000;
-        padding-bottom: 20px;
-    }
-
-    .controlicons {
-        text-align: center;
-    }
-    .controlicon {
-        margin-bottom: 20px;
-    }
-
     .addbar author {
         font-weight: bold;
         display: block;
@@ -410,24 +399,34 @@
         text-align: center;
     }
 
+    /*Full-width content area*/
+    .contentbar {
+        float: left;
+        width: 580px;
+        padding-top: 10px;
+    }
+
+    /*Main content area*/
+    .mcontentbar {
+        width: 450px;
+        border-bottom: 2px solid #000000;
+        padding-bottom: 20px;
+    }
+
+    /*Left control buttons*/
+    .controlicons {
+        text-align: center;
+    }
+    .controlicon {
+        margin-bottom: 20px;
+    }
+
     .leftimage {
         margin: 20px 20px 20px -130px;
     }
     .rightimage {
         margin: 20px -130px 20px 20px;
     }
-    .addbardescription {
-        position: absolute;
-        width: 100px;
-        left: 25px;
-    }
-
-    .underline {
-        text-decoration: underline;
-    }
-
-/* #Page Styles
-================================================== */
 
 /* #Media Queries
 ================================================== */
