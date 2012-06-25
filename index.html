@@ -5,26 +5,28 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 
-	<meta charset="utf-8">
-	<title>Journal B</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+    <meta charset="utf-8">
+    <title>Journal B</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="stylesheet" href="stylesheets/base.css">
-	<link rel="stylesheet" href="stylesheets/skeleton.css">
-	<link rel="stylesheet" href="stylesheets/layout.css">
+    <link rel="stylesheet/less" type="text/css" href="stylesheets/style.less">
 
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+    <script src="javascripts/less.js" type="text/javascript"></script>
+    <script src="javascripts/general.js" type="text/javascript"></script>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
 </head>
 <body class="front-page">
@@ -48,7 +50,7 @@
 
             <div class="aare">
                 Aare<br>
-                16°
+                16
             </div>
             <date>04.05.2012</date>
 
@@ -67,29 +69,21 @@
 
             <div class="row newsrow">
 
-                <div class="content-left newsbox section-politik layout1">
+                <div class="content-left newsbox section-politik layoutsimple">
                     <div class="newsboxcontent">
-                        <h3><a href="article.html">Pflegen fur einen Hungerlohn</a></h3>
-                        <p>Der Personenkult um den russischen Präsidenten wird immer grotestker. Ein ehemaliger Genosse erzählt. Occusam eicabore, nis nienihit ilit fuga. Doleseque nam iunt et molorundae pra- tiam ratatusapis dolor</p>
+                        <h1><a href="article.html">Pflegen fur einen Hungerlohn</a></h1>
+                        <description><p>Der Personenkult um den russischen Präsidenten wird immer grotestker. Ein ehemaliger Genosse erzähl. Occusam eicabore, nis nienihit ilit fuga. Doleseque nam iunt et molorundae pra- tiam ratatusapis dolor</p></description>
                     </div>
-                    <info>
-                        <time>17:53</time> |
-                        <author class="name">Matthias Schriftsteller</author> -
-                        <author class="role">Buchling</author>
-                    </info>
+                    <info><time>17:53</time> | <author class="name">Matthias Schriftsteller</author> - <author class="role">Buchling</author></info>
                     <div class="favorite"><img src="/images/favorite-politik.png" /></div>
                 </div>
 
-                <div class="content-right newsbox section-alltag layout1">
+                <div class="content-right newsbox section-alltag layoutsimple">
                     <div class="newsboxcontent">
-                        <h3><a href="article.html">Der Blogger von Bern</a></h3>
+                        <h1><a href="article.html">Der Blogger von Bern</a></h1>
                         <p>Der Schweizer Urs Fischer avanciert von der Öffentlichkeit fast unbemerkt in diesen Tagen zum teuerst gehandelten zeitgenössischen Künstler. At L. Eheba- tiem. Avenatid cresum quam furenatius mo Der Schweizer Urs Fischer avanciert von der Öffentlichkeit fas.</p>
                     </div>
-                    <info>
-                        <time>18:45</time> |
-                        <author class="name">Matthias Schriftsteller</author> -
-                        <author class="role">Buchling</author>
-                    </info>
+                    <info><time>18:45</time> | <author class="name">Matthias Schriftsteller</author> - <author class="role">Buchling</author></info>
                     <div class="favorite"><img src="/images/favorite-off.png" /></div>
                 </div>
 
@@ -97,46 +91,68 @@
 
             <div class="row newsrow">
 
-                <div class="content-left newsbox section-kultur layout1">
+                <div class="content-left newsbox section-kultur layoutsimple">
                     <div class="newsboxcontent">
-                        <h3><a href="article.html">Immunitat von Blocher: Entscheid widerspricht Verfassung</a></h3>
+                        <h2>Kolumne</h2>
+                        <h1><a href="article.html">Entscheid widerspricht Verfassung</a></h1>
                         <p>Der Schweizer Urs Fischer avanciert von der Öffentlichkeit fast unbemerkt in diesen Tagen zum teuerst gehandelten zeitgenössischen Künstler. At L. Eheba- tiem. Avenatid crao</p>
                     </div>
-                    <info>
-                        <date>03.5.2012</date> |
-                        <author class="name">Matthias Schriftsteller</author> -
-                        <author class="role">Buchling</author>
-                    </info>
+                    <info><date>03.5.2012</date> | <author class="name">Matthias Schriftsteller</author> - <author class="role">Buchling</author></info>
                     <div class="favorite"><img src="/images/favorite-kultur.png" /></div>
                 </div>
 
-                <div class="content-right newsbox section-alltag layout2" style="background-image: url(/images/data/img1.png);">
-                    <div class="newsboxcontent">
-                        <div class="favorite"><img src="/images/favorite-alltag.png" /></div>
-                    </div>
-                    <info>
-                        <date>03.5.2012</date> |
-                        <time>17:53</time> |
-                        <h3><a href="article.html">Verwahrung muss regelmassig gepruft werden</a></h3>
-                    </info>
+                <div class="content-right newsbox section-alltag layoutbgimage" style="background-image: url(/images/data/img1.png);">
+                    <info><date>03.5.2012</date> | <time>17:53</time> | <h1><a href="article.html">Verwahrung muss regelmassig gepruft werden</a></h1></info>
+                    <div class="favorite"><img src="/images/favorite-alltag.png" /></div>
                 </div>
 
             </div>
 
             <div class="row newsrow">
 
-                <div class="content-double newsbox section-alltag layout3" style="background-image: url(/images/data/img2.png);">
+                <div class="content-double newsbox section-alltag layoutdouble" style="background-image: url(/images/data/img2.png);">
                     <div class="newsboxcontent">
-                        <h3><a href="article.html">Die Diktatur der Demokratie</a></h3>
+                        <h1><a href="article.html">Die Diktatur der Demokratie</a></h1>
                         <description>Der Illaborro consequiatur re ex eum fugitat usaeperaest, sint et quam, sit quam ipicto cus vit, soloreste porion con pe ra sim autemet veri te latur rehende lectotatem vendaerferum</description>
                     </div>
-                    <info>
-                        <date>03.5.2012</date> |
-                        <time>17:53</time> |
-                        <author class="name">Matthias Schriftsteller</author> -
-                        <author class="role">Buchling</author>
-                    </info>
+                    <info><date>03.5.2012</date> | <time>17:53</time> | <author class="name">Matthias Schriftsteller</author> - <author class="role">Buchling</author></info>
                     <div class="favorite"><img src="/images/favorite-alltag.png" /></div>
+                </div>
+
+            </div>
+
+            <div class="row newsrow">
+
+                <div class="content-left newsbox section-kultur layoutsimple">
+                    <div class="newsboxcontent">
+                        <h2>Neuste Blogs</h2>
+                        <description>
+                            <p>
+                                <span class="capitalize">ESTER KOLUMNISIKI</span> Der Essiggurke und Dill Geschmack der neuen Terra Chips entstand im Internet.
+                                <div class="info"><date>03.5.2012</date> | <time>17:53</time></div>
+                            </p>
+                            <p>
+                                <span class="capitalize">WERNER MANKE</span> Der Essiggurke und Dill Geschmack der neuen Terra Chips entstand im Internet.
+                                <div class="info"><date>03.5.2012</date> | <time>17:53</time></div>
+                            </p>
+                        </description>
+                    </div>
+                </div>
+
+                <div class="content-right newsbox section-alltag layoutsimple">
+                    <div class="newsboxcontent">
+                        <h2>Aktuelle Dossiers</h2>
+                        <description>
+                            <p>
+                                <span class="capitalize">Reitschule</span> Der Vorplatz wird zum Streitpunkt
+                                <div class="info"><date>03.5.2012</date> | <time>17:53</time> | <author>Marc Lachmann</author></div>
+                            </p>
+                            <p>
+                                <span class="capitalize">Wahlen 2012</span> Urs Fischer überholt sogar Alexander Tschäppät
+                                <div class="info"><date>03.5.2012</date> | <time>17:53</time> | <author>Marc Lachmann</author></div>
+                            </p>
+                        </description>
+                    </div>
                 </div>
 
             </div>
@@ -169,21 +185,21 @@
                 <author>Matthias Liechti</author>
                 <description>Int est volore re lita perisquiae vita volupta epedipsus, quam rehenda nihitem sit, ipicaerum quuntotatas il estium facerendunt ad eos audae serum eium rentur sequae facerendunt ad eos audae serum eium rentur sequae eium rentur.</description>
                 <date>schrieb am 2.3.2012 um 20:23 zu</date>
-                <div class="dop">Die Diktatur der Demokratie</div>
+                <div class="community-title white">Die Diktatur der Demokratie</div>
                 <div class="bg"><img src="/images/commentbox.png" /></div>
             </div>
 
             <div class="row adbox">
-                <div class="caption">Anzeige</div>
+                <div class="community-title grey">Anzeige</div>
                 <title>Kurse in business - English</title>
                 <description>Professionelle Übersetzerin trainiert Sie zum beruflichen Erfolg - kleine Gruppen, faire Preise!</description>
-                <site><a href="#">www.ubersetzerin.ch</a></site>
+                <div class="lists"><a href="#">www.ubersetzerin.ch</a></div>
             </div>
 
             <div class="row commentbox layoutsimple">
-                <title>Er war von einer ungeheuren Ehrlichkeit. Wir werden ihn vermissen</title>
+                <h1><a href="#">Er war von einer ungeheuren Ehrlichkeit. Wir werden ihn vermissen</a></h1>
                 <date>schrieb am 2.3.2012 um 20:23 zu</date>
-                <div class="dop">Die Diktatur der Demokratie</div>
+                <div class="community-title white">Die Diktatur der Demokratie</div>
                 <div class="bg"><img src="/images/commentbox.png" /></div>
             </div>
 
@@ -191,7 +207,7 @@
                 <author>Matthias Liechti</author>
                 <description>Int est volore re lita perisquiae vita volupta epedipsus, quam rehenda nihitem sit, ipicaerum quuntotatas il estium facerendunt ad eos audae serum eium.</description>
                 <date>schrieb am 2.3.2012 um 20:23 zu</date>
-                <div class="dop">Die Diktatur der Demokratie</div>
+                <div class="community-title white">Die Diktatur der Demokratie</div>
                 <div class="bg"><img src="/images/commentbox.png" /></div>
                 <icon><img src="/images/facebook.png"></icon>
             </div>

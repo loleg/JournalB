@@ -1,0 +1,473 @@
+/* Table of Content
+==================================================
+	#Front Page Styles
+	#Header Styles
+	#Sidebar Styles
+	#Article Page Styles
+	#Media Queries
+	#Font-Face */
+
+/* #Front Page Styles
+================================================== */
+
+    .newsrow {
+        overflow: hidden;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    .newsbox {
+        height: 245px;
+        position: relative;
+    }
+    .newsbox.content-double {
+        width: 100% !important;
+        height: 490px !important;
+        position: relative;
+    }
+    .newsbox .favorite {
+        width: 23px;
+        height: 45px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background: url(/images/favorite-wrapper.png);
+        padding-top: 8px;
+        padding-left: 30px;
+    }
+    .newsboxcontent {
+        display: block;
+        padding-top: 10px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .newsbox info {
+        position: absolute;
+        width: 100%;
+    }
+
+    .newsbox.layoutsimple info {
+        bottom: 12px;
+        padding-left: 16px;
+        padding-right: 16px;
+        .info;
+    }
+    .newsbox.layoutsimple h1 {
+        padding-right: 10px;
+    }
+    .newsbox.layoutsimple description {
+        margin-top: 8px;
+        display: block;
+    }
+
+
+    .newsbox.layoutbgimage {
+        background-position: top left;
+        background-repeat: no-repeat;
+    }
+    .newsbox.layoutbgimage info {
+        bottom: 0px;
+        left: 0px;
+        text-align: center;
+        padding: 10px;
+        background-color: rgb(255, 255, 255);
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+    .newsbox.layoutbgimage h1 {
+        font-size: 115%;
+        display: inline;
+    }
+
+
+    .newsbox.layoutdouble .newsboxcontent {
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        background-color: rgb(255, 255, 255);
+        background-color: rgba(255, 255, 255, 0.25);
+        padding: 10px 10px 30px 10px;
+    }
+    .newsbox.layoutdouble h1 {
+        display: block;
+        float: left;
+        width: 45%;
+        text-align: center;
+        line-height: 140%
+    }
+    .newsbox.layoutdouble description {
+        display: block;
+        float: right;
+        width: 45%;
+        margin-right: 20px;
+    }
+    .newsbox.layoutdouble info {
+        bottom: 6px;
+        margin-left: 20px;
+        .info;
+    }
+
+    /*Newsbox styles for different sections*/
+    .newsbox.section-alltag {
+        background-color: #cde2ff;
+    }
+    .newsbox.section-politik {
+        background-color: #c6ffd8;
+    }
+    .newsbox.section-kultur {
+        background-color: #ffbe98;
+    }
+
+
+
+/* #Header Styles
+================================================== */
+
+    .header {
+        position: relative;
+        border-bottom: 2px solid #000000;
+        height: 175px;
+        padding-top: 10px;
+    }
+
+    /*Top menu*/
+    .nav {
+        height: 60px;
+    }
+    .nav li {
+        float: left;
+        width: 20%;
+        text-align: center;
+    }
+    .nav a {
+        display: inline-block;
+        padding-left: 8px;
+        padding-right: 8px;
+        text-transform: uppercase;
+        text-decoration: none;
+        text-align: center;
+        min-width: 63px;
+        font-family: "JournalBBold";
+    }
+    .nav li.active a{
+        padding-bottom: 40px;
+    }
+    .nav li.nav-front.active a{
+        background: url(/images/nav-shape-front.png) bottom center no-repeat;
+    }
+    .nav li.nav-alltag.active a{
+        background: url(/images/nav-shape-alltag.png) bottom center no-repeat;
+    }
+    .nav li.nav-kultur.active a{
+        background: url(/images/nav-shape-kultur.png) bottom center no-repeat;
+    }
+    .nav li.nav-politik.active a{
+        background: url(/images/nav-shape-politik.png) bottom center no-repeat;
+    }
+    .nav li.active.nav-fav a{
+        background: url(/images/nav-shape-favorite.png) bottom center no-repeat;
+    }
+
+
+    .header .widget {
+        position: absolute;
+        left: 0px;
+    }
+    .header .logo {
+        text-align: center;
+        margin-top: -10px;
+    }
+    .header .logo h1 {
+        font-size: 84px;
+        font-weight: bold;
+        display: inline;
+        line-height: 100%;
+    }
+    .header .logo a {
+        text-decoration: none;
+    }
+    .header .search {
+        position: absolute;
+        right: 52px;
+        top: 104px;
+    }
+    .header .subtitle {
+        position: absolute;
+        left: 50%;
+        margin-left: -130px;
+        bottom: -10px;
+        background-color: #ffffff;
+        width: 260px;
+        text-align: center;
+        color: #000000;
+        letter-spacing: 1px;
+    }
+    .header .aare {
+        position: absolute;
+        left: 40px;
+        top: 74px;
+        color: #000000;
+        text-align: center;
+        line-height: 32px;
+        background: url(/images/aare.png) center center no-repeat;
+        width: 64px;
+    }
+    .header date {
+        display: block;
+        position: absolute;
+        color: #999999;
+        font-weight: bold;
+        font-size: 115%;
+        bottom: 22px;
+        left: 30px;
+    }
+
+
+
+
+/* #Sidebar Styles
+================================================== */
+
+    .commentbox {
+        padding: 15px;
+        background-color: #c3c2c1;
+        border-radius: 6px;
+        position: relative;
+    }
+    .commentbox icon {
+        position: absolute;
+        top: 9px;
+        right: 9px;
+    }
+    .commentbox .bg {
+        position: absolute;
+        right: -13px;
+        bottom: -6px;
+    }
+
+    .commentbox.layouttwitter .image {
+        display: block;
+        float: left;
+        margin-right: 10px;
+    }
+    .commentbox.layouttwitter .image img {
+         width: 55px;
+    }
+    .commentbox.layouttwitter info {
+        display: block;
+        float: left;
+        width: 90px;
+    }
+    .commentbox.layouttwitter author {
+        display: block;
+        width: 90px;
+        .community-title;
+    }
+    .commentbox.layouttwitter date {
+        display: block;
+        width: 140px;
+        .community-font;
+    }
+    .commentbox.layouttwitter description {
+        display: block;
+        padding-top: 8px;
+        .community-font;
+    }
+
+    .commentbox.layoutsimple author {
+        display: block;
+        .community-title;
+    }
+    .commentbox.layoutsimple description {
+        display: block;
+        padding-top: 8px;
+        font-style: italic;
+        .community-font;
+    }
+    .commentbox.layoutsimple date {
+        display: block;
+        .info;
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+    .commentbox.layoutsimple title {
+        display: block;
+    }
+    .commentbox.layoutsimple title, .commentbox.layoutsimple title a {
+        font-size: 185%;
+        line-height: 120%;
+        color: #000000;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .adbox {
+        padding: 15px;
+        position: relative;
+        border-bottom: 4px solid #cecdcc;
+        color: #000000;
+    }
+    .adbox title {
+        margin-top: 6px;
+        display: block;
+        .capitalize;
+    }
+    .adbox description {
+        display: block;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        .community-font;
+    }
+    .adbox date {
+        font-size: 80%;
+    }
+    .adbox p {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
+    .socialbox {
+        padding: 15px 0px;
+        position: relative;
+        border-top: 4px solid #cecdcc;
+        border-bottom: 4px solid #cecdcc;
+        .community-font;
+    }
+    .socialbox a {
+        text-decoration: none;
+    }
+
+
+
+
+/* #Article Page Styles
+================================================== */
+
+    /*Left information bar*/
+    .addbar {
+        float: left;
+        width: 110px;
+        padding-top: 20px;
+        margin-right: 20px;
+    }
+    .addbar author {
+        .community-title;
+        display: block;
+        text-align: center;
+        margin-top: 50px;
+    }
+    .addbar date {
+        display: block;
+        text-align: center;
+        .community-font;
+    }
+
+    /*Full-width content area*/
+    .contentbar {
+        float: left;
+        width: 580px;
+        padding-top: 10px;
+    }
+
+    /*Main content area*/
+    .mcontentbar {
+        width: 450px;
+        border-bottom: 2px solid #000000;
+        padding-bottom: 20px;
+    }
+
+    /*Left control buttons*/
+    .controlicons {
+        text-align: center;
+    }
+    .controlicon {
+        margin-bottom: 20px;
+    }
+
+    .leftimage {
+        margin: 20px 20px 20px -130px;
+    }
+    .rightimage {
+        margin: 20px -130px 20px 20px;
+    }
+
+/* #Media Queries
+================================================== */
+
+	/* Smaller than standard 960 (devices and browsers) */
+	@media only screen and (max-width: 959px) {}
+
+	/* Tablet Portrait size to standard 960 (devices and browsers) */
+	@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+	/* All Mobile Sizes (devices and browser) */
+	@media only screen and (max-width: 767px) {}
+
+	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+	@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+	@media only screen and (max-width: 479px) {}
+
+
+/* #Font-Face
+================================================== */
+    @font-face {
+        font-family: 'JournalBBold';
+        src: url('../webfonts/journalb-bold-web.eot');
+        src: url('../webfonts/journalb-bold-web.eot?#iefix') format('embedded-opentype'),
+        url('../webfonts/journalb-bold-web.woff') format('woff'),
+        url('../webfonts/journalb-bold-web.ttf') format('truetype'),
+        url('../webfonts/journalb-bold-web.svg#JournalBBold') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'JournalBRegular';
+        src: url('../webfonts/journalb-regular-web.eot');
+        src: url('../webfonts/journalb-regular-web.eot?#iefix') format('embedded-opentype'),
+        url('../webfonts/journalb-regular-web.woff') format('woff'),
+        url('../webfonts/journalb-regular-web.ttf') format('truetype'),
+        url('../webfonts/journalb-regular-web.svg#JournalBRegular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'AlekseiRegular';
+        src: url('../webfonts/aleksei-web.eot');
+        src: url('../webfonts/aleksei-web.eot?#iefix') format('embedded-opentype'),
+        url('../webfonts/aleksei-web.woff') format('woff'),
+        url('../webfonts/aleksei-web.svg#AlekseiRegular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'AlekseiBlack';
+        src: url('../webfonts/aleksei-black-web.eot');
+        src: url('../webfonts/aleksei-black-web.eot?#iefix') format('embedded-opentype'),
+        url('../webfonts/aleksei-black-web.woff') format('woff'),
+        url('../webfonts/aleksei-black-web.svg#AlekseiRegular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'AlekseiBold';
+        src: url('../webfonts/aleksei-bold-web.eot');
+        src: url('../webfonts/aleksei-bold-web.eot?#iefix') format('embedded-opentype'),
+        url('../webfonts/aleksei-bold-web.woff') format('woff'),
+        url('../webfonts/aleksei-bold-web.svg#AlekseiBold') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'AlekseiThin';
+        src: url('../webfonts/aleksei-thin-web.eot');
+        src: url('../webfonts/aleksei-thin-web.eot?#iefix') format('embedded-opentype'),
+        url('../webfonts/aleksei-thin-web.woff') format('woff'),
+        url('../webfonts/aleksei-thin-web.svg#AlekseiRegular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
