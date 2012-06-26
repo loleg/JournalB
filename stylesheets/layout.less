@@ -10,6 +10,10 @@
 /* #Front Page Styles
 ================================================== */
 
+    .content {
+        position: relative;
+    }
+
     .newsrow {
         overflow: hidden;
         margin-bottom: 20px;
@@ -173,7 +177,7 @@
     }
     .header .logo {
         text-align: center;
-        margin-top: -10px;
+        margin-top: -18px;
     }
     .header .logo h1 {
         font-size: 84px;
@@ -187,7 +191,7 @@
     .header .search {
         position: absolute;
         right: 52px;
-        top: 104px;
+        top: 124px;
     }
     .header .subtitle {
         position: absolute;
@@ -228,7 +232,7 @@
 
     .commentbox {
         padding: 15px;
-        background-color: #c3c2c1;
+        background-color: #cecdcc;
         border-radius: 6px;
         position: relative;
     }
@@ -239,8 +243,8 @@
     }
     .commentbox .bg {
         position: absolute;
-        right: -13px;
-        bottom: -6px;
+        right: -12px;
+        bottom: -5px;
     }
 
     .commentbox.layouttwitter .image {
@@ -379,7 +383,8 @@
         text-align: center;
     }
     .controlicon {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        cursor: pointer;
     }
 
     .leftimage {
@@ -387,6 +392,18 @@
     }
     .rightimage {
         margin: 20px -130px 20px 20px;
+    }
+    .leftdescription {
+        position: absolute;
+        left: 5px;
+        width: 110px;
+        .community-font;
+    }
+    .rightdescription {
+        position: absolute;
+        right: 5px;
+        width: 110px;
+        .community-font;
     }
 
 /* #Media Queries
