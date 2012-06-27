@@ -10,7 +10,7 @@
 
     .underline(@color: "", @height: 1px, @padding-bottom: 0px, @background-position-y: 100%) {
         background: url("/images/underline@{color}.png") repeat-x;
-        background-position-y: @background-position-y;
+        background-position: 0 @background-position-y;
         background-size: 1px @height;
         padding-bottom: @padding-bottom;
     }

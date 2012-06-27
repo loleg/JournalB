@@ -141,6 +141,9 @@
         width: 20%;
         text-align: center;
     }
+    .nav ul {
+        margin-left:15px;
+    }
     .nav a {
         display: inline-block;
         padding-left: 8px;
@@ -152,10 +155,11 @@
         font-family: "JournalBBold";
     }
     .nav li.active a{
-        padding-bottom: 40px;
+        padding-bottom: 33px;
     }
     .nav li.nav-front.active a{
         background: url(/images/nav-shape-front.png) bottom center no-repeat;
+		margin-left: -80px;
     }
     .nav li.nav-alltag.active a{
         background: url(/images/nav-shape-alltag.png) bottom center no-repeat;
@@ -177,16 +181,16 @@
     }
     .header .logo {
         text-align: center;
-        margin-top: -18px;
     }
     .header .logo h1 {
         font-size: 84px;
-        font-weight: bold;
         display: inline;
         line-height: 100%;
     }
     .header .logo a {
         text-decoration: none;
+        position: relative;
+        top: -18px;
     }
     .header .search {
         position: absolute;
@@ -195,33 +199,35 @@
     }
     .header .subtitle {
         position: absolute;
+        margin-left: -10em;
+        width: 19em;
         left: 50%;
-        margin-left: -130px;
         bottom: -10px;
         background-color: #ffffff;
-        width: 260px;
         text-align: center;
         color: #000000;
         letter-spacing: 1px;
     }
     .header .aare {
         position: absolute;
-        left: 40px;
-        top: 74px;
+        left: 14px;
+        top: 77px;
+        width: 64px;        
         color: #000000;
+        font-size: 90%;
         text-align: center;
         line-height: 32px;
+        letter-spacing: 1pt;
         background: url(/images/aare.png) center center no-repeat;
-        width: 64px;
     }
     .header date {
         display: block;
         position: absolute;
         color: #999999;
         font-weight: bold;
-        font-size: 115%;
+        font-size: 105%;
         bottom: 22px;
-        left: 30px;
+        left: 0px;
     }
 
 
