@@ -15,7 +15,6 @@
         padding-bottom: @padding-bottom;
     }
 
-
     body {
         background: #fff;
         font-family: "AlekseiRegular", Helvetica, Arial;
@@ -26,47 +25,62 @@
         -webkit-text-size-adjust: 100%;
     }
 
+    p { margin: 0 0 10px 0; }
+
+    /* Headings */
     h1, h2, h3, h4, h5, h6                  { color: @base-font-color; font-weight: normal; line-height: 100%; }
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a      { font-weight: inherit; color: @base-font-color; }
     h1 a:hover, h2 a:hover, h3 a:hover,
-    h4 a:hover, h5 a:hover, h6 a:hover      { .underline("-black",1px,0px,90%); }
+    h4 a:hover, h5 a:hover, h6 a:hover,
+    h1.underline a, h2.underline a, h3.underline a,
+    h4.underline a, h5.underline a, h6.underline a      { .underline("-black",1px,0px,95%); }  /* 1px underline with 4px offset */
+    h1.underline a:hover, h2.underline a:hover, h3.underline a:hover,
+    h4.underline a:hover, h5.underline a:hover, h6.underline a:hover    {background: none;}
 
-    h1 { font-size: 175%; font-family: "JournalBBold",    "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
-    h2 { font-size: 175%; font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; margin-bottom: 0px; }
-    h3 { font-size: 150%; font-family: "JournalBBold",    "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
-    h4 { font-size: 150%; font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
-    h5 { font-size: 125%; font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
-    h6 { font-size: 100%; font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
+    h1 { font-size: 175%; /*30px*/ font-family: "JournalBBold",    "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
+    h2 { font-size: 175%; /*30px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; margin-bottom: 0px; }
 
-	p { margin: 0 0 10px 0; }
+    /* Unspecified headings */
+    h3 { font-size: 150%; /*26px*/ font-family: "JournalBBold",    "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
+    h4 { font-size: 150%; /*26px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
+    h5 { font-size: 125%; /*21px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
+    h6 { font-size: 100%; /*17px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
 
 
-    .info                           { font-family: "AlekseiThin"; font-size: 70%; line-height: 125%; }
-    .info a:hover                   { .underline("",3px,2px); }
-    .section-alltag .info a:hover   { .underline("-alltag",3px,2px); }
-    .section-kultur .info a:hover   { .underline("-kultur",3px,2px); }
-    .section-politik .info a:hover  { .underline("-politik",3px,2px); }
+    /* Credits / Author / Time / Captions */
+    .info                           { font-family: "AlekseiThin"; font-size: 70%; /*12px*/  line-height: 125%; /*15px*/ }
+    .info a:hover                   { .underline("",3px,2px); }         /* 3px underline with 3px offset */
+    .section-alltag .info a:hover   { .underline("-alltag",3px,2px); }  /* 3px underline with 3px offset */
+    .section-kultur .info a:hover   { .underline("-kultur",3px,2px); }  /* 3px underline with 3px offset */
+    .section-politik .info a:hover  { .underline("-politik",3px,2px); } /* 3px underline with 3px offset */
 
-    .community-font                      { font-family: "AlekseiRegular"; font-size: 82%; line-height: 140%; }
-    .community-title                { font-family: "AlekseiRegular"; font-size: 82%; line-height: 140%; font-weight: bold; }
+    /* Community fonts */
+    .community-font                 { font-family: "AlekseiRegular"; font-size: 82%; /*14px*/ line-height: 143%; /*20px*/ }
+    .community-title                { font-family: "AlekseiBold"; font-size: 82%; /*14px*/ line-height: 140%; /*20px*/ }
     .community-title.white          { color: #ffffff; }
-    .community-title.grey           { font-size: 88%; line-height: 133%; color: #a19e9c; }
-    .community-title.underline      { border-bottom: 2px solid #a19e9c; padding-bottom: 4px; text-decoration: none !important; display: inline-block; }
+    .community-title.grey           { font-size: 88%; /*15px*/ line-height: 133%; /*20px*/ color: #a19e9c; }
+    .community-title.underline      { border-bottom: 2px solid #a19e9c; text-decoration: none !important; display: inline-block; margin-bottom: 6px; }
 
-    .lists                          { font-family: "AlekseiRegular"; font-size: 82%; line-height: 107%; font-weight: bold; }
-    .lists a:hover                  { .underline("-black",1px,0px); }
+    /* Lists (Links / Article Titles) */
+    .lists                          { font-family: "AlekseiBold"; font-size: 82%; /*14px*/ line-height: 107%; /*15px*/ }
+    .lists a:hover                  { .underline("-black",1px,0px); } /* 1px underline with 3px offset */
 
-    .subheading                     { font-family: "AlekseiBold"; font-size: 100%; line-height: 117%; }
-    .capitalize                     { text-transform: uppercase; font-family: "JournalBBold"; font-size: 95%; line-height: 125%; }
+    .subheading                     { font-family: "AlekseiBold"; font-size: 100%; /*17px*/ }
+    .capitalize                     { text-transform: uppercase; font-family: "JournalBBold"; font-size: 94%; /*16px*/ line-height: 125%; /*20px*/ }
+
+    .header .aare                   { font-size: 90%; line-height: 32px; letter-spacing: 1pt; }
+    .header date                    { color: #999999; font-weight: bold; font-size: 105%; }
 
 
-    em      { font-style: italic; }
+    em, .italic      { font-style: italic; }
     strong  { font-weight: bold; color: #333; }
     small   { font-size: 80%; }
 
 
+
+    /* Links */
     a, a:visited, a:hover, a:focus  { color: #000; text-decoration: none; outline: 0; }
-    p a                             { line-height: inherit; .underline("",3px,2px); }
-    .section-alltag p a             { .underline("-alltag",3px,2px); }
-    .section-kultur p a             { .underline("-kultur",3px,2px); }
-    .section-politik p a            { .underline("-politik",3px,2px); }
+    p a                             { line-height: inherit; .underline("",3px,1px); }
+    .section-alltag p a             { .underline("-alltag",3px,1px); }
+    .section-kultur p a             { .underline("-kultur",3px,1px); }
+    .section-politik p a            { .underline("-politik",3px,1px); }
