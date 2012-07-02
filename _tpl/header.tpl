@@ -22,13 +22,13 @@
     </h1>
 
     <div class="search">
-        <a href="#"><img src="_img/search.png" /></a>
+        <a href="#"><img src="{{ url static_file='_img/search.png' }}" /></a>
 		<div id="search-box" class="hidden">
 		{{ search_form template="search.tpl" submit_button="search" }} 
-		{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"keywords\"" }}
+			{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"keywords\"" }}
 		{{ /search_form }}        
 		</div>   
     </div>
 
-    <div class="subtitle">die neue digitale Zeitung für Bern</div>
+    <div class="subtitle">die neue digitale Zeitung fÃ¼r Bern</div>
 </div>

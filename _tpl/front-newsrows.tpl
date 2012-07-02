@@ -33,7 +33,7 @@
         <a class="favorite" href="#">Favorite</a>
     </div>
 
-    <div class="content-right newsbox section-alltag layoutbgimage" style="background-image: url(_img/data/img1.png);">
+    <div class="content-right newsbox section-alltag layoutbgimage" style="background-image: url({{ url static_file='_img/data/img1.png' }});">
         <info>
             <div>
                 <span class="info"><date>03.5.2012</date> | <time>17:53</time></span>
@@ -48,7 +48,7 @@
 
 <div class="row newsrow">
 
-    <div class="content-double newsbox section-alltag layoutdouble" style="background-image: url(_img/data/img2.png);">
+    <div class="content-double newsbox section-alltag layoutdouble" style="background-image: url({{ url static_file='_img/data/img2.png' }});">
         <div class="newsboxcontent_wrapper">
             <div class="newsboxcontent">
                 <h1><a href="article.html">Die Diktatur der Demokratie</a></h1>
