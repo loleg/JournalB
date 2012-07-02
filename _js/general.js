@@ -14,4 +14,4 @@ function destroyLessCache(pathToCss) {
     }
 }
 
-destroyLessCache("/stylesheets/");
+destroyLessCache("/_css/");
