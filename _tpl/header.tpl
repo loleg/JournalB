@@ -2,10 +2,10 @@
 
     <div class="row nav">
         <ul>
-            <li class="nav-front active"><a href="#">Front</a></li>
-            <li class="nav-alltag active"><a href="#">Alltag</a></li>
-            <li class="nav-politik active"><a href="#">Politik</a></li>
-            <li class="nav-kultur active"><a href="#">Kultur</a></li>
+            <li class="nav-front active"><a href="/">Front</a></li>
+            <li class="nav-alltag active"><a href="/en/jan2011/alltag/">Alltag</a></li>
+            <li class="nav-politik active"><a href="/en/jan2011/politik/">Politik</a></li>
+            <li class="nav-kultur active"><a href="/en/jan2011/kultur/">Kultur</a></li>
             <li class="nav-fav active"><a href="#">Favoriten</a></li>
             <div class="clear"></div>
         </ul>
@@ -23,11 +23,11 @@
 
     <div class="search">
         <a href="#"><img src="{{ url static_file='_img/search.png' }}" /></a>
-		<div id="search-box" class="hidden">
+		<!--<div id="search-box" class="hidden">
 		{{ search_form template="search.tpl" submit_button="search" }} 
 			{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"keywords\"" }}
 		{{ /search_form }}        
-		</div>   
+		</div>-->
     </div>
 
     <div class="subtitle">die neue digitale Zeitung für Bern</div>

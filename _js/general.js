@@ -1,3 +1,4 @@
+
 function destroyLessCache(pathToCss) {
 
     if (!window.localStorage || !less) {
@@ -14,4 +15,4 @@ function destroyLessCache(pathToCss) {
     }
 }
 
-destroyLessCache("/_css/");
+destroyLessCache("/themes/publication_2/theme_1/_css/");

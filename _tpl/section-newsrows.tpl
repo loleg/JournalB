@@ -1,6 +1,6 @@
 {{assign var="column" value="0"}}
 
-{{ list_articles order="bypublishdate desc" columns="2" constraints="OnFrontPage is on" }}
+{{ list_articles order="bypublishdate desc" columns="2" constraints="OnSection is on" }}
 
 	{{ if $column%2 == 0 }}<div class="row newsrow">{{ /if }}
 	
@@ -8,7 +8,7 @@
 		
 	{{ if $gimme->article->name == "double"}} {{assign var="column" value="`$column+1`"}} {{/if}}
 		
-	{{ if $column%2 == 1 || $gimme->current_list->at_end}}</div>{{ /if }}
+	{{ if $column%2 == 1  || $gimme->current_list->at_end}}</div>{{ /if }}
 		
 	{{assign var="column" value="`$column+1`"}}
 	

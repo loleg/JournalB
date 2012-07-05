@@ -46,6 +46,8 @@
         padding-top: 13px;
         padding-left: 16px;
         padding-right: 16px;
+		max-height: 195px; 
+		overflow: hidden;
     }
     .newsbox info {
         position: absolute;
@@ -69,6 +71,15 @@
         margin-top: 15px;
         display: block;
     }
+	
+	
+	.newsbox.layoutlist description {
+        margin-top: 15px;
+        display: block;
+    }
+	.newsbox.layoutlist .newsboxcontent {
+        max-height: 220px;
+    }
 
 
     .newsbox.layoutbgimage {
@@ -87,6 +98,7 @@
     .newsbox.layoutbgimage h1 {
         .subheading;
         display: inline;
+		margin-left: 6px;
     }
 
 
@@ -106,10 +118,10 @@
 
     /*Newsbox styles for different sections*/
     .newsbox.section-alltag {
-        background-color: #cde2ff;
+        background-color: #c6ffd8;
     }
     .newsbox.section-politik {
-        background-color: #c6ffd8;
+        background-color: #cde2ff;
     }
     .newsbox.section-kultur {
         background-color: #ffbe98;
@@ -174,10 +186,11 @@
     }
     .header .logo {
         text-align: center;
-    }
-    .header .logo a {
-        text-decoration: none;
-        position: relative;
+		display: block;
+		padding: 0px;
+		overflow: hidden;
+		padding-top: 35px;
+		margin-top: -10px;
     }
     .header .search {
         position: absolute;

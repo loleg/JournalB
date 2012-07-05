@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <theme name="Journal B" designer="Apps with love" version="1.0" require="4.0">
-    <description>Theme for JournalB.ch</description>
+    <description>JournalB</description>
     
     <presentation-img src="themethumbs/front.jpg" name="Front page"/>
     <presentation-img src="themethumbs/section.jpg" name="Section page"/>
@@ -13,13 +13,9 @@
 		<errorPage src="404.tpl"/>
 	</output>
 	
-	<!-- Image formats
 	<renditions>
-		<rendition name="topfront" width="500" height="333" specs="crop"/>
-		<rendition name="thumb" width="150" height="100" specs="crop"/>
-		<rendition name="sectionthumb" width="250" height="167" specs="crop"/>
-		<rendition name="articlebig" width="600" height="400" specs="crop"/>
-		<rendition name="square" width="150" height="150" specs="crop"/>
+		<rendition name="topfront" width="345" height="245" specs="crop"/>
+		<rendition name="articlebig" width="580" height="389" specs="crop"/>
 	</renditions>
-	-->
+
 </theme>
