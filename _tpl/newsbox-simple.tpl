@@ -8,7 +8,7 @@
 	<info>
 		<time>
 			{{ if $gimme->article->publish_date|camp_date_format:"%e" == $smarty.now|camp_date_format:"%e"}}
-				{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+				Today, {{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
 			{{ else }}
 				{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
 			{{ /if }}

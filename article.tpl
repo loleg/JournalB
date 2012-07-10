@@ -30,6 +30,8 @@
 
         <div class="row content">
             
+			{{ include file="_tpl/article-community.tpl" }}
+			
             {{ include file="_tpl/community.tpl" }}
 
         </div>

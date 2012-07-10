@@ -1,4 +1,5 @@
-<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $gimme->article->section->url_name }} layoutbgimage" style="background-image: url({{ url static_file='_img/data/img1.png' }});">
+<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $gimme->article->section->url_name }} layoutbgimage" 
+	{{ image rendition="topfront" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 
 	<info>
 		<div>

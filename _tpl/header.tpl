@@ -3,9 +3,9 @@
     <div class="row nav">
         <ul>
             <li class="nav-front active"><a href="/">Front</a></li>
-            <li class="nav-alltag active"><a href="/en/jan2011/alltag/">Alltag</a></li>
-            <li class="nav-politik active"><a href="/en/jan2011/politik/">Politik</a></li>
-            <li class="nav-kultur active"><a href="/en/jan2011/kultur/">Kultur</a></li>
+			{{ list_sections }}
+				<li class="nav-{{ $gimme->section->url_name }} active"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
+			{{ /list_sections }}
             <li class="nav-fav active"><a href="#">Favoriten</a></li>
             <div class="clear"></div>
         </ul>
