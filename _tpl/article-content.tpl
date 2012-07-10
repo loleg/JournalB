@@ -4,7 +4,9 @@
 					
 		{{ if $gimme->article->content_accessible }}                
 					
-			<p>{{ $gimme->article->deck }}</p>		
+			<p>{{ $gimme->article->deck }}</p>	
+
+			{{ if $gimme->article->subtitle != "" }}<p style="font-weight: bold;">{{ $gimme->article->subtitle }}</p>{{ /if }}		
 					
 			{{ if $gimme->article->type_name == "news" }}{{ include file="_tpl/img/img_articlebig.tpl" }}{{ /if }}
 					
