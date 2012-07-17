@@ -8,7 +8,21 @@
 
 			{{ if $gimme->article->subtitle != "" }}<p style="font-weight: bold;">{{ $gimme->article->subtitle }}</p>{{ /if }}		
 					
-			{{ if $gimme->article->type_name == "news" }}{{ include file="_tpl/img/img_articlebig.tpl" }}{{ /if }}
+			{{ if $gimme->article->type_name == "news" }}
+				{{ $is_gallery = false }}
+				{{ foreach $gimme->article->slideshows as $slideshow }}
+					<div id="slider" class="nivoSlider">
+						{{ foreach $slideshow->items as $item }}
+							{{ if $item->is_image }}
+								{{ $is_gallery = true }}
+								<img src="{{ $item->image->src }}" width="{{ $item->image->width }}" height="{{ $item->image->height }}" alt="{{ $item->caption }}" />
+							{{ /if }}
+						{{ /foreach }}
+					</div>
+				{{ /foreach }}
+						
+				{{ if not $is_gallery }}{{ include file="_tpl/img/img_articlebig.tpl" }}{{ /if }}
+			{{ /if }}
 					
 			<div class="mcontentbar">
 				{{ $gimme->article->full_text }}
@@ -20,3 +34,13 @@
 
 	</article>
 </div>
+
+<script type="text/javascript" src="{{ url static_file='_js/slider.js' }}"></script>
+<script type="text/javascript">
+$('#slider').nivoSlider({
+	controlNav: false,
+	pauseTime: 5000,
+	effect: 'fade',
+	directionNavHide: false
+});
+</script>

@@ -16,3 +16,10 @@ function destroyLessCache(pathToCss) {
 }
 
 destroyLessCache("/themes/publication_2/theme_1/_css/");
+
+function articleImageAlts()
+{
+	$(".imagedescription.left").each(function(){
+		$(this).css("margin-top","-"+($(this).height()-18)+"px");		
+	});
+}

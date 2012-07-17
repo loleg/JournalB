@@ -15,6 +15,8 @@
 			{{ include file="_tpl/article-addbar.tpl" }}
 		
 	        {{ include file="_tpl/article-content.tpl" }}
+			
+			<script type="text/javascript">articleImageAlts();</script>
             
         </div><!-- /content -->
 

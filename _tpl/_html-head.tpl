@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+	<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/nivo-slider.css' }}">
     <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
 
     <!--[if lt IE 9]>
@@ -15,6 +16,7 @@
     <![endif]-->
 
     <script src="{{ url static_file='_js/less.js' }}" type="text/javascript"></script>
+	<script src="{{ url static_file='_js/jquery.js' }}" type="text/javascript"></script>
     <script src="{{ url static_file='_js/general.js' }}" type="text/javascript"></script>
 
     <!-- Favicons -->

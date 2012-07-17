@@ -16,7 +16,7 @@
 	<renditions>
 		<rendition name="topfront" width="345" height="245" specs="crop"/>
 		<rendition name="topfrontdouble" width="710" height="490" specs="crop"/>
-		<rendition name="articlebig" width="580" height="389" specs="crop"/>
+		<rendition name="articlebig" width="590" height="395" specs="crop"/>
 	</renditions>
 
 </theme>
