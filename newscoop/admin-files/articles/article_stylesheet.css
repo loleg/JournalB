@@ -1,0 +1,23 @@
+.campsite_subhead {
+	border: 1px dashed #444444;
+	padding: 2px;
+}
+
+.campsite_external_link {
+	text-decoration: underline;
+	color: blue;
+}
+
+blockquote {
+	float: left;
+	margin-left: 0px;
+	width: 240px;
+	margin-right: 20px;
+}
+
+blockquote.right {
+	float: right;
+	margin-right: 0px;
+	width: 240px;
+	margin-left: 20px;
+}
