@@ -85,6 +85,7 @@
     .newsbox.layoutbgimage {
         background-position: top left;
         background-repeat: no-repeat;
+		background-size: cover;
     }
     .newsbox.layoutbgimage info {
         bottom: 0px;
@@ -96,10 +97,15 @@
         padding: 10px;
     }
     .newsbox.layoutbgimage h1 {
-        .subheading;
-        display: inline;
 		margin-left: 6px;
     }
+	.newsbox.layoutbgimage .info {
+		float: left;
+		padding-top: 3px;
+	}
+	.newsbox.layoutbgimage author {
+		display: none;
+	}
 
 
     .newsbox.layoutdouble .newsboxcontent_wrapper {
@@ -227,6 +233,10 @@
         left: 0px;
     }
 
+	
+	.main_footer {
+		display: none;
+	}
 
 
 
@@ -432,6 +442,7 @@
         display: block;
         text-align: center;
         .community-font;
+		margin-top: 15px;
     }
 
     /*Full-width content area*/
@@ -503,8 +514,16 @@
 /* #Media Queries
 ================================================== */
 
+
+
 	/* Smaller than standard 960 (devices and browsers) */
-	@media only screen and (max-width: 959px) {}
+	@media only screen and (min-width: 768px) {
+		.newsbox.layoutbgimage h1 {
+			.subheading;
+			display: inline;
+			margin-left: 6px;
+		}
+	}
 
 	/* Tablet Portrait size to standard 960 (devices and browsers) */
 	@media only screen and (min-width: 768px) and (max-width: 959px) {}

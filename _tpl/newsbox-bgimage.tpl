@@ -3,8 +3,13 @@
 
 	<info>
 		<div>
-			<span class="info"><time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y | %H:%i" }}</time></span>
 			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
+			<span class="info">
+				<time class="date">{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }} | </time>
+				<time class="time">{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }} | </time>
+				<author class="name">{{ $gimme->article->author->name }}</author> - 
+				<author class="role">{{ $gimme->article->author->type }}</author>
+			</span>
 		</div>
 	</info>
 

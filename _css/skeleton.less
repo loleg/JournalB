@@ -21,11 +21,7 @@
 /* #Base 1024 Grid
 ================================================== */
 
-    /* Note: Design for a width of 1024px */
-
-    .container                                  { position: relative; width: 968px; margin: 0 auto; padding-left: 28px; padding-right: 28px; }
-    .container .column,
-    .container .columns                         { float: left; display: inline; margin-left: 10px; margin-right: 10px; }
+    .container                                  { position: relative; width: 968px; margin: 0 auto; }
     .row                                        { margin-bottom: 20px; }
 
     .container .main                            { width: 710px; float: left; }
@@ -34,25 +30,6 @@
     .container .newsbox                         { width: 345px; }
     .container .newsbox.layoutdouble            { width: 710px; }
 
-    /* Base Grid */
-    .container .one.column,
-    .container .one.columns                     { width: 40px;  }
-    .container .two.columns                     { width: 100px; }
-    .container .three.columns                   { width: 160px; }
-    .container .four.columns                    { width: 220px; }
-    .container .five.columns                    { width: 280px; }
-    .container .six.columns                     { width: 340px; }
-    .container .seven.columns                   { width: 400px; }
-    .container .eight.columns                   { width: 460px; }
-    .container .nine.columns                    { width: 520px; }
-    .container .ten.columns                     { width: 580px; }
-    .container .eleven.columns                  { width: 640px; }
-    .container .twelve.columns                  { width: 700px; }
-    .container .thirteen.columns                { width: 760px; }
-    .container .fourteen.columns                { width: 820px; }
-    .container .fifteen.columns                 { width: 880px; }
-    .container .sixteen.columns                 { width: 940px; }
-
 
 /* #Tablet (Portrait)
 ================================================== */
@@ -60,31 +37,13 @@
     /* Note: Design for a width of 768px */
 
     @media only screen and (min-width: 768px) and (max-width: 959px) {
-        .container                                  { width: 712px; padding-left: 28px; padding-right: 28px; }
+        .container                                  { width: 712px; }
 
         .container .main                            { float: none; }
         .container .sidebar                         { width: 100%; float: none; }
         .container .sidebar .header                 { display: none; }
         .container .sidebar .content                { padding-left: 0px !important; }
         .article-page .sidebar                      { width: 450px; margin: 0 auto; float: none; }
-
-        .container .one.column,
-        .container .one.columns                     { width: 28px; }
-        .container .two.columns                     { width: 76px; }
-        .container .three.columns                   { width: 124px; }
-        .container .four.columns                    { width: 172px; }
-        .container .five.columns                    { width: 220px; }
-        .container .six.columns                     { width: 268px; }
-        .container .seven.columns                   { width: 316px; }
-        .container .eight.columns                   { width: 364px; }
-        .container .nine.columns                    { width: 412px; }
-        .container .ten.columns                     { width: 460px; }
-        .container .eleven.columns                  { width: 508px; }
-        .container .twelve.columns                  { width: 556px; }
-        .container .thirteen.columns                { width: 604px; }
-        .container .fourteen.columns                { width: 652px; }
-        .container .fifteen.columns                 { width: 700px; }
-        .container .sixteen.columns                 { width: 748px; }
     }
 
 
@@ -94,37 +53,32 @@
     /* Note: Design for a width of 320px */
 
     @media only screen and (max-width: 767px) {
-        .container                                  { width: 264px; padding-left: 28px; padding-right: 28px; }
-
-        .container .main                            { width: 264px; float: none; }
-        .container .sidebar                         { width: 264px; float: none; }
-        .container .sidebar .header                 { display: none; }
-        .container .sidebar .content                { padding-left: 0px !important; }
-        .container .newsbox                         { width: 264px; margin-bottom: 20px; height: auto; padding-bottom: 30px; min-height: 245px; }
+        .container                                  { width: 280px; }
+        .container .main                            { width: 280px; float: none; }
+        .container .sidebar                         { display: none; }
+        .container .newsbox                         { width: 280px; margin-bottom: 20px; height: auto; padding-bottom: 30px; }
+		.container .newsbox.layoutdouble            { width: 280px !important; height: auto !important; min-height: 200px; }
+		.container .newsbox.layoutbgimage           { height: auto !important; min-height: 200px; }
         .container .newsrow                         { margin-bottom: 0px; }
         .container .header .aare                    { display: none; }
         .container .header date                     { display: none; }
         .container .header .search                  { display: none; }
-        .container .header .logo h1                 { font-size: 48px; }
-
-        .container .one.column,
-        .container .one.columns,
-        .container .two.columns,
-        .container .three.columns,
-        .container .four.columns,
-        .container .five.columns,
-        .container .six.columns,
-        .container .seven.columns,
-        .container .eight.columns,
-        .container .nine.columns,
-        .container .ten.columns,
-        .container .eleven.columns,
-        .container .twelve.columns,
-        .container .thirteen.columns,
-        .container .fourteen.columns,
-        .container .fifteen.columns,
-        .container .sixteen.columns { width: 300px; }
-
+        .container .header .logo                  	{ display: none; }
+		.container .header .subtitle                { display: none; }
+		.container .header                			{ height: auto; border-bottom: 0 none; margin-bottom: 0px; }
+		.container .nav .nav-front					{ display: none; }
+		.container .nav .nav-fav					{ display: none; }
+		.container .nav li							{ width: 93px !important; }
+		.container .main_footer						{ display: block !important; }
+		.container .main_footer .nav .nav-front					{ display: block !important; width: 140px !important; margin: 0px !important; }
+		.container .main_footer .nav .nav-fav					{ display: block !important; width: 140px !important; margin: 0px !important; }
+		
+		.newsbox description						{ display: none !important; }
+		.newsbox.layoutlist description				{ display: block !important; }
+		.newsbox.layoutbgimage .info				{ float: none; margin-left: 5px; margin-bottom: 8px; }
+		.newsbox.layoutbgimage author 				{ display: inline !important; }
+		.newsbox.layoutbgimage .time 				{ display: none !important; }
+		
 
     }
 
@@ -135,29 +89,13 @@
     /* Note: Design for a width of 480px */
 
     @media only screen and (min-width: 480px) and (max-width: 767px) {
-        .container { width: 420px; }
-        .container .columns,
-        .container .column { margin: 0; }
-
-        .container .one.column,
-        .container .one.columns,
-        .container .two.columns,
-        .container .three.columns,
-        .container .four.columns,
-        .container .five.columns,
-        .container .six.columns,
-        .container .seven.columns,
-        .container .eight.columns,
-        .container .nine.columns,
-        .container .ten.columns,
-        .container .eleven.columns,
-        .container .twelve.columns,
-        .container .thirteen.columns,
-        .container .fourteen.columns,
-        .container .fifteen.columns,
-        .container .sixteen.columns,
-        .container .one-third.column,
-        .container .two-thirds.column { width: 420px; }
+        .container 						{ width: 440px; }
+		.container .main                { width: 440px; }
+        .container .newsbox             { width: 440px; }
+		.container .newsbox.layoutdouble{ width: 440px !important; }
+		.container .nav li				{ width: 146px !important; }
+		.container .main_footer .nav .nav-front		{ width: 220px !important; }
+		.container .main_footer .nav .nav-fav		{ width: 220px !important; }
     }
 
 

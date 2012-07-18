@@ -53,7 +53,7 @@ $("#gallery_description").html($("#gallery_image_0").attr("alt"));
 
 $('#slider').nivoSlider({
 	controlNav: false,
-	pauseTime: 5000,
+	pauseTime: 10000,
 	effect: 'fade',
 	directionNavHide: false,
 	startSlide: 0,
