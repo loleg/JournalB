@@ -473,35 +473,32 @@
 	
 	.cs_img {
 		margin-top: 15px;
-		margin-bottom: 15px;
-		height: 150px;
-		width: 222px;
+		width:222px;
+		display:block;
 	}
-	.cs_img.left {
-		margin-left: -120px;
-		margin-right: 20px;
+	.cs_img[style*="float:left"] {
+		display:inline-block;
+		position:relative;
+		margin-right: 10px;
+		right: 60px;
 	}
-	.cs_img.right {
-		margin-right: -120px;
-		margin-left: 20px;
+	.cs_img[style*="float:right"] {
+		display:inline-block;
+		position:relative;
+		margin-left: -30px;
+		left: 60px;
 	}
 	
-	.imagedescription {
-        position: absolute;
-        width: 100px;
+	.cs_img_caption {
+        width: 100% !important;
         .info;
     }
-    .imagedescription.left {
+    .cs_img .cs_img_caption {
         left: 5px;
     }
-	.imagedescription.right {
+	.cs_img[style*="float:right"] .cs_img_caption {
         right: 5px;
-		margin-top: 180px;
-    }
-	.imagedescription.middle {
-        display: none;
-    }
-    
+    } 
 	
 	
 	

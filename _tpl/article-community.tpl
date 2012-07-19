@@ -14,10 +14,9 @@
 	</description>
 </div>
 
-{{ if $gimme->article->box_themes!="" }}
+{{ if $gimme->article->box!="" }}
 	<div class="row adbox">
-		<div class="community-title grey underline">Zum Thema</div>
-		<description>{{ $gimme->article->box_themes }}</description>
+		{{ $gimme->article->box }}
 	</div>
 {{ /if }}
 

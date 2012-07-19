@@ -1,14 +1,4 @@
-﻿{{ include file="_tpl/_html-head.tpl" }}
-
-<body>
-
-  <div id="wrapper">
-        
-{{ include file="_werbung/article-dossier-header.tpl" }}        
-        
-{{ include file="_tpl/header-omnibox.tpl" }}
-        
-{{ include file="_tpl/header.tpl" }}
+﻿<div class="contentbar section-politik">
 
 {{ assign var="curnum" value=$gimme->article->number }}       
         
@@ -233,12 +223,5 @@ document.write("<iframe title=\"YouTube video player\" width=\"300\" height=\"22
         </div>
         
     </div><!-- / Wrapper -->
-    
-    <div id="footer">
 
-{{ include file="_tpl/footer.tpl" }}
-
-    </div><!-- / Footer -->
-
-{{ include file="_tpl/_html-foot.tpl" }}
-   
+</div>
