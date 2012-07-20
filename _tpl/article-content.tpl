@@ -22,9 +22,54 @@
 							{{ /if }}
 						{{ /foreach }}
 					</div>
+					{{ break }}
 				{{ /foreach }}
 						
-				{{ if not $is_gallery }}{{ include file="_tpl/img/img_articlebig.tpl" }}{{ /if }}
+				{{ if not $is_gallery }}
+				
+					{{ if $gimme->article->has_image(1) }}
+						<div id="gallery_image_0">{{ include file="_tpl/img/img_articlebig.tpl" }}</div>
+						<script type="text/javascript">
+							$("#gallery_all").html(1);
+							$("#gallery_current").html(1);
+							$("#gallery_description").html($("#gallery_image_0 img").attr("alt"));
+						</script>
+					{{ else }}
+						<script type="text/javascript">
+							$(".gallery_info").remove();
+						</script>
+					{{ /if }}
+					
+				{{ else }}
+				
+					<script type="text/javascript" src="{{ url static_file='_js/slider.js' }}"></script>
+					<script type="text/javascript">
+						var total = jQuery('#slider img').length;
+						var current_slide_no = 1;
+
+						$("#gallery_all").html(total);
+						$("#gallery_description").html($("#gallery_image_0").attr("alt"));
+
+						$('#slider').nivoSlider({
+							controlNav: false,
+							pauseTime: 10000,
+							effect: 'fade',
+							directionNavHide: false,
+							startSlide: 0,
+							beforeChange: function() {
+								$("#gallery_description").fadeOut();
+							},
+							afterChange: function() { 
+								current_slide_no = $('#slider').data('nivo:vars').currentSlide; 
+								$("#gallery_description").html($("#gallery_image_"+current_slide_no).attr("alt"));
+								$("#gallery_current").html(current_slide_no+1);
+								$("#gallery_description").fadeIn();
+							}
+						});
+					</script>
+					
+				{{ /if }}
+				
 			{{ /if }}
 					
 			<div class="mcontentbar">
@@ -58,30 +103,3 @@
 	
 </div>
 
-<script type="text/javascript" src="{{ url static_file='_js/slider.js' }}"></script>
-<script type="text/javascript">
-var total = jQuery('#slider img').length;
-var current_slide_no = 1;
-
-$("#gallery_all").html(total);
-$("#gallery_description").html($("#gallery_image_0").attr("alt"));
-
-$('#slider').nivoSlider({
-	controlNav: false,
-	pauseTime: 10000,
-	effect: 'fade',
-	directionNavHide: false,
-	startSlide: 0,
-	beforeChange: function() {
-		$("#gallery_description").fadeOut();
-	},
-	afterChange: function() { 
-		current_slide_no = $('#slider').data('nivo:vars').currentSlide; 
-		$("#gallery_description").html($("#gallery_image_"+current_slide_no).attr("alt"));
-		$("#gallery_current").html(current_slide_no+1);
-		$("#gallery_description").fadeIn();
-	}
-});
-
-
-</script>
