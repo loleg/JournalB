@@ -13,8 +13,7 @@
 				{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
 			{{ /if }}
 		</time> | 
-		<author class="name">{{ $gimme->article->author->name }}</author> - 
-		<author class="role">{{ $gimme->article->author->type }}</author>
+		<author>{{ $gimme->article->author->name }}</author>
 	</info>
 
 	<a class="favorite" href="#">Favorite</a>
