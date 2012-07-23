@@ -61,17 +61,21 @@
 
     <div class="content-left newsbox section-blogs layoutlist">
         <div class="newsboxcontent">
-            <h2>Neuste Blogs</h2>
-            <description>
-                <div class="dsect">
-                    <div><span class="capitalize">ESTER KOLUMNISIKI</span> Der Essiggurke und Dill Geschmack der neuen Terra Chips entstand im Internet.</div>
-                    <div class="info"><date>03.5.2012</date> | <time>17:53</time> | Nummer 4 – 2012</div>
-                </div>
-                <div class="dsect">
-                    <div><span class="capitalize">WERNER MANKE</span> Der Essiggurke und Dill Geschmack der neuen Terra Chips entstand im Internet.</div>
-                    <div class="info"><date>03.5.2012</date> | <time>17:53</time> | Nummer 4 – 2012</div>
-                </div>
-            </description>
+			{{ local }}
+				{{ set_issue number="2" }}
+				<h2><a href="{{ url options="issue" }}">Neuste Blogs</a></h2>
+				<description>
+					{{ list_sections order="bynumber desc" }}
+						<div class="dsect">
+							<div><span class="capitalize"><a href="{{ url options="section" }}">{{ $gimme->section->name }}</a></span> {{ $gimme->section->description|strip_tags }}</div>
+							<div class="info">
+								<date>{{ $gimme->section->publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
+								<date>{{ $gimme->section->publish_date|camp_date_format:"%H:%i" }}</date>
+							</div>
+						</div>
+					{{ /list_sections }}
+				</description>
+			{{ /local }} 
         </div>
     </div>
 

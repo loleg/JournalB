@@ -2,12 +2,15 @@
 
     <div class="row nav">
         <ul>
-            <li class="nav-front active"><a href="/">Front</a></li>
-			{{ list_sections }}
-				<li class="nav-{{ $gimme->section->url_name }} active"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
-			{{ /list_sections }}
-            <li class="nav-fav active"><a href="#">Favoriten</a></li>
-            <div class="clear"></div>
+			{{ local }}
+				{{ set_current_issue }}
+				<li class="nav-front active"><a href="/">Front</a></li>
+				{{ list_sections }}
+					<li class="nav-{{ $gimme->section->url_name }} active"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
+				{{ /list_sections }}
+				<li class="nav-fav active"><a href="#">Favoriten</a></li>
+				<div class="clear"></div>
+			{{ /local }}
         </ul>
     </div>
 
