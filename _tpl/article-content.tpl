@@ -5,9 +5,10 @@
 					
 		{{ if $gimme->article->content_accessible }}                
 					
-			<p>{{ $gimme->article->deck }}</p>	
-
-			{{ if $gimme->article->subtitle != "" }}<p style="font-weight: bold;">{{ $gimme->article->subtitle }}</p>{{ /if }}		
+			<p class="deck">
+			{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
+			{{ $gimme->article->deck }}	
+			</p>	
 					
 			{{ $is_gallery = false }}
 			{{ $gc = 0 }}
