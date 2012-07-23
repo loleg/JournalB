@@ -472,32 +472,36 @@
 
 	
 	.cs_img {
-		margin-top: 15px;
-		width:222px;
-		display:block;
+		margin-top: 6px;
+		width: 222px !important;
+		height: auto !important;
+		display: block;
 	}
 	.cs_img[style*="float:left"] {
-		display:inline-block;
-		position:relative;
-		margin-right: 10px;
-		right: 60px;
+		margin-right: 20px;
+		margin-left: -120px;
 	}
 	.cs_img[style*="float:right"] {
-		display:inline-block;
-		position:relative;
-		margin-left: -30px;
-		left: 60px;
+		margin-left: 20px;
+		margin-right: -120px;
 	}
 	
 	.cs_img_caption {
-        width: 100% !important;
+        position: absolute;
+		width: 100px !important;
+		margin-top: 5px;
         .info;
     }
-    .cs_img .cs_img_caption {
+	.cs_img_caption {
+		display: none;
+	}
+    .cs_img[style*="float:left"] .cs_img_caption {
         left: 5px;
-    }
+		display: block;
+    } 
 	.cs_img[style*="float:right"] .cs_img_caption {
         right: 5px;
+		display: block;
     } 
 	
 	
