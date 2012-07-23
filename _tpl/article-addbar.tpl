@@ -1,10 +1,6 @@
 <div class="addbar">
 
-	<div class="controlicons">
-		<div class="controlicon"><img src="{{ url static_file='_img/control-favorite.png' }}" /></div>
-		<div class="controlicon"><img src="{{ url static_file='_img/control-share.png' }}" /></div>
-		<div class="controlicon"><img src="{{ url static_file='_img/control-fontize.png' }}" /></div>
-	</div>
+	{{ include file="_tpl/control-icons.tpl" }}
 	
 	<div class="gallery_info">
 		<div class="gallery_status">

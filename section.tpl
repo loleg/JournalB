@@ -1,39 +1,47 @@
-<!-- Section page template -->
+{{ if $gimme->issue->url_name == "blogs" }}
 
-{{ include file="_tpl/_html-head.tpl" }}
+	{{ include file="blog.tpl" }}
 
-<body class="section-page">
+{{ else }}
 
-<div class="container">
+	<!-- Section page template -->
 
-    <div class="main">
+	{{ include file="_tpl/_html-head.tpl" }}
 
-        {{ include file="_tpl/header.tpl" }}
+	<body class="section-page">
 
-        <div class="row content">
+	<div class="container">
 
-	        {{ include file="_tpl/section-newsrows.tpl" }}
-            
-        </div><!-- /content -->
+		<div class="main">
 
-    </div><!-- /main -->
+			{{ include file="_tpl/header.tpl" }}
 
-    <div class="sidebar">
+			<div class="row content">
 
-        <div class="row header">
-            <div class="row nav" align="center">
-                <ul><li style="float: none;"><a href="#">Community</a></li></ul>
-            </div>
-        </div>
+				{{ include file="_tpl/section-newsrows.tpl" }}
+				
+			</div><!-- /content -->
 
-        <div class="row content">
-            
-            {{ include file="_tpl/community.tpl" }}
+		</div><!-- /main -->
 
-        </div>
+		<div class="sidebar">
 
-    </div>
+			<div class="row header">
+				<div class="row nav" align="center">
+					<ul><li style="float: none;"><a href="#">Community</a></li></ul>
+				</div>
+			</div>
 
-</div><!-- /container -->
+			<div class="row content">
+				
+				{{ include file="_tpl/community.tpl" }}
 
-{{ include file="_tpl/_html-foot.tpl" }}
+			</div>
+
+		</div>
+
+	</div><!-- /container -->
+
+	{{ include file="_tpl/_html-foot.tpl" }}
+	
+{{ /if }}
