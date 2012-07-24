@@ -1,45 +1,68 @@
-<div class="row commentbox layouttwitter">
-    <div class="image"><img src="{{ url static_file='_img/data/ava1.png' }}" /></div>
-    <info>
-        <author>Matthias Liechti</author>
-        <date>vor 23 minuten</date>
-    </info>
-    <div class="clear"></div>
-    <description>Int est volore re lita perisquiae vita volupta epedipsus, quam rehenda nihitem sit quam.</description>
-    <div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
-    <icon><img src="{{ url static_file='_img/twitter.png' }}" /></icon>
-</div>
+<!-- Start community feed -->
+{{ local }}
 
-<div class="row commentbox layoutsimple">
-    <author>Matthias Liechti</author>
-    <description class="italic">Int est volore re lita perisquiae vita volupta epedipsus, quam rehenda nihitem sit, ipicaerum quuntotatas il estium facerendunt ad eos audae serum eium rentur sequae facerendunt ad eos audae serum eium rentur sequae eium rentur.</description>
-    <date>schrieb am 2.3.2012 um 20:23 zu</date>
-    <div class="community-title white">Die Diktatur der Demokratie</div>
-    <div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
-</div>
+  {{ set_issue number="5" }}
+  
+  <!-- TODO: add constraint="type equals 'fweet'" -->
+  {{ list_articles length="5" order="byPublishDate desc" ignore_section="true" }} 
+	<!-- Article: {{ $gimme->article->name }} -->
+	
+	{{ if $gimme->article->is_twitter }}
+	
+	<div class="row commentbox layouttwitter">
+		{{ if $gimme->article->icon }}
+			<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
+		{{ /if }}
+		<a href="{{ $gimme->article->link }}" target="_blank">
+			<info>
+				<author>{{ $gimme->article->who }}</author>
+				{{ if $gimme->article->publish_date }}
+					<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date>
+				{{ /if }}
+			</info>
+			<div class="clear"></div>
+			<description>{{ $gimme->article->quote|strip_tags }}</description>
+		</a>
+		<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
+		
+	{{ elseif $gimme->article->is_ad }}	
+	
+	<div class="row adbox">
+		<div class="community-title grey">Anzeige</div>
+		<title>{{ $gimme->article->where }}</title>
+		<description>{{ $gimme->article->quote|strip_tags }}</description>
+		<div class="lists"><a href="{{ $gimme->article->link }}">{{ $gimme->article->who }}</a></div>
+		
+	{{ else }}
+	
+	<div class="row commentbox layoutsimple">
+		<a href="{{ $gimme->article->link }}">
+			<author>{{ $gimme->article->who }}</author>
+			<description>{{ $gimme->article->quote|strip_tags }}</description>
+			{{ if $gimme->article->publish_date }}
+				<date>
+					schrieb am {{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }} um 
+					{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }} zu
+				</date>
+			{{ /if }}
+		</a>
+		<div class="community-title white">{{ $gimme->article->where }}</div>
+		<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
+	
+	{{ /if }}
+	
+	{{ if $gimme->article->is_twitter }}
+		<icon><img src="{{ url static_file='_img/twitter.png' }}" /></icon>
+	{{ elseif $gimme->article->is_facebook }}
+		<icon><img src="{{ url static_file='_img/facebook.png' }}"></icon>
+	{{ /if }}
+	
+	</div>
+	
+  {{ /list_articles }}
 
-<div class="row adbox">
-    <div class="community-title grey">Anzeige</div>
-    <title>Kurse in business - English</title>
-    <description>Professionelle Übersetzerin trainiert Sie zum beruflichen Erfolg - kleine Gruppen, faire Preise!</description>
-    <div class="lists"><a href="#">www.ubersetzerin.ch</a></div>
-</div>
-
-<div class="row commentbox layoutsimple">
-    <h1 class="underline"><a href="#">Er war von einer ungeheuren Ehrlichkeit. Wir werden ihn vermissen</a></h1>
-    <date>schrieb am 2.3.2012 um 20:23 zu</date>
-    <div class="community-title white">Die Diktatur der Demokratie</div>
-    <div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
-</div>
-
-<div class="row commentbox layoutsimple">
-    <author>Matthias Liechti</author>
-    <description>Int est volore re lita perisquiae vita volupta epedipsus, quam rehenda nihitem sit, ipicaerum quuntotatas il estium facerendunt ad eos audae serum eium.</description>
-    <date>schrieb am 2.3.2012 um 20:23 zu</date>
-    <div class="community-title white">Die Diktatur der Demokratie</div>
-    <div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
-    <icon><img src="{{ url static_file='_img/facebook.png' }}"></icon>
-</div>
+{{ /local }}
+<!-- End community feed -->
 
 <div class="row socialbox">
     <div style="float: left; width: 60px;"><a href="http://twitter.com">Follow<br>us on<br>Twitter</a></div>
