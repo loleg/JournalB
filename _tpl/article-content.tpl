@@ -73,7 +73,9 @@
 					
 			<div class="mcontentbar">
 				<div class="article_info" {{ if not $is_gallery and not $gimme->article->has_image(1) }}style="top:200px;"{{ /if }}>
-					<author>{{ $gimme->article->author->name }}</author>
+					{{ list_article_authors }}
+						<author>{{ $gimme->author->name }}</author>
+					{{ /list_article_authors }}
 					<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y<br>%H:%i" }}</date>
 				</div>
 			
