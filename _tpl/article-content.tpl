@@ -18,7 +18,7 @@
 					
 			<p class="deck">
 			{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
-			{{ $gimme->article->deck }}	
+			{{ $gimme->article->deck|strip_tags }}	
 			</p>	
 					
 			{{ $is_gallery = false }}
