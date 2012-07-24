@@ -1,4 +1,3 @@
-
 <div class="row adbox authorbox">
 	<div class="community-title grey underline">Zum Autor</div>
 	<description>
@@ -13,19 +12,30 @@
 </div>
 
 {{ if $gimme->article->box!="" }}
-	<div class="row adbox">
+	<div class="row adbox community-box">
 		{{ $gimme->article->box }}
 	</div>
 {{ /if }}
 
-<div class="row adbox">
-	<div class="community-title grey">Weitere Artikel zum Thema</div>
-
-		<p><div class="community-title">Der Vorplatz wird zum Streitpunkt</div>
-		<div class="info">13.06.2012 / 13:40 / Marc Lachmann</div></p>
-		<p><div class="community-title">Urs Fischer uberholt sogar Alexander Tschappat</div>
-		<div class="info">13.06.2012 / 13:40 / Marc Lachmann</div></p>
-		<p><div class="community-title">Die Abfallgebuhren steigen ins Unermessliche</div>
-		<div class="info">13.06.2012 / 13:40 / Marc Lachmann</div></p>
-
-</div>
+{{ list_related_articles }}
+	{{ if $gimme->current_list->at_beginning }}
+		<div class="row adbox">
+			<div class="community-title grey">Weitere Artikel zum Thema</div>
+	{{ /if }}
+	<p>
+	<div class="community-title">
+		<a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a>
+	</div>
+	<div class="info">
+	{{ if $publish_date }}
+		{{ $publish_date = $gimme->article->publish_date }}
+		<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> / 
+		<time>{{ $publish_date|camp_date_format:"%H:%i" }}</time> /
+	{{ /if }}
+		<author>{{ $gimme->author->name }}</author>
+	</div>
+	</p>
+	{{ if $gimme->current_list->at_end }}     
+		</div>
+	{{ /if }}
+{{ /list_related_articles }}

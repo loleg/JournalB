@@ -73,7 +73,7 @@
 								<div class="description"><span class="capitalize"><a href="{{ url options="section" }}">{{ $gimme->section->name }}</a></span> {{ $gimme->section->description|strip_tags }}</div>
 								<div class="info">
 									<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
-									<date>{{ $publish_date|camp_date_format:"%H:%i" }}</date>
+									<time>{{ $publish_date|camp_date_format:"%H:%i" }}</time>
 								</div>
 							</div>
 						{{ /if }}
