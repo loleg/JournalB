@@ -1,7 +1,7 @@
 {{ assign var="column" value="0" }}
 {{ assign var="blogs_on_page" value="10" }}
 
-{{ list_sections order="byPublishDate desc" length="`$blogs_on_page`" }}
+{{ list_sections order="byNumber desc" length="`$blogs_on_page`" }}
 
 	{{ if $column%2 == 0 }}<div class="row newsrow">{{ /if }}
 	
@@ -9,14 +9,21 @@
 
 			<div class="newsboxcontent">
 				<h1><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></h1>
-				<description><p>{{ $gimme->section->description }}</p></description>
+				<description>
+					{{ $publish_date = false }}
+					{{ list_articles }}
+						<p> - {{ $gimme->article->name }}</p>
+						{{ if not $publish_date }} {{ $publish_date = $gimme->article->publish_date }} {{ /if }}
+					{{ /list_articles }}
+				</description>
 			</div>
 
+			{{ if $publish_date }}
 			<info>
-				<time>
-					{{ $gimme->section->publish_date|camp_date_format:"%e.%m.%Y" }}
-				</time>
+				<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
+				<date>{{ $publish_date|camp_date_format:"%H:%i" }}</date> 
 			</info>
+			{{ /if }}
 			
 			<a class="favorite" href="#">Favorite</a>
 			
