@@ -1,4 +1,4 @@
-<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $gimme->article->section->url_name }} layoutsimple">
+<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $gimme->article->section->url_name }} layoutsimple" onclick="location='{{ uri options="article" }}'">
 
 	<div class="newsboxcontent">
 		<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
@@ -7,8 +7,8 @@
 
 	<info>
 		<time>
-			{{ if $gimme->article->publish_date|camp_date_format:"%e" == $smarty.now|camp_date_format:"%e"}}
-				Today, {{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+			{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
+				{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
 			{{ else }}
 				{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
 			{{ /if }}

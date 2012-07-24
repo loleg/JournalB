@@ -60,6 +60,8 @@
 {{ $i = 0 }}
 {{ while $i < $articles_num_stock }}
 						
+	{{ if $column == 2 and $show_blogs }} {{ include file="_tpl/front-blogs.tpl" }} {{ /if }}
+						
 	{{ if $articles[$i]["rendered"] }} {{ $i = $i + 1 }} {{continue}} {{ /if }}
 	
 	{{ if $i >= $articles_on_page and ($column%2==0 or $articles[$i]["doubleview"]) }} {{ $i = $i + 1 }} {{continue}} {{ /if }}

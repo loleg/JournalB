@@ -57,6 +57,10 @@
         margin-bottom: 3px;
     }
 
+	.newsbox.layoutsimple, .newsbox.layoutbgimage, .newsbox.layoutdouble {
+		cursor: pointer;
+	}
+	
     .newsbox.layoutsimple info {
         bottom: 10px;
         padding-left: 16px;
@@ -109,15 +113,10 @@
         padding: 10px;
     }
     .newsbox.layoutbgimage h1 {
+		.subheading;
+		display: inline;
 		margin-left: 6px;
     }
-	.newsbox.layoutbgimage .info {
-		float: left;
-		padding-top: 3px;
-	}
-	.newsbox.layoutbgimage author {
-		display: none;
-	}
 
 
     .newsbox.layoutdouble .newsboxcontent_wrapper {
@@ -618,13 +617,7 @@
 
 
 	/* Smaller than standard 960 (devices and browsers) */
-	@media only screen and (min-width: 768px) {
-		.newsbox.layoutbgimage h1 {
-			.subheading;
-			display: inline;
-			margin-left: 6px;
-		}
-	}
+	@media only screen and (min-width: 768px) {}
 
 	/* Tablet Portrait size to standard 960 (devices and browsers) */
 	@media only screen and (min-width: 768px) and (max-width: 959px) {}

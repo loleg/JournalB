@@ -19,9 +19,7 @@
 
 			<div class="row content">
 
-				{{ include file="_tpl/newsrows.tpl" condition="OnFrontPage is on" }}
-				
-				{{ include file="_tpl/front-blogs.tpl" }}
+				{{ include file="_tpl/newsrows.tpl" condition="OnFrontPage is on" show_blogs="true" }}
 				
 			</div><!-- /content -->
 			
