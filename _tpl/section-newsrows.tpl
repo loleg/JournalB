@@ -7,7 +7,7 @@
 	
 		{{ if $gimme->article->frontpage_doubleview }}
 		
-			{{ if $column%2 == 1 || $gimme->current_list->at_end}}</div><div class="row newsrow">{{ /if }}
+			{{ if $column%2 == 1 }}</div><div class="row newsrow">{{ /if }}
 			{{ include file="_tpl/newsbox-double.tpl" }}
 			{{ $column=$column+1 }}
 			

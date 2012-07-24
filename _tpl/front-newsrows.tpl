@@ -7,7 +7,7 @@
 	
 		{{ if $gimme->article->frontpage_doubleview }}
 		
-			{{ if $column%2 == 1 || $gimme->current_list->at_end}}</div><div class="row newsrow">{{ /if }}
+			{{ if $column%2 == 1 }}</div><div class="row newsrow">{{ /if }}
 			{{ include file="_tpl/newsbox-double.tpl" }}
 			{{ $column=$column+1 }}
 			
@@ -65,14 +65,18 @@
 				{{ set_issue number="2" }}
 				<h2><a href="{{ url options="issue" }}">Neuste Blogs</a></h2>
 				<description>
-					{{ list_sections order="bynumber desc" }}
-						<div class="dsect">
-							<div><span class="capitalize"><a href="{{ url options="section" }}">{{ $gimme->section->name }}</a></span> {{ $gimme->section->description|strip_tags }}</div>
-							<div class="info">
-								<date>{{ $gimme->section->publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
-								<date>{{ $gimme->section->publish_date|camp_date_format:"%H:%i" }}</date>
+					{{ list_sections order="byPublishDate desc" }}
+						{{ $publish_date = false }}
+						{{ list_articles length="1" order="byPublishDate desc" }} {{ $publish_date = $gimme->article->publish_date }} {{ /list_articles }}
+						{{ if $publish_date }}
+							<div class="dsect">
+								<div class="description"><span class="capitalize"><a href="{{ url options="section" }}">{{ $gimme->section->name }}</a></span> {{ $gimme->section->description|strip_tags }}</div>
+								<div class="info">
+									<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
+									<date>{{ $publish_date|camp_date_format:"%H:%i" }}</date>
+								</div>
 							</div>
-						</div>
+						{{ /if }}
 					{{ /list_sections }}
 				</description>
 			{{ /local }} 
