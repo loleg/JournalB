@@ -3,6 +3,7 @@
     <div class="row nav">
         <ul>
             <li class="nav-front active"><a href="/">Front</a></li>
+			<li class="nav-search active"><a href="/">Suche</a></li>
             <li class="nav-fav active"><a href="#">Favoriten</a></li>
         </ul>
     </div>

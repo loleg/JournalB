@@ -15,6 +15,8 @@
 	        {{ include file="_tpl/blogs-list.tpl" }}
             
         </div><!-- /content -->
+		
+		{{ include file="_tpl/main-footer.tpl" }}
 
     </div><!-- /main -->
 

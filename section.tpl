@@ -21,6 +21,8 @@
 				{{ include file="_tpl/newsrows.tpl" condition="OnSection is on" }}
 				
 			</div><!-- /content -->
+			
+			{{ include file="_tpl/main-footer.tpl" }}
 
 		</div><!-- /main -->
 

@@ -3,7 +3,18 @@
 	<article>
 		<h1>{{ $gimme->article->name }}</h1>
 					
-		{{ if $gimme->article->content_accessible }}                
+		{{ if $gimme->article->content_accessible }}    
+
+			<div class="article_info_mobile">
+				<time>
+					{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
+						{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+					{{ else }}
+						{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
+					{{ /if }}
+				</time> | 
+				<author>{{ $gimme->article->author->name }}</author>
+			</div>
 					
 			<p class="deck">
 			{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
@@ -52,10 +63,10 @@
 
 					$('#slider').nivoSlider({
 						controlNav: false,
-						pauseTime: 10000,
 						effect: 'fade',
-						directionNavHide: false,
+						directionNavHide: true,
 						startSlide: 0,
+						manualAdvance: true,
 						beforeChange: function() {
 							$("#gallery_description").fadeOut();
 						},
@@ -76,7 +87,7 @@
 					{{ list_article_authors }}
 						<author>{{ $gimme->author->name }}</author>
 					{{ /list_article_authors }}
-					<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y<br>%H:%i" }}</date>
+					<time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y<br>%H:%i" }}</time>
 				</div>
 			
 				{{ $gimme->article->full_text }}

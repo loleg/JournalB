@@ -11,6 +11,8 @@
         {{ include file="_tpl/header.tpl" }}
 
         <div class="row content">
+			
+			{{ include file="_tpl/mobile-controlbar.tpl" }}
 		
 			{{ include file="_tpl/article-addbar.tpl" }}
 		
@@ -19,6 +21,8 @@
 	        {{ include file="_tpl/article-comments.tpl" }}
             
         </div><!-- /content -->
+		
+		{{ include file="_tpl/main-footer.tpl" }}
 
     </div><!-- /main -->
 
