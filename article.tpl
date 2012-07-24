@@ -15,6 +15,8 @@
 			{{ include file="_tpl/article-addbar.tpl" }}
 		
 	        {{ include file="_tpl/article-content.tpl" }}
+	        
+	        {{ include file="_tpl/article-comments.tpl" }}
             
         </div><!-- /content -->
 
