@@ -25,8 +25,6 @@
 			</info>
 			{{ /if }}
 			
-			<a class="favorite" href="#">Favorite</a>
-			
 		</div>
 				
 	{{ if $column%2 == 1 || $gimme->current_list->at_end}}</div>{{ /if }}
