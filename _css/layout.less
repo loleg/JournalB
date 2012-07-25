@@ -202,7 +202,8 @@
     .nav li.nav-alltag.active a { background: url(../_img/nav-shape-alltag.png) bottom center no-repeat; }
     .nav li.nav-kultur.active a { background: url(../_img/nav-shape-kultur.png) bottom center no-repeat; }
     .nav li.nav-politik.active a{ background: url(../_img/nav-shape-politik.png) bottom center no-repeat; }
-    .nav li.active.nav-fav a    { background: url(../_img/nav-shape-favorite.png) bottom center no-repeat; }
+    .nav li.nav-fav.active a    { background: url(../_img/nav-shape-favorite.png) bottom center no-repeat; }
+	.nav li.nav-search.active a { background: url(../_img/nav-shape-search.png) bottom center no-repeat; }
 
     .nav li.nav-front    { width: 90px; margin-right: 60px; }
     .nav li.nav-alltag   { width: 137px; }
@@ -241,7 +242,7 @@
         color: #000000;
         letter-spacing: 1px;
     }
-    .header .aare {
+    .aare {
         position: absolute;
         left: 14px;
         top: 62px;
@@ -414,7 +415,7 @@
 	    margin-top: 1em;
 	}
 	.community-box h1:first-child {
-		margin-top: 0;
+		margin-top: none;
 	}
 
     .socialbox {
@@ -445,17 +446,8 @@
 		font-size: 180%;
 		line-height: 100%;
 	}
-	/*blockquote p:before {
-		content: "\00AB";
-		font-family: "JournalB";
-	}
-	blockquote p:after {
-		content: "\00BB";
-		font-family: "JournalB";
-	}*/
 	blockquote strong {
 		.info;
-		font-size: 35%;
 		top: -1em;
 		position: relative;
 	}
@@ -469,7 +461,7 @@
 		font-weight: bold;
 		text-align: center;
 	}
-	#gallery_description {
+	.gallery_description {
 		.info;
 		margin-top: 14px;
 	}
@@ -519,6 +511,12 @@
         text-align: center;
         .community-font;
     }
+	.article_info_mobile {
+		.community-font;
+		display: none;
+		margin-top: -8px;
+		margin-bottom: 10px;
+	}
 
     /*Full-width content area*/
     .contentbar {
@@ -544,7 +542,60 @@
         margin-bottom: 20px;
         cursor: pointer;
     }
-
+	
+	.controlbar_mobile {
+		display: none;
+	}
+	.controlbar_mobile .controlicons {
+		margin-bottom: 8px;
+	}
+	.controlbar_mobile .controlicon {
+		float: left;
+		margin-bottom: 0px;
+		margin-left: 20px;
+	}
+	.controlbar_mobile .aare {
+		float: left;
+		position: static;
+		font-size: 12px;
+		margin-left: 10px;
+		line-height: 26px;
+		margin-top: -10px;
+	}
+	
+	#slider_wrapper {
+		display: none;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background: #000;
+	}
+	.gallery_info.mobile .gallery_description {
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		width: 100%;
+		padding-top: 4px;
+		padding-bottom: 4px;
+		background-color: rgba(255,255,255,0.6);
+	}
+	.gallery_info.mobile .gallery_status {
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		color: #ffffff;
+	}
+	.gallery_info.mobile {
+		display: none;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+	}
 	
 	.cs_img img {
 		width: 222px;

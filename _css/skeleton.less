@@ -47,10 +47,8 @@
     }
 
 
-/*  #Mobile (Portrait)
+/*  #Mobile
 ================================================== */
-
-    /* Note: Design for a width of 320px */
 
     @media only screen and (max-width: 767px) {
         .container                                  { width: 280px; }
@@ -65,21 +63,40 @@
         .container .header .search                  { display: none; }
         .container .header .logo                  	{ display: none; }
 		.container .header .subtitle                { display: none; }
-		.container .header                			{ height: auto; border-bottom: 0 none; margin-bottom: 0px; }
+		.container .header                			{ height: auto; border-bottom: 0 none; margin-bottom: 0px !important; }
+		.container .nav 							{ margin-bottom: 0px !important; }
 		.container .nav .nav-front					{ display: none; }
 		.container .nav .nav-fav					{ display: none; }
 		.container .nav li							{ width: 93px !important; }
 		.container .main_footer						{ display: block !important; }
-		.container .main_footer .nav .nav-front					{ display: block !important; width: 140px !important; margin: 0px !important; }
-		.container .main_footer .nav .nav-fav					{ display: block !important; width: 140px !important; margin: 0px !important; }
-		
-		.newsbox description						{ display: none !important; }
-		.newsbox.layoutlist description				{ display: block !important; }
-
-		
-
+		.container .main_footer .nav li				{ display: block !important; width: 93px !important; margin: 0px !important; }
+		.container .addbar							{ display: none; }
+		.container .contentbar						{ width: 100% !important; padding-top: 0px; }
+		.container .mcontentbar						{ width: 100% !important; }
+		.container .cs_img[style*="float:left"] 	{ margin-left: 0px !important; }
+		.container .cs_img[style*="float:right"] 	{ margin-right: 0px !important; }
+		.container blockquote 						{ margin-left: 0px !important; }
+		.container blockquote.right 				{ margin-right: 0px !important; margin-left: 20px !important; }
+		.container .newsbox description				{ display: none !important; }
+		.container .newsbox.layoutlist description	{ display: block !important; }
+		.container .article_info					{ display: none; }
+		.container .article_info_mobile				{ display: block; }
+		.container .controlbar_mobile				{ display: block; }
+		.container #slider.active 								{ position: fixed; top: 50%; left: 0px; }
+		.container #slider_wrapper.active 						{ display: block !important; }
+		.container .gallery_info.mobile.active					{ display: block !important; }
+		.container #slider .nivo-directionNav					{ display: none !important; }
+		.container #slider img 						{ height: auto !important; width: 100% !important; }
     }
 
+/* #Mobile (Portrait)
+================================================== */
+	@media only screen and (max-width: 479px) {
+		.container blockquote 						{ float: none !important; margin: 0 auto !important; margin-bottom: 20px !important; text-align: center;  }
+		.container .cs_img            				{ float: none !important; margin-right: 0px !important; margin-left: 0px !important; margin-bottom: 10px; width: 100% !important; text-align: center;  }
+		.container .cs_img_caption         			{ width: 222px !important; position: static !important; margin: 0 auto; text-align: left; }
+		#dsqembed-0									{ width: 280px !important; }
+    }
 
 /* #Mobile (Landscape)
 ================================================== */
@@ -87,13 +104,17 @@
     /* Note: Design for a width of 480px */
 
     @media only screen and (min-width: 480px) and (max-width: 767px) {
-        .container 						{ width: 440px; }
-		.container .main                { width: 440px; }
-        .container .newsbox             { width: 440px; }
-		.container .newsbox.layoutdouble{ width: 440px !important; }
-		.container .nav li				{ width: 146px !important; }
-		.container .main_footer .nav .nav-front		{ width: 220px !important; }
-		.container .main_footer .nav .nav-fav		{ width: 220px !important; }
+        .container 									{ width: 440px; }
+		.container .main                			{ width: 440px; }
+        .container .newsbox             			{ width: 440px; }
+		.container .newsbox.layoutdouble			{ width: 440px !important; }
+		.container .nav li							{ width: 146px !important; }
+		.container .main_footer .nav li				{ width: 146px !important; }
+		.container .cs_img_caption         			{ width: 222px !important; position: static !important; }
+		.container .controlbar_mobile .aare 		{ margin-left: 42px; }
+		.container .controlbar_mobile .controlicon 	{ margin-left: 49px; }
+		#dsqembed-0									{ width: 440px !important; }
+		#slider.active								{ height: 100%; top: 0px !important; margin-top: 0px !important; }
     }
 
 
