@@ -23,3 +23,33 @@ function articleImageAlts()
 		$(this).css("margin-top","-"+($(this).height()-18)+"px");		
 	});
 }
+
+sliderStatus = false;
+
+function changeSliderStatus()
+{
+	if (sliderStatus)
+	{
+		$("#slider").removeClass("active");
+		$("#slider").css("margin-top","0px");
+		$("#slider_wrapper").removeClass("active");
+		$(".gallery_info.mobile").remove();
+		$(".container").attr("ontouchmove","");
+		sliderStatus = false;
+	}
+	else
+	{
+		$("#slider").addClass("active");
+		$("#slider").css("margin-top","-"+$("#slider").height()/2+"px");
+		$("#slider_wrapper").addClass("active");
+		$(".gallery_info.mobile").addClass("active");
+		$(".container").attr("ontouchmove","noElasticScroll(event);");
+		
+		var total = $('#slider .slider_image').length;
+		var current_slide_no = $('#slider').data('nivo:vars').currentSlide; 
+		var description = $("#gallery_image_"+current_slide_no).attr("alt");
+		$("#slider").append('<div class="gallery_info mobile active"><div class="gallery_status"><span class="gallery_current">'+(current_slide_no+1)+'</span> / <span class="gallery_all">'+total+'</span></div><div class="gallery_description">'+description+'</div></div>');
+				
+		sliderStatus = true;
+	}
+}
