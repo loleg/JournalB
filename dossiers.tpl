@@ -35,6 +35,8 @@
         </div>
 
     </div>
+	
+	{{ include file="_tpl/footer.tpl" }}
 
 </div><!-- /container -->
 

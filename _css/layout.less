@@ -12,6 +12,7 @@
 
     .content {
         position: relative;
+		margin-bottom: 0px !important;
     }
 
     .newsrow {
@@ -147,19 +148,23 @@
     }
 
     /*Newsbox styles for different sections*/
-    .newsbox.section-alltag {
+	
+	.newsbox.section-front, .titlebox.section-front, li.section-front, .footer-box.section-front {
+		background-color: #cecdcc;
+	}
+    .newsbox.section-alltag, .titlebox.section-alltag, li.section-alltag, .footer-box.section-alltag {
         background-color: #c6ffd8;
     }
-    .newsbox.section-politik {
+    .newsbox.section-politik, .titlebox.section-politik, li.section-politik, .footer-box.section-politik {
         background-color: #cde2ff;
     }
-    .newsbox.section-kultur {
+    .newsbox.section-kultur, .titlebox.section-kultur, li.section-kultur, .footer-box.section-kultur {
         background-color: #ffbe98;
     }
-    .newsbox.section-blogs, .titlebox.section-blogs {
+    .newsbox.section-blogs, .titlebox.section-blogs, li.section-blogs, .footer-box.section-blogs {
         background-color: #f1e2ef;
     }
-    .newsbox.section-dossiers {
+    .newsbox.section-dossiers, .titlebox.section-dossiers, li.section-dossiers, .footer-box.section-dossiers {
         background-color: #ffffa0;
     }
 	
@@ -262,7 +267,88 @@
 	.main_footer {
 		display: none;
 	}
-
+	
+	.footer {
+		padding-top: 20px;
+		padding-bottom: 20px;
+		border-top: 1px solid #000;
+		border-bottom: 1px solid #000;
+		margin-top: 20px;
+	}
+	.front-page .footer {
+		margin-top: 0px !important;
+	}
+	.footer-sections {
+		width: 163px;
+		float: left;
+	}
+	.footer-sections ul {
+		margin: 0px;
+		padding: 0px;
+	}
+	.footer-sections li {
+		display: block;
+		margin-top: 10px;
+		margin-bottom: 0px;
+		height: 30px;
+		width: 100%;
+	}
+	.footer-sections li.nav-front {
+		margin-top: 0px;
+	}
+	.footer-sections li a {
+		display: block;
+		height: 30px;
+		line-height: 28px !important;
+		padding-left: 15px;
+        padding-right: 15px;
+		text-decoration: none;
+		.capitalize;
+	}
+	.footer-box {
+		width: 133px;
+		height: 140px;
+		padding-left: 15px;
+		padding-right: 15px;
+		margin-left: 20px;
+		float: left;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		overflow: hidden;
+		margin-top: 0px;
+	}
+	.footer-box .caption {
+		.capitalize;
+		margin-bottom: 4px;
+	}
+	.footer-box li, .footer-box li a {
+		line-height: 16px !important;
+		font-size: 94%;
+	}
+	.footer-box li {
+		margin: 0px;
+		margin-top: 4px;
+	}
+	.footer-box .sect {
+		margin-bottom: 14px;
+	}
+	
+	.footer-box.section-front {
+		width: 389px;
+	}
+	.footer-box.section-front a {
+		font-size: 94%;
+	}
+	
+	.partners {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		text-align: center;
+	}
+	.partners .caption {
+		.capitalize;
+		margin-right: 7px;
+	}
 
 
 /* #Sidebar Styles

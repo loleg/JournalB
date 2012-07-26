@@ -6,7 +6,7 @@
 				{{ set_issue number="2" }}
 				<h2><a href="{{ url options="issue" }}">Neuste Blogs</a></h2>
 				<description>
-					{{ list_sections order="byPublishDate desc" }}
+					{{ list_sections order="bynumber desc" }}
 						{{ $publish_date = false }}
 						{{ list_articles length="1" order="byPublishDate desc" }} {{ $publish_date = $gimme->article->publish_date }} {{ /list_articles }}
 						{{ if $publish_date }}
