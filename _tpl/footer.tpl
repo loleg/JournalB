@@ -27,15 +27,15 @@
 	</div>
 	
 	<div class="footer-box section-dossiers">
-		<div class="caption"><a href="#">Dossiers</a></div>
-		<ul>
-			<li><a href="#">Wahlen 2012</a></li>
-			<li><a href="#">Nachtleben</a></li>
-			<li><a href="#">Bern baut</a></li>
-			<li><a href="#">KonzertTheater</a></li>
-			<li><a href="#">Universitat und</a></li>
-			<li><a href="#">Hochschulen</a></li>
-		</ul>
+		{{ local }}
+			{{ set_issue number="1" }}
+			<div class="caption"><a href="{{ url options="issue" }}">Dossiers</a></div>
+			<ul>
+			{{ list_articles length="5" order="byPublishDate desc" ignore_section="true" }}
+				<li><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></li>
+			{{ /list_articles }}
+			</ul>
+		{{ /local }} 
 	</div>
 	
 	<div class="footer-box section-front">

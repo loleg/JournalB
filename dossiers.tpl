@@ -12,7 +12,7 @@
 
         <div class="row content">
 
-	        {{ include file="_tpl/dossiers-list.tpl" }}
+	        {{ include file="_tpl/dossiers-articles.tpl" }}
             
         </div><!-- /content -->
 		

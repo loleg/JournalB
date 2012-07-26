@@ -17,7 +17,7 @@
 			</div>
 			
 			<div class="contentbar">
-				{{ include file="_tpl/dossiers-articles.tpl" }}
+				{{ include file="_tpl/article-dossier.tpl" }}
 			</div>
             
         </div><!-- /content -->

@@ -23,11 +23,7 @@
 		</div>
 		
 {{ list_related_articles columns="2" }}
-	{{ if $gimme->current_list->column == "1" }}<div class="row newsrow">{{ /if }}
-		
-			{{ include file="newsbox-bgimage.tpl" }}
-				
-	{{ if $gimme->current_list->column == "2" || $gimme->current_list->at_end}}</div>{{ /if }}
+	<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
 {{ /list_related_articles }}
 
 	</article>
