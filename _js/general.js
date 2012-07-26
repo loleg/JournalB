@@ -19,8 +19,13 @@ destroyLessCache("/themes/publication_2/theme_1/_css/");
 
 function articleImageAlts()
 {
-	$(".imagedescription.left").each(function(){
-		$(this).css("margin-top","-"+($(this).height()-18)+"px");		
+	$(".cs_img").each(function(){
+		if ($(this).css("float")=="none")
+		{
+			alert($(this).children("p").children("img").attr("src"));
+			$(this).children(".cs_img_caption").addClass("middle");	
+			$(this).children(".cs_img_caption").css("margin-top","-"+($(this).children("p").children("img").height()+15)+"px");	
+		}	
 	});
 }
 

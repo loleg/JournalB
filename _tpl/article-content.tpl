@@ -113,6 +113,8 @@
 
 	</article>
 	
+	<script language="javascript">articleImageAlts();</script>
+	
 	<div class="forum">
 	
 		<div id="disqus_thread"></div>
