@@ -13,12 +13,11 @@
 			</time> | 
 			<author>{{ $gimme->article->author->name }}</author>
 		</div>
-				
-		<p class="deck">
-		{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
-		</p>
 		
-		<div class="mcontentbar">
+		{{ include file="_tpl/article-gallery.tpl" }}
+		
+		<div class="dossier-deck">
+			{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
 			{{ $gimme->article->full_text }}
 		</div>
 
