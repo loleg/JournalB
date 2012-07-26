@@ -1,4 +1,4 @@
-<div class="contentbar section-politik">
+<div class="contentbar section-{{ $gimme->section->url_name }}">
 
 	<article>
 		<h1>{{ $gimme->article->name }}</h1>
