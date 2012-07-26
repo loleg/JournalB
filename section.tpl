@@ -1,51 +1,44 @@
-{{ if $gimme->issue->url_name == "blogs" }}
 
-	{{ include file="blog.tpl" }}
+<!-- Section page template -->
 
-{{ else }}
+{{ include file="_tpl/_html-head.tpl" }}
 
-	<!-- Section page template -->
+<body class="section-page">
 
-	{{ include file="_tpl/_html-head.tpl" }}
+<div class="container">
 
-	<body class="section-page">
+	<div class="main">
 
-	<div class="container">
+		{{ include file="_tpl/header.tpl" }}
 
-		<div class="main">
+		<div class="row content">
 
-			{{ include file="_tpl/header.tpl" }}
-
-			<div class="row content">
-
-				{{ include file="_tpl/newsrows.tpl" condition="OnSection is on" }}
-				
-			</div><!-- /content -->
+			{{ include file="_tpl/newsrows.tpl" condition="OnSection is on" }}
 			
-			{{ include file="_tpl/main-footer.tpl" }}
+		</div><!-- /content -->
+		
+		{{ include file="_tpl/main-footer.tpl" }}
 
-		</div><!-- /main -->
+	</div><!-- /main -->
 
-		<div class="sidebar">
+	<div class="sidebar">
 
-			<div class="row header">
-				<div class="row nav" align="center">
-					<ul><li style="float: none;"><a href="#">Community</a></li></ul>
-				</div>
+		<div class="row header">
+			<div class="row nav" align="center">
+				<ul><li style="float: none;"><a href="#">Community</a></li></ul>
 			</div>
+		</div>
 
-			<div class="row content">
-				
-				{{ include file="_tpl/community.tpl" }}
-
-			</div>
+		<div class="row content">
+			
+			{{ include file="_tpl/community.tpl" }}
 
 		</div>
-		
-		{{ include file="_tpl/footer.tpl" }}
 
-	</div><!-- /container -->
-
-	{{ include file="_tpl/_html-foot.tpl" }}
+	</div>
 	
-{{ /if }}
+	{{ include file="_tpl/footer.tpl" }}
+
+</div><!-- /container -->
+
+{{ include file="_tpl/_html-foot.tpl" }}

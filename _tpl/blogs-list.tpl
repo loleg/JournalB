@@ -5,14 +5,14 @@
 
 	{{ if $column%2 == 0 }}<div class="row newsrow">{{ /if }}
 	
-		<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-blogs layoutsimple">
+		<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-blogs layoutsimple" style="cursor: auto !important;">
 
 			<div class="newsboxcontent">
 				<h1><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></h1>
 				<description>
 					{{ $publish_date = false }}
 					{{ list_articles }}
-						<p> - {{ $gimme->article->name }}</p>
+						<p><a href="{{ uri options="article" }}"> - {{ $gimme->article->name }}</a></p>
 						{{ if not $publish_date }} {{ $publish_date = $gimme->article->publish_date }} {{ /if }}
 					{{ /list_articles }}
 				</description>
@@ -22,6 +22,10 @@
 			<info>
 				<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
 				<date>{{ $publish_date|camp_date_format:"%H:%i" }}</date> 
+			</info>
+			{{ else }}
+			<info>
+				No articles published
 			</info>
 			{{ /if }}
 			

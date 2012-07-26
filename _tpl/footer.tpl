@@ -68,7 +68,7 @@
 
 <div class="partners">
 	<span class="caption">PARTNER</span> 
-	<a href="#">Apps width love</a> | 
+	<a href="#">Apps with love</a> | 
 	<a href="#">Sourcefabric</a> | 
 	<a href="#">Radio Gelb-Schwarz</a>
 </div>

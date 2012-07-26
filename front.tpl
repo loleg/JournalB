@@ -1,52 +1,43 @@
+<!-- Front page template -->
 
-{{ if $gimme->issue->url_name == "blogs" }}
+{{ include file="_tpl/_html-head.tpl" }}
 
-	{{ include file="blogs.tpl" }}
+<body class="front-page">
 
-{{ else }}
+<div class="container">
 
-	<!-- Front page template -->
+	<div class="main">
 
-	{{ include file="_tpl/_html-head.tpl" }}
+		{{ include file="_tpl/header.tpl" }}
 
-	<body class="front-page">
+		<div class="row content">
 
-	<div class="container">
-
-		<div class="main">
-
-			{{ include file="_tpl/header.tpl" }}
-
-			<div class="row content">
-
-				{{ include file="_tpl/newsrows.tpl" condition="OnFrontPage is on" show_blogs="true" }}
-				
-			</div><!-- /content -->
+			{{ include file="_tpl/newsrows.tpl" condition="OnFrontPage is on" show_blogs="true" }}
 			
-			{{ include file="_tpl/main-footer.tpl" }}
+		</div><!-- /content -->
+		
+		{{ include file="_tpl/main-footer.tpl" }}
 
-		</div><!-- /main -->
+	</div><!-- /main -->
 
-		<div class="sidebar">
+	<div class="sidebar">
 
-			<div class="row header">
-				<div class="row nav" align="center">
-					<ul><li style="float: none;"><a href="#">Community</a></li></ul>
-				</div>
+		<div class="row header">
+			<div class="row nav" align="center">
+				<ul><li style="float: none;"><a href="#">Community</a></li></ul>
 			</div>
+		</div>
 
-			<div class="row content">
-				
-				{{ include file="_tpl/community.tpl" }}
-
-			</div>
+		<div class="row content">
+			
+			{{ include file="_tpl/community.tpl" }}
 
 		</div>
-			
-		{{ include file="_tpl/footer.tpl" }}
 
-	</div><!-- /container -->
+	</div>
+		
+	{{ include file="_tpl/footer.tpl" }}
 
-	{{ include file="_tpl/_html-foot.tpl" }}
-	
-{{ /if }}
+</div><!-- /container -->
+
+{{ include file="_tpl/_html-foot.tpl" }}
