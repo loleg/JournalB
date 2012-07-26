@@ -22,7 +22,6 @@ function articleImageAlts()
 	$(".cs_img").each(function(){
 		if ($(this).css("float")=="none")
 		{
-			alert($(this).children("p").children("img").attr("src"));
 			$(this).children(".cs_img_caption").addClass("middle");	
 			$(this).children(".cs_img_caption").css("margin-top","-"+($(this).children("p").children("img").height()+15)+"px");	
 		}	
@@ -42,7 +41,7 @@ function changeSliderStatus()
 		$(".container").attr("ontouchmove","");
 		sliderStatus = false;
 	}
-	else
+	else if (document.body.offsetWidth<768)
 	{
 		$("#slider").addClass("active");
 		$("#slider").css("margin-top","-"+$("#slider").height()/2+"px");
