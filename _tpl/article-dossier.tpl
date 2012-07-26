@@ -21,10 +21,34 @@
 		<div class="mcontentbar">
 			{{ $gimme->article->full_text }}
 		</div>
+
+		<div class="dossier-articles">
+		{{ list_related_articles }}
+				
+			<div class="newsbox section-{{ $gimme->article->section->url_name }} layoutbgimage" onclick="location='{{ uri options="article" }}'"
+			{{ image rendition="topfront" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 		
-{{ list_related_articles columns="2" }}
-	<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
-{{ /list_related_articles }}
+				<info>
+					<div>
+						<span class="info">
+							<time>
+								{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
+									{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+								{{ else }}
+									{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
+								{{ /if }}
+							</time> | 
+						</span>
+						<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
+					</div>
+				</info>
+			
+				<a class="favorite" href="#">Favorite</a>
+				
+			</div>
+						
+		{{ /list_related_articles }}
+		</div>
 
 	</article>
 
