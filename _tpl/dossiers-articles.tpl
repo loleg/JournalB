@@ -1,5 +1,5 @@
 
-<div class="titlebox section-blogs">
+<div class="titlebox section-dossiers">
 	<h2><a href="{{ uri options="issue" }}">Dossiers</a></a></h1>
 </div>
 
