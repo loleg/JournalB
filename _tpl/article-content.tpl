@@ -32,6 +32,8 @@
 				</div>
 			
 				{{ $gimme->article->full_text }}
+				
+				<div style="clear:both"></div>
 			</div>
 								
 		{{ else }}        
