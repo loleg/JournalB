@@ -1,3 +1,5 @@
+{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }} {{ $native_application = true }} {{ else }} {{ $native_application = false }} {{ /if }}
+
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -10,6 +12,7 @@
 
 	<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/nivo-slider.css' }}">
     <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
+	{{ if $native_application }} <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/native-application.less' }}"> {{ /if }}
 
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -50,3 +53,5 @@
 	{{ /if }}
 
 </head>
+
+

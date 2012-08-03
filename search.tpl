@@ -1,8 +1,8 @@
-<!-- Blog page template -->
+<!-- Search page template -->
 
 {{ include file="_tpl/_html-head.tpl" }}
 
-<body class="section-page">
+<body class="search-page">
 
 <div class="container">
 
@@ -12,13 +12,7 @@
 
         <div class="row content">
 
-			<div class="addbar">
-				{{ include file="_tpl/control-icons.tpl" }}
-			</div>
-			
-			<div class="contentbar">
-				{{ include file="_tpl/blogs-articles.tpl" }}
-			</div>
+			{{ include file="_tpl/search-cont.tpl" }}
             
         </div><!-- /content -->
 

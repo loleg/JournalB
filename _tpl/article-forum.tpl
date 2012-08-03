@@ -1,4 +1,5 @@
- <div class="forum">
+
+<div class="forum">
 	
 	<div id="disqus_thread"></div>
 	<script type="text/javascript">

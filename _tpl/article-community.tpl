@@ -1,4 +1,4 @@
-{{ if $gimme->article->author_profile }}
+{{ if not $gimme->article->author_profile }}
 {{ list_article_authors }}
 	{{ if $gimme->current_list->at_beginning }}
 	<div class="row adbox authorbox">

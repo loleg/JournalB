@@ -17,12 +17,8 @@
 			{{ include file="_tpl/article-addbar.tpl" }}
 		
 	        {{ include file="_tpl/article-content.tpl" }}
-	        
-	        {{ include file="_tpl/article-comments.tpl" }}
             
         </div><!-- /content -->
-		
-		{{ include file="_tpl/main-footer.tpl" }}
 
     </div><!-- /main -->
 
@@ -36,7 +32,9 @@
 
         <div class="row content">
             
-			{{ include file="_tpl/article-community.tpl" }}
+			<div class="article-community stable">
+				{{ include file="_tpl/article-community.tpl" }}
+			</div>
 			
             {{ include file="_tpl/community.tpl" }}
 

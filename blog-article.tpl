@@ -19,8 +19,6 @@
 	        {{ include file="_tpl/blog-article-content.tpl" }}
             
         </div><!-- /content -->
-		
-		{{ include file="_tpl/main-footer.tpl" }}
 
     </div><!-- /main -->
 

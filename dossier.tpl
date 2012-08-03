@@ -21,8 +21,6 @@
 			</div>
             
         </div><!-- /content -->
-		
-		{{ include file="_tpl/main-footer.tpl" }}
 
     </div><!-- /main -->
 

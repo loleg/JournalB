@@ -40,9 +40,13 @@
 
 	</article>
 
+	<div class="article-community mobile">
+		{{ include file="_tpl/article-community.tpl" }}
+	</div>
+	
 	{{ include file="_tpl/article-forum.tpl" }}
-
-	<script language="javascript">articleImageAlts();</script>
 	
 </div>
+
+<script language="javascript">articleImageAlts();</script>
 

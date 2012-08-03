@@ -15,8 +15,6 @@
 			{{ include file="_tpl/newsrows.tpl" condition="OnFrontPage is on" show_blogs="true" }}
 			
 		</div><!-- /content -->
-		
-		{{ include file="_tpl/main-footer.tpl" }}
 
 	</div><!-- /main -->
 

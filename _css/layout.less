@@ -239,11 +239,6 @@
 		padding-top: 35px;
 		margin-top: -10px;
     }
-    .header .search {
-        position: absolute;
-        right: 25px;
-        top: 125px;
-    }
     .header .subtitle {
         position: absolute;
         margin-left: -9em;
@@ -271,6 +266,30 @@
         position: absolute;
         bottom: 20px;
         left: 0px;
+    }
+	.header .search {
+        position: absolute;
+        right: 25px;
+        top: 125px;
+    }
+	#search-box {
+		position: absolute;
+		top: 4px;
+		right: -25px;
+		display: none;
+	}
+	#search-box input[type="text"] {
+		width: 150px;
+	}
+	#search-box input[type="submit"] {
+		position: absolute;
+		top: 3px;
+		right: 3px;
+		height: 25px;
+		padding-top: 5px;
+	}
+	.header .search:hover #search-box, .header .search.active #search-box{
+        display: block;
     }
 
 	
@@ -525,6 +544,10 @@
         text-decoration: none;
     }
 	
+	.article-community.mobile {
+		display: none;
+	}
+	
 	
 	blockquote {
 		float: left;
@@ -627,6 +650,7 @@
         border-bottom: 2px solid #000000;
         padding-bottom: 20px;
 		padding-top: 10px;
+		margin-bottom: 20px;
     }
 
     /*Left control buttons*/

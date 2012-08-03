@@ -1,5 +1,7 @@
 <div style="clear:both"></div>
 
+{{ include file="_tpl/mobile-footer.tpl" }}
+
 <div class="footer">
 
 	<div class="footer-sections">

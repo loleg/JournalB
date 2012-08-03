@@ -56,7 +56,9 @@
     @media only screen and (max-width: 767px) {
         .container                                  { width: 280px; }
         .container .main                            { width: 280px; float: none; }
-        .container .sidebar                         { display: none; }
+		.container .sidebar                         { width: 100%; float: none; }
+		.container .sidebar .header                 { display: none; }
+        .container .sidebar .content                { padding-left: 0px !important; }
         .container .newsbox                         { width: 280px; margin-bottom: 20px; height: auto; padding-bottom: 30px; }
 		.container .newsbox.layoutdouble            { width: 280px !important; height: auto !important; min-height: 200px; }
 		.container .newsbox.layoutbgimage           { height: auto !important; min-height: 150px; }
@@ -102,6 +104,8 @@
 		.container .footer-box						{ width: 250px; margin-left: 0px; margin-bottom: 20px; }
 		.container .footer-box.section-front		{ margin-bottom: 0px !important; width: 250px !important; height: auto !important; }
 		.container .footer-sections					{ width: 280px !important; margin-bottom: 20px; }
+		.container .article-community.mobile 		{ display: block; }
+		.container .article-community.stable 		{ display: none !important; }
     }
 
 /* #Mobile (Landscape)
