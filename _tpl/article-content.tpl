@@ -24,7 +24,7 @@
 			{{ include file="_tpl/article-gallery.tpl" }}
 					
 			<div class="mcontentbar">
-				<div class="article_info" {{ if not $is_gallery and not $gimme->article->has_image(1) }}style="top:200px;"{{ /if }}>
+				<div class="article_info" {{ if not $is_gallery and $gimme->article->images|count == 0 }}style="top:200px;"{{ /if }}>
 					{{ list_article_authors }}
 						<author>{{ $gimme->author->name }}</author>
 					{{ /list_article_authors }}

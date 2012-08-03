@@ -13,7 +13,7 @@
 
 		<div class="row content">
 
-			{{ include file="_tpl/newsrows.tpl" condition="OnSection is on" }}
+			{{ include file="_tpl/newsrows.tpl" condition="OnSection" }}
 			
 		</div><!-- /content -->
 

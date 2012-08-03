@@ -12,7 +12,7 @@
 
 		<div class="row content">
 
-			{{ include file="_tpl/newsrows.tpl" condition="OnFrontPage is on" show_blogs="true" }}
+			{{ include file="_tpl/newsrows.tpl" condition="OnFrontPage" show_blogs="true" }}
 			
 		</div><!-- /content -->
 

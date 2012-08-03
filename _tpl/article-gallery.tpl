@@ -15,7 +15,7 @@
 {{ /foreach }}
 
 {{ if not $is_gallery }}
-	{{ if $gimme->article->has_image(1) }}
+	{{ if $gimme->article->images|count > 0 }}
 		<div id="gallery_image_0">{{ include file="_tpl/img/img_articlebig.tpl" }}</div>
 		<script type="text/javascript">
 			$(".gallery_all").html(1);
