@@ -10,11 +10,8 @@
 
         {{ include file="_tpl/header.tpl" }}
         
-        <div class="search-top">
+        <div class="searchbox search-top">
         	<h2>Suchresultate</h2>
-			{{ search_form template="search.tpl" submit_button="suchen" }} 
-				{{ camp_edit object="search" attribute="keywords" }}
-			{{ /search_form }}
 		</div>
 
         <ol class="row content search-cont">
@@ -22,6 +19,12 @@
 			{{ include file="_tpl/search-cont.tpl" }}
             
         </ol><!-- /content -->
+        
+         <div class="searchbox search-bottom">
+			{{ search_form template="search.tpl" submit_button="suchen" }} 
+				{{ camp_edit object="search" attribute="keywords" }}
+			{{ /search_form }}
+		</div>
 
     </div><!-- /main -->
 

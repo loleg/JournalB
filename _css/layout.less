@@ -57,6 +57,10 @@
     .newsbox .dsect {
         margin-bottom: 3px;
     }
+    .newsbox .dsect description {
+		height: 2.4em;
+		overflow-y: hidden;
+	}
 
 	.newsbox.layoutsimple, .newsbox.layoutbgimage, .newsbox.layoutdouble {
 		cursor: pointer;
@@ -286,8 +290,8 @@
 	}
 	#search-box input[type="submit"] {
 		position: absolute;
-		top: 3px;
-		right: 3px;
+		top: 2px;
+		right: 2px;
 		height: 25px;
 		padding-top: 5px;
 	}
@@ -299,12 +303,12 @@
     }
     
     /* Search results */
-    .search-top *, .search-top form input {
+    .searchbox *, .searchbox form input {
     	vertical-align: middle;
     	display: inline-block;
     	clear: none;
     }
-    .search-top form {
+    .searchbox form {
 	    margin:	0px;
 	    float: right;
     }
@@ -312,15 +316,14 @@
 	    list-style-type: none;
     }
     .search-cont li:first-child {
-	    margin-top: 0px;
 	    padding-top: none;
 	    border-top: none;
+	    margin-top: 20px;
     }
     .search-cont li {
 	    list-style-type: none;
 	    border-top: 4px solid #cecdcc;
 	    padding-top: 10px;
-	    padding-bottom: 5px;
 	    padding-left: 5px;
 	    clear:both;
     }
@@ -328,6 +331,7 @@
 	    height:64px; 
 	    width:64px;
 	    margin-right: 10px;
+	    margin-bottom: 10px;
     }
     .search-cont .info {
 	    float:right;

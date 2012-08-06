@@ -1,4 +1,4 @@
-﻿<div class="contentbar section-politik">
+﻿<div class="contentbar section-{{ $gimme->section->url_name }}">
 
 	<article>
 		<h1>{{ $gimme->article->name }}</h1>  
@@ -50,54 +50,6 @@
 		</div>
 
 	</article>
-
-<aside>
- {{ if $gimme->article->has_map }}                
-        <article>
-            <figure>
-                <div class="map-holder">
-                {{ map show_locations_list="false" show_reset_link="false" width="300" height="250" auto_zoom=false }}
-                </div>
-            </figure>
-        </article>
-{{ /if }}                
-                
-{{ if !($gimme->article->youtube_shortcode == "") }}
-           <article>                         
-               <figure>
-              <script type="text/javascript">
-var embedParts="{{ $gimme->article->youtube_shortcode }}".split("/");
-document.write("<iframe title=\"YouTube video player\" width=\"300\" height=\"229\" src=\"http://www.youtube.com/embed/"+embedParts[3]+"?wmode=opaque\" frameborder=\"0\" allowfullscreen></iframe>");
-</script>
-                <p>{{ $gimme->article->youtube_video_description }}</p>
-            </figure>
-        </article>
-{{ /if }}
-
-{{ if !($gimme->article->linklist == "") }}            
-              <article class="mobile-hide">
-                  <header>
-                      <p>Interessante Links zum Thema</p>
-                    </header>
-                    
-{{ $links=str_replace("<p>", "", explode("</p>", str_replace("<div>", "", str_replace("</div>", "", $gimme->article->linklist)))) }}
-{{ foreach $links as $link }}
-{{ $linkAry=explode("- ", $link, 2) }}
-{{ if count($linkAry) == 2 }}     
-               
-                    <section class="recommend">
-                        <p>{{ substr($linkAry[1], 0) }} {{ $linkAry[0] }}</p>
-                    </section>
-
-{{ /if }}
-{{ /foreach }}                    
-
-                  <footer>
-                      <a href="#" class="more">Link vorschlagen</a>
-                    </footer>
-                </article>
-{{ /if }}
- </aside>
  
 	
 </div>
