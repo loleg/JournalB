@@ -11,9 +11,9 @@
         {{ include file="_tpl/header.tpl" }}
         
         <div class="search-top">
-        	<h2>Suchresultate für</h2>
-			{{ search_form template="search.tpl" submit_button="search" }} 
-				{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"keywords\"" }}
+        	<h2>Suchresultate</h2>
+			{{ search_form template="search.tpl" submit_button="suchen" }} 
+				{{ camp_edit object="search" attribute="keywords" }}
 			{{ /search_form }}
 		</div>
 

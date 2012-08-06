@@ -27,8 +27,8 @@
     <div class="search">
         <a href="#"><img src="{{ url static_file='_img/search.png' }}" /></a>
 		<div id="search-box" class="hidden">
-		{{ search_form template="search.tpl" submit_button="search" }} 
-			{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"keywords\"" }}
+		{{ search_form template="search.tpl" submit_button="suchen" }} 
+			{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"\"" }}
 		{{ /search_form }}        
 		</div>
     </div>

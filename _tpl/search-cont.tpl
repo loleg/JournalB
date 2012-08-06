@@ -5,6 +5,6 @@
 	</span>
 	{{ image rendition="square" }}<img src="{{ $image->src }}" align="left" />{{ /image }}
 	<h4><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h4>
-	<caption>{{ $gimme->article->name }}</caption>
+	<caption>{{ $gimme->article->deck|truncate:150:"...":true }}</caption>
 </li>   
 {{ /list_search_results }} 
