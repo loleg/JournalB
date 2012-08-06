@@ -9,12 +9,19 @@
     <div class="main">
 
         {{ include file="_tpl/header.tpl" }}
+        
+        <div class="search-top">
+        	<h2>Suchresultate für</h2>
+			{{ search_form template="search.tpl" submit_button="search" }} 
+				{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"keywords\"" }}
+			{{ /search_form }}
+		</div>
 
-        <div class="row content">
+        <ol class="row content search-cont">
 
 			{{ include file="_tpl/search-cont.tpl" }}
             
-        </div><!-- /content -->
+        </ol><!-- /content -->
 
     </div><!-- /main -->
 

@@ -275,7 +275,7 @@
 	#search-box {
 		position: absolute;
 		top: 4px;
-		right: -25px;
+		right: -55px;
 		display: none;
 	}
 	#search-box input[type="text"] {
@@ -291,7 +291,30 @@
 	.header .search:hover #search-box, .header .search.active #search-box{
         display: block;
     }
-
+    .header .search:hover a img {
+	    display: none;
+    }
+    
+    .search-cont ol {
+	    list-style-type: none;
+    }
+    .search-cont li:first-child {
+	    margin-top: 0px;
+    }
+    .search-cont li {
+	    list-style-type: none;
+	    margin-top: 20px;
+	    clear:both;
+    }
+    .search-cont img {
+	    height:64px; 
+	    width:64px;
+	    margin-right: 10px;
+    }
+    .search-cont .info {
+	    float:right;
+	    width:100px;
+    }
 	
 	.main_footer {
 		display: none;
