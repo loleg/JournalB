@@ -1,21 +1,22 @@
 <div class="contentbar section-blogs">
 
-	<article>
-		<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
-					
+	<article>					
 		{{ if $gimme->article->content_accessible }}    
-
-			<div class="article_info_mobile">
-				<time>
-					{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
-						{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
-					{{ else }}
-						{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
-					{{ /if }}
-				</time> | 
-				<author>{{ $gimme->article->author->name }}</author>
-			</div>
-					
+			<header>
+				<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
+	
+				<div class="article_info_mobile">
+					<time>
+						{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
+							{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+						{{ else }}
+							{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
+						{{ /if }}
+					</time> | 
+					<author>{{ $gimme->article->author->name }}</author>
+				</div>
+			</header>
+				
 			<div class="mcontentbar">
 				<div class="article_info" {{ if not $is_gallery and not $gimme->article->has_image(1) }}style="top:200px;"{{ /if }}>
 					{{ list_article_authors }}

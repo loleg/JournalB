@@ -1,20 +1,22 @@
 <div class="contentbar section-{{ $gimme->section->url_name }}">
 
 	<article>
-		<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>  
-
-		<div class="article_info_mobile">
-			<time>
-				{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
-					{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
-				{{ else }}
-					{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
-				{{ /if }}
-			</time> | 
-			<author>{{ $gimme->article->author->name }}</author>
-		</div>
-		
-		{{ include file="_tpl/article-gallery.tpl" }}
+		<header>
+			<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>  
+	
+			<div class="article_info_mobile">
+				<time>
+					{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
+						{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+					{{ else }}
+						{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
+					{{ /if }}
+				</time> | 
+				<author>{{ $gimme->article->author->name }}</author>
+			</div>
+			
+			{{ include file="_tpl/article-gallery.tpl" }}
+		</header>
 		
 		<div class="mcontentbar">
 			<div class="article_info" style="top:210px;">
@@ -38,7 +40,5 @@
 		</div>
 
 	</article>
- 
 	
 </div>
-

@@ -37,15 +37,21 @@ h4.underline a, h5.underline a, h6.underline a      { .underline("-black",1px,0p
 h1.underline a:hover, h2.underline a:hover, h3.underline a:hover,
 h4.underline a:hover, h5.underline a:hover, h6.underline a:hover    {background: none;}
 
+/* Base headings */
 h1 { font-size: 175%; /*30px*/ font-family: "JournalBBold",    "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
 h2 { font-size: 175%; /*30px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; margin-bottom: 0px; }
-
-/* Unspecified headings */
 h3 { font-size: 150%; /*26px*/ font-family: "JournalBBold",    "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
 h4 { font-size: 150%; /*26px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
 h5 { font-size: 125%; /*21px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
 h6 { font-size: 100%; /*17px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
 
+/*Content headings*/
+article h1, article h2, article h3, article h4, article h5 {
+	font-size: 100%; font-family: "AlekseiBold", "Georgia", "Times New Roman", serif; margin-bottom: 8px;
+}
+article h6 {
+	.capitalize; display:inline;
+}
 
 /* Credits / Author / Time / Captions */
 .info                           { font-family: "AlekseiThin"; font-size: 70%; /*12px*/  line-height: 125%; /*15px*/ }
