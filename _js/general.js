@@ -1,4 +1,7 @@
-
+/*
+Oleg: it is easier to just run localStorage.clear(); in your browser console
+  --- this code needs to be removed for production
+*/
 function destroyLessCache(pathToCss) {
 
     if (!window.localStorage || !less) {
@@ -16,17 +19,18 @@ function destroyLessCache(pathToCss) {
 }
 
 destroyLessCache("/themes/publication_2/theme_1/_css/");
+/* --- */
 
+// Create HTML anchors around links in text
 function urlify(text) {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.replace(urlRegex, function(url) {
-		var anchor = url.replace("http://","");
-		anchor = anchor.replace("https://","");
+		var anchor = url.replace("http://","").replace("https://","");
         return '<a href="' + url + '">' + anchor + '</a>';
     })
 }
 
-
+// Create legends around inline images
 function articleImageAlts()
 {
 	$(".cs_img").each(function(){
@@ -36,13 +40,12 @@ function articleImageAlts()
 			$(this).children(".cs_img_caption").addClass("middle");	
 			$(this).children(".cs_img_caption").css("margin-top","-"+($(this).children("p").children("img").height()+15)+"px");	
 		}
-		$(this).children("p").children("img").attr("alt","asdasd asda http://asd.com");
 		$(this).children(".cs_img_caption").append("<br>"+urlify($(this).children("p").children("img").attr("alt")));	
 	});
 }
 
+// Gallery slider support
 sliderStatus = false;
-
 function changeSliderStatus()
 {
 	if (sliderStatus)
