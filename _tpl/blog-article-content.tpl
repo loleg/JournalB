@@ -1,4 +1,4 @@
-<div class="contentbar section-{{ $gimme->section->url_name }}">
+<div class="contentbar section-blogs">
 
 	<article>
 		<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
