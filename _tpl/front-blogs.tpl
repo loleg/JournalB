@@ -32,20 +32,17 @@
 				{{ set_issue number="1" }}
 				<h2><a href="{{ url options="issue" }}">Aktuelle Dossiers</a></h2>
 				<description>
-					{{ list_articles length="1" order="byPublishDate desc" ignore_section="true" }}
-						{{ $publish_date = $gimme->article->publish_date }} 
-						{{ if $publish_date }}
-							<div class="dsect">
+					{{ list_articles length="3" order="byPublishDate desc" ignore_section="true" }}
+						<div class="dsect">
 							<a href="{{ url options="article" }}">
 								<div class="description"><span class="capitalize">{{ $gimme->article->name }}</span> {{ $gimme->article->subtitle|strip_tags }}</div>
 								<div class="info">
-									<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
-									<time>{{ $publish_date|camp_date_format:"%H:%i" }}</time> | 
+									<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
+									<time>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</time> | 
 									<author>{{ $gimme->article->author->name }}</author>
 								</div>
 							</a>
-							</div>
-						{{ /if }}
+						</div>
 					{{ /list_articles }}
 				</description>
 			{{ /local }} 

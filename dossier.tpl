@@ -7,11 +7,13 @@
 <div class="container">
 
     <div class="main">
-
-        {{ include file="_tpl/header.tpl" }}
+	
+		{{ include file="_tpl/header.tpl" }}
 
         <div class="row content">
 
+			{{ include file="_tpl/mobile-controlbar.tpl" }}
+		
 			<div class="addbar">
 				{{ include file="_tpl/control-icons.tpl" }}
 			</div>

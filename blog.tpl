@@ -12,6 +12,8 @@
 
         <div class="row content">
 
+			{{ include file="_tpl/mobile-controlbar.tpl" }}
+		
 			<div class="addbar">
 				{{ include file="_tpl/control-icons.tpl" }}
 			</div>
