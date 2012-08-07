@@ -1,5 +1,5 @@
 
-<div class="titlebox section-blogs">
+<div class="titlebox section-blogs" id="mobile_startpoint">
 	<h2><a href="{{ uri options="issue" }}">Blog</a> / </h2><h1><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></h1>
 </div>
 

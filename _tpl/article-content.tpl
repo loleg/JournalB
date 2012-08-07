@@ -1,7 +1,7 @@
 <div class="contentbar section-{{ $gimme->section->url_name }}">
 
 	<article>
-		<h1>{{ $gimme->article->name }}</h1>
+		<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
 					
 		{{ if $gimme->article->content_accessible }}    
 
