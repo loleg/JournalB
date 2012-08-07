@@ -1,32 +1,22 @@
 {{ assign var="column" value="0" }}
-{{ assign var="dossiers_on_page" value="5" }}
+{{ assign var="dossiers_on_page" value="25" }}
 
-{{ list_sections order="byNumber desc" length="`$dossiers_on_page`" }}
+{{ list_articles }}
 
 	{{ if $column%2 == 0 }}<div class="row newsrow">{{ /if }}
 	
-		<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-blogs layoutsimple">
+		<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-dossiers layoutsimple">
 
 			<div class="newsboxcontent">
-				<h1><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></h1>
+				<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
 				<description>
-					{{ $publish_date = false }}
-					{{ list_articles }}
-						<p>
-							<b>{{ $gimme->article->name }}</b>
-							{{ $gimme->article->subtitle }}</p>
-						{{ if not $publish_date }} {{ $publish_date = $gimme->article->publish_date }} {{ /if }}
-					{{ /list_articles }}
+					<p>{{ $gimme->article->subtitle }}</p>
 				</description>
 			</div>
 
-			{{ if $publish_date }}
 			<info>
-				<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
-				<date>{{ $publish_date|camp_date_format:"%H:%i" }}</date> 
-			</info>
-			{{ /if }}
-			
+				<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date>
+			</info>			
 		</div>
 				
 	{{ if $column%2 == 1 || $gimme->current_list->at_end}}</div>{{ /if }}
@@ -60,4 +50,4 @@
 	
 	{{ /if }}
 	
-{{ /list_sections }}
+{{ /list_articles }}
