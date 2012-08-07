@@ -24,11 +24,7 @@
 
     <div class="sidebar">
 
-        <div class="row header">
-            <div class="row nav" align="center">
-                <ul><li style="float: none;">Community</li></ul>
-            </div>
-        </div>
+        {{ include file="_tpl/community-header.tpl" }}
 
         <div class="row content">
             
