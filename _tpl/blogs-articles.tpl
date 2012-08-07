@@ -17,8 +17,12 @@
 		<author><a href="#">{{ $gimme->article->author->name }}</a></author>
 	
 		<div class="blogboxcontent">
-			<div class="title"><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></div>
-			<description><p>{{ $gimme->article->full_text }}</p></description>
+			<article>
+				<header>
+					<div class="title"><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></div>
+				</header>
+				<description>{{ $gimme->article->full_text }}</description>
+			</article>
 		</div>
 		
 		<div class="weiter"><a href="{{ uri options="article" }}">> weiter lesen</a></div>
