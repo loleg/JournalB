@@ -19,6 +19,7 @@ function destroyLessCache(pathToCss) {
 }
 
 destroyLessCache("/themes/publication_2/theme_1/_css/");
+destroyLessCache("/themes/publication_3/theme_4/_css/");
 /* --- */
 
 // Create HTML anchors around links in text

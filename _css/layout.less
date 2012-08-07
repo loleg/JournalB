@@ -611,9 +611,11 @@
 		font-size: 180%;
 		line-height: 100%;
 	}
-	blockquote strong {
+	blockquote p:last-child {
 		.info;
 		position: relative;
+	    font-weight: normal;
+	    top: -0.4em;
 	}
 	blockquote span {
 		.community-font;
@@ -800,6 +802,9 @@
         .info;
 		display: none;
 		position: absolute;
+    }
+    .cs_img_caption strong {
+	    font-weight: normal;
     }
 	.cs_img_caption.middle {
 		display: block;
