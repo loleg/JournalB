@@ -2,7 +2,8 @@
 
 	<div class="newsboxcontent">
 		<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
-		<description><p>{{ $gimme->article->deck }}</p></description>
+		{{ $len = 39 * floor(9 - round(ceil($gimme->article->name|strlen / 23))*1.5) }}
+		<description><p>{{ $gimme->article->deck|truncate:$len:"...":true }}</p></description>
 	</div>
 
 	<info>
