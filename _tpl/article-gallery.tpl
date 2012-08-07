@@ -1,5 +1,7 @@
 {{ $is_gallery = false }}
+{{ $is_image = false }}
 {{ $gc = 0 }}
+
 {{ foreach $gimme->article->slideshows as $slideshow }}
 	<div id="slider_wrapper"></div>
 	<div id="slider" class="nivoSlider">
@@ -15,18 +17,31 @@
 {{ /foreach }}
 
 {{ if not $is_gallery }}
-	{{ if $gimme->article->images|count > 0 }}
-		<div id="gallery_image_0">{{ include file="_tpl/img/img_articlebig.tpl" }}</div>
+
+	{{ image rendition="articlebig" }}
+		<div id="gallery_image_0">
+		  <figure class="clearall">
+			  <img src="{{ $image->src }}" width="{{ $image->width }}" height="{{ $image->height }}" style="max-width: 100%" alt="{{ $image->caption }} (photo: {{ $image->photographer }})" />
+		  </figure>
+		</div>
 		<script type="text/javascript">
 			$(".gallery_all").html(1);
 			$(".gallery_current").html(1);
 			$(".gallery_description").html($("#gallery_image_0 img").attr("alt"));
 		</script>
-	{{ else }}
+		{{ $is_image = true }}
+	{{ /image }} 
+
+	{{ if not $is_image }}
 		<script type="text/javascript">
 			$(".gallery_info").remove();
+			$(document).ready(function(){
+				$(".article_info").css("position","absolute");
+				$(".article_info").css("top","200px");
+			});
 		</script>
 	{{ /if }}
+	
 {{ else }}
 	<script type="text/javascript" src="{{ url static_file='_js/slider.js' }}"></script>
 	<script type="text/javascript" src="{{ url static_file='_js/swipe.js' }}"></script>

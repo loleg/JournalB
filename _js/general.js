@@ -17,14 +17,27 @@ function destroyLessCache(pathToCss) {
 
 destroyLessCache("/themes/publication_2/theme_1/_css/");
 
+function urlify(text) {
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, function(url) {
+		var anchor = url.replace("http://","");
+		anchor = anchor.replace("https://","");
+        return '<a href="' + url + '">' + anchor + '</a>';
+    })
+}
+
+
 function articleImageAlts()
 {
 	$(".cs_img").each(function(){
 		if ($(this).css("float")=="none")
 		{
+			$(this).css("min-height",($(this).children("p").children("img").height()+20)+"px");
 			$(this).children(".cs_img_caption").addClass("middle");	
 			$(this).children(".cs_img_caption").css("margin-top","-"+($(this).children("p").children("img").height()+15)+"px");	
-		}	
+		}
+		$(this).children("p").children("img").attr("alt","asdasd asda http://asd.com");
+		$(this).children(".cs_img_caption").append("<br>"+urlify($(this).children("p").children("img").attr("alt")));	
 	});
 }
 
