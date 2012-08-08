@@ -7,6 +7,7 @@
 			<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
 
 			<div class="article_info_mobile">
+				{{ if $gimme->article->publish_date }}
 				<time>
 					{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
 						{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
@@ -14,6 +15,7 @@
 						{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
 					{{ /if }}
 				</time> | 
+				{{ /if }}
 				<author>{{ $gimme->article->author->name }}</author>
 			</div>
 					
