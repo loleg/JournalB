@@ -102,7 +102,7 @@ if (isset($_COOKIE['disqus_token'])) {
 	
 	echo('Thanks, ' . $tokdata->username . '! <a href="' . $homepage . '">Click here to continue</a>');
 	
-} else {
+} elseif (isset($_GET['auth'])) {
 	
 	header( 'Location: https://disqus.com/api/oauth/2.0/authorize/?client_id=' . $PUBLIC_KEY . '&scope=read&response_type=code&redirect_uri=' . $redirect );
 

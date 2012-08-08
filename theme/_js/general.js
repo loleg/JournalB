@@ -74,3 +74,50 @@ function changeSliderStatus()
 		sliderStatus = true;
 	}
 }
+
+// When the DOM is loaded
+$(document).ready(function() {
+
+	var myfaves = null, myfaveobj = [];
+
+	// Favorites	
+	$.get('/services/disqus.php?myfaves', function(data) {
+		if (typeof console != 'undefined') console.log(data);
+		if (data.length < 5) {
+			var url = '/services/disqus.php?auth';
+			$('body > .container > .sidebar > .header > .nav > ul').append(
+				'<li style="float: none; border: 1px solid black; width: 5em;">' +
+				'<a href="' + url + '">Login</a></li>');
+		} else {
+			myfaves = $.parseJSON(data);
+			$.each(myfaves, function() {
+				var url = this.replace(document.location.href, '');
+				$('a[href^="/' + url + '"]').parents('div.newsbox').each(function() {
+					$(this).find('.favorite').addClass('checked').attr('href','');
+					myfaveobj.push({
+						title: $(this).find('h1 a').text(), 
+						href: $(this).find('h1 a').attr('href')
+					});
+				});
+			});
+		}
+	});
+	
+	// Favorites dialog
+	$('li.nav-fav a').click(function() {
+	
+		if ($('div.dialog-fav').length == 0) {
+			$('body').append('<div class="dialog-fav" style="position:absolute;display:none; top:50%;left:50%;width:300px;height:300px; margin-left:-150px;margin-top:-150px; border:1px solid black;background:white;color:black; padding:2em;"></div>');
+		}
+		if (myfaveobj.length > 0) {
+			var dialog = $('div.dialog-fav').html('<button style="float:right"> X </button>');
+			$.each(myfaveobj, function() {
+				dialog.append('<p><a href="' + this.href + '">' + this.title + '</a></p>');
+			});
+			dialog.find('button').click(function() { dialog.hide(); });
+			dialog.show();
+		}
+	
+		return false;
+	});
+});
