@@ -21,6 +21,11 @@
 				<header>
 					<div class="title"><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></div>
 				</header>
+				{{ image rendition="articlebig" }}
+				  <figure class="clearall">
+					  <img src="{{ $image->src }}" width="{{ $image->width }}" height="{{ $image->height }}" style="width: 100%" alt="{{ $image->caption }} (photo: {{ $image->photographer }})" />
+				  </figure>
+				{{ /image }} 
 				<description>{{ $gimme->article->full_text->first_paragraph }}</description>
 			</article>
 		</div>
