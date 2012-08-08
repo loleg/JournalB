@@ -21,7 +21,7 @@
 				<header>
 					<div class="title"><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></div>
 				</header>
-				<description>{{ $gimme->article->full_text }}</description>
+				<description>{{ $gimme->article->content->first_paragraph }}</description>
 			</article>
 		</div>
 		
