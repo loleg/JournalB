@@ -90,9 +90,10 @@ $(document).ready(function() {
 				document.location.href = '/services/disqus.php?auth';
 			
 			// Create profile signup link
-			}).parent().find('a').attr('href', 
-				'https://disqus.com/profile/signup/?next=' + document.location.href);
-		
+			}).parent().show().find('a').attr('href', 
+				'https://disqus.com/profile/signup/?next=' + document.location.href 
+			);
+					
 		// Yes, we have data	
 		} else {
 			myfaves = $.parseJSON(data);

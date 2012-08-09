@@ -24,7 +24,7 @@
         <a href="/">Journal B</a>
     </h1>
     
-    <div class="login">
+    <div class="login" style="display:none">
        	<button>
        		Anmelden
 	       	<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
