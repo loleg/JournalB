@@ -84,10 +84,9 @@ $(document).ready(function() {
 	$.get('/services/disqus.php?myfaves', function(data) {
 		if (typeof console != 'undefined') console.log(data);
 		if (data.length < 5) {
-			var url = '/services/disqus.php?auth';
-			$('body > .container > .sidebar > .header > .nav > ul').append(
-				'<li style="float: none; border: 1px solid black; width: 5em;">' +
-				'<a href="' + url + '">Login</a></li>');
+			$('.header .login button').click(function() {
+				document.location.href = '/services/disqus.php?auth';
+			}).parent().find('a').attr('href', '');
 		} else {
 			myfaves = $.parseJSON(data);
 			$.each(myfaves, function() {
