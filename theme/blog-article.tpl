@@ -28,6 +28,10 @@
 
         <div class="row content">
             			
+			{{ include file="_tpl/community-authors.tpl" }}			
+						
+			{{ include file="_tpl/blog-community.tpl" }}			
+						
             {{ include file="_tpl/community.tpl" }}
 
         </div>

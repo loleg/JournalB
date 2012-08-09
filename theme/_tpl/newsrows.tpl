@@ -22,10 +22,12 @@
 {{ $articles_num_stock = $articles_num }}
 {{ if $articles_num > $articles_on_page }} {{ $articles_num = $articles_on_page }} {{ /if }}
 				
+{{ if $articles_num >= 8 }} {{ $blogs_pos = 8 }} {{ else }} {{ $blogs_pos = 2 }} {{ /if }}
+				
 {{ $i = 0 }}
 {{ while $i < $articles_num_stock }}
 						
-	{{ if $column == 2 and $show_blogs }} {{ include file="_tpl/front-blogs.tpl" }} {{ /if }}
+	{{ if $column == $blogs_pos and $show_blogs }} {{ include file="_tpl/front-blogs.tpl" }} {{ /if }}
 						
 	{{ if $articles[$i]["rendered"] }} {{ $i = $i + 1 }} {{continue}} {{ /if }}
 	
