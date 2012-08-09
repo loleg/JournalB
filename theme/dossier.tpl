@@ -12,15 +12,7 @@
 
         <div class="row content">
 
-			{{ include file="_tpl/mobile-controlbar.tpl" }}
-		
-			<div class="addbar">
-				{{ include file="_tpl/control-icons.tpl" }}
-			</div>
-			
-			<div class="contentbar">
-				{{ include file="_tpl/dossier-article.tpl" }}
-			</div>
+			{{ include file="_tpl/dossier-article.tpl" }}
             
         </div><!-- /content -->
 

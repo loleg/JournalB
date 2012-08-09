@@ -83,12 +83,20 @@ $(document).ready(function() {
 	// Favorites	
 	$.get('/services/disqus.php?myfaves', function(data) {
 		if (typeof console != 'undefined') console.log(data);
+		// Do we have any data, i.e. are we logged in?
 		if (data.length < 5) {
+			// Login authentication button
 			$('.header .login button').click(function() {
 				document.location.href = '/services/disqus.php?auth';
-			}).parent().find('a').attr('href', '');
+			
+			// Create profile signup link
+			}).parent().find('a').attr('href', 
+				'https://disqus.com/profile/signup/?next=' + document.location.href);
+		
+		// Yes, we have data	
 		} else {
 			myfaves = $.parseJSON(data);
+			// Collect info from newsboxes: TODO replace with Newscoop API
 			$.each(myfaves, function() {
 				var url = this.replace(document.location.href, '');
 				$('a[href^="/' + url + '"]').parents('div.newsbox').each(function() {
@@ -105,6 +113,7 @@ $(document).ready(function() {
 	// Favorites dialog
 	$('li.nav-fav a').click(function() {
 	
+		// TODO: move into template, style using design specs
 		if ($('div.dialog-fav').length == 0) {
 			$('body').append('<div class="dialog-fav" style="position:absolute;display:none; top:50%;left:50%;width:300px;height:300px; margin-left:-150px;margin-top:-150px; border:1px solid black;background:white;color:black; padding:2em;"></div>');
 		}

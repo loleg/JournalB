@@ -1,43 +1,42 @@
-<div class="contentbar section-{{ $gimme->section->url_name }}">
+<div class="contentbar section-dossiers">
+
+	<div class="titlebox section-dossiers" id="mobile_startpoint">
+		<h2><a href="{{ uri options="issue" }}">Dossier</a> /</h2>
+		<h1>{{ $gimme->article->name }}</h1>
+	</div>
 
 	<article>
-		<header>
-			<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>  
-	
-			<div class="article_info_mobile">
-				<time>
-					{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
-						{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
-					{{ else }}
-						{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
-					{{ /if }}
-				</time> | 
-				<author>{{ $gimme->article->author->name }}</author>
-			</div>
-			
+		<header> 
 			{{ include file="_tpl/article-gallery.tpl" }}
 		</header>
 		
-		<div class="mcontentbar">
-			<div class="article_info" style="top:210px;">
-				{{ list_article_authors }}
-					<author>{{ $gimme->author->name }}</author>
-				{{ /list_article_authors }}
-				<time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y<br>%H:%i" }}</time>
-			</div>
+		{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
 		
-			{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
+		<div class="dossier-content">
 			{{ $gimme->article->full_text }}
-			
-			<div class="dossier-articles">
-				{{ list_related_articles }}
-						
-					{{ include file="_tpl/newsbox-bgimage.tpl" }}
-					<div style="clear: both"></div>
-								
-				{{ /list_related_articles }}
-			</div>
 		</div>
+		
+		<div class="dossier-articles">
+		{{ list_related_articles }}
+		
+			{{ if $column%2 == 0 }}<div class="row newsrow">{{ /if }}
+		
+			{{ if $gimme->article->has_image(1) }}
+			
+				{{ include file="_tpl/newsbox-bgimage.tpl" }}
+			
+			{{ else }}
+			
+				{{ include file="_tpl/newsbox-simple.tpl" }}
+				
+			{{ /if }}
+					
+			{{ if $column%2 == 1 }}</div>{{ /if }}
+				
+			{{ $column=$column+1 }}
+						
+		{{ /list_related_articles }}
+	</div>
 
 	</article>
 	
