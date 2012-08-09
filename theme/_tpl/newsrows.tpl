@@ -5,7 +5,7 @@
 {{ assign var="articles_num_stock" value="0" }}
 {{ assign var="pagination" value="" }}
 
-{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue greater_equal 6 `$condition` is on" }}
+{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue not 5 issue not 4 issue not 3 `$condition` is on" }}
 	{{ $articles[$articles_num]["number"] = $gimme->article->number }}
 	{{ $articles[$articles_num]["doubleview"] = $gimme->article->frontpage_doubleview }}
 	{{ $articles[$articles_num]["rendered"] = false }}

@@ -1,8 +1,6 @@
 {{ assign var="article_section" value=$gimme->article->section->url_name }}
 {{ if $gimme->article->issue->number == 2 }}
 	{{ $article_section = "blogs" }}
-{{ elseif $gimme->article->issue->number == 1 }}
-	{{ $article_section = "dossiers" }}
 {{ /if }}
 
 <div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $article_section }} layoutsimple" onclick="location='{{ uri options="article" }}'">
@@ -10,7 +8,16 @@
 	<div class="newsboxcontent">
 		<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
 		{{ $len = 39 * floor(9 - round(ceil($gimme->article->name|strlen / 23))*1.5) }}
-		<description><p>{{ $gimme->article->deck|truncate:$len:"...":true }}</p></description>
+		<description>
+			<p>
+				{{ if $gimme->article->deck=="" }} 
+					{{ $gimme->article->full_text->first_paragraph|truncate:$len:"...":true }}
+				{{ else }}
+					{{ $gimme->article->deck|truncate:$len:"...":true }}
+				{{ /if }}
+			</p>
+		</description>
+		
 	</div>
 
 	<info>
