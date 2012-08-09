@@ -14,9 +14,9 @@
         	<h2>Suchresultate</h2>
 		</div>
 
-        <ol class="row content search-cont">
+        <ol class="row content search-content">
 
-			{{ include file="_tpl/search-cont.tpl" }}
+			{{ include file="_tpl/search-content.tpl" }}
             
         </ol><!-- /content -->
         

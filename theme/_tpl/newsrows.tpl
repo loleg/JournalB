@@ -27,7 +27,7 @@
 {{ $i = 0 }}
 {{ while $i < $articles_num_stock }}
 						
-	{{ if $column == $blogs_pos and $show_blogs }} {{ include file="_tpl/front-blogs.tpl" }} {{ /if }}
+	{{ if $column == $blogs_pos and $show_blogs }} {{ include file="_tpl/front-blogsdossiers.tpl" }} {{ /if }}
 						
 	{{ if $articles[$i]["rendered"] }} {{ $i = $i + 1 }} {{continue}} {{ /if }}
 	
