@@ -3,10 +3,12 @@
     <div class="row nav">
         <ul>
 			{{ local }}
+				{{ $current_section = ""}}
+				{{ if $gimme->issue->number > 5 or $gimme->issue->number == 1}} {{ $current_section = $gimme->section->number }} {{ /if }}
 				{{ set_current_issue }}
 				<li class="nav-front active"><a href="/">Front</a></li>
 				{{ list_sections }}
-					<li class="nav-{{ $gimme->section->url_name }} active"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
+					<li class="nav-{{ $gimme->section->url_name }} {{ if $current_section == "" or $gimme->section->number == $current_section }}active{{ /if }}"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
 				{{ /list_sections }}
 				<li class="nav-fav active"><a href="#">Favoriten</a></li>
 				<div class="clear"></div>
