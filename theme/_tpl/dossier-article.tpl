@@ -20,7 +20,9 @@
 		{{ list_related_articles }}
 		
 			{{ if $column%2 == 0 }}<div class="row newsrow">{{ /if }}
-		
+			
+			{{ assign var="article_section" value=$gimme->article->section->url_name }}
+					
 			{{ if $gimme->article->has_image(1) }}
 			
 				{{ include file="_tpl/newsbox-bgimage.tpl" }}

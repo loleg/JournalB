@@ -1,8 +1,3 @@
-{{ assign var="article_section" value=$gimme->article->section->url_name }}
-{{ if $gimme->article->issue->number == 2 }}
-	{{ $article_section = "blogs" }}
-{{ /if }}
-
 <div class="content-double newsbox section-{{ $article_section }} layoutdouble" onclick="location='{{ uri options="article" }}'"
 	{{ image rendition="topfrontdouble" }} style="background-image: url({{ $image->src }});" {{ /image }} >
 	
