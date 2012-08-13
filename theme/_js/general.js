@@ -158,3 +158,54 @@ function collapseElement(obj)
 		$(obj).addClass("visible");
 	}
 }
+
+function setCookie(c_name,value,exdays)
+{
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate() + exdays);
+	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString()) + "; path=/";
+	document.cookie=c_name + "=" + c_value;
+}
+
+function getCookie(c_name)
+{
+	var i,x,y,ARRcookies=document.cookie.split(";");
+	for (i=0;i<ARRcookies.length;i++)
+	{
+	  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+	  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+	  x=x.replace(/^\s+|\s+$/g,"");
+	  if (x==c_name)
+		{
+		return unescape(y);
+		}
+	}
+}
+
+
+var fontSizes = Array( Array(14,16), Array(17,20), Array(20,24) );
+var currentFontSize = 1;
+
+function updateFontSize()
+{
+	$("body").css("font-size",fontSizes[currentFontSize][0]+"px");
+	$("body").css("line-height",fontSizes[currentFontSize][1]+"px");
+}
+
+function changeFontSize()
+{
+	currentFontSize++;
+	if (currentFontSize==3) currentFontSize = 0;
+	setCookie("fontSize",currentFontSize,700);
+	updateFontSize();
+}
+
+function loadFontSize()
+{
+	var fontSize = getCookie("fontSize");
+	if (fontSize != undefined)
+	{
+		currentFontSize = fontSize;
+		updateFontSize();
+	}
+}
