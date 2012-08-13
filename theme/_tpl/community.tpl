@@ -68,9 +68,16 @@
     <div style="float: left; width: 40px; padding-top: 5px;"><a href="http://facebook.com"><img src="{{ url static_file='_img/facebook_.png' }}"></a></div>
 </div>
 
-<div class="row adbox">
+<div class="row adbox supportbox">
     <div class="community-title grey">Journal B<br>unterstutzen</div>
     <icon><img src="{{ url static_file='_img/unterstutzen.png' }}" /></icon>
     <description>Alle Artikel auf journalB.ch sind frei verfügbar. Wenn Ihnen unsere Arbeit etwas wert ist, nutzen Sie doch die Gelegenheit, uns zu unterstützen. Die Redaktion bedankt sich für Ihren Beitrag.</description>
     <div class="link"><a href="#">Per SMS spenden!</a></div>
 </div>
+
+{{ list_articles ignore_issue="true" ignore_section="true" constraints="type is page issue is 3 section is 4" }}
+<div class="row adbox recommendbox">
+    <div class="community-title grey">{{ $gimme->article->name }}</div>
+    <description>{{ $gimme->article->full_text|strip_tags:false }}</description>
+</div>
+{{ /list_articles }}

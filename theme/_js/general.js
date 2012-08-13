@@ -98,6 +98,9 @@ $(document).ready(function() {
 	    if ($(this).parent().height() > max_height) $(this).hide();
 	});
 	
+	// Allow max. 3 comments above the Journal B box, just before the recommend box
+	$('.sidebar .supportbox').after($('.sidebar .commentbox:gt(2)'));
+	
 	// Enable external community links
 	$('.sidebar description:contains("http://")').each(function() { 
 		$(this).html(urlify($(this).text(), true)); 
