@@ -140,3 +140,21 @@ $(document).ready(function() {
 		return false;
 	});
 });
+
+
+function collapsebleElements()
+{
+	$(".collapse_box").children(".collapse_title").click(function(){ collapseElement($(this).parent()); });
+}
+
+function collapseElement(obj)
+{
+	if ($(obj).hasClass("visible"))
+	{
+		$(obj).removeClass("visible");
+	}
+	else
+	{
+		$(obj).addClass("visible");
+	}
+}
