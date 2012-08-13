@@ -35,13 +35,23 @@ function urlify(text) {
 function articleImageAlts()
 {
 	$(".cs_img").each(function(){
+	
 		if ($(this).css("float")=="none")
 		{
 			$(this).css("min-height",($(this).children("p").children("img").height()+20)+"px");
 			$(this).children(".cs_img_caption").addClass("middle");	
 			$(this).children(".cs_img_caption").css("margin-top","-"+($(this).children("p").children("img").height()+15)+"px");	
 		}
-		$(this).children(".cs_img_caption").append("<br>"+urlify($(this).children("p").children("img").attr("alt")));	
+
+		if ($(this).children("p").children("img").attr("alt") == undefined || $(this).children("p").children("img").attr("alt") == "")
+		{
+			var photo = $('.article_info author[type="photographer"]').html();
+			$(this).children(".cs_img_caption").append("<br><br>(Foto: "+photo+")");
+		}
+		else if ($(this).children(".cs_img_caption").html() != $(this).children("p").children("img").attr("alt"))
+		{
+			$(this).children(".cs_img_caption").append("<br><br>"+urlify($(this).children("p").children("img").attr("alt")));	
+		}
 	});
 }
 

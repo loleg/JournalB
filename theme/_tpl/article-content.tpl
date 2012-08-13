@@ -29,8 +29,15 @@
 
 		<div class="mcontentbar">
 			<div class="article_info" {{ if not $is_gallery and $gimme->article->images|count == 0 }}style="top:200px;"{{ /if }}>
+				{{ $i = 0 }}
 				{{ list_article_authors }}
-					<author>{{ $gimme->author->name }}</author>
+					{{ $ren = false }}
+					{{ foreach from=$rendered_authors item=author }} {{ if $author == $gimme->author->name }} {{ $ren = true }} {{ break }} {{ /if }} {{ /foreach }}
+					{{ if not $ren }}
+						<author type="{{ $gimme->author->type }}">{{ $gimme->author->name }}</author>
+						{{ $rendered_authors[$i] = $gimme->author->name }}
+						{{ $i = $i + 1 }}
+					{{ /if }}
 				{{ /list_article_authors }}
 				<time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y<br>%H:%i" }}</time>
 			</div>
