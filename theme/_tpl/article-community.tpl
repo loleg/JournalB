@@ -22,7 +22,6 @@
 		<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> / 
 		<time>{{ $publish_date|camp_date_format:"%H:%i" }}</time> /
 	{{ /if }}
-		<author>{{ $gimme->author->name }}</author>
 	</div>
 	</p>
 	{{ if $gimme->current_list->at_end }}   
