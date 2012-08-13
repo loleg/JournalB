@@ -1,67 +1,64 @@
 <!-- Start community feed -->
-{{ local }}
+{{ list_articles length="30" order="byPublishDate desc" constraints="issue is 5 type is fweet" ignore_section="true" ignore_issue="true" }} 
 
-  {{ set_issue number="5" }}
-  
-  <!-- TODO: add constraint="type equals 'fweet'" -->
-  {{ list_articles length="5" order="byPublishDate desc" ignore_section="true" }} 
-	<!-- Article: {{ $gimme->article->name }} -->
-	
-	{{ if $gimme->article->is_twitter }}
-	
-	<div class="row commentbox layouttwitter">
-		{{ if $gimme->article->icon }}
-			<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
-		{{ /if }}
-		<a href="{{ $gimme->article->link }}" target="_blank">
-			<info>
-				<author>{{ $gimme->article->who }}</author>
-				{{ if $gimme->article->publish_date }}
-					<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date>
-				{{ /if }}
-			</info>
-			<div class="clear"></div>
-			<description>{{ $gimme->article->quote|strip_tags }}</description>
-		</a>
-		<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
-		
-	{{ elseif $gimme->article->is_ad }}	
-	
-	<div class="row adbox">
-		<div class="community-title grey">Anzeige</div>
-		<title>{{ $gimme->article->where }}</title>
-		<description>{{ $gimme->article->quote|strip_tags }}</description>
-		<div class="lists"><a href="{{ $gimme->article->link }}">{{ $gimme->article->who }}</a></div>
-		
-	{{ else }}
-	
-	<div class="row commentbox layoutsimple">
-		<a href="{{ $gimme->article->link }}">
+<!-- Article: {{ $gimme->article->name }} -->
+
+{{ if $gimme->article->is_twitter }}
+
+<div class="row commentbox layouttwitter">
+	{{ if $gimme->article->icon }}
+		<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
+	{{ /if }}
+	<a href="{{ $gimme->article->link }}" target="_blank">
+		<info>
 			<author>{{ $gimme->article->who }}</author>
-			<description>{{ $gimme->article->quote|strip_tags }}</description>
 			{{ if $gimme->article->publish_date }}
-				<date>
-					schrieb am {{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }} um 
-					{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }} zu
-				</date>
+				<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date>
 			{{ /if }}
-		</a>
-		<div class="community-title white">{{ $gimme->article->where }}</div>
-		<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
+		</info>
+		<div class="clear"></div>
+		<description>{{ $gimme->article->quote|strip_tags }}</description>
+	</a>
+	<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
 	
-	{{ /if }}
-	
-	{{ if $gimme->article->is_twitter }}
-		<icon><img src="{{ url static_file='_img/twitter.png' }}" /></icon>
-	{{ elseif $gimme->article->is_facebook }}
-		<icon><img src="{{ url static_file='_img/facebook.png' }}"></icon>
-	{{ /if }}
-	
-	</div>
-	
-  {{ /list_articles }}
+{{ elseif $gimme->article->is_ad }}	
 
-{{ /local }}
+<div class="row adbox">
+	<div class="community-title grey">Anzeige</div>
+	<title>{{ $gimme->article->where }}</title>
+	<description>{{ $gimme->article->quote|strip_tags }}</description>
+	<div class="lists"><a href="{{ $gimme->article->link }}">{{ $gimme->article->who }}</a></div>
+	
+{{ else }}
+
+<div class="row commentbox layoutsimple">
+	{{ if $gimme->article->icon }}
+		<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
+	{{ /if }}
+	<a href="{{ $gimme->article->link }}">
+		<author>{{ $gimme->article->who }}</author>
+		<description>{{ $gimme->article->quote|strip_tags }}</description>
+		{{ if $gimme->article->publish_date }}
+			<date>
+				schrieb am {{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }} um 
+				{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }} zu
+			</date>
+		{{ /if }}
+	</a>
+	<div class="community-title white">{{ $gimme->article->where }}</div>
+	<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
+
+{{ /if }}
+
+{{ if $gimme->article->is_twitter }}
+	<icon><img src="{{ url static_file='_img/twitter.png' }}" /></icon>
+{{ elseif $gimme->article->is_facebook }}
+	<icon><img src="{{ url static_file='_img/facebook.png' }}"></icon>
+{{ /if }}
+
+</div>
+
+{{ /list_articles }}
 <!-- End community feed -->
 
 <div class="row socialbox">
