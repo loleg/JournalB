@@ -59,8 +59,8 @@
 			<a href="#">Community</a> | 
 			<a href="#">RSS</a> | 
 			<a href="#">Newsletter</a> | 
-			<a href="#">Facebook</a> | 
-			<a href="#">Twitter</a>
+			<a href="http://www.facebook.com/journalb.bern">Facebook</a> | 
+			<a href="http://twitter.com/journalb">Twitter</a>
 		</div>
 	</div>
 	

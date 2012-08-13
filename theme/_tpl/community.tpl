@@ -62,10 +62,10 @@
 <!-- End community feed -->
 
 <div class="row socialbox">
-    <div style="float: left; width: 60px;"><a href="http://twitter.com">Follow<br>us on<br>Twitter</a></div>
-    <div style="float: left; width: 54px; margin-right: 15px; padding-top: 5px;"><a href="http://twitter.com"><img src="{{ url static_file='_img/twitter_.png' }}"/></a></div>
-    <div style="float: left; width: 59px;"><a href="http://facebook.com">Join<br>us on<br>Facebook</a></div>
-    <div style="float: left; width: 40px; padding-top: 5px;"><a href="http://facebook.com"><img src="{{ url static_file='_img/facebook_.png' }}"></a></div>
+    <div style="float: left; width: 60px;"><a href="http://twitter.com/journalb">Follow<br>us on<br>Twitter</a></div>
+    <div style="float: left; width: 54px; margin-right: 15px; padding-top: 5px;"><a href="http://twitter.com/journalb"><img src="{{ url static_file='_img/twitter_.png' }}"/></a></div>
+    <div style="float: left; width: 59px;"><a href="http://www.facebook.com/journalb.bern">Join<br>us on<br>Facebook</a></div>
+    <div style="float: left; width: 40px; padding-top: 5px;"><a href="http://www.facebook.com/journalb.bern"><img src="{{ url static_file='_img/facebook_.png' }}"></a></div>
 </div>
 
 <div class="row adbox supportbox">
@@ -74,10 +74,3 @@
     <description>Alle Artikel auf journalB.ch sind frei verfügbar. Wenn Ihnen unsere Arbeit etwas wert ist, nutzen Sie doch die Gelegenheit, uns zu unterstützen. Die Redaktion bedankt sich für Ihren Beitrag.</description>
     <div class="link"><a href="#">Per SMS spenden!</a></div>
 </div>
-
-{{ list_articles ignore_issue="true" ignore_section="true" constraints="type is page issue is 3 section is 4" }}
-<div class="row adbox recommendbox">
-    <div class="community-title grey">{{ $gimme->article->name }}</div>
-    <description>{{ $gimme->article->full_text|strip_tags:false }}</description>
-</div>
-{{ /list_articles }}

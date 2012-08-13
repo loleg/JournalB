@@ -25,6 +25,13 @@
 		<div class="row content">
 			
 			{{ include file="_tpl/community.tpl" }}
+			
+			{{ list_articles ignore_issue="true" ignore_section="true" constraints="type is page issue is 3 section is 4" }}
+			<div class="row adbox recommendbox">
+			    <div class="community-title grey">{{ $gimme->article->name }}</div>
+			    <description>{{ $gimme->article->full_text|strip_tags:false }}</description>
+			</div>
+			{{ /list_articles }}
 
 		</div>
 
