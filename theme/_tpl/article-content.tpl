@@ -56,9 +56,24 @@
 		{{ include file="_tpl/article-community.tpl" }}
 	</div>
 	
-	{{ include file="_tpl/article-forum.tpl" }}
-	
+	{{ if $gimme->preview }}
+		<!-- Article frontpage preview -->
+		<h3>Frontpage Vorschau</h3>
+		<div class="row newsrow">
+			{{ assign var="article_section" value=$gimme->article->section->url_name }}
+			{{ if $gimme->article->frontpage_doubleview }}
+				{{ include file="_tpl/newsbox-double.tpl" }}
+			{{ elseif $gimme->article->frontpage_image }}
+				{{ include file="_tpl/newsbox-bgimage.tpl" }}
+			{{ else }}
+				{{ include file="_tpl/newsbox-simple.tpl" }}
+			{{ /if }}
+		</div>
+	{{ else }}
+		<!-- Article forum -->
+		{{ include file="_tpl/article-forum.tpl" }}
+	{{ /if }}	
+		
 </div>
 
 <script language="javascript">articleImageAlts();</script>
-
