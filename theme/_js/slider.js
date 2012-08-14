@@ -104,6 +104,9 @@ function changeSliderStatus()
 		$("#slider_wrapper").removeClass("active");
 		$(".gallery_info.mobile").remove();
 		$(".container").attr("ontouchmove","");
+		
+		$(".nav").removeClass("hidden");
+		
 		slider_status = false;
 	}
 	else if (document.body.offsetWidth<768)
@@ -113,6 +116,8 @@ function changeSliderStatus()
 		$("#slider_wrapper").addClass("active");
 		$(".gallery_info.mobile").addClass("active");
 		$(".container").attr("ontouchmove","noElasticScroll(event);");
+		
+		$(".nav").addClass("hidden");
 		
 		$(slider).append('<div class="gallery_info mobile active"><div class="gallery_status"><span class="gallery_current">'+current_slide+'</span> / <span class="gallery_all">'+slides_num+'</span></div><div class="gallery_description">'+$(slider).children("ul").children("li:nth-child("+current_slide+")").children(":first").attr("alt")+'</div></div>');
 				
