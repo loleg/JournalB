@@ -18,7 +18,7 @@
 
     <div class="aare">
         Aare<br>
-        16&deg;
+        <span class="wert"></span>&deg;
     </div>
     <date>{{$smarty.now|camp_date_format:"%e.%m.%Y"}} </date>
 

@@ -136,7 +136,7 @@ $(document).ready(function() {
 				});
 			});
 		}
-	});
+	}); // - Favorites
 	
 	// Favorites dialog
 	$('li.nav-fav a').click(function() {
@@ -155,7 +155,23 @@ $(document).ready(function() {
 		}
 	
 		return false;
-	});
+	}); // - Favorites dialog
+	
+	// Aare temperaturen
+	// TODO: move to Newscoop service
+	$.get('/services/hydrodaten.php', function(data) {
+		$.each(data.getElementsByTagName('MesPar'), function() { 
+		if ($(this).attr('DH') == 'HBCHa' && 
+			$(this).attr('StrNr') =="2135" &&
+			$(this).attr('Typ') =="03" &&
+			$(this).attr('Var') =="00") {
+				var txt = $(this).find('Wert:first').text();
+				$('.aare').slideDown().find('.wert').html(Math.round(txt));
+				return;
+		}			
+		});
+	}); // - Aare temperaturen
+	
 });
 
 
