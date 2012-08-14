@@ -59,6 +59,8 @@ function articleImageAlts()
 // When the DOM is loaded
 $(document).ready(function() {
 
+	articleImageAlts();
+
 	var myfaves = null, myfaveobj = [];
 
 	// Favorites	
@@ -119,11 +121,21 @@ $(document).ready(function() {
 		});
 	}); // - Aare temperaturen
 	
+	
+	if ($(document).width()<768) 
+	{ 
+		$(".article-community.mobile").html($(".article-community.stable").html()); 
+		$(".article-community.stable").html("");
+		collapsebleElements()
+		mobile_view = true; 
+	}
+	
 });
 
 
 function collapsebleElements()
 {
+	$(".collapse_box").children(".collapse_title").unbind("click");
 	$(".collapse_box").children(".collapse_title").click(function(){ collapseElement($(this).parent()); });
 }
 
@@ -189,3 +201,27 @@ function loadFontSize()
 		updateFontSize();
 	}
 }
+
+var mobile_view = false;
+
+$(window).resize(function(){
+	if ($(document).width()<768) 
+	{ 
+		if (!mobile_view) 
+		{ 
+			$(".article-community.mobile").html($(".article-community.stable").html()); 
+			$(".article-community.stable").html("");
+			collapsebleElements()
+			mobile_view = true; 
+		} 
+	}
+	else
+	{
+		if (mobile_view) 
+		{ 
+			$(".article-community.stable").html($(".article-community.mobile").html()); 
+			$(".article-community.mobile").html("");
+			mobile_view = false; 
+		}
+	}
+});
