@@ -19,6 +19,6 @@
 		<author>{{ $gimme->article->author->name }}</author>
 	</info>
 	
-	<a class="favorite" href="#">Favorite</a>
+	<a class="favorite" href="{{ uri options="article" }}">Favorite</a>
 		
 </div>

@@ -14,7 +14,6 @@ $expires = time() + 31536000;
 if (isset($_COOKIE['disqus_token'])) {
 
 	$userid = 	$_COOKIE['disqus_userid'];
-	$username = $_COOKIE['disqus_username'];
 	$token = 	$_COOKIE['disqus_token'];
 	$refresh = 	$_COOKIE['disqus_refresh'];
 	
@@ -40,6 +39,31 @@ if (isset($_COOKIE['disqus_token'])) {
 		
 		echo json_encode($arr);
 		
+	} elseif (isset($_GET['dofave'])) {
+	
+		$page = urldecode($_GET['dofave']);
+		if (strstr($page, 'http:') == FALSE) {
+			$page = $_SERVER['HTTP_REFERER'];
+		}
+
+		if (strstr($page, $homepage) == FALSE) {
+			die('Invalid request ' . $page);
+		}
+			
+		$threads =
+			$api->forums->listThreads(array(
+				'forum'=>$shortname, 'thread:link'=>$page
+			));
+
+		if (length($threads->response) == 1) {
+			$id = $threads->response[0]->$id;
+			$api->threads->vote(array(
+				'vote'=>1, 'thread'=>$id
+			));
+			echo('OK');
+		}
+		echo('Not OK');
+
 	} else {
 		
 		header( 'Location: ' . $homepage );
@@ -93,7 +117,6 @@ if (isset($_COOKIE['disqus_token'])) {
 		if ($tokdata === NULL) die('Error parsing json');
 		
 		setcookie('disqus_userid', $tokdata->user_id, $expires);
-		setcookie('disqus_username', $tokdata->username, $expires);
 		setcookie('disqus_token', $tokdata->access_token, $expires);
 		setcookie('disqus_refresh', $tokdata->refresh_token, $expires);
 	}

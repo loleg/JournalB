@@ -123,6 +123,16 @@ $(document).ready(function() {
 		return false;
 	}); // - Favorites dialog
 	
+	// Favorites icon
+	$('.favorite').click(function() {
+		var url = ($(this).attr('href')) ? $(this).attr('href') : document.location.href;
+		$.get('/services/disqus.php?dofave=' + encodeURI(url), function(data) {
+			console.log(data);
+		});
+	});
+
+	// - Favorites icon
+	
 	// Aare temperaturen
 	// TODO: move to Newscoop service
 	$.get('/services/hydrodaten.php', function(data) {
@@ -132,7 +142,7 @@ $(document).ready(function() {
 			$(this).attr('Typ') =="03" &&
 			$(this).attr('Var') =="00") {
 				var txt = $(this).find('Wert:first').text();
-				$('.aare .wert').html(Math.round(txt));
+				$('.aare .wert').html(Math.round(txt, 2));
 				return;
 		}			
 		});
