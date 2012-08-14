@@ -35,12 +35,11 @@
     </div>
 
     <div class="search">
-        <a href="#"><img src="{{ url static_file='_img/search.png' }}" /></a>
-		<div id="search-box" class="hidden">
-		{{ search_form template="search.tpl" submit_button="suchen" }} 
-			{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"\"" }}
-		{{ /search_form }}        
-		</div>
+    	<form method="post" name="search_articles">
+    		<input type="hidden" value="51" name="tpl">
+			<input type="hidden" value="" name="f_search_keywords">
+	    	<input type="image" src="{{ url static_file='_img/search.png' }}" value="suchen" name="f_search_articles">
+	    </form>
     </div>
 
     <div class="subtitle">die neue digitale Zeitung für Bern</div>
