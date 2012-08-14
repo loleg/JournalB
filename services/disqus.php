@@ -42,7 +42,7 @@ if (isset($_COOKIE['disqus_token'])) {
 		
 	} else {
 		
-		echo 'Hello, ' . $username . '. Have a nice day :)';
+		header( 'Location: ' . $homepage );
 		
 	}
 	
@@ -98,7 +98,7 @@ if (isset($_COOKIE['disqus_token'])) {
 		setcookie('disqus_refresh', $tokdata->refresh_token, $expires);
 	}
 
-	header( 'Location: ' + $homepage + '/?hello=' . $tokdata->username );
+	header( 'Location: ' . $homepage );
 	
 	echo('Thanks, ' . $tokdata->username . '! <a href="' . $homepage . '">Click here to continue</a>');
 	

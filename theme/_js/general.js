@@ -23,12 +23,13 @@ destroyLessCache("/themes/publication_3/theme_4/_css/");
 /* --- */
 
 // Create HTML anchors around links in text
-function urlify(text) {
-    var urlRegex = /(https?:\/\/[^\s]+)/g;
+function urlify(text, popup) {
+    var opts = '', urlRegex = /(https?:\/\/[^\s]+)/g;
+    if (popup) { opts = ' target="_blank"'; } 
     return text.replace(urlRegex, function(url) {
 		var anchor = url.replace("http://","").replace("https://","");
-        return '<a href="' + url + '">' + anchor + '</a>';
-    })
+        return '<a href="' + url + '"' + opts + '>' + anchor + '</a>';
+    });
 }
 
 // Create legends around inline images
@@ -55,15 +56,29 @@ function articleImageAlts()
 	});
 }
 
+// Reverse plugin
+jQuery.fn.reverse = [].reverse;
 
 // When the DOM is loaded
 $(document).ready(function() {
 
-	var myfaves = null, myfaveobj = [];
+	// ** Sidebar
+	// Scale community (requires reverse), allow max. 3 comments on top
+	var max_height = $('.main').height();
+	$('.sidebar .commentbox').reverse().each(function() {
+	    if ($(this).parent().height() > max_height) $(this).hide();
+	});
+	$('.sidebar .supportbox').after($('.sidebar .commentbox:gt(2)'));
+	// Enable external community links
+	$('.sidebar description:contains("http://")').each(function() { 
+		$(this).html(urlify($(this).text(), true)); 
+	});
+	// - Sidebar
 
-	// Favorites	
+	// ** Favorites	
+	var myfaves = null, myfaveobj = [];
 	$.get('/services/disqus.php?myfaves', function(data) {
-		if (typeof console != 'undefined') console.log(data);
+		//if (typeof console != 'undefined') console.log(data);
 		// Do we have any data, i.e. are we logged in?
 		if (data.length < 5) {
 			// Login authentication button
