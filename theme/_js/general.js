@@ -68,6 +68,10 @@ $(document).ready(function() {
 		if (data.length < 5) {
 			// Login authentication button
 			$(".header .login").show();
+			
+			// Hide forum
+			$(".forum").html('<a href="#">Zum Verfassen von Kommentaren bitte Anmelden</a>.');
+			
 		// Yes, we have data	
 		} else {
 			myfaves = $.parseJSON(data);
