@@ -127,8 +127,9 @@ $(document).ready(function() {
 	$('.favorite').click(function() {
 		var url = ($(this).attr('href')) ? $(this).attr('href') : document.location.href;
 		$.get('/services/disqus.php?dofave=' + encodeURI(url), function(data) {
-			console.log(data);
+			if (data != 'OK' && typeof console != 'undefined') console.log(data);
 		});
+		return false;
 	});
 
 	// - Favorites icon
