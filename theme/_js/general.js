@@ -132,7 +132,7 @@ $(document).ready(function() {
 			$(this).attr('Typ') =="03" &&
 			$(this).attr('Var') =="00") {
 				var txt = $(this).find('Wert:first').text();
-				$('.aare').slideDown().find('.wert').html(Math.round(txt));
+				$('.aare .wert').html(Math.round(txt));
 				return;
 		}			
 		});
