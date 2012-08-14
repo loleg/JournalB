@@ -6,6 +6,11 @@
 		<header>
 			<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
 
+			<div class="deck">
+				{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
+				{{ $gimme->article->deck }}	
+			</div>	
+			
 			<div class="article_info_mobile">
 				{{ if $gimme->article->publish_date }}
 				<time>
@@ -18,11 +23,6 @@
 				{{ /if }}
 				<author>{{ $gimme->article->author->name }}</author>
 			</div>
-					
-			<p class="deck">
-				{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
-				{{ $gimme->article->deck }}	
-			</p>	
 					
 			{{ include file="_tpl/article-gallery.tpl" }}
 		</header>

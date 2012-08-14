@@ -3,31 +3,48 @@
 {{ $gc = 0 }}
 
 {{ foreach $gimme->article->slideshows as $slideshow }}
-	<div id="slider_wrapper"></div>
-	<div id="slider" class="nivoSlider">
+	<div id="slider_wrapper" class="slider_wrapper"></div>
+	<div id="slider" class="slider">
+	<ul>
 	{{ foreach $slideshow->items as $item }}
 		{{ if $item->is_image }}
 			{{ $is_gallery = true }}
-			<img class="slider_image" id="gallery_image_{{ $gc }}" src="{{ $item->image->src }}" width="{{ $item->image->width }}" height="{{ $item->image->height }}" alt="{{ $item->caption }}" />
+			<li><img src="{{ $item->image->src }}" alt="{{ $item->caption }}" /></li>
+			{{ $gc = $gc + 1 }}
+		{{ /if }}
+		
+		{{ if $item->is_video }}
+			{{ $is_gallery = true }}
+			{{ $url = $item->video->url|replace:'youtu.be':'youtube.com/v' }}
+			{{ $url = $url|replace:'youtube.com/embed':'youtube.com/v' }}
+			{{ if preg_match("/youtube/", $url) }}
+				<li><object type="application/x-shockwave-flash" data="{{ $url }}" alt="{{ $item->caption }}"><param name="movie" value="{{ $url }}"><param name="wmode" value="opaque"><embed src="{{ $url }}" type="application/x-shockwave-flash" wmode="opaque" type="application/x-shockwave-flash"></embed></object></li>
+			{{ else }}
+				<li><iframe src="{{ $url }}" frameborder="0"  alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
+			{{ /if }}
 			{{ $gc = $gc + 1 }}
 		{{ /if }}
 	{{ /foreach }}
+	</ul>
 	</div>
 	{{ break }}
 {{ /foreach }}
 
 {{ if not $is_gallery }}
 
+	<script type="text/javascript">
+		$("#slider").remove();
+		$("#slider_wrapper").remove();
+	</script>
+
 	{{ image rendition="articlebig" }}
-		<div id="gallery_image_0">
-		  <figure class="clearall">
-			  <img src="{{ $image->src }}" width="{{ $image->width }}" height="{{ $image->height }}" style="max-width: 100%" alt="{{ $image->caption }} (photo: {{ $image->photographer }})" />
-		  </figure>
+		<div id="article_image">
+			<img src="{{ $image->src }}" width="{{ $image->width }}" height="{{ $image->height }}" style="max-width: 100%" alt="{{ $image->caption }} {{ if not $image->photographer == ""}}<br><br>(Foto: {{ $image->photographer }}) {{ /if }}" />
 		</div>
 		<script type="text/javascript">
 			$(".gallery_all").html(1);
 			$(".gallery_current").html(1);
-			$(".gallery_description").html($("#gallery_image_0 img").attr("alt"));
+			$(".gallery_description").html($("#article_image img").attr("alt"));
 		</script>
 		{{ $is_image = true }}
 	{{ /image }} 
@@ -43,40 +60,7 @@
 	{{ /if }}
 	
 {{ else }}
-	<script type="text/javascript" src="{{ url static_file='_js/slider.js' }}"></script>
 	<script type="text/javascript" src="{{ url static_file='_js/swipe.js' }}"></script>
-	<script type="text/javascript">
-		var total = jQuery('#slider img').length;
-		var current_slide_no = 1;
-
-		$(".gallery_all").html(total);
-		$(".gallery_description").html($("#gallery_image_0").attr("alt"));
-
-		$('#slider').nivoSlider({
-			controlNav: false,
-			effect: 'fade',
-			directionNavHide: true,
-			startSlide: 0,
-			manualAdvance: true,
-			animSpeed: 500,
-			beforeChange: function() {
-				$(".gallery_description").fadeOut();
-			},
-			afterChange: function() {
-				current_slide_no = $('#slider').data('nivo:vars').currentSlide;
-				$(".gallery_description").html($("#gallery_image_"+current_slide_no).attr("alt"));
-				$(".gallery_current").html(current_slide_no+1);
-				$(".gallery_description").fadeIn();
-			}
-		});
-		
-		$("#slider").touchwipe({
-			wipeRight: "$('.nivo-prevNav').trigger('click');",	
-			wipeLeft: "$('.nivo-nextNav').trigger('click');",	
-			wipeNone: "changeSliderStatus();",
-			min_move_x: 10,
-			min_move_y: 10,
-			preventDefaultEvents: false
-		});
-	</script>
+	<script type="text/javascript" src="{{ url static_file='_js/slider.js' }}"></script>
+	<script type="text/javascript"> initSlider("slider"); </script>
 {{ /if }}

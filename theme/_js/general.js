@@ -23,12 +23,11 @@ destroyLessCache("/themes/publication_3/theme_4/_css/");
 /* --- */
 
 // Create HTML anchors around links in text
-function urlify(text, popup) {
-    var opts = '', urlRegex = /(https?:\/\/[^\s]+)/g;
-    if (popup) { opts = ' target="_blank"'; } 
+function urlify(text) {
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.replace(urlRegex, function(url) {
 		var anchor = url.replace("http://","").replace("https://","");
-        return '<a href="' + url + '"' + opts + '>' + anchor + '</a>';
+        return '<a href="' + url + '">' + anchor + '</a>';
     })
 }
 
@@ -56,58 +55,13 @@ function articleImageAlts()
 	});
 }
 
-// Gallery slider support
-sliderStatus = false;
-function changeSliderStatus()
-{
-	if (sliderStatus)
-	{
-		$("#slider").removeClass("active");
-		$("#slider").css("margin-top","0px");
-		$("#slider_wrapper").removeClass("active");
-		$(".gallery_info.mobile").remove();
-		$(".container").attr("ontouchmove","");
-		sliderStatus = false;
-	}
-	else if (document.body.offsetWidth<768)
-	{
-		$("#slider").addClass("active");
-		$("#slider").css("margin-top","-"+$("#slider").height()/2+"px");
-		$("#slider_wrapper").addClass("active");
-		$(".gallery_info.mobile").addClass("active");
-		$(".container").attr("ontouchmove","noElasticScroll(event);");
-		
-		var total = $('#slider .slider_image').length;
-		var current_slide_no = $('#slider').data('nivo:vars').currentSlide; 
-		var description = $("#gallery_image_"+current_slide_no).attr("alt");
-		$("#slider").append('<div class="gallery_info mobile active"><div class="gallery_status"><span class="gallery_current">'+(current_slide_no+1)+'</span> / <span class="gallery_all">'+total+'</span></div><div class="gallery_description">'+description+'</div></div>');
-				
-		sliderStatus = true;
-	}
-}
-
-// Reverse plugin
-jQuery.fn.reverse = [].reverse;
 
 // When the DOM is loaded
 $(document).ready(function() {
 
-	// Scale community sidebar (requires reverse)
-	var max_height = $('.main').height();
-	$('.sidebar .commentbox').reverse().each(function() {
-	    if ($(this).parent().height() > max_height) $(this).hide();
-	});
-	
-	// Allow max. 3 comments above the Journal B box, just before the recommend box
-	$('.sidebar .supportbox').after($('.sidebar .commentbox:gt(2)'));
-	
-	// Enable external community links
-	$('.sidebar description:contains("http://")').each(function() { 
-		$(this).html(urlify($(this).text(), true)); 
-	});
+	var myfaves = null, myfaveobj = [];
 
 	// Favorites	
-	var myfaves = null, myfaveobj = [];	
 	$.get('/services/disqus.php?myfaves', function(data) {
 		if (typeof console != 'undefined') console.log(data);
 		// Do we have any data, i.e. are we logged in?
