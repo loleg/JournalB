@@ -44,7 +44,7 @@
 			{{ set_issue number="3" }}
 			{{ set_section number="1" }}
 			<div class="caption">Journal B</div>
-			{{ list_articles length="5" order="byPublishDate desc" ignore_section="true" }}
+			{{ list_articles length="5" order="byPublishDate desc" }}
 				<a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a>
 				{{ if not $gimme->current_list->at_end }}|{{ /if }}
 			{{ /list_articles }}
