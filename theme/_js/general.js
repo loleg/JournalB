@@ -143,7 +143,7 @@ $(document).ready(function() {
 			$(this).attr('Typ') =="03" &&
 			$(this).attr('Var') =="00") {
 				var txt = $(this).find('Wert:first').text();
-				$('.aare .wert').html(Math.round(txt, 2));
+				$('.aare .wert').html(parseFloat(txt).toFixed(1));
 				return;
 		}			
 		});
