@@ -26,14 +26,6 @@
         <a href="/">Journal B</a>
     </h1>
     
-    <div class="login" style="display:none">
-       	<button>
-       		Anmelden
-	       	<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
-       	</button>
-      	<!--<a class="register">Neu hier? Registrieren</a>-->
-    </div>
-
     <div class="search">
         <a href="#"><img src="{{ url static_file='_img/search.png' }}" /></a>
 		<div id="search-box" class="hidden">

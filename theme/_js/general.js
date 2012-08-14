@@ -67,14 +67,7 @@ $(document).ready(function() {
 		// Do we have any data, i.e. are we logged in?
 		if (data.length < 5) {
 			// Login authentication button
-			$('.header .login button').click(function() {
-				document.location.href = '/services/disqus.php?auth';
-			
-			// Create profile signup link
-			}).parent().show().find('a').attr('href', 
-				'https://disqus.com/profile/signup/?next=' + document.location.href 
-			);
-					
+			$(".header .login").show();
 		// Yes, we have data	
 		} else {
 			myfaves = $.parseJSON(data);
