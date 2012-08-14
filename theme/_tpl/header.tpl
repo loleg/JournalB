@@ -26,14 +26,6 @@
         <a href="/">Journal B</a>
     </h1>
     
-    <div class="login" style="display:none">
-       	<button>
-       		Anmelden
-	       	<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
-       	</button>
-      	<!--<a class="register">Neu hier? Registrieren</a>-->
-    </div>
-
     <div class="search">
     	<form method="post" name="search_articles">
     		<input type="hidden" value="51" name="tpl">
