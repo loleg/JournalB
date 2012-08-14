@@ -39,8 +39,9 @@ if (isset($_COOKIE['disqus_token'])) {
 		
 		echo json_encode($arr);
 		
-	} elseif (isset($_GET['dofave'])) {
+	} elseif (isset($_GET['dofave']) && isset($_GET['vote'])) {
 	
+		$vote = intval($_GET['vote']) or die('Invalid request');
 		$page = urldecode($_GET['dofave']);
 		if (strstr($page, 'http:') == FALSE) {
 			$page = $_SERVER['HTTP_REFERER'];
@@ -49,20 +50,23 @@ if (isset($_COOKIE['disqus_token'])) {
 		if (strstr($page, $homepage) == FALSE) {
 			die('Invalid request ' . $page);
 		}
+		
+		//echo($page);
 			
 		$threads =
 			$api->forums->listThreads(array(
 				'forum'=>$shortname, 'thread:link'=>$page
 			));
-
-		if (length($threads->response) == 1) {
-			$id = $threads->response[0]->$id;
+		
+		//var_dump($threads);
+		
+		if (count($threads) == 1) {
+			$id = $threads[0]->id;
 			$api->threads->vote(array(
-				'vote'=>1, 'thread'=>$id
+				'vote'=>$vote, 'thread'=>$id
 			));
 			echo('OK');
 		}
-		echo('Not OK');
 
 	} else {
 		

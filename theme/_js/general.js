@@ -125,8 +125,16 @@ $(document).ready(function() {
 	
 	// Favorites icon
 	$('.favorite').click(function() {
+		var vote = 1;
+		if ($(this).hasClass('checked')) {
+			$(this).removeClass('checked'); vote = -1;
+		} else {
+			$(this).addClass('checked');
+		}
+		// Execute call
 		var url = ($(this).attr('href')) ? $(this).attr('href') : document.location.href;
-		$.get('/services/disqus.php?dofave=' + encodeURI(url), function(data) {
+		if (url.indexOf('http:') != 0) url = document.location.protocol + '//' + document.location.host + url;
+		$.get('/services/disqus.php?dofave=' + encodeURI(url) + '&vote=' + vote, function(data) {
 			if (data != 'OK' && typeof console != 'undefined') console.log(data);
 		});
 		return false;
