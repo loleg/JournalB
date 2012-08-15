@@ -25,7 +25,7 @@ if (isset($_COOKIE['disqus_token'])) {
 		
 		$activities =
 			$api->users->listActivity(array(
-				'user'=>$userid, 'include'=>'user'
+				'user'=>$userid, 'include'=>'user', 'limit'=>50
 			));
 			
 		foreach ($activities as $k => $v) {
