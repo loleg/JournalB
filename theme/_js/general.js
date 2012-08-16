@@ -62,6 +62,11 @@ jQuery.fn.reverse = [].reverse;
 // When the DOM is loaded
 $(document).ready(function() {
 
+<<<<<<< HEAD
+	articleImageAlts();
+
+	var myfaves = null, myfaveobj = [];
+=======
 	// ** Sidebar
 	// Scale community (requires reverse), allow max. 3 comments on top
 	var max_height = $('.main').height();
@@ -74,6 +79,7 @@ $(document).ready(function() {
 		$(this).html(urlify($(this).text(), true)); 
 	});
 	// - Sidebar
+>>>>>>> 957a8582432aac7c9e6d686a4e3212c891e3c4d9
 
 	// ** Favorites	
 	var myfaves = null, myfaveobj = [];
@@ -157,11 +163,21 @@ $(document).ready(function() {
 		});
 	}); // - Aare temperaturen
 	
+	
+	if ($(document).width()<768) 
+	{ 
+		$(".article-community.mobile").html($(".article-community.stable").html()); 
+		$(".article-community.stable").html("");
+		collapsebleElements()
+		mobile_view = true; 
+	}
+	
 });
 
 
 function collapsebleElements()
 {
+	$(".collapse_box").children(".collapse_title").unbind("click");
 	$(".collapse_box").children(".collapse_title").click(function(){ collapseElement($(this).parent()); });
 }
 
@@ -227,3 +243,27 @@ function loadFontSize()
 		updateFontSize();
 	}
 }
+
+var mobile_view = false;
+
+$(window).resize(function(){
+	if ($(document).width()<768) 
+	{ 
+		if (!mobile_view) 
+		{ 
+			$(".article-community.mobile").html($(".article-community.stable").html()); 
+			$(".article-community.stable").html("");
+			collapsebleElements()
+			mobile_view = true; 
+		} 
+	}
+	else
+	{
+		if (mobile_view) 
+		{ 
+			$(".article-community.stable").html($(".article-community.mobile").html()); 
+			$(".article-community.mobile").html("");
+			mobile_view = false; 
+		}
+	}
+});

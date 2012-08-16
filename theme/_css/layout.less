@@ -413,9 +413,12 @@
 		.capitalize;
 		margin-bottom: 4px;
 	}
-	.footer-box li, .footer-box li a {
+	.footer-box li, .footer-box li a, .footer-box.section-front a {
 		line-height: 16px !important;
 		font-size: 94%;
+	}
+	.footer-box li a:hover, .footer-box.section-front a:hover {
+		text-decoration: underline;
 	}
 	.footer-box li {
 		margin: 0px;
@@ -428,9 +431,6 @@
 	.footer-box.section-front {
 		width: 389px;
 	}
-	.footer-box.section-front a {
-		font-size: 94%;
-	}
 	
 	.partners {
 		padding-top: 15px;
@@ -440,6 +440,9 @@
 	.partners .caption {
 		.capitalize;
 		margin-right: 7px;
+	}
+	.partners a:hover {
+		text-decoration: underline;
 	}
 
 
@@ -481,8 +484,11 @@
         max-width: 55px;
         max-height: 60px;
     }
-    .commentbox description a:hover {
-		text-decoration: underline;
+	.commentbox author {
+		.baselink;
+	}
+	.commentbox author:hover {
+		background: none;
 	}
     .commentbox.layouttwitter info {
         display: block;
@@ -492,7 +498,6 @@
     .commentbox.layouttwitter author {
         display: block;
         width: 90px;
-        .community-title;
         margin-top: -3px;
     }
     .commentbox.layouttwitter date {
@@ -510,7 +515,6 @@
     }
     .commentbox.layoutsimple author {
         display: block;
-        .community-title;
     }
     .commentbox.layoutsimple description {
         display: block;
@@ -565,6 +569,10 @@
         padding-bottom: 6px;
         .community-font;
     }
+	.adbox p a, .adbox description a {
+		.communitybaselink;
+		background: none;
+	}
     .adbox p {
         margin-top: 4px;
         margin-bottom: 4px;
@@ -579,11 +587,14 @@
     }
     .adbox .link {
         text-align: right;
-        .community-font;
     }
     .adbox .link a{
-        .underline("",3px,1px);
+        .baselink;
     }
+	
+	.baselinktest {
+		.baselink;
+	}
     
     .community-box {
     	padding-top: 0px;
@@ -614,10 +625,6 @@
     .socialbox a {
         text-decoration: none;
     }
-	
-	.article-community.mobile {
-		display: none;
-	}
 	
 	
 	blockquote {
@@ -701,7 +708,7 @@
 		width: 100px;
 	}
     .article_info author {
-        .community-title;
+        .baselinklabel;
         display: block;
         text-align: center;
 		margin-bottom: 15px;

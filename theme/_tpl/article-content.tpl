@@ -52,9 +52,7 @@
 	{{ /if }}
 	</article>
 
-	<div class="article-community mobile">
-		{{ include file="_tpl/article-community.tpl" }}
-	</div>
+	<div class="article-community mobile"></div>
 	
 	{{ if $gimme->preview }}
 		<!-- Article frontpage preview -->
@@ -76,4 +74,3 @@
 		
 </div>
 
-<script language="javascript">articleImageAlts();</script>

@@ -44,6 +44,8 @@
 			
 		</article>
 	
+		<div class="article-community mobile"></div>
+	
 	{{ include file="_tpl/article-forum.tpl" }}
 	
 	</div>

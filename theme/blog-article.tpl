@@ -28,9 +28,13 @@
 
         <div class="row content">
             			
-			{{ include file="_tpl/community-authors.tpl" }}			
+			<div class="article-community stable">
 						
-			{{ include file="_tpl/community-sectionbox.tpl" }}			
+				{{ include file="_tpl/community-authors.tpl" }}			
+							
+				{{ include file="_tpl/community-sectionbox.tpl" }}	
+
+			</div>
 						
             {{ include file="_tpl/community.tpl" }}
 
