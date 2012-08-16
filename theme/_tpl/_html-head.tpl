@@ -10,9 +10,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/slider.css' }}">
+	<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/slider.css' }}">
     <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
 	{{ if $native_application }} <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/native-application.less' }}"> {{ /if }}
+	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">
 
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

@@ -1,0 +1,6 @@
+.footer { display: none; }
+.header > * { display: none; }
+.header .logo { display: block; }	
+.addbar, .slider, .forum { display: none; } 
+.controlbar_mobile, .article_info_mobile { display: none; } 
+.sidebar, .article-community { display: none; } 
