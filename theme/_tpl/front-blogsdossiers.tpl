@@ -28,7 +28,7 @@
 				{{ set_issue number="1" }}
 				<h2><a href="{{ url options="issue" }}">Aktuelle Dossiers</a></h2>
 				<description>
-					{{ list_articles length="3" order="byPublishDate desc" constraints="OnFrontPage is on" ignore_section="true" }}
+					{{ list_articles length="3" order="byPublishDate desc" ignore_section="true" }}
 						<div class="dsect">
 							<a href="{{ url options="article" }}">
 								<div class="description"><span class="capitalize">{{ $gimme->article->name }}</span> {{ $gimme->article->subtitle|strip_tags }}</div>
