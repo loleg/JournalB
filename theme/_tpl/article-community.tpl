@@ -13,8 +13,8 @@
 			<div class="collapse_content">
 	{{ /if }}
 	<p>
-	<div class="community-title">
-		<a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a>
+	<div>
+		<a href="{{ uri options="article" }}" class="baselink">{{ $gimme->article->name }}</a>
 	</div>
 	<div class="info">
 	{{ if $publish_date }}

@@ -1,23 +1,12 @@
 {{ assign var="column" value="0" }}
-{{ assign var="dossiers_on_page" value="25" }}
+{{ assign var="dossiers_on_page" value="26" }}
+{{ assign var="article_section" value="dossiers" }}
 
 {{ list_articles }}
 
 	{{ if $column%2 == 0 }}<div class="row newsrow">{{ /if }}
 	
-		<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-dossiers layoutsimple">
-
-			<div class="newsboxcontent">
-				<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
-				<description>
-					<p>{{ $gimme->article->subtitle }}</p>
-				</description>
-			</div>
-
-			<info>
-				<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date>
-			</info>			
-		</div>
+		{{ include file="_tpl/newsbox-simple.tpl" }}
 				
 	{{ if $column%2 == 1 || $gimme->current_list->at_end}}</div>{{ /if }}
 		

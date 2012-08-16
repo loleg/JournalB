@@ -1,4 +1,4 @@
-{{ if not $gimme->article->author_profile }}
+{{ if $gimme->article->author_profile }}
 	{{ $i = 0 }}
 	{{ list_article_authors }}
 		{{ if $gimme->current_list->at_beginning }}

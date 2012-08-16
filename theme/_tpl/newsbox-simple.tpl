@@ -3,6 +3,7 @@
 	<div class="newsboxcontent">
 		{{ if $gimme->article->issue->number == 1 }}<h2>Dossier</h2>{{ /if }}
 		{{ if $gimme->article->issue->number == 2 }}<h2>Blog</h2>{{ /if }}
+		{{ if $gimme->article->issue->number == 4 }}<h2>Kolumne</h2>{{ /if }}
 		<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
 		{{ $len = 39 * floor(9 - round(ceil($gimme->article->name|strlen / 23))*1.5) }}
 		<description>
@@ -28,6 +29,6 @@
 		<author>{{ $gimme->article->author->name }}</author>
 	</info>
 
-	<a class="favorite" href="#">Favorite</a>
+	<a class="favorite" href="{{ uri options="article" }}">Favorite</a>
 	
 </div>

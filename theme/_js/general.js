@@ -23,12 +23,13 @@ destroyLessCache("/themes/publication_3/theme_4/_css/");
 /* --- */
 
 // Create HTML anchors around links in text
-function urlify(text) {
-    var urlRegex = /(https?:\/\/[^\s]+)/g;
+function urlify(text, popup) {
+    var opts = '', urlRegex = /(https?:\/\/[^\s]+)/g;
+    if (popup) { opts = ' target="_blank"'; } 
     return text.replace(urlRegex, function(url) {
 		var anchor = url.replace("http://","").replace("https://","");
-        return '<a href="' + url + '">' + anchor + '</a>';
-    })
+        return '<a href="' + url + '"' + opts + '>' + anchor + '</a>';
+    });
 }
 
 // Create legends around inline images
@@ -55,21 +56,43 @@ function articleImageAlts()
 	});
 }
 
+// Reverse plugin
+jQuery.fn.reverse = [].reverse;
 
 // When the DOM is loaded
 $(document).ready(function() {
 
+<<<<<<< HEAD
 	articleImageAlts();
 
 	var myfaves = null, myfaveobj = [];
+=======
+	// ** Sidebar
+	// Scale community (requires reverse), allow max. 3 comments on top
+	var max_height = $('.main').height();
+	$('.sidebar .commentbox').reverse().each(function() {
+	    if ($(this).parent().height() > max_height) $(this).hide();
+	});
+	$('.sidebar .supportbox').after($('.sidebar .commentbox:gt(2)'));
+	// Enable external community links
+	$('.sidebar description:contains("http://")').each(function() { 
+		$(this).html(urlify($(this).text(), true)); 
+	});
+	// - Sidebar
+>>>>>>> 957a8582432aac7c9e6d686a4e3212c891e3c4d9
 
-	// Favorites	
+	// ** Favorites	
+	var myfaves = null, myfaveobj = [];
 	$.get('/services/disqus.php?myfaves', function(data) {
-		if (typeof console != 'undefined') console.log(data);
+		//if (typeof console != 'undefined') console.log(data);
 		// Do we have any data, i.e. are we logged in?
 		if (data.length < 5) {
 			// Login authentication button
 			$(".header .login").show();
+			
+			// Hide forum
+			$(".forum").html('<a href="#">Zum Verfassen von Kommentaren bitte Anmelden</a>.');
+			
 		// Yes, we have data	
 		} else {
 			myfaves = $.parseJSON(data);
@@ -106,6 +129,25 @@ $(document).ready(function() {
 		return false;
 	}); // - Favorites dialog
 	
+	// Favorites icon
+	$('.favorite').click(function() {
+		var vote = 1;
+		if ($(this).hasClass('checked')) {
+			$(this).removeClass('checked'); vote = -1;
+		} else {
+			$(this).addClass('checked');
+		}
+		// Execute call
+		var url = ($(this).attr('href')) ? $(this).attr('href') : document.location.href;
+		if (url.indexOf('http:') != 0) url = document.location.protocol + '//' + document.location.host + url;
+		$.get('/services/disqus.php?dofave=' + encodeURI(url) + '&vote=' + vote, function(data) {
+			if (data != 'OK' && typeof console != 'undefined') console.log(data);
+		});
+		return false;
+	});
+
+	// - Favorites icon
+	
 	// Aare temperaturen
 	// TODO: move to Newscoop service
 	$.get('/services/hydrodaten.php', function(data) {
@@ -115,7 +157,7 @@ $(document).ready(function() {
 			$(this).attr('Typ') =="03" &&
 			$(this).attr('Var') =="00") {
 				var txt = $(this).find('Wert:first').text();
-				$('.aare').slideDown().find('.wert').html(Math.round(txt));
+				$('.aare .wert').html(parseFloat(txt).toFixed(1));
 				return;
 		}			
 		});

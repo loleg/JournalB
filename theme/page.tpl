@@ -1,24 +1,20 @@
-<!-- Search page template -->
+<!-- Dossier page template -->
 
 {{ include file="_tpl/_html-head.tpl" }}
 
-<body class="search-page">
+<body class="section-page">
 
 <div class="container">
 
     <div class="main">
+	
+		{{ include file="_tpl/header.tpl" }}
 
-        {{ include file="_tpl/header.tpl" }}
-        
-        <div class="searchbox search-top">
-        	<h1>Suchen</h1>
-		</div>
+        <div class="row content">
 
-        <ol class="row content search-content">
-
-			{{ include file="_tpl/search-content.tpl" }}
+			{{ include file="_tpl/page-article.tpl" }}
             
-        </ol><!-- /content -->
+        </div><!-- /content -->
 
     </div><!-- /main -->
 

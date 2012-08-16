@@ -40,14 +40,15 @@
 	
 	<div class="footer-box section-front">
 		<div class="sect">
+		{{ local }}
+			{{ set_issue number="3" }}
+			{{ set_section number="1" }}
 			<div class="caption">Journal B</div>
-			<a href="#">Verein & AG</a> | 
-			<a href="#">Werbung</a> | 
-			<a href="#">AGB & Datenschutz</a> | 
-			<a href="#">Impressum</a> | 
-			<a href="#">Hilfe</a> | 
-			<a href="#">Kontakt</a> | 
-			<a href="#">Dialogkultur & Netiquette</a>
+			{{ list_articles length="5" order="byPublishDate desc" }}
+				<a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a>
+				{{ if not $gimme->current_list->at_end }}|{{ /if }}
+			{{ /list_articles }}
+		{{ /local }}
 		</div>
 		
 		<div class="sect">

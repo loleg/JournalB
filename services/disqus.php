@@ -14,7 +14,6 @@ $expires = time() + 31536000;
 if (isset($_COOKIE['disqus_token'])) {
 
 	$userid = 	$_COOKIE['disqus_userid'];
-	$username = $_COOKIE['disqus_username'];
 	$token = 	$_COOKIE['disqus_token'];
 	$refresh = 	$_COOKIE['disqus_refresh'];
 	
@@ -26,7 +25,7 @@ if (isset($_COOKIE['disqus_token'])) {
 		
 		$activities =
 			$api->users->listActivity(array(
-				'user'=>$userid, 'include'=>'user'
+				'user'=>$userid, 'include'=>'user', 'limit'=>50
 			));
 			
 		foreach ($activities as $k => $v) {
@@ -40,9 +39,38 @@ if (isset($_COOKIE['disqus_token'])) {
 		
 		echo json_encode($arr);
 		
+	} elseif (isset($_GET['dofave']) && isset($_GET['vote'])) {
+	
+		$vote = intval($_GET['vote']) or die('Invalid request');
+		$page = urldecode($_GET['dofave']);
+		if (strstr($page, 'http:') == FALSE) {
+			$page = $_SERVER['HTTP_REFERER'];
+		}
+
+		if (strstr($page, $homepage) == FALSE) {
+			die('Invalid request ' . $page);
+		}
+		
+		//echo($page);
+			
+		$threads =
+			$api->forums->listThreads(array(
+				'forum'=>$shortname, 'thread:link'=>$page
+			));
+		
+		//var_dump($threads);
+		
+		if (count($threads) == 1) {
+			$id = $threads[0]->id;
+			$api->threads->vote(array(
+				'vote'=>$vote, 'thread'=>$id
+			));
+			echo('OK');
+		}
+
 	} else {
 		
-		echo 'Hello, ' . $username . '. Have a nice day :)';
+		header( 'Location: ' . $homepage );
 		
 	}
 	
@@ -93,12 +121,11 @@ if (isset($_COOKIE['disqus_token'])) {
 		if ($tokdata === NULL) die('Error parsing json');
 		
 		setcookie('disqus_userid', $tokdata->user_id, $expires);
-		setcookie('disqus_username', $tokdata->username, $expires);
 		setcookie('disqus_token', $tokdata->access_token, $expires);
 		setcookie('disqus_refresh', $tokdata->refresh_token, $expires);
 	}
 
-	header( 'Location: ' + $homepage + '/?hello=' . $tokdata->username );
+	header( 'Location: ' . $homepage );
 	
 	echo('Thanks, ' . $tokdata->username . '! <a href="' . $homepage . '">Click here to continue</a>');
 	
