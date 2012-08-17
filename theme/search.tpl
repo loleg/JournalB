@@ -10,15 +10,11 @@
 
         {{ include file="_tpl/header.tpl" }}
         
-        <div class="searchbox search-top">
-        	<h1>Suchen</h1>
-		</div>
-
-        <ol class="row content search-content">
-
-			{{ include file="_tpl/search-content.tpl" }}
-            
-        </ol><!-- /content -->
+        <div class="mcontentbar">
+        	
+        	{{ include file="_tpl/search-content.tpl" }}
+	                 
+        </div>
 
     </div><!-- /main -->
 

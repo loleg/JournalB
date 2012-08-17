@@ -169,22 +169,22 @@
 	.newsbox {
 		background-color: #cecdcc;
 	}
-	.newsbox.section-front, .titlebox.section-front, li.section-front, .footer-box.section-front {
+	.section-front, .newsbox.section-front, .titlebox.section-front, li.section-front, .footer-box.section-front {
 		background-color: #cecdcc;
 	}
-    .newsbox.section-alltag, .titlebox.section-alltag, li.section-alltag, .footer-box.section-alltag {
+    .section-alltag, .newsbox.section-alltag, .titlebox.section-alltag, li.section-alltag, .footer-box.section-alltag {
         background-color: #c6ffd8;
     }
-    .newsbox.section-politik, .titlebox.section-politik, li.section-politik, .footer-box.section-politik {
+    .section-politik, .newsbox.section-politik, .titlebox.section-politik, li.section-politik, .footer-box.section-politik {
         background-color: #cde2ff;
     }
-    .newsbox.section-kultur, .titlebox.section-kultur, li.section-kultur, .footer-box.section-kultur {
+    .section-kultur, .newsbox.section-kultur, .titlebox.section-kultur, li.section-kultur, .footer-box.section-kultur {
         background-color: #ffbe98;
     }
-    .newsbox.section-blogs, .titlebox.section-blogs, li.section-blogs, .footer-box.section-blogs {
+    .section-blogs, .newsbox.section-blogs, .titlebox.section-blogs, li.section-blogs, .footer-box.section-blogs {
         background-color: #f1e2ef;
     }
-    .newsbox.section-dossiers, .titlebox.section-dossiers, li.section-dossiers, .footer-box.section-dossiers {
+    .section-dossiers, .newsbox.section-dossiers, .titlebox.section-dossiers, li.section-dossiers, .footer-box.section-dossiers {
         background-color: #ffffa0;
     }
 	
@@ -325,16 +325,21 @@
         width: 150px;
     }
     
+    /* Search form */
+    .searchform {
+	    left: 24%;
+	    position: relative;
+	}
+    .searchform .search-button { display: none; }
+    .search-keywords input {
+	    font: inherit; color: black;
+	    height: 2em; text-align: center;
+	    margin: 0px; padding: 0px;
+	    width:100%;
+	    background: #CECDCC url(../_img/search.png) no-repeat right center;
+    }
+    
     /* Search results */
-    .searchbox *, .searchbox form input {
-    	vertical-align: middle;
-    	display: inline-block;
-    	clear: none;
-    }
-    .searchbox form {
-	    margin:	0px;
-	    float: right;
-    }
     .search-content ol {
 	    list-style-type: none;
     }
@@ -345,22 +350,37 @@
     }
     .search-content li {
 	    list-style-type: none;
-	    border-top: 4px solid #cecdcc;
-	    padding-top: 10px;
+	    padding-top: 0px;
+	    margin-bottom: 0px;
 	    padding-left: 5px;
 	    clear:both;
     }
-    .search-content img {
-	    height:64px; 
-	    width:64px;
+    .search-content info {
+	    .info;
+    }
+    .search-content description {
+	    display: block;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        .community-font;
+    }
+    .searchbox {
+        padding: 0;
+        height: 71px;
+        overflow: hidden;
+        color: #000;
+    }
+    .searchbox img {
 	    margin-right: 10px;
 	    margin-bottom: 10px;
     }
-    .search-content .info {
-	    float:right;
-	    width:100px;
+    .searchbox title {
+        margin-top: 6px;
+        margin-left: 120px;
+        display: block;
+        .capitalize;
     }
-	
+    	
 	.main_footer {
 		display: none;
 	}
