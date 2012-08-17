@@ -26,7 +26,11 @@
 					  <img src="{{ $image->src }}" width="{{ $image->width }}" height="{{ $image->height }}" style="width: 100%" alt="{{ $image->caption }} (photo: {{ $image->photographer }})" />
 				  </figure>
 				{{ /image }} 
-				<description>{{ $gimme->article->full_text->first_paragraph }}</description>
+				{{ if $gimme->current_list->at_beginning }}
+					<description>{{ $gimme->article->full_text }}</description>
+				{{ else }}
+					<description>{{ $gimme->article->full_text->first_paragraph }}</description>
+				{{ /if }}
 			</article>
 		</div>
 		

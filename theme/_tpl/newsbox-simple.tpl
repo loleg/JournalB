@@ -12,7 +12,7 @@
 			<h2>Blog</h2>
 			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->section->name }}</a></h1>
 
-		{{ if $gimme->article->issue->number == 4 }}
+		{{ elseif $gimme->article->issue->number == 4 }}
 			{{ $len = -23 }}
 			<h2>Kolumne</h2>
 			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->section->name }}</a></h1>
@@ -23,7 +23,7 @@
 			
 		{{ /if }}
 		
-		{{ $len = $len + 39 * floor(9 - round(ceil($gimme->article->name|strlen / 23))*1.5) }}
+		{{ $len = $len + 36 * floor(9 - round(ceil($gimme->article->name|strlen / 23))*1.5) }}
 		<description>
 			<p>
 				{{ if $gimme->article->deck=="" }} 

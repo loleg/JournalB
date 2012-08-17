@@ -62,11 +62,8 @@ jQuery.fn.reverse = [].reverse;
 // When the DOM is loaded
 $(document).ready(function() {
 
-<<<<<<< HEAD
 	articleImageAlts();
 
-	var myfaves = null, myfaveobj = [];
-=======
 	// ** Sidebar
 	// Scale community (requires reverse), allow max. 3 comments on top
 	var max_height = $('.main').height();
@@ -79,7 +76,6 @@ $(document).ready(function() {
 		$(this).html(urlify($(this).text(), true)); 
 	});
 	// - Sidebar
->>>>>>> 957a8582432aac7c9e6d686a4e3212c891e3c4d9
 
 	// ** Favorites	
 	var myfaves = null, myfaveobj = [];
