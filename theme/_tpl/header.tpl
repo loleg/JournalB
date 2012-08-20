@@ -26,9 +26,8 @@
     </h1>
     
     <div class="search">
-    	<form method="post" name="search_articles">
+    	<form method="post" name="search_articles_header">
     		<input type="hidden" value="51" name="tpl">
-			<input type="hidden" value="" name="f_search_keywords">
 	    	<input type="image" src="{{ url static_file='_img/search.png' }}" value="suchen" name="f_search_articles">
 	    </form>
     </div>

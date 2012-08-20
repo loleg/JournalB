@@ -3,27 +3,56 @@
 	<h2 class="search-keywords">
 		{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"Suche...\"" }}
 	</h2>
-	
+
+	<div class="lists" style="text-align:right">
+		<a onclick="$('.search-advanced').slideDown();return false;" href="#">Suche eingrenzen</a>
+	</div>
+
 	<div class="search-advanced hidden">
-		<div class="search-filter">
-			<input class="radio" name="f_search_scope" value="content" checked="checked" type="radio"> Inhalt			<input class="radio" name="f_search_scope" value="title" type="radio"> Titel
-			<input class="radio" name="f_search_scope" value="author" type="radio"> Autor
-		</div>
-		<div class="search-date">
-			<span class="g-left">von {{ camp_edit object="search" attribute="start_date" }}</span>
-			<span class="g-right">bis {{ camp_edit object="search" attribute="end_date" }}</span>
-		</div>
-	</div>
+		<button class="button-close" onclick="$('.search-advanced').hide()">X</button>
 	
-	<div class="lists" style="float:right">
-		<a onclick="$('.search-advanced').slideDown();$(this).hide(); return false;" href="#">Suche eingrenzen</a>
-	</div>
+		<!-- f_search_start_date	2018-01-31 f_search_end_date	2018-02-08-->
 		
+		<ul class="search-dates">
+			<li><input class="radio" name="" value="h" type="radio"> heute</li>
+			<li><input class="radio" name="" value="w" type="radio"> letzte Woche</li>
+			<li><input class="radio" name="" value="m" type="radio"> letzter Monat</li>
+			<li><input class="radio" name="" value="j" type="radio"> letztes Jahr</li>
+		</ul>
+		
+		<!--
+		<ul class="search-filter">
+			<li><input class="radio" name="f_search_scope" value="content" checked="checked" type="radio"> Inhalt</li>
+			<li><input class="radio" name="f_search_scope" value="title" type="radio"> Titel</li>
+			<li><input class="radio" name="f_search_scope" value="author" type="radio"> Autor</li>
+		</ul>
+		-->
+		
+		<ul class="search-filter">
+			<li><input class="radio" name="" value="d" type="radio"> Dossier</li>
+			<li><input class="radio" name="" value="b" type="radio"> Blog</li>
+			<li><input class="radio" name="" value="k" type="radio"> Kolumne</li>
+			<li><input class="radio" name="" value="g" type="radio"> Bilder und Video</li>
+		</ul>
+		
+		<ul class="search-details">
+			<li>Autor<br/> <input name="" value="" type="text" size="10"> </li>
+			<li>sortieren nach<br />
+				<input class="radio" name="" value="date" type="radio"> Datum
+				<input class="radio" name="" value="" checked="checked" type="radio"> Relevanz
+			</li>
+		</ul>
+		
+	</div>
+			
 {{ /search_form }}
 
-<ol class="row content search-content">
 {{ list_search_results order="bypublishdate desc" }}
 
+	{{ if $gimme->current_list->at_beginning }}
+<ol class="row content search-content">
+	{{ /if }}
+	
 	{{ assign var="article_section" value=$gimme->article->section->url_name }}
 	{{ if $gimme->article->issue->number < 6 }}
 		{{ $article_section = $gimme->article->issue->url_name }}
@@ -69,5 +98,9 @@
 		
 		<description>{{ $gimme->article->deck|truncate:150:"...":true }}</description>
 	</li>   
-{{ /list_search_results }}
+	
+	{{ if $gimme->current_list->at_end }}
 </ol>
+	{{ /if }}
+	
+{{ /list_search_results }}
