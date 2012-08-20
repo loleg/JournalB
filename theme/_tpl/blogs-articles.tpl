@@ -14,7 +14,7 @@
 			<date>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</date> | 
 			Nummer {{ $gimme->article->number }}
 		</info>
-		<author><a href="#">{{ $gimme->article->author->name }}</a></author>
+		<author class="mainauthor"><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->article->author->name }}</a></author>
 	
 		<div class="blogboxcontent">
 			<article>

@@ -11,7 +11,7 @@
 			{{ if not $ren }}		
 				<div class='author-block'>
 					<img src="{{ $gimme->author->picture->imageurl }}" class="author-pic">
-					<div class="author-name">{{ $gimme->author->name }}</div>
+					<div class="author-name"><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->author->name }}</a></div>
 					{{ $gimme->author->biography->text }}
 				</div>
 				{{ $rendered_authors[$i] = $gimme->author->name }}

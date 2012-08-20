@@ -151,6 +151,42 @@
         margin-left: 16px;
         .info;
     }
+	
+	
+	.itembox {
+		margin-bottom: 20px;
+	}
+	.itembox info {
+		display: block;
+		.info;
+	}
+	.itembox .image {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 96px;
+		height: 66px;
+	}
+	.itembox .title {
+		margin-bottom: 5px;
+		margin-top: 5px;
+		padding-top: 8px;
+		min-height: 58px;
+		position: relative;
+		padding-left: 110px;
+		padding-right: 10px;
+	}
+	.itembox .title a:hover{
+		text-decoration: underline;
+	}
+	.itembox description {
+		display: block;
+		.community-font;
+	}
+	.itembox .title.section-blogs {
+		background: none !important;
+	}
+	
     
     /*Newsboxes as used in Dossiers */
     .contentbar.section-dossiers {
@@ -742,12 +778,14 @@
 		position: absolute;
 		left: 0px;
 		width: 100px;
+		text-align: center;
 	}
     .article_info author {
-        .baselinklabel;
-        display: block;
-        text-align: center;
 		margin-bottom: 15px;
+		display: block;
+    }
+	.article_info author a {
+        .baselink;
     }
     .article_info time {
         display: block;
@@ -766,6 +804,7 @@
         float: left;
         width: 590px;
         padding-top: 10px;
+		background: #ffffff !important;
     }
 
     /*Main content area*/
@@ -776,6 +815,11 @@
 		padding-top: 10px;
 		margin-bottom: 20px;
     }
+	.center_contentbar {
+		width: 470px;
+		margin: 0 auto;
+		padding-top: 10px;
+	}
 
 	/*Formatting for ALL CAPS paragraph leads (ex: Interviews)*/    
     article h6 {
@@ -893,6 +937,7 @@
 	.titlebox {
 		text-align: center;
 		padding: 20px;
+		margin-bottom: 20px;
 	}
 	.titlebox h1, .titlebox h2 {
 		display: inline;
@@ -902,8 +947,9 @@
 	}
 	
 	.blogbox {
-		margin-top: 30px;
+		margin-top: 10px;
 		padding-bottom: 8px;
+		background: #ffffff !important;
 	}
 	.blogbox.last {
 		border-bottom: 0 none !important;
@@ -923,12 +969,12 @@
 		text-align: center;
 		display: block;
 	}
-	.blogbox author {
+	.blogbox author.mainauthor {
 		text-align: center;
 		.capitalize;
 		display: block;
 	}
-	.blogbox author a {
+	.blogbox author.mainauthor a {
 		border-bottom: 4px solid #f1e2ef;
 	}
 	.blogbox .title {

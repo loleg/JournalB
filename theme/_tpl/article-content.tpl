@@ -34,7 +34,7 @@
 					{{ $ren = false }}
 					{{ foreach from=$rendered_authors item=author }} {{ if $author == $gimme->author->name }} {{ $ren = true }} {{ break }} {{ /if }} {{ /foreach }}
 					{{ if not $ren }}
-						<author type="{{ $gimme->author->type }}">{{ $gimme->author->name }}</author>
+						<author type="{{ $gimme->author->type }}"><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->author->name }}</a></author>
 						{{ $rendered_authors[$i] = $gimme->author->name }}
 						{{ $i = $i + 1 }}
 					{{ /if }}

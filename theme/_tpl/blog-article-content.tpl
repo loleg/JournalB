@@ -13,7 +13,7 @@
 			{{ /if }}
 			Nummer {{ $gimme->article->number }}
 		</info>
-		<author><a href="#">{{ $gimme->article->author->name }}</a></author>
+		<author class="mainauthor"><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->article->author->name }}</a></author>
 			
 		<article>
 	
@@ -23,7 +23,7 @@
 
 					<div class="article_info" {{ if not $is_gallery and not $gimme->article->has_image(1) }}style="top:200px;"{{ /if }}>
 						{{ list_article_authors }}
-							<author>{{ $gimme->author->name }}</author>
+							<author><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->author->name }}</a></author>
 						{{ /list_article_authors }}
 						<time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y<br>%H:%i" }}</time>
 					</div>
