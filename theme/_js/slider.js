@@ -30,6 +30,10 @@ function initSlider(_slider_id)
 	$(".gallery_all").html(slides_num);
 	$(".gallery_description").html($(slider).children("ul").children("li:first").children(":first").attr("alt"));
 	
+	var gi_margin = $("article .deck").height()-100;
+	if (gi_margin<0) gi_margin = 0;
+	$(".gallery_info").css("margin-top",gi_margin);
+	
 	$(slider).touchwipe({
 		wipeRight: "moveSlider(0);",	
 		wipeLeft: "moveSlider(1);",	
