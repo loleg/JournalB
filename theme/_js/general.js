@@ -95,6 +95,7 @@ $(document).ready(function() {
 		} else {
 			myfaves = $.parseJSON(data);
 			// Collect info from newsboxes: TODO replace with Newscoop API
+			if (typeof console != 'undefined') console.log(myfaves);
 			$.each(myfaves, function() {
 				var url = this.replace(document.location.href, '');
 				$('a[href^="/' + url + '"]').parents('div.newsbox').each(function() {

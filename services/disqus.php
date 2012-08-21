@@ -33,6 +33,7 @@ if (isset($_COOKIE['disqus_token'])) {
 			if (strstr($v->type, "like") && $v->object->forum->id == $shortname) {
 				
 				$arr[] = $v->object->thread->link;
+				var_dump($v->object->thread);
 				
 			}
 		}
