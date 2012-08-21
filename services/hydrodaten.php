@@ -6,11 +6,11 @@ $url = 'http://www.hydrodaten.admin.ch/lhg/SMS.xml';
 // cache file
 $file = "hydrodaten.xml";
 
-// cache timeout in seconds
-$ttl = 46400; // twice a day
+// cache timeout in minutes
+$ttl = 1000; // 1 day = 1440 minutes
 
 // refresh the cache
-if (!is_file($file) || filemtime($file)<time()-(86400*30))
+if (!is_file($file) || filemtime($file)<time()-$ttl * 60)
 {
   $ch = curl_init($url);
   $fp = fopen($file, "w");
