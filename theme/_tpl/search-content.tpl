@@ -9,7 +9,7 @@
 	</div>
 
 	<div class="search-advanced hidden">
-		<button class="button-close" onclick="$('.search-advanced').hide()">X</button>
+		<div class="button-close" onclick="$('.search-advanced').hide()">X</div>
 	
 		<!-- f_search_start_date	2018-01-31 f_search_end_date	2018-02-08-->
 		
@@ -36,13 +36,12 @@
 		</ul>
 		
 		<ul class="search-details">
-			<li>Autor<br/> <input name="" value="" type="text" size="10"> </li>
+			<li>Autor<br/> <input type="text" size="10"> </li>
 			<li>sortieren nach<br />
 				<input class="radio" name="" value="date" type="radio"> Datum
 				<input class="radio" name="" value="" checked="checked" type="radio"> Relevanz
 			</li>
 		</ul>
-		
 	</div>
 			
 {{ /search_form }}
