@@ -9,7 +9,17 @@
 	{{ foreach $slideshow->items as $item }}
 		{{ if $item->is_image }}
 			{{ $is_gallery = true }}
-			<li><img src="{{ $item->image->src }}" alt="{{ $item->caption }}" /></li>
+						
+			<li><img src="{{ $item->image->src }}" alt="{{ $item->caption }}{{ php }}
+			$info = explode("/","{{ $item->image->original }}" );
+			$image_name = $info[count($info)-1];
+			$query = @mysql_query("SELECT Photographer FROM Images WHERE ImageFileName='".mysql_real_escape_string($image_name)."'");
+			if ($query && mysql_num_rows($query))
+			{
+				$image = mysql_fetch_array($query);
+				if (!empty($image["Photographer"])) echo "<br><br>(Foto: $image[Photographer])";
+			}
+			{{ /php }}" /></li>
 			{{ $gc = $gc + 1 }}
 		{{ /if }}
 		

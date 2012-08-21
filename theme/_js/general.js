@@ -39,9 +39,11 @@ function articleImageAlts()
 	
 		if ($(this).css("float")=="none")
 		{
-			$(this).css("min-height",($(this).children("p").children("img").height()+20)+"px");
+			var height = $(this).children("p").children("img").height();
+			if (height==0) height = 150;
+			$(this).css("min-height",(height+20)+"px");
 			$(this).children(".cs_img_caption").addClass("middle");	
-			$(this).children(".cs_img_caption").css("margin-top","-"+($(this).children("p").children("img").height()+15)+"px");	
+			$(this).children(".cs_img_caption").css("margin-top","-"+(height+15)+"px");	
 		}
 
 		if ($(this).children("p").children("img").attr("alt") == undefined || $(this).children("p").children("img").attr("alt") == "")

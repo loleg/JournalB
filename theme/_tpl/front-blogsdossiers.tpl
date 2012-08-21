@@ -6,17 +6,41 @@
 				{{ set_issue number="2" }}
 				<h2><a href="{{ url options="issue" }}">Neuste Blogs</a></h2>
 				<description>
-					{{ list_articles length="3" order="byPublishDate desc" constraints="OnFrontPage is on" ignore_section="true" }}
+					{{ $i = 0 }}
+					{{ list_sections }}
+						{{ list_articles length="1" order="byPublishDate desc" }}
+							{{ $sections[$i]["name"] = $gimme->section->name }}
+							{{ $sections[$i]["description"] = $gimme->section->description }}
+							{{ $sections[$i]["date"] = $gimme->article->publish_date|strtotime }}
+							{{ $i = $i + 1 }}
+						{{ /list_articles }}
+					{{ /list_sections }}
+					
+					{{ for $a=0 to $i-2 }}
+						{{ for $b=0 to $i-2 }}
+							{{ if $sections[$b+1]["date"] > $sections[$b]["date"]  }}
+								{{ $tmp = $sections[$b] }}
+								{{ $sections[$b] = $sections[$b+1] }}
+								{{ $sections[$b+1] = $tmp }}
+							{{ /if }}
+						{{ /for }}
+					{{ /for }}
+					
+					{{ $i = 0 }}
+					{{foreach from=$sections item=section}}
 						<div class="dsect">
-						<a href="{{ url options="section" }}">
-							<div class="description"><span class="capitalize">{{ $gimme->article->section->name }}</span> {{ $gimme->article->section->description|strip_tags }}</div>
-							<div class="info">
-								<date>{{ $gimme->article->$publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
-								<date>{{ $gimme->article->$publish_date|camp_date_format:"%H:%i" }}</date>
-							</div>
-						</a>
+							<a href="{{ url options="section" }}">
+								<div class="description"><span class="capitalize">{{ $section["name"] }}</span> {{ $section["description"]|strip_tags }}</div>
+								<div class="info">
+									<date>{{ $section["date"]|camp_date_format:"%e.%m.%Y" }}</date> | 
+									<date>{{ $section["date"]|camp_date_format:"%H:%i" }}</date>
+								</div>
+							</a>
 						</div>
-					{{ /list_articles }}
+						{{ $i = $i + 1 }}
+						{{ if $i == 3 }} {{ break }} {{ /if }}
+					{{ /foreach }}
+					
 				</description>
 			{{ /local }} 
         </div>

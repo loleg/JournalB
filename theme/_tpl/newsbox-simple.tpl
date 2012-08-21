@@ -3,27 +3,28 @@
 	<div class="newsboxcontent">
 
 		{{ if $gimme->article->issue->number == 1 }}
-			{{ $len = -23 }}
+			{{ $title_len = ceil($gimme->article->name|strlen / 23) + 1 }}
 			<h2>Dossier</h2>
 			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
 
 		{{ elseif $gimme->article->issue->number == 2 }}
-			{{ $len = -23 }}
+			{{ $title_len = ceil($gimme->article->section->name|strlen / 23) + 1 }}
 			<h2>Blog</h2>
 			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->section->name }}</a></h1>
 
 		{{ elseif $gimme->article->issue->number == 4 }}
-			{{ $len = -23 }}
+			{{ $title_len = ceil($gimme->article->section->name|strlen / 23) + 1 }}
 			<h2>Kolumne</h2>
 			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->section->name }}</a></h1>
 			
 		{{ else }}
-			{{ $len = 0 }}
+			{{ $title_len = ceil($gimme->article->name|strlen / 23) }}
 			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
 			
 		{{ /if }}
 		
-		{{ $len = $len + 36 * floor(9 - round(ceil($gimme->article->name|strlen / 23))*1.5) }}
+		{{ $len = 38 * floor(9 - $title_len*1.5) }}
+
 		<description>
 			<p>
 				{{ if $gimme->article->deck=="" }} 
