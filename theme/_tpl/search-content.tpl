@@ -1,11 +1,15 @@
-{{ search_form template="search.tpl" submit_button="Search" button_html_code="class=\"search-button rounded\"" }}
+{{ search_form template="search.tpl" }}
 
 	<h2 class="search-keywords">
 		{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"Suche...\"" }}
+		<script language="Javascript">
+			var sp = '{{ $gimme->search_articles_action->search_phrase }}';
+			if (sp != '') { $('.search-keywords input').val(sp); }
+		</script>
 	</h2>
 
 	<div class="lists" style="text-align:right">
-		<a onclick="$('.search-advanced').slideDown();return false;" href="#">Suche eingrenzen</a>
+		<a onclick="$('.search-advanced').hide().removeClass('hidden').slideDown();return false;" href="#">Suche eingrenzen</a>
 	</div>
 
 	<div class="search-advanced hidden">
@@ -32,14 +36,14 @@
 			<li><input class="radio" name="" value="d" type="radio"> Dossier</li>
 			<li><input class="radio" name="" value="b" type="radio"> Blog</li>
 			<li><input class="radio" name="" value="k" type="radio"> Kolumne</li>
-			<li><input class="radio" name="" value="g" type="radio"> Bilder und Video</li>
+			<li><input class="radio" name="" value="r" type="radio"> Kommentar</li>
 		</ul>
 		
 		<ul class="search-details">
-			<li>Autor<br/> <input type="text" size="10"> </li>
+			<li><input class="radio" name="" value="g" type="radio"> Autor</li>
 			<li>sortieren nach<br />
-				<input class="radio" name="" value="date" type="radio"> Datum
-				<input class="radio" name="" value="" checked="checked" type="radio"> Relevanz
+				<input class="radio" name="" value="date" type="radio"> Erster
+				<input class="radio" name="" value="" checked="checked" type="radio"> Letzter
 			</li>
 		</ul>
 	</div>
@@ -47,6 +51,7 @@
 {{ /search_form }}
 
 {{ list_search_results order="bypublishdate desc" }}
+{{ if $gimme->article->issue->number != 3 && $gimme->article->issue->number != 5 }}
 
 	{{ if $gimme->current_list->at_beginning }}
 <ol class="row content search-content">
@@ -101,5 +106,6 @@
 	{{ if $gimme->current_list->at_end }}
 </ol>
 	{{ /if }}
-	
+
+{{ /if }}
 {{ /list_search_results }}

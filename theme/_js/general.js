@@ -86,7 +86,7 @@ $(document).ready(function() {
 		// Do we have any data, i.e. are we logged in?
 		if (data.length < 5) {
 			// Login authentication button
-			$(".header .login").show();
+			$(".header .login").removeClass("hidden").show();
 			
 			// Hide forum
 			$(".forum").html('<a href="#">Zum Verfassen von Kommentaren bitte Anmelden</a>.');
@@ -94,16 +94,12 @@ $(document).ready(function() {
 		// Yes, we have data	
 		} else {
 			myfaves = $.parseJSON(data);
+			
 			// Collect info from newsboxes: TODO replace with Newscoop API
-			if (typeof console != 'undefined') console.log(myfaves);
 			$.each(myfaves, function() {
-				var url = this.replace(document.location.href, '');
-				$('a[href^="/' + url + '"]').parents('div.newsbox').each(function() {
-					$(this).find('.favorite').addClass('checked').attr('href','');
-					myfaveobj.push({
-						title: $(this).find('h1 a').text(), 
-						href: $(this).find('h1 a').attr('href')
-					});
+				myfaveobj.push({
+					title: this.title, 
+					href: this.link
 				});
 			});
 		}

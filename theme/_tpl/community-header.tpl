@@ -1,5 +1,5 @@
 <div class="row header">
-	<div class="login ">
+	<div class="login hidden">
        	<button onclick="location='/services/disqus.php?auth'">
        		Anmelden
 	       	<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>

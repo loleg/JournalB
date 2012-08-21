@@ -32,8 +32,8 @@ if (isset($_COOKIE['disqus_token'])) {
 			// TODO use in query?
 			if (strstr($v->type, "like") && $v->object->forum->id == $shortname) {
 				
-				$arr[] = $v->object->thread->link;
-				var_dump($v->object->thread);
+				$arr[] = $v->object->thread;
+				//var_dump($v->object->thread);
 				
 			}
 		}
