@@ -1,6 +1,7 @@
 
 <div class="forum">
 	
+	<a name="community"></a>
 	<div id="disqus_thread"></div>
 	<script type="text/javascript">
 	var disqus_shortname = 'journalb-lab';
