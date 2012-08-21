@@ -1,4 +1,4 @@
-{{ search_form template="search.tpl" }}
+{{ search_form template="search.tpl" button_html_code="class=\"hidden\"" }}
 
 	<h2 class="search-keywords">
 		{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"Suche...\"" }}
@@ -13,49 +13,49 @@
 	</div>
 
 	<div class="search-advanced hidden">
-		<div class="button-close" onclick="$('.search-advanced').hide()">X</div>
+		<!-- TODO uncheck when closing -->
+		<div class="button-close grey" onclick="$('.search-advanced').hide();$(this).parents('form').find('input[checked]').val('')">X</div>
 	
 		<!-- f_search_start_date	2018-01-31 f_search_end_date	2018-02-08-->
 		
 		<ul class="search-dates">
-			<li><input class="radio" name="" value="h" type="radio"> heute</li>
-			<li><input class="radio" name="" value="w" type="radio"> letzte Woche</li>
-			<li><input class="radio" name="" value="m" type="radio"> letzter Monat</li>
-			<li><input class="radio" name="" value="j" type="radio"> letztes Jahr</li>
+			<li><input class="checkbox" name="f_search_date" value="h" type="checkbox"> heute</li>
+			<li><input class="checkbox" name="f_search_date" value="w" type="checkbox"> letzte Woche</li>
+			<li><input class="checkbox" name="f_search_date" value="m" type="checkbox"> letzter Monat</li>
+			<li><input class="checkbox" name="f_search_date" value="j" type="checkbox"> letztes Jahr</li>
 		</ul>
 		
 		<!--
 		<ul class="search-filter">
-			<li><input class="radio" name="f_search_scope" value="content" checked="checked" type="radio"> Inhalt</li>
-			<li><input class="radio" name="f_search_scope" value="title" type="radio"> Titel</li>
-			<li><input class="radio" name="f_search_scope" value="author" type="radio"> Autor</li>
+			<li><input class="checkbox" name="f_search_scope" value="content" checked="checked" type="checkbox"> Inhalt</li>
+			<li><input class="checkbox" name="f_search_scope" value="title" type="checkbox"> Titel</li>
+			<li><input class="checkbox" name="f_search_scope" value="author" type="checkbox"> Autor</li>
 		</ul>
 		-->
 		
 		<ul class="search-filter">
-			<li><input class="radio" name="" value="d" type="radio"> Dossier</li>
-			<li><input class="radio" name="" value="b" type="radio"> Blog</li>
-			<li><input class="radio" name="" value="k" type="radio"> Kolumne</li>
-			<li><input class="radio" name="" value="r" type="radio"> Kommentar</li>
+			<li><input class="checkbox" name="f_search_type" value="d" type="checkbox"> Dossier</li>
+			<li><input class="checkbox" name="f_search_type" value="b" type="checkbox"> Blog</li>
+			<li><input class="checkbox" name="f_search_type" value="k" type="checkbox"> Kolumne</li>
+			<li><input class="checkbox" name="f_search_type" value="r" type="checkbox"> Kommentar</li>
 		</ul>
 		
 		<ul class="search-details">
-			<li><input class="radio" name="" value="g" type="radio"> Autor</li>
-			<li>sortieren nach<br />
-				<input class="radio" name="" value="date" type="radio"> Erster
-				<input class="radio" name="" value="" checked="checked" type="radio"> Letzter
-			</li>
+			<li><input class="checkbox" name="f_search_issue" value="Alltag" type="checkbox"> Alltag</li>
+			<li><input class="checkbox" name="f_search_issue" value="" type="checkbox"> Politik</li>
+			<li><input class="checkbox" name="f_search_issue" value="" type="checkbox"> Kultur</li>
 		</ul>
 	</div>
 			
 {{ /search_form }}
 
 {{ list_search_results order="bypublishdate desc" }}
-{{ if $gimme->article->issue->number != 3 && $gimme->article->issue->number != 5 }}
 
 	{{ if $gimme->current_list->at_beginning }}
 <ol class="row content search-content">
 	{{ /if }}
+	
+{{ if $gimme->article->issue->number != 3 && $gimme->article->issue->number != 5 }}
 	
 	{{ assign var="article_section" value=$gimme->article->section->url_name }}
 	{{ if $gimme->article->issue->number < 6 }}
@@ -102,10 +102,10 @@
 		
 		<description>{{ $gimme->article->deck|truncate:150:"...":true }}</description>
 	</li>   
+{{ /if }}
 	
 	{{ if $gimme->current_list->at_end }}
 </ol>
 	{{ /if }}
 
-{{ /if }}
 {{ /list_search_results }}

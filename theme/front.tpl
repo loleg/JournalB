@@ -2,7 +2,7 @@
 
 {{ include file="_tpl/_html-head.tpl" }}
 
-<body class="front-page">
+<body id="body" class="front-page">
 
 <div class="container">
 

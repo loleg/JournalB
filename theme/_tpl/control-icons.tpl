@@ -1,10 +1,6 @@
-<div class="controlicons">
-	<div class="controlicon favorite"><img src="{{ url static_file='_img/control-favorite.png' }}" /></div>
-	<div class="controlicon share" onclick="$(this).parent().hide().next().show()"><img src="{{ url static_file='_img/control-share.png' }}" /></div>
-	<div class="controlicon"><img src="{{ url static_file='_img/control-fontize.png' }}" onclick="changeFontSize();" /></div>
-	<div style="clear:both"></div>
-</div>
 <div class="sharebox hidden">
+	<div onclick="$(this).parent().slideUp().addClass('hidden')" class="button-close">X</div>
+	<br /><div style="clear:both"></div>
 
 	<div class="shareicon">
 	<a href="https://twitter.com/share" class="twitter-share-button" data-via="journalb" data-lang="de" data-size="large" data-related="journalb" data-count="none" data-hashtags="Bern">Twittern</a>
@@ -19,5 +15,11 @@
 	<div class="fb-like" data-send="false" data-layout="box_count" data-width="450" data-show-faces="false"></div>
 	</div>
 	
+	<div style="clear:both"></div>
+</div>
+<div class="controlicons">
+	<div class="controlicon favorite"><img src="{{ url static_file='_img/control-favorite.png' }}" /></div>
+	<div class="controlicon share"><img src="{{ url static_file='_img/control-share.png' }}" /></div>
+	<div class="controlicon"><img src="{{ url static_file='_img/control-fontize.png' }}" onclick="changeFontSize();" /></div>
 	<div style="clear:both"></div>
 </div>

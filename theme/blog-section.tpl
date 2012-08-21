@@ -2,7 +2,7 @@
 
 {{ include file="_tpl/_html-head.tpl" }}
 
-<body class="section-page">
+<body id="body" class="section-page">
 
 <div class="container">
 

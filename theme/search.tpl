@@ -2,7 +2,7 @@
 
 {{ include file="_tpl/_html-head.tpl" }}
 
-<body class="search-page">
+<body id="body" class="search-page">
 
 <div class="container">
 

@@ -78,6 +78,17 @@ $(document).ready(function() {
 		$(this).html(urlify($(this).text(), true)); 
 	});
 	// - Sidebar
+	
+	// ** Share
+	$('.addbar .share').click(function() {
+		var sharebox = $(this).parent().siblings('.sharebox');
+		if (sharebox.hasClass('hidden')) {
+			sharebox.slideDown().removeClass('hidden');
+		} else {
+			sharebox.slideUp().addClass('hidden');
+		}
+	});
+	// - Share
 
 	// ** Favorites	
 	var myfaves = null, myfaveobj = [];
@@ -217,8 +228,8 @@ var currentFontSize = 1;
 
 function updateFontSize()
 {
-	$("body").css("font-size",fontSizes[currentFontSize][0]+"px");
-	$("body").css("line-height",fontSizes[currentFontSize][1]+"px");
+	$("article").css("font-size",fontSizes[currentFontSize][0]+"px");
+	$("article").css("line-height",fontSizes[currentFontSize][1]+"px");
 }
 
 function changeFontSize()
