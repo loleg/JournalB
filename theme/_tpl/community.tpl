@@ -79,7 +79,7 @@
     	<description>
     		Alle Artikel auf journalB.ch sind frei verfügbar. Wenn Ihnen unsere Arbeit etwas wert ist, nutzen Sie doch die Gelegenheit, uns zu unterstützen. Die Redaktion bedankt sich für Ihren Beitrag.
     	</description>
-    	<div class="link"><a href="#" onclick="$(this).parents('.spenden').hide().next().show(); return false;"">Jetzt spenden!</a></div>
+    	<div class="link"><a href="#" onclick="$(this).parents('.spenden').hide().next().slideDown(); return false;"">Jetzt spenden!</a></div>
     </div>
     <div class="spenden hidden">
     	<description>

@@ -9,7 +9,7 @@
 	</h2>
 
 	<div class="lists" style="text-align:right">
-		<a onclick="$('.search-advanced').hide().removeClass('hidden').slideDown();return false;" href="#">Suche eingrenzen</a>
+		<a onclick="$('.search-advanced').slideDown();return false;" href="#">Suche eingrenzen</a>
 	</div>
 
 	<div class="search-advanced hidden">
