@@ -33,7 +33,9 @@ function initSlider(_slider_id)
 	var gi_margin = $("article .deck").height()-100;
 	if (gi_margin<0) gi_margin = 0;
 	$(".gallery_info").css("margin-top",gi_margin);
-	
+		
+	updateSliderSize()
+			
 	$(slider).touchwipe({
 		wipeRight: "moveSlider(0);",	
 		wipeLeft: "moveSlider(1);",	
@@ -103,28 +105,80 @@ function changeSliderStatus()
 {
 	if (slider_status)
 	{
-		$(slider).removeClass("active");
-		$(slider).css("margin-top","0px");
-		$("#slider_wrapper").removeClass("active");
-		$(".gallery_info.mobile").remove();
-		$(".container").attr("ontouchmove","");
-		
-		$(".nav").removeClass("hidden");
-		
-		slider_status = false;
+		hideActiveSlider();
 	}
-	else if (document.body.offsetWidth<768)
+	else if (navigator.userAgent.match(/Mobile/gi))
+	{	
+		showActiveSlider();
+	}
+}
+
+
+function updateSliderSize()
+{
+	$(slider).css("width","100%");
+	$(slider).height($(slider).width()*0.6695);
+	if (slider_status)
 	{
-		$(slider).addClass("active");
-		$(slider).css("margin-top","-"+$("#slider").height()/2+"px");
-		$("#slider_wrapper").addClass("active");
-		$(".gallery_info.mobile").addClass("active");
-		$(".container").attr("ontouchmove","noElasticScroll(event);");
-		
-		$(".nav").addClass("hidden");
-		
-		$(slider).append('<div class="gallery_info mobile active"><div class="gallery_status"><span class="gallery_current">'+current_slide+'</span> / <span class="gallery_all">'+slides_num+'</span></div><div class="gallery_description">'+$(slider).children("ul").children("li:nth-child("+current_slide+")").children(":first").attr("alt")+'</div></div>');
-				
-		slider_status = true;
+		if (navigator.userAgent.match(/iPhone/gi) || navigator.userAgent.match(/iPod/gi))
+		{
+			if (portrait_view) max_height = 430; else max_height = 270;
+		}
+		else
+		{
+			if (portrait_view) max_height = screen.height-60; else max_height = screen.width-60;
+		}
+	
+		if ($(slider).height() > max_height)
+		{
+			$(slider).height(max_height);
+			$(slider).width($(slider).height()/0.6695);
+		}
+		$(slider).css("margin-top","-"+$(slider).height()/2+"px");
+		$(slider).css("margin-left","-"+$(slider).width()/2+"px");
 	}
+	else
+	{
+		$(slider).css("margin-top","0px");
+		$(slider).css("margin-left","0px");
+	}
+}
+
+function hideActiveSlider()
+{
+	$("html").removeClass("activeSlider");
+	$("html").css("background","#ffffff");
+	$("body").css("background","#ffffff");
+	$(".contentbar").css("background","#ffffff");
+	
+	$(slider).removeClass("active");
+	$(slider).css("margin-top","0px");
+	$("#slider_wrapper").removeClass("active");
+	$(".gallery_info.mobile").remove();
+	$(".container").attr("ontouchmove","");
+	$(".nav").removeClass("hidden");
+	
+	slider_status = false;
+	
+	updateSliderSize();
+}
+
+function showActiveSlider()
+{
+	$(slider).addClass("active");
+	$("#slider_wrapper").addClass("active");
+	$(".gallery_info.mobile").addClass("active");
+	$(".container").attr("ontouchmove","noElasticScroll(event);");
+	$(".nav").addClass("hidden");
+
+	$("html").addClass("activeSlider");
+	$("html").css("background","#000000");
+	$("body").css("background","#000000");
+	$(".contentbar").css("background","#000000");
+	
+	$(slider).append('<div class="gallery_info mobile active"><div class="gallery_status"><span class="gallery_current">'+current_slide+'</span> / <span class="gallery_all">'+slides_num+'</span></div><div class="gallery_description">'+$(slider).children("ul").children("li:nth-child("+current_slide+")").children(":first").attr("alt")+'</div></div>');
+			
+	slider_status = true;
+	
+	updateSliderSize();
 }

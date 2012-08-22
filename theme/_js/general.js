@@ -251,15 +251,35 @@ function loadFontSize()
 }
 
 var mobile_view = false;
+var portrait_view = false;
 
 $(window).resize(function(){
+
 	if ($(document).width()<768) 
 	{ 
+		if ($(document).width()<480) 
+		{
+			if (!portrait_view)
+			{
+				portrait_view = true;
+				updateSliderSize();
+			}
+		}
+		else
+		{
+			if (portrait_view)
+			{
+				portrait_view = false;
+				updateSliderSize();
+			}
+		}
+	
 		if (!mobile_view) 
 		{ 
+			updateSliderSize();
 			$(".article-community.mobile").html($(".article-community.stable").html()); 
 			$(".article-community.stable").html("");
-			collapsebleElements()
+			collapsebleElements();
 			mobile_view = true; 
 		} 
 	}
@@ -267,6 +287,7 @@ $(window).resize(function(){
 	{
 		if (mobile_view) 
 		{ 
+			updateSliderSize();
 			$(".article-community.stable").html($(".article-community.mobile").html()); 
 			$(".article-community.mobile").html("");
 			mobile_view = false; 

@@ -10,6 +10,14 @@
 /* #Front Page Styles
 ================================================== */
 
+	html.active_slider {
+		background: #000000 !important;
+	}
+
+	html.active_slider body {
+		background: #000000 !important;
+	}
+
     .content {
         position: relative;
 		margin-bottom: 0px !important;
@@ -838,7 +846,11 @@
         float: left;
         width: 590px;
         padding-top: 10px;
-		background: #ffffff !important;
+		background: #ffffff;
+    }
+	
+	html.active_slider .contentbar {
+		background: #000000 !important;
     }
 
     /*Main content area*/
@@ -904,7 +916,6 @@
 		bottom: 0px;
 		left: 0px;
 		width: 100%;
-		padding: 4px;
 		background-color: rgba(255,255,255,0.6);
 	}
 	.gallery_info.mobile .gallery_status {
