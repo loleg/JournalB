@@ -4,11 +4,20 @@ date_default_timezone_set('Europe/Berlin');
 
 require_once(dirname(__FILE__) . '/disqusapi.php');
 
-$shortname = 'journalb-lab'; 
+// Production setup
 $homepage = "http://bern.lab.sourcefabric.org";
 $redirect = "http://bern.lab.sourcefabric.org/services/disqus.php";
+
+// Local testing
+$homepage = "http://localhost:8888/newscoop/";
+$redirect = "http://localhost:8888/services/disqus.php";
+
+// Account details
+$shortname = 'journalb-lab'; 
 $PUBLIC_KEY = "S2zPf5GHF44MxrBrcsjhUP8aZD5SHIdoSBqB1l10NBtMkjhC1AZAEPpWSqYZauFa";
 $SECRET_KEY = "Em5o6RFV2YKZgTowuo6QprVZ8WwLZ5SdhL9hmkAORZXsW5jzbJiPCGZgT6sfYqXr";
+
+// 1 year expiry
 $expires = time() + 31536000;
 
 if (isset($_GET['logout'])) {
