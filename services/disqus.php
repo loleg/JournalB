@@ -11,17 +11,23 @@ $PUBLIC_KEY = "S2zPf5GHF44MxrBrcsjhUP8aZD5SHIdoSBqB1l10NBtMkjhC1AZAEPpWSqYZauFa"
 $SECRET_KEY = "Em5o6RFV2YKZgTowuo6QprVZ8WwLZ5SdhL9hmkAORZXsW5jzbJiPCGZgT6sfYqXr";
 $expires = time() + 31536000;
 
-if (isset($_COOKIE['disqus_token'])) {
+if (isset($_GET['logout'])) {
 
-	$userid = 	$_COOKIE['disqus_userid'];
-	$token = 	$_COOKIE['disqus_token'];
-	$refresh = 	$_COOKIE['disqus_refresh'];
+	setcookie("jbdisqus", "", time() - 3600);
+	header( 'Location: ' . $homepage ); // http://disqus.com/logout/?redirect= to logout Disqus too
+
+} elseif (isset($_COOKIE['jbdisqus'])) {
+
+	$userid = 	$_COOKIE['jbdisqus']['userid'];
+	$username = $_COOKIE['jbdisqus']['username'];
+	$token = 	$_COOKIE['jbdisqus']['token'];
+	$refresh = 	$_COOKIE['jbdisqus']['refresh'];
 	
 	$api = new DisqusAPI($SECRET_KEY);
 	
 	if (isset($_GET['myfaves'])) {
 	
-		$arr = array();
+		$arr = array('user'=>$username, 'faves'=>array());
 		
 		$activities =
 			$api->users->listActivity(array(
@@ -32,7 +38,7 @@ if (isset($_COOKIE['disqus_token'])) {
 			// TODO use in query?
 			if (strstr($v->type, "like") && $v->object->forum->id == $shortname) {
 				
-				$arr[] = $v->object->thread;
+				$arr['faves'][] = $v->object->thread;
 				//var_dump($v->object->thread);
 				
 			}
@@ -121,9 +127,10 @@ if (isset($_COOKIE['disqus_token'])) {
 		$tokdata = json_decode($resultdata);
 		if ($tokdata === NULL) die('Error parsing json');
 		
-		setcookie('disqus_userid', $tokdata->user_id, $expires);
-		setcookie('disqus_token', $tokdata->access_token, $expires);
-		setcookie('disqus_refresh', $tokdata->refresh_token, $expires);
+		setcookie('jbdisqus[userid]', 	$tokdata->user_id, $expires);
+		setcookie('jbdisqus[username]',	$tokdata->username, $expires);
+		setcookie('jbdisqus[token]', 	$tokdata->access_token, $expires);
+		setcookie('jbdisqus[refresh]', 	$tokdata->refresh_token, $expires);
 	}
 
 	header( 'Location: ' . $homepage );

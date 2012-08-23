@@ -99,18 +99,22 @@ $(document).ready(function() {
 		//if (typeof console != 'undefined') console.log(data);
 		// Do we have any data, i.e. are we logged in?
 		if (data.length < 5) {
-			// Login authentication button
-			$(".header .login").show();
-			
+			// Login link
+			$(".header .login button").click(function() { document.location='/services/disqus.php?auth'; });
+		
 			// Hide forum
 			$(".forum").html('<a href="#">Zum Verfassen von Kommentaren bitte Anmelden</a>.');
 			
 		// Yes, we have data	
-		} else {
-			myfaves = $.parseJSON(data);
+		} else {			
+			myjson = $.parseJSON(data);
+
+			// Set up auth button
+			$(".header .login button").click(function() { document.location='/services/disqus.php?logout'; });
+			$(".header .login .register").html('Salut, ' + myjson.user);
 			
-			// Collect info from newsboxes: TODO replace with Newscoop API
-			$.each(myfaves, function() {
+			// Collect info from newsboxes
+			$.each(myjson.faves, function() {
 				myfaveobj.push({
 					title: this.title, 
 					href: this.link
