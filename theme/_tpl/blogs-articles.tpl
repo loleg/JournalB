@@ -9,12 +9,12 @@
 
 	<div class="blogbox section-blogs">
 
-		<info>
+		<div class="info_block">
 			<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
 			<date>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</date> | 
 			Nummer {{ $gimme->article->number }}
-		</info>
-		<author class="mainauthor"><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->article->author->name }}</a></author>
+		</div>
+		<div class="author mainauthor"><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->article->author->name }}</a></div>
 	
 		<div class="blogboxcontent">
 			<article>

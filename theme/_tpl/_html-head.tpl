@@ -1,10 +1,11 @@
 {{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }} {{ $native_application = true }} {{ else }} {{ $native_application = false }} {{ /if }}
 
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<!--[if IE]>
+<html class="ie" lang="de">
+<!--[else]-->
+<html lang="de">
+<!--<![endif]--> 
 <head>
 
     <meta charset="utf-8">
@@ -15,9 +16,9 @@
 	{{ if $native_application }} <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/native-application.less' }}"> {{ /if }}
 	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">
 
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<!--[if IE]>
+	<script src="{{ url static_file='_js/html5.js' }}"></script>
+	<![endif]-->
 
     <script src="{{ url static_file='_js/less.js' }}" type="text/javascript"></script>
 	<script src="{{ url static_file='_js/jquery.js' }}" type="text/javascript"></script>

@@ -2,6 +2,9 @@
 Oleg: it is easier to just run localStorage.clear(); in your browser console
   --- this code needs to be removed for production
 */
+
+localStorage.clear(); 
+
 function destroyLessCache(pathToCss) {
 
     if (!window.localStorage || !less) {

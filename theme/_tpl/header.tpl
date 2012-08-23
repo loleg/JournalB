@@ -6,11 +6,11 @@
 				{{ $current_section = ""}}
 				{{ if $gimme->issue->number > 5 or $gimme->issue->number == 1}} {{ $current_section = $gimme->section->number }} {{ /if }}
 				{{ set_current_issue }}
-				<li class="nav-front active"><a href="/">Front</a></li>
+				<li class="nav-front"><a href="/">Front</a></li>
 				{{ list_sections }}
-					<li class="nav-{{ $gimme->section->url_name }} {{ if $current_section == "" or $gimme->section->number == $current_section }}active{{ /if }}"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
+					<li class="nav-{{ $gimme->section->url_name }} {{ if $current_section != "" and $gimme->section->number != $current_section }}unactive{{ /if }}"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
 				{{ /list_sections }}
-				<li class="nav-fav active"><a href="#">Favoriten</a></li>
+				<li class="nav-fav"><a href="#">Favoriten</a></li>
 				<div class="clear"></div>
 			{{ /local }}
         </ul>
@@ -19,7 +19,7 @@
     <div class="aare">
         Aare<br><span class="wert"></span>&deg;
     </div>
-    <date>{{$smarty.now|camp_date_format:"%e.%m.%Y"}} </date>
+    <time>{{$smarty.now|camp_date_format:"%e.%m.%Y"}} </time>
 
     <h1 class="logo">
         <a href="/">Journal B</a>

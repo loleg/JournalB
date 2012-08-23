@@ -19,14 +19,14 @@
 			</div>
 
 			{{ if $publish_date }}
-			<info>
+			<div class="info_block">
 				<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
 				<date>{{ $publish_date|camp_date_format:"%H:%i" }}</date> 
-			</info>
+			</div>
 			{{ else }}
-			<info>
+			<div class="info_block">
 				No articles published
-			</info>
+			</div>
 			{{ /if }}
 			
 		</div>

@@ -58,7 +58,7 @@
 		max-height: 11.8em; 
 		overflow: hidden;
     }
-    .newsbox info {
+    .newsbox .info_block {
         position: absolute;
         width: 100%;
     }
@@ -74,15 +74,24 @@
 		cursor: pointer;
 	}
 	
-    .newsbox.layoutsimple info {
+	.ie .newsbox.layoutsimple  {
+		padding-top: 0px !important;
+	}
+	
+    .newsbox.layoutsimple .info_block {
         bottom: 10px;
         padding-left: 16px;
         padding-right: 16px;
         .info;
+		background: none !important;
     }
     .newsbox.layoutsimple h1 {
         padding-right: 10px;
         margin-bottom: 7px !important;
+    }
+	.ie .newsbox.layoutsimple h2 {
+        margin-top: 0px !important;
+		margin-bottom: 12px !important;
     }
     .newsbox.layoutsimple description {
         margin-top: 15px;
@@ -104,25 +113,25 @@
         background-repeat: no-repeat;
 		background-size: cover;
     }
-    .newsbox.layoutbgimage info {
+    .newsbox.layoutbgimage .info_block {
         bottom: 0px;
         left: 0px;
         background-color: rgb(255, 255, 255);
         background-color: rgba(255, 255, 255, 0.75);
     }
-	.newsbox.layoutbgimage.section-alltag info {
-        background-color: rgb(156, 255, 204) !important;
-        background-color: rgba(156, 255, 204, 0.75) !important;
+	.newsbox.layoutbgimage.section-alltag .info_block  {
+        background-color: rgb(156, 255, 204);
+        background-color: rgba(156, 255, 204, 0.75);
     }
-	.newsbox.layoutbgimage.section-politik info {
-        background-color: rgb(173, 218, 204) !important;
-        background-color: rgba(173, 218, 204, 0.75) !important;
+	.newsbox.layoutbgimage.section-politik .info_block  {
+        background-color: rgb(205, 226, 255);
+        background-color: rgba(205, 226, 255, 0.75);
     }
-	.newsbox.layoutbgimage.section-kultur info {
-        background-color: rgb(255, 204, 170) !important;
-        background-color: rgba(255, 204, 170, 0.75) !important;
+	.newsbox.layoutbgimage.section-kultur .info_block  {
+        background-color: rgb(255, 204, 170);
+        background-color: rgba(255, 204, 170, 0.75);
     }
-    .newsbox.layoutbgimage info div {
+    .newsbox.layoutbgimage .info_block  div {
         padding: 10px;
     }
     .newsbox.layoutbgimage h1 {
@@ -146,14 +155,14 @@
         background-color: rgba(156, 255, 204, 0.75) !important;
     }
 	.newsbox.layoutdouble.section-politik .newsboxcontent_wrapper {
-        background-color: rgb(173, 218, 255) !important;
-        background-color: rgba(173, 218, 255, 0.75) !important;
+		background-color: rgb(205, 226, 255) !important;
+        background-color: rgba(205, 226, 255, 0.75) !important;
     }
 	.newsbox.layoutdouble.section-kultur .newsboxcontent_wrapper {
         background-color: rgb(255, 204, 170) !important;
         background-color: rgba(255, 204, 170, 0.75) !important;
     }
-    .newsbox.layoutdouble info {
+    .newsbox.layoutdouble .info_block  {
 		left: 0px;
         bottom: 10px;
         margin-left: 16px;
@@ -267,15 +276,16 @@
         text-align: center;
         .capitalize;
     }
-    .nav li.active a{
+    .nav li a{
         padding-bottom: 33px;
     }
-    .nav li.nav-front.active a  { background: url(../_img/nav-shape-front.png) bottom center no-repeat; }
-    .nav li.nav-alltag.active a { background: url(../_img/nav-shape-alltag.png) bottom center no-repeat; }
-    .nav li.nav-kultur.active a { background: url(../_img/nav-shape-kultur.png) bottom center no-repeat; }
-    .nav li.nav-politik.active a{ background: url(../_img/nav-shape-politik.png) bottom center no-repeat; }
-    .nav li.nav-fav.active a    { background: url(../_img/nav-shape-favorite.png) bottom center no-repeat; }
-	.nav li.nav-search.active a { background: url(../_img/nav-shape-search.png) bottom center no-repeat; }
+    .nav li.nav-front a  { background: url(../_img/nav-shape-front.png) bottom center no-repeat; }
+    .nav li.nav-alltag a { background: url(../_img/nav-shape-alltag.png) bottom center no-repeat; }
+    .nav li.nav-kultur a { background: url(../_img/nav-shape-kultur.png) bottom center no-repeat; }
+    .nav li.nav-politik a{ background: url(../_img/nav-shape-politik.png) bottom center no-repeat; }
+    .nav li.nav-fav a    { background: url(../_img/nav-shape-favorite.png) bottom center no-repeat; }
+	.nav li.nav-search a { background: url(../_img/nav-shape-search.png) bottom center no-repeat; }
+	.nav li.unactive a	 { background: none !important; padding-bottom: 4px !important;  }
 
     .nav li.nav-front    { width: 90px; margin-right: 60px; }
     .nav li.nav-alltag   { width: 137px; }
@@ -290,13 +300,18 @@
     .header .widget {
         position: absolute;
         left: 0px;
+		z-index: 2;
     }
     .header .logo {
         text-align: center;
 		display: block;
 		overflow: hidden;
-		padding: 55px 0 0 0;
-		margin-top: -10px;
+		position: absolute;
+		top: 48px;
+		left: 0px;
+		width: 100%;
+		text-align: center;
+		z-index: 1;
     }
     .header .subtitle {
         position: absolute;
@@ -319,12 +334,14 @@
         text-align: center;
         background: url(../_img/aare.png) center center no-repeat;
         padding-top: 6px;
+		z-index: 2;
     }
-    .header date {
+    .header time {
         display: block;
         position: absolute;
         bottom: 20px;
         left: 0px;
+		z-index: 2;
     }
     
     /* Header login */
@@ -348,6 +365,14 @@
 		border-radius: 3px;
 		-moz-border-radius: 3px;
 		-webkit-border-radius: 3px;
+		-khtml-border-radius: 3px;
+	}
+	.ie .header .login button {
+		padding-right: 1px;
+		padding-left: 1px;
+		padding-top: 6px;
+		padding-bottom: 6px;
+		behavior: url(border-radius.htc);
 	}
 	.header .login .register {
 		display: block;
@@ -374,7 +399,11 @@
         right: -25px;
         text-align: center;
         width: 150px;
+		z-index: 2;
     }
+	.ie .header .search {
+		top: 120px !important;
+	}
     
     /* Search form */
     .searchform {
@@ -466,6 +495,9 @@
 		border-bottom: 1px solid #000;
 		margin-top: 20px;
 	}
+	.ie .footer {
+		padding-top: 10px;
+	}
 	.front-page .footer {
 		margin-top: 0px !important;
 	}
@@ -482,19 +514,24 @@
 		margin-top: 10px;
 		margin-bottom: 0px;
 		height: 30px;
-		width: 100%;
+		padding: 0px;
+		width: 100% !important;
 	}
 	.footer-sections li.nav-front {
 		margin-top: 0px;
 	}
 	.footer-sections li a {
 		display: block;
-		height: 30px;
-		line-height: 28px !important;
+		height: 25px;
+		padding-top: 5px;
+		padding-bottom: 0px;
 		padding-left: 15px;
         padding-right: 15px;
 		text-decoration: none;
 		.capitalize;
+	}
+	.ie .footer-sections li {
+		height: 29px;
 	}
 	.footer-box {
 		width: 133px;
@@ -507,13 +544,18 @@
 		padding-bottom: 5px;
 		overflow: hidden;
 		margin-top: 0px;
+		display: block;
+	}
+	.ie .footer-box {
+		height: 150px;
+		width: 163px;
 	}
 	.footer-box .caption {
 		.capitalize;
 		margin-bottom: 4px;
 	}
 	.footer-box li, .footer-box li a, .footer-box.section-front a {
-		line-height: 16px !important;
+		line-height: 16px;
 		font-size: 94%;
 	}
 	.footer-box li a:hover, .footer-box.section-front a:hover {
@@ -529,6 +571,9 @@
 	
 	.footer-box.section-front {
 		width: 389px;
+	}
+	.ie .footer-box.section-front {
+		width: 419px;
 	}
 	
 	.partners {
@@ -563,7 +608,7 @@
         position: relative;
         padding-bottom: 9px;
     }
-    .commentbox icon {
+    .commentbox icon, .commentbox .icon {
         position: absolute;
         top: 15px;
         right: 13px;
@@ -573,6 +618,9 @@
         right: -12px;
         bottom: -5px;
     }
+	.ie .commentbox .bg {
+		bottom: 0px;
+	}
     .commentbox .image {
         display: block;
         float: left;
@@ -583,28 +631,28 @@
         max-width: 55px;
         max-height: 60px;
     }
-	.commentbox author {
+	.commentbox author, .commentbox .author {
 		.baselink;
 	}
-	.commentbox author:hover {
+	.commentbox author:hover, .commentbox .author:hover {
 		background: none;
 	}
-    .commentbox.layouttwitter info {
+    .commentbox.layouttwitter .info_block, .commentbox.layouttwitter info {
         display: block;
         float: left;
         width: 90px;
     }
-    .commentbox.layouttwitter author {
+    .commentbox.layouttwitter author, .commentbox.layouttwitter .author {
         display: block;
         width: 90px;
         margin-top: -3px;
     }
-    .commentbox.layouttwitter date {
+    .commentbox.layouttwitter time, .commentbox.layouttwitter date {
         display: block;
         width: 140px;
         .community-font;
     }
-    .commentbox.layouttwitter description {
+    .commentbox.layouttwitter description, .commentbox.layouttwitter .description {
         display: block;
         padding-top: 11px;
         .community-font;
@@ -612,15 +660,15 @@
     .commentbox.layoutsimple {
 	    padding-top: 12px; /* -3px */
     }
-    .commentbox.layoutsimple author {
+    .commentbox.layoutsimple author, .commentbox.layoutsimple .author {
         display: block;
     }
-    .commentbox.layoutsimple description {
+    .commentbox.layoutsimple description, .commentbox.layoutsimple .description {
         display: block;
         padding-top: 10px;
         .community-font;
     }
-    .commentbox.layoutsimple date {
+    .commentbox.layoutsimple date, commentbox.layoutsimple time {
         display: block;
         .info;
         margin-top: 6px;
@@ -673,7 +721,7 @@
         border-bottom: 4px solid #cecdcc;
         color: #000000;
     }
-    .adbox title {
+    .adbox title, .adbox .title {
         margin-top: 6px;
         display: block;
         .capitalize;
@@ -684,7 +732,7 @@
         padding-bottom: 6px;
         .community-font;
     }
-	.adbox p a, .adbox description a {
+	.adbox p a, .adbox description a, .adbox .description a {
 		.communitybaselink;
 		background: none;
 	}
@@ -695,7 +743,7 @@
     .adbox .lists {
         margin-top: 7px;
     }
-    .adbox icon {
+    .adbox icon, .adbox .icon {
         position: absolute;
         top: 8px;
         right: 13px;
@@ -1009,17 +1057,17 @@
 		.info;
 		line-height: 20px !important;
 	}
-	.blogbox info {
+	.blogbox info, .blogbox .info_block {
 		.info;
 		text-align: center;
 		display: block;
 	}
-	.blogbox author.mainauthor {
+	.blogbox author.mainauthor, .blogbox .author.mainauthor {
 		text-align: center;
 		.capitalize;
 		display: block;
 	}
-	.blogbox author.mainauthor a {
+	.blogbox author.mainauthor a, .blogbox .author.mainauthor a {
 		border-bottom: 4px solid #f1e2ef;
 	}
 	.blogbox .title {
@@ -1029,6 +1077,9 @@
 		margin-top: 14px;
 		margin-bottom: 20px;
 		.subheading;
+	}
+	.ie .blogbox .title {
+		width: 100%;
 	}
 	.blogbox .title a:hover {
 		text-decoration: underline;

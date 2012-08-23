@@ -10,14 +10,14 @@
 		<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
 	{{ /if }}
 	<a href="{{ $gimme->article->link }}" target="_blank">
-		<info>
-			<author>{{ $gimme->article->who }}</author>
+		<div class="info_block">
+			<div class="author">{{ $gimme->article->who }}</div>
 			{{ if $gimme->article->publish_date }}
-				<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date>
+				<time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</time>
 			{{ /if }}
-		</info>
+		</div>
 		<div class="clear"></div>
-		<description>{{ $gimme->article->quote|strip_tags }}</description>
+		<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
 	</a>
 	<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
 	
@@ -25,8 +25,8 @@
 
 <div class="row adbox">
 	<div class="community-title grey">Anzeige</div>
-	<title>{{ $gimme->article->where }}</title>
-	<description>{{ $gimme->article->quote|strip_tags }}</description>
+	<div class="title">{{ $gimme->article->where }}</div>
+	<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
 	<div class="lists"><a href="{{ $gimme->article->link }}">{{ $gimme->article->who }}</a></div>
 	
 {{ else }}
@@ -36,13 +36,13 @@
 		<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
 	{{ /if }}
 	<a href="{{ $gimme->article->link }}">
-		<author>{{ $gimme->article->who }}</author>
-		<description>{{ $gimme->article->quote|strip_tags }}</description>
+		<div class="author">{{ $gimme->article->who }}</div>
+		<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
 		{{ if $gimme->article->publish_date }}
-			<date>
+			<time>
 				schrieb am {{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }} um 
 				{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }} zu
-			</date>
+			</time>
 		{{ /if }}
 	</a>
 	<div class="community-title white">{{ $gimme->article->where }}</div>
@@ -51,9 +51,9 @@
 {{ /if }}
 
 {{ if $gimme->article->is_twitter }}
-	<icon><img src="{{ url static_file='_img/twitter.png' }}" /></icon>
+	<div class="icon"><img src="{{ url static_file='_img/twitter.png' }}" /></div>
 {{ elseif $gimme->article->is_facebook }}
-	<icon><img src="{{ url static_file='_img/facebook.png' }}"></icon>
+	<div class="icon"><img src="{{ url static_file='_img/facebook.png' }}"></div>
 {{ /if }}
 
 </div>
@@ -74,17 +74,17 @@
 
 <div class="row adbox supportbox">
     <div class="community-title grey">Journal B<br>unterstutzen</div>
-    <icon><img src="{{ url static_file='_img/unterstutzen.png' }}" /></icon>
+    <div class="icon"><img src="{{ url static_file='_img/unterstutzen.png' }}" /></div>
     <div class="spenden">
-    	<description>
+    	<div class="description">
     		Alle Artikel auf journalB.ch sind frei verfügbar. Wenn Ihnen unsere Arbeit etwas wert ist, nutzen Sie doch die Gelegenheit, uns zu unterstützen. Die Redaktion bedankt sich für Ihren Beitrag.
-    	</description>
+    	</div>
     	<div class="link"><a href="#" onclick="$(this).parents('.spenden').hide().next().slideDown(); return false;"">Jetzt spenden!</a></div>
     </div>
     <div class="spenden hidden">
-    	<description>
+    	<div class="description">
     	Praesent dictum porta ante, in congue ante ultrices eu. Pellentesque odio enim, faucibus sit amet.
-    	</description>
+    	</div>
     	<center><br/>
     		<a href="http://flattr.com" target="_blank"><img src="{{ url static_file='_img/spenden-flattr.png' }}" alt="Flattr this" title="Flattr this"></a>
     		<a href="https://www.paypal.com/"><img src="{{ url static_file='_img/spenden-paypal.gif' }}" alt="Spenden mit PayPal" title="Spenden mit PayPal"></a>

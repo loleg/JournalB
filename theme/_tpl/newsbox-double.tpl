@@ -8,7 +8,7 @@
 		</div>
 	</div>
 	
-	<info>
+	<div class="info_block">
 		<time>
 			{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
 				{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
@@ -17,7 +17,7 @@
 			{{ /if }}
 		</time> | 
 		<author>{{ $gimme->article->author->name }}</author>
-	</info>
+	</div>
 	
 	<a class="favorite" href="{{ uri options="article" }}">Favorite</a>
 		

@@ -1,7 +1,7 @@
 <div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $article_section }} layoutbgimage" onclick="location='{{ uri options="article" }}'"
 	{{ image rendition="topfront" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 
-	<info>
+	<div class="info_block">
 		<div>
 			<span class="info">
 				<time>
@@ -14,7 +14,7 @@
 			</span>
 			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
 		</div>
-	</info>
+	</div>
 
 	<a class="favorite" href="{{ uri options="article" }}">Favorite</a>
 	
