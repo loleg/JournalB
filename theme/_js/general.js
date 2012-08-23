@@ -61,6 +61,8 @@ function articleImageAlts()
 	});
 }
 
+// TODO: Preload image assets
+
 // Reverse plugin
 jQuery.fn.reverse = [].reverse;
 
@@ -110,7 +112,9 @@ $(document).ready(function() {
 			myjson = $.parseJSON(data);
 
 			// Set up auth button
-			$(".header .login button").click(function() { document.location='/services/disqus.php?logout'; });
+			$(".header .login button")
+				.click(function() { document.location='/services/disqus.php?logout'; })
+				.find('span').html('Abmelden');
 			$(".header .login .register").html('Salut, ' + myjson.user);
 			
 			// Collect info from newsboxes
@@ -121,12 +125,16 @@ $(document).ready(function() {
 				});
 			});
 		}
+		$(".header .login").show();
 	}); // - Favorites
 	
 	// Favorites dialog
 	$('li.nav-fav a').click(function() {
 	
+
+	
 		// TODO: move into template, style using design specs
+		/*
 		if ($('div.dialog-fav').length == 0) {
 			$('body').append('<div class="dialog-fav" style="position:absolute;display:none; top:50%;left:50%;width:300px;height:300px; margin-left:-150px;margin-top:-150px; border:1px solid black;background:white;color:black; padding:2em;"></div>');
 		}
@@ -137,7 +145,19 @@ $(document).ready(function() {
 			});
 			dialog.find('button').click(function() { dialog.hide(); });
 			dialog.show();
-		}
+		}*/
+		
+		if (myfaveobj.length <= 0) return false;
+		
+		var newsrow = $('.main > .content').html('<div class="row newsrow"></div>').find('.newsrow:last');
+
+		$.each(myfaveobj, function(i) {
+			if (i > 0 && i % 2 == 0) {
+				newsrow = newsrow.parent().append('<div class="row newsrow"></div>').find('.newsrow:last');
+			}
+			var leftright = (i % 2 == 0) ? 'left' : 'right';
+			newsrow.append('<div class="content-' + leftright + ' newsbox section-alltag layoutsimple" onclick="location=\'' + this.href + '\'"><div class="newsboxcontent"><h1><a>' + this.title + '</a></h1><span class="favorite checked">Favorite</span></div>');
+		});
 	
 		return false;
 	}); // - Favorites dialog
