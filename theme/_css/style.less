@@ -52,13 +52,16 @@ article h1, article h2, article h3, article h4, article h5 {
 	letter-spacing:0.04em;
 	line-height:25px;
 	margin-bottom:5px;
-	margin-top:20px;
 }
+article h1:before, article h2:before, article h3:before, article h4:before, article h5:before {
+	margin-bottom:20px;
+}
+
 /*All Caps paragraph leads (ex: Interviews)*/    
 article h6 {
 	.capitalize; float:left; 
-	margin-top: -2px; padding-right: 3px; 
-	letter-spacing:0.03em;
+	margin-top: 5px; padding-right: 3px; 
+	letter-spacing:0.03em; line-height: 100%;
 }
 /* Article quotes */
 blockquote p { 
@@ -117,7 +120,7 @@ blockquote a {
 	text-decoration: none;
   }
   
-.nav a { letter-spacing: 0.1pt; }
+.nav a { letter-spacing: 0.1em; }
 
 .button-close {
     float:right; cursor:pointer;

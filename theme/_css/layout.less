@@ -523,18 +523,20 @@
 	.footer-sections li.nav-front {
 		margin-top: 0px;
 	}
-	.footer-sections li a {
+	.footer-sections li a, .footer-box .caption, .partners .caption {
 		.capitalize;
+		text-decoration: none;
+		font-size: 94%; /* 16px */
+		letter-spacing: 0.1em;
+	}
+	.footer-sections li a {
 		display: block;
 		height: 30px;
 		padding-top: 5px;
 		padding-bottom: 0px;
 		padding-left: 15px;
         padding-right: 15px;
-		text-decoration: none;
-		font-size: 94%; /* 16px */
-		letter-spacing: 0.03em;
-		line-height: 33px;
+		line-height: 26px;
 	}
 	.ie .footer-sections li {
 		height: 29px;
@@ -557,8 +559,6 @@
 		width: 163px;
 	}
 	.footer-box .caption {
-		.capitalize;
-		letter-spacing: 0.03em;
 		line-height: 125%;
 		margin-bottom: 6px;
 		margin-top: 3px;
@@ -590,9 +590,7 @@
 		text-align: center;
 	}
 	.partners .caption {
-		.capitalize;
 		margin-right: 7px;
-		letter-spacing: 0.03em;
 	}
 	
 
@@ -656,6 +654,8 @@
     }
     .commentbox.layouttwitter time, .commentbox.layouttwitter date {
         display: block;
+        position: absolute;
+        top: 52px;
         width: 140px;
         .community-font;
     }
@@ -672,9 +672,13 @@
     }
     .commentbox.layoutsimple description, .commentbox.layoutsimple .description {
         display: block;
+        clear: both;
         padding-top: 10px;
         .community-font;
     }
+    .row.commentbox.layoutsimple > time {
+	    font-size: 70%;
+	}
     .commentbox.layoutsimple date, commentbox.layoutsimple time {
         display: block;
         .info;
@@ -694,6 +698,7 @@
 	    padding:10px 5px 2px 5px;
 	    position: absolute;
 	    width: 93px;
+	    height: 180px;
     }
     .sharebox .shareicon {
 	    margin-bottom: 3px;

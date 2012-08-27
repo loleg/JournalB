@@ -38,13 +38,13 @@
 	<a href="{{ $gimme->article->link }}">
 		<div class="author">{{ $gimme->article->who }}</div>
 		<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
-		{{ if $gimme->article->publish_date }}
-			<time>
-				schrieb am {{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }} um 
-				{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }} zu
-			</time>
-		{{ /if }}
 	</a>
+	{{ if $gimme->article->publish_date }}
+		<time>
+			schrieb am {{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }} um 
+			{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }} zu
+		</time>
+	{{ /if }}
 	<div class="community-title white">{{ $gimme->article->where }}</div>
 	<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
 
