@@ -149,6 +149,10 @@ $(document).ready(function() {
 		
 		if (myfaveobj.length <= 0) return false;
 		
+		if ($('.main > .content').length == 0) {
+			$('.main > .mcontentbar').hide().parent().append('<div class="row content"></div>');
+		}
+		
 		var newsrow = $('.main > .content').html('<div class="row newsrow"></div>').find('.newsrow:last');
 
 		$.each(myfaveobj, function(i) {
@@ -156,7 +160,7 @@ $(document).ready(function() {
 				newsrow = newsrow.parent().append('<div class="row newsrow"></div>').find('.newsrow:last');
 			}
 			var leftright = (i % 2 == 0) ? 'left' : 'right';
-			newsrow.append('<div class="content-' + leftright + ' newsbox section-alltag layoutsimple" onclick="location=\'' + this.href + '\'"><div class="newsboxcontent"><h1><a href="' + this.href + '">' + this.title + '</a></h1><span class="favorite checked">Favorite</span></div>');
+			newsrow.append('<div class="content-' + leftright + ' newsbox layoutsimple" onclick="location=\'' + this.href + '\'" style="height:7em"><div class="newsboxcontent"><h1><a href="' + this.href + '">' + this.title + '</a></h1><span class="favorite checked">Favorite</span></div>');
 		});
 	
 		return false;

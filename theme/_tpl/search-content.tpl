@@ -3,8 +3,19 @@
 	<h2 class="search-keywords">
 		{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"Suche...\"" }}
 		<script language="Javascript">
+			// Remove header form
+			$('.header .search form').remove();
+			
+			// Put current search query into form
 			var sp = '{{ $gimme->search_articles_action->search_phrase }}';
 			if (sp != '') { $('.search-keywords input').val(sp); }
+			
+			// Submit form when clicking on the righthand side
+			$('.search-keywords input').click(function(e) { 
+				if ($(this).width()*0.99 < e.pageX - $(this).position().left) {
+					$(this).parents('form').submit();
+				}
+			});
 		</script>
 	</h2>
 
@@ -16,13 +27,18 @@
 		<!-- TODO uncheck when closing -->
 		<div class="button-close grey" onclick="$('.search-advanced').hide();$(this).parents('form').find('input[checked]').val('')">X</div>
 	
-		<!-- f_search_start_date	2018-01-31 f_search_end_date	2018-02-08-->
-		
 		<ul class="search-dates">
-			<li><input class="checkbox" name="f_search_date" value="h" type="checkbox"> heute</li>
-			<li><input class="checkbox" name="f_search_date" value="w" type="checkbox"> letzte Woche</li>
-			<li><input class="checkbox" name="f_search_date" value="m" type="checkbox"> letzter Monat</li>
-			<li><input class="checkbox" name="f_search_date" value="j" type="checkbox"> letztes Jahr</li>
+			{{ $lastday = date_create('-1 day') }}
+			<li><input class="radio" name="f_search_start_date" value="{{ $lastday->format('Y-m-d') }}" type="radio"> heute</li>
+			{{ $lastweek = date_create('-1 week') }}
+			<li><input class="radio" name="f_search_start_date" value="{{
+$lastweek->format('Y-m-d') }}" type="radio"> letzte Woche</li>
+			{{ $lastmonth = date_create('-1 month') }}
+			<li><input class="radio" name="f_search_start_date" value="{{
+$lastmonth->format('Y-m-d') }}" type="radio"> letzter Monat</li>
+			{{ $lastyear = date_create('-1 year') }}
+			<li><input class="radio" name="f_search_start_date" value="{{
+$lastyear->format('Y-m-d') }}" type="radio"> letztes Jahr</li>
 		</ul>
 		
 		<!--
@@ -34,16 +50,16 @@
 		-->
 		
 		<ul class="search-filter">
-			<li><input class="checkbox" name="f_search_type" value="d" type="checkbox"> Dossier</li>
-			<li><input class="checkbox" name="f_search_type" value="b" type="checkbox"> Blog</li>
-			<li><input class="checkbox" name="f_search_type" value="k" type="checkbox"> Kolumne</li>
-			<li><input class="checkbox" name="f_search_type" value="r" type="checkbox"> Kommentar</li>
+			<li><input class="radio" name="f_search_issue" value="1" type="radio"> Dossier</li>
+			<li><input class="radio" name="f_search_issue" value="2" type="radio"> Blog</li>
+			<li><input class="radio" name="f_search_issue" value="4" type="radio"> Kolumne</li>
+			<li><input class="radio" name="f_search_issue" value="4" type="radio"> Kommentar</li>
 		</ul>
 		
 		<ul class="search-details">
-			<li><input class="checkbox" name="f_search_issue" value="Alltag" type="checkbox"> Alltag</li>
-			<li><input class="checkbox" name="f_search_issue" value="" type="checkbox"> Politik</li>
-			<li><input class="checkbox" name="f_search_issue" value="" type="checkbox"> Kultur</li>
+			<li><input class="checkbox" name="f_search_section" value="1" type="checkbox"> Alltag</li>
+			<li><input class="checkbox" name="f_search_section" value="2" type="checkbox"> Politik</li>
+			<li><input class="checkbox" name="f_search_section" value="3" type="checkbox"> Kultur</li>
 		</ul>
 	</div>
 			
