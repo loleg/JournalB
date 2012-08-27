@@ -3,19 +3,41 @@
 	<h2 class="search-keywords">
 		{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"Suche...\"" }}
 		<script language="Javascript">
+		$(document).ready(function() {
+		
 			// Remove header form
 			$('.header .search form').remove();
+			var searchform = $('.main .searchform form');
 			
 			// Put current search query into form
 			var sp = '{{ $gimme->search_articles_action->search_phrase }}';
 			if (sp != '') { $('.search-keywords input').val(sp); }
 			
-			// Submit form when clicking on the righthand side
-			$('.search-keywords input').click(function(e) { 
-				if ($(this).width()*0.99 < e.pageX - $(this).position().left) {
-					$(this).parents('form').submit();
-				}
+			// Submit form when clicking on icon
+			$('.search-keywords').prepend("<span></span>").find('span').click(function(e) { 
+				searchform.submit();
 			});
+			
+			// Check advanced field submission
+			var adv = $('.search-advanced'),
+				adv_date = '{{ $smarty.post.f_search_start_date }}',
+				adv_issue = '{{ $gimme->search_articles_action->search_issue }}',
+				adv_section = '{{ $gimme->search_articles_action->search_section }}';
+			if (adv_date + adv_issue + adv_section != '') {
+				$('.search-dates input[value="' + adv_date + '"]').attr('checked', 'checked');
+				$('.search-issue input[value="' + adv_issue + '"]').attr('checked', 'checked');
+				$('.search-section input[value="' + adv_section + '"]').attr('checked', 'checked');
+				adv.show();
+			}
+			
+			// Submit when selecting advanced
+			/*
+			adv.find('input').change(function() {
+				searchform.submit();
+			});
+			*/
+			
+		});
 		</script>
 	</h2>
 
@@ -49,17 +71,17 @@ $lastyear->format('Y-m-d') }}" type="radio"> letztes Jahr</li>
 		</ul>
 		-->
 		
-		<ul class="search-filter">
+		<ul class="search-issue">
 			<li><input class="radio" name="f_search_issue" value="1" type="radio"> Dossier</li>
 			<li><input class="radio" name="f_search_issue" value="2" type="radio"> Blog</li>
 			<li><input class="radio" name="f_search_issue" value="4" type="radio"> Kolumne</li>
 			<li><input class="radio" name="f_search_issue" value="4" type="radio"> Kommentar</li>
 		</ul>
 		
-		<ul class="search-details">
-			<li><input class="checkbox" name="f_search_section" value="1" type="checkbox"> Alltag</li>
-			<li><input class="checkbox" name="f_search_section" value="2" type="checkbox"> Politik</li>
-			<li><input class="checkbox" name="f_search_section" value="3" type="checkbox"> Kultur</li>
+		<ul class="search-section">
+			<li><input class="radio" name="f_search_section" value="1" type="radio"> Alltag</li>
+			<li><input class="radio" name="f_search_section" value="2" type="radio"> Politik</li>
+			<li><input class="radio" name="f_search_section" value="3" type="radio"> Kultur</li>
 		</ul>
 	</div>
 			

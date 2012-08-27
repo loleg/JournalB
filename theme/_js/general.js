@@ -61,8 +61,6 @@ function articleImageAlts()
 	});
 }
 
-// TODO: Preload image assets
-
 // Reverse plugin
 jQuery.fn.reverse = [].reverse;
 
