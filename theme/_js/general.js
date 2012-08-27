@@ -115,7 +115,7 @@ $(document).ready(function() {
 			$(".header .login button")
 				.click(function() { document.location='/services/disqus.php?logout'; })
 				.find('span').html('Abmelden');
-			$(".header .login .register").html('Salut, ' + myjson.user);
+			$(".header .login .register").html('Salut, <br><span>' + myjson.user + '</span>');
 			
 			// Collect info from newsboxes
 			$.each(myjson.faves, function() {
@@ -156,7 +156,7 @@ $(document).ready(function() {
 				newsrow = newsrow.parent().append('<div class="row newsrow"></div>').find('.newsrow:last');
 			}
 			var leftright = (i % 2 == 0) ? 'left' : 'right';
-			newsrow.append('<div class="content-' + leftright + ' newsbox section-alltag layoutsimple" onclick="location=\'' + this.href + '\'"><div class="newsboxcontent"><h1><a>' + this.title + '</a></h1><span class="favorite checked">Favorite</span></div>');
+			newsrow.append('<div class="content-' + leftright + ' newsbox section-alltag layoutsimple" onclick="location=\'' + this.href + '\'"><div class="newsboxcontent"><h1><a href="' + this.href + '">' + this.title + '</a></h1><span class="favorite checked">Favorite</span></div>');
 		});
 	
 		return false;
@@ -164,18 +164,35 @@ $(document).ready(function() {
 	
 	// Favorites icon
 	$('.favorite').click(function() {
-		var vote = 1;
-		if ($(this).hasClass('checked')) {
-			$(this).removeClass('checked'); vote = -1;
+		var vote = ($(this).hasClass('checked')) ? -1 : 1;
+		
+		// Get target details
+		var url = false, title;
+		if ($(this).hasClass('controlicon')) {
+			url = document.location.href;
+			title = document.title;
 		} else {
-			$(this).addClass('checked');
+			var link = $(this).parent().find('h1');
+			url = $('a', link).attr('href');
+			title = link.text();
 		}
+		
 		// Execute call
-		var url = ($(this).attr('href')) ? $(this).attr('href') : document.location.href;
-		if (url.indexOf('http:') != 0) url = document.location.protocol + '//' + document.location.host + url;
-		$.get('/services/disqus.php?dofave=' + encodeURI(url) + '&vote=' + vote, function(data) {
-			if (data != 'OK' && typeof console != 'undefined') console.log(data);
-		});
+		if (url) {
+			if (url.indexOf('http:') != 0) 
+				url = document.location.protocol + '//' + document.location.host + url;
+			$.get('/services/disqus.php?dofave=' + encodeURI(url) 
+					+ '&title=' + encodeURI(title) + '&vote=' + vote, function(data) {
+				if (data != 'OK' && typeof console != 'undefined') console.log(data);
+			});
+			
+			// Update icon
+			if (vote == -1) {
+				$(this).removeClass('checked');
+			} else {
+				$(this).addClass('checked');
+			}
+		}
 		return false;
 	});
 

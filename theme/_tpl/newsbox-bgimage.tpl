@@ -16,7 +16,7 @@
 		</div>
 	</div>
 
-	<a class="favorite" href="{{ uri options="article" }}">Favorite</a>
+	<a class="favorite">Favorite</a>
 	
 </div>
 

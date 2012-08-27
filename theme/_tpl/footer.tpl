@@ -73,3 +73,10 @@
 	<a href="#">Sourcefabric</a> | 
 	<a href="#">Radio Gelb-Schwarz</a>
 </div>
+
+<div class="preload hidden">
+	<div class="newsbox"><a class="favorite checked"></a></div>
+	<div class="controlicon share checked"></div>
+	<div class="controlicon fontize checked"></div>
+	<div class="controlicon favorite checked"></div>
+</div>

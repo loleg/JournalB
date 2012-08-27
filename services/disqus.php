@@ -20,9 +20,19 @@ $SECRET_KEY = "Em5o6RFV2YKZgTowuo6QprVZ8WwLZ5SdhL9hmkAORZXsW5jzbJiPCGZgT6sfYqXr"
 // 1 year expiry
 $expires = time() + 31536000;
 
+// Minute session expiry
+session_cache_expire(15);
+session_cache_limiter('private');
+session_start(); 
+
 if (isset($_GET['logout'])) {
 
+	setcookie('jbdisqus[userid]', "", time() - 3600);
+	setcookie('jbdisqus[username]', "", time() - 3600);
+	setcookie('jbdisqus[token]', "", time() - 3600);
+	setcookie('jbdisqus[refresh]', "", time() - 3600);
 	setcookie("jbdisqus", "", time() - 3600);
+	
 	header( 'Location: ' . $homepage ); // http://disqus.com/logout/?redirect= to logout Disqus too
 
 } elseif (isset($_COOKIE['jbdisqus'])) {
@@ -34,23 +44,39 @@ if (isset($_GET['logout'])) {
 	
 	$api = new DisqusAPI($SECRET_KEY);
 	
-	if (isset($_GET['myfaves'])) {
+	if (!isset($userid)) {
+	
+		die(''); // missing login
+	
+	} elseif (isset($_GET['myfaves'])) {
 	
 		$arr = array('user'=>$username, 'faves'=>array());
 		
-		$activities =
-			$api->users->listActivity(array(
-				'user'=>$userid, 'include'=>'user', 'limit'=>50
-			));
+		// Grab cache or refresh
+		if (isset($_SESSION['jbdisqus']) && isset($_SESSION['jbdisqus']['faves'])) {
+		
+			$arr['faves'] = $_SESSION['jbdisqus']['faves'];
+			error_log('Using cached faves');
 			
-		foreach ($activities as $k => $v) {
-			// TODO use in query?
-			if (strstr($v->type, "like") && $v->object->forum->id == $shortname) {
+		} else {
+		
+			$activities =
+				$api->users->listActivity(array(
+					'user'=>$userid, 'include'=>'user', 'limit'=>50
+				));
 				
-				$arr['faves'][] = $v->object->thread;
-				//var_dump($v->object->thread);
-				
+			foreach ($activities as $k => $v) {
+				// TODO use in query?
+				if (strstr($v->type, "like") && $v->object->forum->id == $shortname) {
+					
+					$arr['faves'][] = $v->object->thread;
+					//var_dump($v->object->thread);
+					
+				}
 			}
+			
+			$_SESSION['jbdisqus']['faves'] = $arr['faves'];
+			
 		}
 		
 		echo json_encode($arr);
@@ -62,12 +88,13 @@ if (isset($_GET['logout'])) {
 		if (strstr($page, 'http:') == FALSE) {
 			$page = $_SERVER['HTTP_REFERER'];
 		}
+		$title = urldecode($_GET['title']);
 
 		if (strstr($page, $homepage) == FALSE) {
 			die('Invalid request ' . $page);
 		}
 		
-		//echo($page);
+		echo($title . ' ' . $page);
 			
 		$threads =
 			$api->forums->listThreads(array(
@@ -76,12 +103,45 @@ if (isset($_GET['logout'])) {
 		
 		//var_dump($threads);
 		
-		if (count($threads) == 1) {
+		$id = -1;
+		
+		if (count($threads) == 0) {
+			
+			// Try creating
+			$thread = $api->threads->create(array(
+					'forum'=>$shortname, 'title'=>$title, 'url'=>$page
+				));
+			$id = $thread->id;
+			
+			error_log('Created thread id: ' . $id);
+				
+		} elseif (count($threads) == 1) {
+		
+			// Take existing match
 			$id = $threads[0]->id;
+			
+			error_log('Found thread id: ' . $id);
+			
+		}
+		
+		if ($id > 0) {
+		
 			$api->threads->vote(array(
 				'vote'=>$vote, 'thread'=>$id
 			));
-			echo('OK');
+			
+			// save to cache
+			if (isset($_SESSION['jbdisqus'])) {
+				$_SESSION['jbdisqus']['faves'][] = $threads[0];
+			}
+			
+			echo(' - OK');
+			
+		} else {
+		
+			echo(' - ERROR');
+			error_log("Could not vote on thread: " . $page);
+
 		}
 
 	} else {
