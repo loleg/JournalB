@@ -307,11 +307,14 @@
 		display: block;
 		overflow: hidden;
 		position: absolute;
-		top: 48px;
-		left: 0px;
+		top: 56px;
+		left: -11px;
 		width: 100%;
 		text-align: center;
 		z-index: 1;
+		background: url(../_img/logo_weiss.png) bottom center no-repeat;
+		background-size: auto 100%;
+		font-size: 0px; text-indent: -9999px;
     }
     .header .subtitle {
         position: absolute;
@@ -946,7 +949,19 @@
     .controlicon {
         margin-bottom: 20px;
         cursor: pointer;
+        width: 100%; height: 39px;
+        background-position: center;
+        background-repeat: no-repeat;
     }
+    .controlicon.favorite 		{ background-image: url(../_img/control-favorite.png); }
+    .controlicon.favorite.checked, .controlicon.favorite:hover 
+    							{ background-image: url(../_img/control-favorite-black.png); }
+    .controlicon.fontize		{ background-image: url(../_img/control-fontize.png); }
+    .controlicon.fontize.checked, .controlicon.fontize:hover	
+    							{ background-image: url(../_img/control-fontize-black.png); }
+    .controlicon.share			{ background-image: url(../_img/control-share.png); }
+    .controlicon.share.checked, .controlicon.share:hover	
+    							{ background-image: url(../_img/control-share-black.png); }
 	
 	.controlbar_mobile {
 		display: none;
