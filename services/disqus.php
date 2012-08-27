@@ -9,8 +9,8 @@ $homepage = "http://bern.lab.sourcefabric.org";
 $redirect = "http://bern.lab.sourcefabric.org/services/disqus.php";
 
 // Local testing
-$homepage = "http://localhost:8888/newscoop/";
-$redirect = "http://localhost:8888/services/disqus.php";
+//$homepage = "http://localhost:8888/newscoop/";
+//$redirect = "http://localhost:8888/services/disqus.php";
 
 // Account details
 $shortname = 'journalb-lab'; 

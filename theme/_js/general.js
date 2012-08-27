@@ -105,7 +105,8 @@ $(document).ready(function() {
 			$(".header .login button").click(function() { document.location='/services/disqus.php?auth'; });
 		
 			// Hide forum
-			$(".forum").html('<a href="#">Zum Verfassen von Kommentaren bitte Anmelden</a>.');
+			$(".forum").prepend('<div class="link"><a href="#">Zum Verfassen von Kommentaren bitte Anmelden</a>.</div>');
+			$('#dsq-reply').hide();
 			
 		// Yes, we have data	
 		} else {			
@@ -210,7 +211,7 @@ $(document).ready(function() {
 			$(this).attr('StrNr') =="2135" &&
 			$(this).attr('Typ') =="03" &&
 			$(this).attr('Var') =="00") {
-				var txt = $(this).find('Wert:first').text();
+				var txt = $(this).find('Wert[dt="-24h"]').text();
 				$('.aare .wert').html(parseFloat(txt).toFixed(1));
 				return;
 		}			
