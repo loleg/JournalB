@@ -524,14 +524,17 @@
 		margin-top: 0px;
 	}
 	.footer-sections li a {
+		.capitalize;
 		display: block;
-		height: 25px;
+		height: 30px;
 		padding-top: 5px;
 		padding-bottom: 0px;
 		padding-left: 15px;
         padding-right: 15px;
 		text-decoration: none;
-		.capitalize;
+		font-size: 94%; /* 16px */
+		letter-spacing: 0.03em;
+		line-height: 33px;
 	}
 	.ie .footer-sections li {
 		height: 29px;
@@ -555,13 +558,17 @@
 	}
 	.footer-box .caption {
 		.capitalize;
-		margin-bottom: 4px;
+		letter-spacing: 0.03em;
+		line-height: 125%;
+		margin-bottom: 6px;
+		margin-top: 3px;
 	}
-	.footer-box li, .footer-box li a, .footer-box.section-front a {
+	.footer-box li a, .footer-box.section-front a, .partners a {
 		line-height: 16px;
 		font-size: 94%;
+		letter-spacing: 0.01em;
 	}
-	.footer-box li a:hover, .footer-box.section-front a:hover {
+	.footer-box li a:hover, .footer-box.section-front a:hover, .partners a:hover {
 		text-decoration: underline;
 	}
 	.footer-box li {
@@ -571,14 +578,12 @@
 	.footer-box .sect {
 		margin-bottom: 14px;
 	}
-	
 	.footer-box.section-front {
 		width: 389px;
 	}
 	.ie .footer-box.section-front {
 		width: 419px;
-	}
-	
+	}	
 	.partners {
 		padding-top: 15px;
 		padding-bottom: 15px;
@@ -587,11 +592,9 @@
 	.partners .caption {
 		.capitalize;
 		margin-right: 7px;
+		letter-spacing: 0.03em;
 	}
-	.partners a:hover {
-		text-decoration: underline;
-	}
-
+	
 
 /* #Sidebar Styles
 ================================================== */
@@ -613,7 +616,7 @@
     }
     .commentbox icon, .commentbox .icon {
         position: absolute;
-        top: 15px;
+        top: 33px;
         right: 13px;
     }
     .commentbox .bg {
@@ -636,6 +639,7 @@
     }
 	.commentbox author, .commentbox .author {
 		.baselink;
+		line-height: 140%; /*20px*/
 	}
 	.commentbox author:hover, .commentbox .author:hover {
 		background: none;
@@ -647,8 +651,8 @@
     }
     .commentbox.layouttwitter author, .commentbox.layouttwitter .author {
         display: block;
-        width: 90px;
-        margin-top: -3px;
+        width: 140px;
+        margin-top: -1px;
     }
     .commentbox.layouttwitter time, .commentbox.layouttwitter date {
         display: block;
@@ -724,9 +728,11 @@
         border-bottom: 4px solid #cecdcc;
         color: #000000;
     }
+    .adbox a { letter-spacing: 0.02em; }
     .adbox title, .adbox .title {
         margin-top: 6px;
         display: block;
+        letter-spacing: 0.03em;
         .capitalize;
     }
     .adbox description, .adbox .description {
@@ -810,37 +816,6 @@
 
 	}
 	
-	/* Article quotes */
-	blockquote {
-		float: left;
-		margin-left: -120px;
-		width: 240px;
-		margin-right: 20px;
-	}
-	blockquote.right {
-		float: right;
-		margin-right: -120px;
-		margin-left: 20px;
-	}
-	blockquote p {
-		.headline-font;
-		font-size: 180%;
-		line-height: 100%;
-	}
-	blockquote p:last-child {
-		.info;
-		position: relative;
-	    font-weight: normal;
-	    top: -0.4em;
-	}
-	blockquote span {
-		.community-font;
-	}
-	blockquote a {
-		background-image: none !important;
-	}
-
-	
 	.gallery_status {
 		.subheading;
 		font-weight: bold;
@@ -865,16 +840,21 @@
 	article .subtitle {
 		float: left;
 		line-height: 1.15em;
+		letter-spacing: 0.03em;
 		margin-bottom: -0.1em;
 		margin-right: .3em;
 		text-transform: uppercase;
 		font-size: 105%;
 		.headline-font;
 	}
-	
 	article .deck {
 		line-height: 1.4em;
 		font-weight: bold;
+	}
+	article .mcontentbar {
+		font-size: 17px;
+		letter-spacing: 0.015em;
+		line-height: 25px;
 	}
 
     /*Left information bar*/
@@ -892,11 +872,14 @@
 		text-align: center;
 	}
     .article_info author {
-		margin-bottom: 15px;
+		margin-bottom: 25px;
+		margin-top: 18px;
 		display: block;
     }
 	.article_info author a {
         .baselink;
+        font-size: 70%;
+        line-height: 25px;
     }
     .article_info time {
         display: block;
@@ -936,9 +919,17 @@
 		padding-top: 10px;
 	}
 
-	/*Formatting for ALL CAPS paragraph leads (ex: Interviews)*/    
-    article h6 {
-		.capitalize; float:left; margin-top: -2px; padding-right: 3px;
+	/* Article quotes */
+	blockquote {
+		float: left;
+		margin-left: -120px;
+		width: 240px;
+		margin-right: 20px;
+	}
+	blockquote.right {
+		float: right;
+		margin-right: -120px;
+		margin-left: 20px;
 	}
 
     /*Left control buttons*/
@@ -1039,6 +1030,7 @@
 	.cs_img_caption {
 		width: 100px !important;
 		margin-top: 5px;
+		letter-spacing: 0.025em;
         .info;
 		display: none;
 		position: absolute;
@@ -1052,11 +1044,11 @@
 		text-align: left;
 	}
     .cs_img[style*="float:left"] .cs_img_caption {
-        left: 5px;
+        left: 0px;
 		display: block;
     } 
 	.cs_img[style*="float:right"] .cs_img_caption {
-        right: 5px;
+        right: 0px;
 		display: block;
     } 
 	
