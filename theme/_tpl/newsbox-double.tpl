@@ -4,7 +4,7 @@
 	<div class="newsboxcontent_wrapper">
 		<div class="newsboxcontent">
 			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
-			<description><p>{{ $gimme->article->deck|truncate:400:"...":true }}</p></description>
+			<description><p>{{ $gimme->article->deck|strip_tags|truncate:400:"...":true }}</p></description>
 		</div>
 	</div>
 	

@@ -40,7 +40,7 @@
 				{{ if $gimme->article->deck=="" }} 
 					{{ $gimme->article->full_text->first_paragraph }}
 				{{ else }}
-					{{ $gimme->article->deck }}
+					{{ $gimme->article->deck|strip_tags }}
 				{{ /if }}
 			</description>
 		</div>

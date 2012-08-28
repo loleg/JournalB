@@ -30,7 +30,7 @@
 				{{ if $gimme->article->deck=="" }} 
 					{{ $gimme->article->full_text->first_paragraph|truncate:$len:"...":true }}
 				{{ else }}
-					{{ $gimme->article->deck|truncate:$len:"...":true }}
+					{{ $gimme->article->deck|strip_tags|truncate:$len:"...":true }}
 				{{ /if }}
 			</p>
 		</description>		

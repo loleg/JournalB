@@ -138,7 +138,7 @@ $lastyear->format('Y-m-d') }}" type="radio"> letztes Jahr</li>
 			</div>
 		</a>
 		
-		<description>{{ $gimme->article->deck|truncate:150:"...":true }}</description>
+		<description>{{ $gimme->article->deck|strip_tags|truncate:150:"...":true }}</description>
 	</li>   
 {{ /if }}
 	
