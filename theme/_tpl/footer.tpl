@@ -39,28 +39,28 @@
 	</div>
 	
 	<div class="footer-box section-front">
-		<div class="sect">
 		{{ local }}
 			{{ set_issue number="3" }}
 			{{ set_section number="1" }}
 			<div class="caption">Journal B</div>
+			<ul><li>
 			{{ list_articles length="5" order="byPublishDate desc" }}
 				<a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a>
 				{{ if not $gimme->current_list->at_end }}|{{ /if }}
 			{{ /list_articles }}
+			</li></ul>
 		{{ /local }}
-		</div>
 		
-		<div class="sect">
-			<div class="caption">Services</div>
-			<a href="#">Favoriten</a> | 
-			<a href="#">Archiv</a> | 
-			<a href="#">Community</a> | 
-			<a href="#">RSS</a> | 
-			<a href="#">Newsletter</a> | 
-			<a href="http://www.facebook.com/journalb.bern">Facebook</a> | 
-			<a href="http://twitter.com/journalb">Twitter</a>
-		</div>
+		<div class="caption">Services</div>
+		<ul><li>
+		<a href="#">Favoriten</a> | 
+		<a href="#">Archiv</a> | 
+		<a href="#">Community</a> | 
+		<a href="#">RSS</a> | 
+		<a href="#">Newsletter</a> | 
+		<a href="http://www.facebook.com/journalb.bern">Facebook</a> | 
+		<a href="http://twitter.com/journalb">Twitter</a>
+		</li></ul>
 	</div>
 	
 	<div style="clear: both"></div>
