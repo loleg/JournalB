@@ -277,14 +277,19 @@ function getCookie(c_name)
 	}
 }
 
-
-var fontSizes = Array( Array(14,16), Array(17,20), Array(20,24) );
+/* Variable font sizes (size%, letter-spacing, line-height em) */
+var fontSizes = Array( 
+		Array(82,  'inherit', 1.2), 
+		Array(100, '0.015em', 1.2), 
+		Array(125, '0.015em', 1.2) 
+	);
 var currentFontSize = 1;
 
 function updateFontSize()
 {
-	$("article").css("font-size",fontSizes[currentFontSize][0]+"px");
-	$("article").css("line-height",fontSizes[currentFontSize][1]+"px");
+	$("article").css("font-size",fontSizes[currentFontSize][0]+"%");
+	$("article").css("letter-spacing",fontSizes[currentFontSize][1]);
+	$("article").css("line-height",fontSizes[currentFontSize][2]+"em");
 }
 
 function changeFontSize()
