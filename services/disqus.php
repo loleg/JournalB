@@ -9,8 +9,8 @@ $homepage = "http://bern.lab.sourcefabric.org";
 $redirect = "http://bern.lab.sourcefabric.org/services/disqus.php";
 
 // Local testing
-$homepage = "http://localhost:8888/newscoop/";
-$redirect = "http://localhost:8888/services/disqus.php";
+//$homepage = "http://localhost:8888/newscoop/";
+//$redirect = "http://localhost:8888/services/disqus.php";
 
 // Account details
 $shortname = 'journalb-lab'; 
@@ -35,6 +35,10 @@ if (isset($_GET['logout'])) {
 	
 	header( 'Location: ' . $homepage ); // http://disqus.com/logout/?redirect= to logout Disqus too
 
+} elseif (isset($_GET['auth'])) {
+	
+	header( 'Location: https://disqus.com/api/oauth/2.0/authorize/?client_id=' . $PUBLIC_KEY . '&scope=read&response_type=code&redirect_uri=' . $redirect );
+
 } elseif (isset($_COOKIE['jbdisqus'])) {
 
 	$userid = 	$_COOKIE['jbdisqus']['userid'];
@@ -45,8 +49,14 @@ if (isset($_GET['logout'])) {
 	$api = new DisqusAPI($SECRET_KEY);
 	
 	if (!isset($userid)) {
-	
-		die(''); // missing login
+
+		setcookie('jbdisqus[userid]', "", time() - 3600);
+		setcookie('jbdisqus[username]', "", time() - 3600);
+		setcookie('jbdisqus[token]', "", time() - 3600);
+		setcookie('jbdisqus[refresh]', "", time() - 3600);
+		setcookie("jbdisqus", "", time() - 3600);
+		
+		die('.'); // missing login
 	
 	} elseif (isset($_GET['myfaves'])) {
 	
@@ -206,10 +216,6 @@ if (isset($_GET['logout'])) {
 	
 	echo('Thanks, ' . $tokdata->username . '! <a href="' . $homepage . '">Click here to continue</a>');
 	
-} elseif (isset($_GET['auth'])) {
-	
-	header( 'Location: https://disqus.com/api/oauth/2.0/authorize/?client_id=' . $PUBLIC_KEY . '&scope=read&response_type=code&redirect_uri=' . $redirect );
-
 }
 
 ?>
