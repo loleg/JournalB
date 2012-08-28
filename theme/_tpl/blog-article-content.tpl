@@ -54,7 +54,13 @@
 	
 		<div class="article-community mobile"></div>
 	
-	{{ include file="_tpl/article-forum.tpl" }}
+		<!-- Article forum -->
+		<div class="forum">
+	
+			<a name="community"></a>
+			<div id="disqus_thread"></div>
+		
+		</div><!-- /forum -->
 	
 	</div>
 	

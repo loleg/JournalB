@@ -85,3 +85,8 @@
 {{ /while }}
 
 {{ if $column%2 == 1 }}</div>{{ /if }}
+
+<!-- Hidden Disqus on Frontpage -->
+<div class="hidden">
+	<div id="disqus_thread"></div>
+</div>

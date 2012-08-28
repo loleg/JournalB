@@ -101,6 +101,13 @@ $(document).ready(function() {
 		if (data.length < 5) {
 			// Login link
 			$(".header .login button").click(function() { document.location='/services/disqus.php?auth'; });
+			
+			// Registration popup
+			$(".header .login .register a").click(function() {
+				DISQUS.dtpl.actions.fire('auth.login');
+				//window.open($(this).attr('href'), 'Disqus', 'width=1000,height=620,menubar=no,resizable=no,scrollbars=no,toolbar=no');
+				return false;
+			});
 		
 			// Hide forum
 			$(".forum").prepend('<div class="link"><a href="#">Zum Verfassen von Kommentaren bitte Anmelden</a>.</div>');
@@ -114,7 +121,8 @@ $(document).ready(function() {
 			$(".header .login button")
 				.click(function() { document.location='/services/disqus.php?logout'; })
 				.find('span').html('Abmelden');
-			$(".header .login .register").html('Salut, <br><span>' + myjson.user + '</span>');
+			$(".header .login .register")
+				.html('Salut, <br><span>' + myjson.user + '</span>');
 			
 			// Collect info from newsboxes
 			$.each(myjson.faves, function() {

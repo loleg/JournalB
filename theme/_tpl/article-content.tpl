@@ -75,7 +75,12 @@
 		</div>
 	{{ else }}
 		<!-- Article forum -->
-		{{ include file="_tpl/article-forum.tpl" }}
+		<div class="forum">
+	
+			<a name="community"></a>
+			<div id="disqus_thread"></div>
+		
+		</div><!-- /forum -->
 	{{ /if }}	
 		
 </div>
