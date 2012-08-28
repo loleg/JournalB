@@ -279,9 +279,9 @@ function getCookie(c_name)
 
 /* Variable font sizes (size%, letter-spacing, line-height em) */
 var fontSizes = Array( 
-		Array(82,  'inherit', 1.2), 
-		Array(100, '0.015em', 1.2), 
-		Array(125, '0.015em', 1.2) 
+		Array(82,  'inherit', 1.429), 
+		Array(100, '0.015em', 1.471), 
+		Array(125, '0.015em', 1.429) 
 	);
 var currentFontSize = 1;
 
