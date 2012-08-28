@@ -7,25 +7,38 @@
 {{ /if }}
 
 {{ list_related_articles }}
+
 	{{ if $gimme->current_list->at_beginning }}
 		<div class="row adbox collapse_box">
 			<div class="community-title grey collapse_title">Weitere Artikel zum Thema</div>
 			<div class="collapse_content">
 	{{ /if }}
+
+{{ if $gimme->article->issue->number != 3 && $gimme->article->issue->number != 5 }}
 	<p>
-	<div>
-		<a href="{{ uri options="article" }}" class="baselink">{{ $gimme->article->name }}</a>
-	</div>
-	<div class="info">
+	<a href="{{ uri options="article" }}" class="baselink">{{ $gimme->article->name }}</a>
+	{{ $publish_date = $gimme->article->publish_date }}
 	{{ if $publish_date }}
-		{{ $publish_date = $gimme->article->publish_date }}
-		<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> / 
-		<time>{{ $publish_date|camp_date_format:"%H:%i" }}</time> /
+		<div class="info">
+			<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> / 
+			<time>{{ $publish_date|camp_date_format:"%H:%i" }}</time> /
+			<author>{{ $gimme->article->author->name }}
+		</div>
 	{{ /if }}
-	</div>
 	</p>
+{{ /if }}
+
 	{{ if $gimme->current_list->at_end }}   
 		</div>
 		</div>
 	{{ /if }}
+	
+{{ /list_related_articles }}
+
+{{ list_related_articles }}
+
+	{{ if $gimme->article->issue->number == 5 }}
+		{{ include file="_tpl/community-item.tpl" }}
+	{{ /if }}
+	
 {{ /list_related_articles }}

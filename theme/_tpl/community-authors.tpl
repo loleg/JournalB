@@ -1,4 +1,4 @@
-{{ if $gimme->article->author_profile or $gimme->issue->number == 2 }}
+{{ if $gimme->issue->number > 5 or $gimme->issue->number == 2 }}
 	{{ $i = 0 }}
 	{{ list_article_authors }}
 		{{ if $gimme->current_list->at_beginning }}

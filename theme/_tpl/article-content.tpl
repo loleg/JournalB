@@ -51,6 +51,12 @@
 		<p><em>This article is locked and is accessible only to <mark>registered</mark> and <mark>logged in</mark> users, sorry!</em></p>
 	{{ /if }}
 	</article>
+	
+	{{ if $gimme->article->box_under!="" }}
+		<div class="row adbox community-box">
+			{{ $gimme->article->box_under }}
+		</div>
+	{{ /if }}
 
 	<div class="article-community mobile"></div>
 	
