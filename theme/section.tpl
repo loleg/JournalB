@@ -1,4 +1,3 @@
-
 <!-- Section page template -->
 
 {{ include file="_tpl/_html-head.tpl" }}
