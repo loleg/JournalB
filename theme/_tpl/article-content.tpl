@@ -4,12 +4,14 @@
 	{{ if $gimme->article->content_accessible }}    
 	
 		<header>
-			<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
+			<div class="article_top">
+				<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
 
-			<div class="deck">
-				{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
-				{{ $gimme->article->deck }}	
-			</div>	
+				<div class="deck">
+					{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
+					{{ $gimme->article->deck }}	
+				</div>	
+			</div>
 			
 			<div class="article_info_mobile">
 				{{ if $gimme->article->publish_date }}

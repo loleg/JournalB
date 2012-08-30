@@ -1,3 +1,15 @@
+<div class="gallery_info">
+	<div class="gallery_status">
+		<span class="gallery_current">1</span>
+		 / 
+		<span class="gallery_all"></span>
+	</div>
+	
+	<div class="gallery_control"></div>
+	
+	<div class="gallery_description"></div>
+</div>
+
 {{ $is_gallery = false }}
 {{ $is_image = false }}
 {{ $gc = 0 }}

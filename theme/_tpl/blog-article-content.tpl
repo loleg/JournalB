@@ -19,7 +19,9 @@
 	
 			{{ if $gimme->article->content_accessible }}    
 				<header>
-					<div class="title"><a name="top">{{ $gimme->article->name }}</a></div>
+					<div class="article_top">
+						<div class="title"><a name="top">{{ $gimme->article->name }}</a></div>
+					</div>
 
 					{{ include file="_tpl/article-gallery.tpl" }}
 				</header>
