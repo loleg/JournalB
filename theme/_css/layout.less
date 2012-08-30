@@ -423,7 +423,6 @@
 	    margin-left: 15%;
 	    border-bottom: none;
 	}
-    .searchform .search-button { display: none; }
     .searchform input[type='text'] {
 	    background-color: #CECDCC; color:black;
 	    border-radius: 4px; margin-bottom: 5px;
@@ -433,13 +432,16 @@
 	    height: 2em; text-align: center;
 	    margin: 0px; padding: 0px; width:100%;
 	}
-	.searchform .search-keywords span {
+	.searchform .search-keywords .submit-button {
 		display: block;
 		position: absolute;
 		width: 2em; height: 2em;
 		left: 520px;
-		cursor: pointer;
+		text-indent: -9999px;
+		color: #CECDCC;
 	    background: #CECDCC url('../_img/nav-shape-search-white.png') no-repeat center;
+	    border: none;
+		cursor: pointer;
     }
     .searchform form > div {
 	    border-bottom: 2px solid #000000;
