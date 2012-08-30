@@ -4,9 +4,9 @@ Options -MultiViews
 RewriteEngine on
 
 # redirect for retina devices
-#RewriteCond %{HTTP_COOKIE} HTTP_IS_RETINAONE [NC]
+RewriteCond %{HTTP_COOKIE} HTTP_IS_RETINAONE [NC]
 RewriteCond %{REQUEST_FILENAME} (.*)\.(png|jpg|jpeg)$
-#RewriteCond %1/_img/mobile/%2@2x.%3 -f
+RewriteCond %1/_img/mobile/%2@2x.%3 -f
 RewriteRule (.*)\.(png|jpg|jpeg)$ /newscoop/themes/publication_3/theme_4/_img/mobile/$1@2x.$2 [L]
 
 # redirect for large retina devices
