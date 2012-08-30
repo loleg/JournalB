@@ -1,10 +1,24 @@
 <IfModule mod_rewrite.c>
-	Options -MultiViews
-	RewriteEngine on
-	RewriteCond %{HTTP_COOKIE} HTTP_IS_RETINA [NC]
-	RewriteCond %{REQUEST_FILENAME} !@2x
-	RewriteRule ^(.*)\.(gif|jpg|png)$ $1@2x.$2
-	# if @2x isn't available fulfill the original request
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteRule ^(.*)@2x\.(gif|jpg|png)$ $1.$2
+
+Options -MultiViews
+RewriteEngine on
+
+# redirect for retina devices
+#RewriteCond %{HTTP_COOKIE} HTTP_IS_RETINAONE [NC]
+RewriteCond %{REQUEST_FILENAME} (.*)\.(png|jpg|jpeg)$
+#RewriteCond %1/_img/mobile/%2@2x.%3 -f
+RewriteRule (.*)\.(png|jpg|jpeg)$ /newscoop/themes/publication_3/theme_4/_img/mobile/$1@2x.$2 [L]
+
+# redirect for large retina devices
+RewriteCond %{HTTP_COOKIE} HTTP_IS_RETINATWO [NC]
+RewriteCond %{REQUEST_FILENAME} (.*)\.(png|jpg|jpeg)$
+#RewriteCond %1/_img/mobile/%2@4x.%3 -f
+RewriteRule (.*)\.(png|jpg|jpeg)$ /newscoop/themes/publication_3/theme_4/_img/mobile/$1@4x.$2 [L]
+
+# redirect for mobile images
+RewriteCond %{HTTP_USER_AGENT} (iPhone|iPad|iPod|Android) [NC]
+RewriteCond %{REQUEST_FILENAME} (.*)\.(png|jpg|jpeg)$
+#RewriteCond %1/_img/mobile/%2.%3 -f
+RewriteRule (.*)\.(png|jpg|jpeg)$ /newscoop/themes/publication_3/theme_4/_img/mobile/$1.$2 [L]
+
 </IfModule>

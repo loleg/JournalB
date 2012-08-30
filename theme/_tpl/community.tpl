@@ -22,7 +22,7 @@
     <div class="icon"><img src="{{ url static_file='_img/unterstutzen.png' }}" /></div>
     <div class="spenden">
     	<div class="description">
-    		Alle Artikel auf journalB.ch sind frei verfügbar. Wenn Ihnen unsere Arbeit etwas wert ist, nutzen Sie doch die Gelegenheit, uns zu unterstützen. Die Redaktion bedankt sich für Ihren Beitrag.
+    		Alle Artikel auf journal-b.ch sind frei verfügbar. Wenn Ihnen unsere Arbeit etwas wert ist, nutzen Sie doch die Gelegenheit, uns mit einer Spende zu unterstützen oder werden Sie Mitglied in unserem Trägerverein. Danke für Ihren Beitrag.
     	</div>
     	<div class="link"><a href="#" onclick="$(this).parents('.spenden').hide().next().slideDown(); return false;"">Jetzt spenden!</a></div>
     </div>
