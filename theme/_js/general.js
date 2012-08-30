@@ -244,7 +244,6 @@ $(document).ready(function() {
 	
 });
 
-
 function collapsebleElements()
 {
 	$(".collapse_box").children(".collapse_title").unbind("click");

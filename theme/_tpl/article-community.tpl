@@ -7,8 +7,8 @@
 {{ /if }}
 
 <div class="row community-buttons">
-	<button onclick="document.location='#comments'" class="button-black" type="button">Alle <span/> Kommentare lesen</button>
-	<button onclick="document.location='#comments'" class="button-black" type="button">Kommentar zum Artikel verfassen</button>
+	<button onclick="$('header,.mcontentbar,.miniarticle').toggle();document.location='#top'" class="button-black" type="button">Kommentare <span/> lesen</button>
+	<button onclick="document.location='#comments'" class="button-black" type="button">Kommentar verfassen</button>
 </div>
 
 {{ list_related_articles }}
