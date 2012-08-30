@@ -1,21 +1,19 @@
-<div class="contentbar section-blogs">
+<div class="contentbar section-{{ $gimme->section->url_name }}">
 
-	<div class="titlebox section-blogs" id="mobile_startpoint">
-		<h2><a href="{{ uri options="issue" }}">Blog</a> / </h2><h1><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></h1>
+	<div class="titlebox section-{{ $gimme->section->url_name }}" id="mobile_startpoint">
+		<h2 style="text-transform: capitalize;">{{  $gimme->article->type_name }} / </h2><h1><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->article->author->name }}</a></h1>
 	</div>
-
+			
 	<div class="blogbox">
-					
-		<article class="blog">
+			
+		<article class="kolumne">
 		
 			<div class="info_block">
 				{{ if $gimme->article->publish_date }}
 					<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
-					<date>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</date> | 
+					<date>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</date>
 				{{ /if }}
-				Nummer {{ $gimme->article->number }}
 			</div>
-			<div class="author mainauthor"><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->article->author->name }}</a></div>
 	
 			{{ if $gimme->article->content_accessible }}    
 				<header>
@@ -61,8 +59,9 @@
 			<div id="disqus_thread"></div>
 		
 		</div><!-- /forum -->
-	
+		
 	</div>
+	
 	
 </div>
 
