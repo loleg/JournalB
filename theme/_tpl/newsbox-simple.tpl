@@ -13,9 +13,9 @@
 			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->section->name }}</a></h1>
 
 		{{ elseif $gimme->article->issue->number == 4 }}
-			{{ $title_len = ceil($gimme->article->section->name|strlen / 23) + 1 }}
-			<h2>Kolumne</h2>
-			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->section->name }}</a></h1>
+			{{ $title_len = ceil($gimme->article->author->name|strlen / 23) + 1 }}
+			<h2>{{ $gimme->article->type_name }}</h2>
+			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->author->name }}</a></h1>
 			
 		{{ else }}
 			{{ $title_len = ceil($gimme->article->name|strlen / 23) }}
