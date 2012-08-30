@@ -15,15 +15,18 @@ function initSlider(_slider_id)
 	slides_num = $(slider).children("ul").children("li").length;			
 	$(slider).children("ul").children("li:first").show();	
 
-	$(".gallery_control").append('<div class="arrow left"></div>');
-	$(".gallery_control").append('<div class="arrow right"></div>');
-	$(".gallery_control").append('<div style="clear:both"></div>');
-	$(".gallery_control").children(".arrow.left").click(function(){ moveSlider(0); });	
-	$(".gallery_control").children(".arrow.right").click(function(){ moveSlider(1); });	
-
 	if (navigator.userAgent.match(/Mobile/))
 	{
+		$(".gallery_control").append('<div class="gpict"></div>');
 		$(slider).append('<div class="tip">Hier klicken um Galerie zu offnen</div>');
+	}
+	else
+	{
+		$(".gallery_control").append('<div class="arrow left"></div>');
+		$(".gallery_control").append('<div class="arrow right"></div>');
+		$(".gallery_control").append('<div style="clear:both"></div>');
+		$(".gallery_control").children(".arrow.left").click(function(){ moveSlider(0); });	
+		$(".gallery_control").children(".arrow.right").click(function(){ moveSlider(1); });	
 	}
 	
 	$(".gallery_all").html(slides_num);
