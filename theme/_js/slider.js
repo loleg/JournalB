@@ -15,14 +15,13 @@ function initSlider(_slider_id)
 	slides_num = $(slider).children("ul").children("li").length;			
 	$(slider).children("ul").children("li:first").show();	
 
-	$(slider).append('<div class="arrow left"></div>');
-	$(slider).append('<div class="arrow right"></div>');
-	if (!navigator.userAgent.match(/Mobile/))
-	{
-		$(slider).children(".arrow.left").click(function(){ moveSlider(0); });	
-		$(slider).children(".arrow.right").click(function(){ moveSlider(1); });	
-	}
-	else
+	$(".gallery_control").append('<div class="arrow left"></div>');
+	$(".gallery_control").append('<div class="arrow right"></div>');
+	$(".gallery_control").append('<div style="clear:both"></div>');
+	$(".gallery_control").children(".arrow.left").click(function(){ moveSlider(0); });	
+	$(".gallery_control").children(".arrow.right").click(function(){ moveSlider(1); });	
+
+	if (navigator.userAgent.match(/Mobile/))
 	{
 		$(slider).append('<div class="tip">Hier klicken um Galerie zu offnen</div>');
 	}
@@ -30,7 +29,7 @@ function initSlider(_slider_id)
 	$(".gallery_all").html(slides_num);
 	$(".gallery_description").html($(slider).children("ul").children("li:first").children(":first").attr("alt"));
 	
-	var gi_margin = $("article .deck").height()-100;
+	var gi_margin = $("article .deck").height() + $("article header h1").height() - 120;
 	if (gi_margin<0) gi_margin = 0;
 	$(".gallery_info").css("margin-top",gi_margin);
 		

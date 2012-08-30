@@ -61,6 +61,10 @@ function articleImageAlts()
 	});
 }
 
+
+var mobile_view = false;
+var portrait_view = false;
+
 // Reverse plugin
 jQuery.fn.reverse = [].reverse;
 
@@ -233,6 +237,11 @@ $(document).ready(function() {
 		mobile_view = true; 
 	}
 	
+	if ($(document).width()<480) 
+	{ 
+		portrait_view = true; 
+	}
+	
 });
 
 
@@ -310,8 +319,7 @@ function loadFontSize()
 	}
 }
 
-var mobile_view = false;
-var portrait_view = false;
+
 
 $(window).resize(function(){
 

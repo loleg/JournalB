@@ -915,24 +915,11 @@
 		display: none;
 	}
 
-	
-	.gallery_status {
-		.subheading;
-		font-weight: bold;
-	}
-	.gallery_description {
-		.info;
-		margin-top: 14px;
-	}
-
 
 /* #Article Page Styles
 ================================================== */
 
 	/*Header*/
-	article header {
-		width: 470px;	
-	}
 	article header h1 {
 		font-size: 175%; /*30px*/
 		font-weight: normal;
@@ -999,9 +986,9 @@
 	html.active_slider .contentbar {
 		background: #000000 !important;
     }
-
+	
     /*Main content area*/
-    .mcontentbar, .contentbar > .row, .contentbar .forum {
+    .mcontentbar, .contentbar, article header {
 	    width: 470px;
 	}
     .mcontentbar {
@@ -1056,6 +1043,7 @@
 	}
 	.controlbar_mobile .controlicons {
 		margin-bottom: 8px;
+		float: left;
 	}
 	.controlbar_mobile .controlicon {
 		float: left;
@@ -1071,37 +1059,6 @@
 		margin-top: -10px;
 	}
 	
-	#slider_wrapper {
-		display: none;
-		position: fixed;
-		top: 0px;
-		left: 0px;
-		width: 100%;
-		height: 100%;
-		background: #000;
-	}
-	.gallery_info.mobile .gallery_description {
-		position: absolute;
-		bottom: 0px;
-		left: 0px;
-		width: 100%;
-		background-color: rgba(255,255,255,0.6);
-	}
-	.gallery_info.mobile .gallery_status {
-		position: absolute;
-		top: 5px;
-		left: 5px;
-		color: #ffffff;
-	}
-	.gallery_info.mobile {
-		display: none;
-		position: absolute;
-		bottom: 0px;
-		left: 0px;
-		width: 100%;
-		height: 100%;
-		z-index: 10;
-	}
 	#article_image img {
 		height: auto !important;
 	} 

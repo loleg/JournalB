@@ -9,6 +9,8 @@
 			<span class="gallery_all"></span>
 		</div>
 		
+		<div class="gallery_control"></div>
+		
 		<div class="gallery_description"></div>
 	</div>
 
