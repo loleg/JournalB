@@ -6,6 +6,11 @@
 	</div>
 {{ /if }}
 
+<div class="row community-buttons">
+	<button onclick="document.location='#comments'" class="button-black" type="button">Alle <span/> Kommentare lesen</button>
+	<button onclick="document.location='#comments'" class="button-black" type="button">Kommentar zum Artikel verfassen</button>
+</div>
+
 {{ list_related_articles }}
 
 	{{ if $gimme->current_list->at_beginning }}

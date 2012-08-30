@@ -817,6 +817,10 @@
 	.community-box h1:first-child {
 		margin-top: none;
 	}
+	.community-buttons button {
+		font-size:90%;
+		width:50%;
+	}
 
     .socialbox {
         padding: 10px 0px 14px 0px;
@@ -849,39 +853,29 @@
 	*/
 	
 	/* Disqus Classic */
-	#disqus_thread #dsq-content h3 { 
+	#disqus_thread h3 { 
 		font-size: 175%; margin: 0 0 0.5em; 
 		content: "Kommentare";
 	}
-	#dsq-content .dsq-textarea-background {
-	    background: none repeat scroll 0 0 transparent;
-	    border: medium none;
+	#disqus_thread .dsq-textarea-background, #disqus_thread .dsq-post-tools {
+	    background: none;
+	    border: none;
 	    border-radius: 6px 6px 6px 6px;
 	    box-shadow: none;
 	}
-	#dsq-content .dsq-textarea-wrapper {
+	#disqus_thread .dsq-textarea-wrapper {
 	    background: #CECDCC;
 	    border-radius: 4px;
 	    height: auto;
 	    margin-bottom: 15px;
 	}
-	#dsq-content .dsq-show-tools.dsq-show-tools-finished .dsq-post-tools {
-    	background: none; border: none; box-shadow: none;
-    }
     #disqus_thread #dsq-reply .dsq-post-tools {
 	    height: 3em;
 	    opacity: 1;
 	    overflow: visible;
 	}
 	#disqus_thread .dsq-button {
-	    background: black;
-	    border: none;
-	    border-radius: 6px;
-	    color: white;
-	    font: 100%/70% AlekseiBlack;
-	    height: 2.5em;
-	    letter-spacing: 0.02em;
-	    text-shadow: none;
+	    .button-black;
 	}
 	#disqus_thread .dsq-reply {
 	    border-bottom: 2px solid black;
@@ -911,7 +905,7 @@
 	#disqus_thread .dsq-comment-meta a, .dsq-editedtxt {
 	    font: 90%/100% AlekseiLight;
 	}
-	#dsq-content .dsq-editedtxt {
+	#disqus_thread .dsq-editedtxt {
 	    font-size: 12px;
 	}
 	#disqus_thread .dsq-comment-actions a {
