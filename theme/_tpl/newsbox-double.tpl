@@ -19,6 +19,6 @@
 		<author>{{ $gimme->article->author->name }}</author>
 	</div>
 	
-	<a class="favorite">Favorite</a>
+	<a class="favorite"><span>Favorite</span></a>
 		
 </div>

@@ -25,6 +25,10 @@ destroyLessCache("/themes/publication_2/theme_1/_css/");
 destroyLessCache("/themes/publication_3/theme_4/_css/");
 /* --- */
 
+// Retina cookie via Shaun Inman
+if((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
+	document.cookie='HTTP_IS_RETINA=1;path=/';
+
 // Create HTML anchors around links in text
 function urlify(text, popup) {
     var opts = '', urlRegex = /(https?:\/\/[^\s]+)/g;

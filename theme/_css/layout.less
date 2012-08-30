@@ -38,16 +38,22 @@
         position: relative;
     }
     .newsbox .favorite {
-        width: 44px;
-        height: 45px;
+        width: 0;
+        height: 0;
+        border-bottom: 44px solid transparent;
+        border-right: 44px solid white;
         position: absolute;
         top: 0px;
         right: 0px;
-        font-size: 0px; color: transparent;
-        background: url(../_img/favorite-grey.png) no-repeat;
-        border: none;
+        text-indent: -9999px;
+        color: transparent;
     }
-    .newsbox .favorite:hover, .newsbox .favorite.checked {
+    .newsbox .favorite span {
+        background: url(../_img/favorite-grey.png) no-repeat;
+        width: 31px; height: 31px; background-size: 100%;
+        left: 13px; position: absolute;
+    }
+    .newsbox .favorite:hover span, .newsbox .favorite.checked span {
         background: url(../_img/favorite-black.png) no-repeat;
     }
     .newsboxcontent {
@@ -286,7 +292,8 @@
         .capitalize;
     }
     .nav li a{
-        padding-bottom: 33px;
+        padding-bottom: 23px;
+        background-size: auto 16px !important;
     }
     .nav li.nav-front a  { background: url(../_img/nav-shape-front.png) bottom center no-repeat; }
     .nav li.nav-alltag a { background: url(../_img/nav-shape-alltag.png) bottom center no-repeat; }
