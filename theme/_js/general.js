@@ -29,7 +29,7 @@ destroyLessCache("/themes/publication_3/theme_4/_css/");
 if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>=2) {
 	document.cookie='HTTP_IS_RETINATWO=1;path=/';
 } else if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1) {
-	document.cookie='HTTP_IS_RETINAONE=1;path=/';
+	document.cookie='HTTP_IS_RETINA=1;path=/';
 }
 
 // Create HTML anchors around links in text

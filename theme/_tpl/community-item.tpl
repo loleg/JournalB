@@ -16,7 +16,7 @@
 		<div class="clear"></div>
 		<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
 	</a>
-	<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
+	<div class="commentbox-bg"></div>
 	
 {{ elseif $gimme->article->is_ad }}	
 
@@ -65,13 +65,13 @@
 	{{ /if }}
 	
 	<div class="community-title white">{{ $gimme->article->where }}</div>
-	<div class="bg"><img src="{{ url static_file='_img/commentbox.png' }}" /></div>
+	<div class="commentbox-bg"></div>
 {{ /if }}
 
 {{ if $gimme->article->is_twitter }}
-	<div class="icon"><img src="{{ url static_file='_img/twitter.png' }}" /></div>
+	<div class="icon icon-twitter-white"></div>
 {{ elseif $gimme->article->is_facebook }}
-	<div class="icon"><img src="{{ url static_file='_img/facebook.png' }}"></div>
+	<div class="icon icon-facebook-white"></div>
 {{ /if }}
 
 </div>

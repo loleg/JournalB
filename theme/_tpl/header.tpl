@@ -28,7 +28,7 @@
     {{ if !$gimme->search_articles_action->search_phrase }} 
     <div class="search">
     	{{ search_form template="search.tpl" submit_button="Search" button_html_code="class=\"hidden\"" }}
-	    	<input type="image" src="{{ url static_file='_img/search.png' }}" value="suchen" name="f_search_articles">
+	    	<input type="image" class="icon icon-search" title="Suchen" value="suchen" name="f_search_articles">
 	    {{ /search_form }}
     </div>
     {{ /if }}

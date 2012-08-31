@@ -54,7 +54,7 @@
         left: 13px; position: absolute;
     }
     .newsbox .favorite:hover span, .newsbox .favorite.checked span {
-        background: url(../_img/favorite-black.png) no-repeat;
+        background-image: url(../_img/favorite-black.png);
     }
     .newsboxcontent {
         display: block;
@@ -307,8 +307,9 @@
         text-align: center;
         .capitalize;
     }
-    .nav li a{
+    #body .nav li a{
         padding-bottom: 2em;
+        background-size: 56px auto;
     }
     .nav li.nav-front a  { background: url(../_img/nav-shape-front.png) bottom center no-repeat; }
     .nav li.nav-alltag a { background: url(../_img/nav-shape-alltag.png) bottom center no-repeat; }
@@ -423,7 +424,7 @@
 		display: block;
 		width: 10em;
 	}
-	.header .login .bg {
+	.header .login .commentbox-bg {
         position: absolute;
         right: -12px;
         bottom: 0px;
@@ -652,6 +653,10 @@
         padding-left: 24px;
     }
 
+    .commentbox-bg {
+	    background: url('../_img/commentbox.png') no-repeat;
+		background-size: 100%; width: 18px; height: 16px;    
+    }
     .commentbox {
         padding: 15px;
         background-color: #cecdcc;
@@ -664,12 +669,12 @@
         top: 33px;
         right: 13px;
     }
-    .commentbox .bg {
+    .commentbox .commentbox-bg {
         position: absolute;
         right: -12px;
-        bottom: -5px;
+        bottom: 0px;
     }
-	.ie .commentbox .bg {
+	.ie .commentbox .commentbox-bg {
 		bottom: 0px;
 	}
     .commentbox .image {
@@ -858,6 +863,46 @@
     }
     .socialbox a {
         text-decoration: none;
+    }
+    
+    .icon {
+	    display:inline-block; text-indent: -9999px; color:transparent;
+    }
+    .icon-twitter {
+		background: url('../_img/twitter_.png') no-repeat;
+		background-size: 100%; width: 39px; height: 31px;    
+    }
+    .icon-twitter-white {
+		background: url('../_img/twitter.png') no-repeat;
+		background-size: 100%; width: 38px; height: 31px;    
+    }
+    .icon-facebook {
+		background: url('../_img/facebook_.png') no-repeat;
+		background-size: 100%; width: 32px; height: 36px;    
+    }
+    .icon-facebook-white {
+		background: url('../_img/facebook.png') no-repeat;
+		background-size: 100%; width: 26px; height: 31px;    
+    }
+    .icon-flattr {
+    	background: url('../_img/spenden-flattr.png') no-repeat;
+		background-size: 100%; width: 93px; height: 20px;
+    }
+    .icon-paypal {
+    	background: url('../_img/spenden-paypal.gif') no-repeat;
+		background-size: 100%; width: 74px; height: 21px;
+    }
+    .icon-postfinance {
+    	background: url('../_img/spenden-postfinance.gif') no-repeat;
+		background-size: 100%; width: 149px; height: 491px;
+    }
+    .icon-search {
+	    background: url('../_img/search.png') no-repeat;
+		background-size: 100%; width: 43px; height: 39px;
+    }
+    .icon-support { 
+	    background: url('../_img/unterstutzen.png') no-repeat;
+		background-size: 100%; width: 32px; height: 30px;
     }
 	
 	/* Disqus forums 2012 --
