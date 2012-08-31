@@ -17,8 +17,12 @@
 	{{ /if }}
 	
 	<div class="title section-{{ $section }}">
-		<div class="image section-{{ $section }}">{{ include file="_tpl/img/img_thumbnail.tpl" }}</div>
-		<div class="descr">
+		<div class="image section-{{ $section }}">
+			{{ image rendition="topfront" width="100" height="66" }}
+				<img src="{{ $image->src }}" align="left" />
+			{{ /image }}
+		</div>
+		<div class="description">
 			{{ if $gimme->issue->number == 2 }}<span class="minih2"><a href="{{ uri options="section" }}">Blog</a></span> / {{ /if }}
 			{{ if $gimme->issue->number == 4 }}<span class="minih2" style="text-transform: capitalize;">{{ $gimme->article->type_name }}</span> / {{ /if }}
 			<span class="capitalize"><a href="{{ uri options="article" }}">{{ $gimme->article->title }}</a></span>

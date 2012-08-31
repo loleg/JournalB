@@ -1,7 +1,4 @@
-{{ if $user->isAuthor() }}
-	{{ $escapedName=str_replace(" ", "\ ", $user->author->name) }}
-{{ /if }}
-
+{{ $escapedName=str_replace(" ", "\ ", $user->author->name) }}
 
 <div class="center_contentbar">
 	<div class="titlebox section-front" id="mobile_startpoint">
@@ -11,7 +8,7 @@
 	{{ list_articles ignore_publication="true" ignore_issue="true" ignore_section="true" constraints="author is $escapedName" order="bypublishdate desc" }}
 		{{ if $gimme->issue->number == 1 }}
 			{{ include file="_tpl/itembox-dossier.tpl" }}
-		{{ else }}
+		{{ elseif $gimme->article->issue->number != 3 && $gimme->article->issue->number != 5 }}
 			{{ include file="_tpl/itembox-simple.tpl" }}
 		{{ /if }}
 	{{ /list_articles }}

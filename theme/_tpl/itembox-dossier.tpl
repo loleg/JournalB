@@ -9,7 +9,11 @@
 	{{ if $section!="alltag" and $section!="kultur" and $section!="politik" }} {{ $section = "dossiers" }} {{ /if }}
 	
 	<div class="title section-{{ $section }}">
-		<div class="image section-{{ $section }}">{{ include file="_tpl/img/img_thumbnail.tpl" }}</div>
+		<div class="image section-{{ $section }}">
+			{{ image rendition="topfront" width="100" height="66" }}
+				<img src="{{ $image->src }}" align="left" />
+			{{ /image }}
+		</div>
 		<div class="descr">
 			<span class="minih2"><a href="{{ uri options="section" }}">Dossier</a></span> / 
 			<span class="capitalize"><a href="{{ uri options="article" }}">{{ $gimme->article->title }}</a></span>

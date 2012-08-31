@@ -80,7 +80,15 @@
 						{{ $i = $i + 1 }}
 						{{ $rendered_authors[$i] = $gimme->author->name }}
 					{{ /if }}
-					<author type="{{ $gimme->author->type }}" {{ if $ren }}style="display: none;"{{ /if }}><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->author->name }}</a></author>
+					<author type="{{ $gimme->author->type }}" {{ if $ren }}style="display: none;"{{ /if }}>
+					  {{ if $gimme->author->user->defined }}
+					    <a href="{{ $view->url(['username' => $gimme->author->user->uname], 'user') }}">
+					  {{ /if }}
+					  {{ $gimme->author->name }}
+					  {{ if $gimme->author->user->defined }}
+					    </a>
+					  {{ /if }}
+					</author>
 				{{ /list_article_authors }}
 				<time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y<br>%H:%i" }}</time>
 			</div>
