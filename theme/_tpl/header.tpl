@@ -17,7 +17,7 @@
     </div>
 
     <div class="aare">
-        Aare<br><span class="wert"></span>&deg;
+        Aare<br><a class="wert" title="Bundesamt für Umwelt" href="http://www.hydrodaten.admin.ch/de/" target="_blank"></a>&deg;
     </div>
     <time>{{$smarty.now|camp_date_format:"%e.%m.%Y"}} </time>
 

@@ -31,7 +31,30 @@ header("Cache-Control: public, max-age=" . $ttl * 60);
 header("Cache-Control: pre-check=" . $ttl * 60, FALSE);  
 header ('Content-Type: text/xml');
 
-// push the cache out
-readfile($file);
+// push the entire cache out
+
+//readfile($file);
+
+
+// push out only relevant lines
+
+ini_set("auto_detect_line_endings", true);
+$handle = @fopen($file, "r");
+$started = false;
+$finished = false;
+if ($handle) {
+    while (!$finished && ($buffer = fgets($handle)) !== false) {
+    	if (strpos($buffer, '<MesPar DH="HBCHa" StrNr="2135" Typ="03" Var="00">') > 0) {
+	    	$started = true;
+    	}
+    	if ($started) {
+	        echo $buffer;
+	    }
+	    if ($started && strpos($buffer, '</MesPar>') > 0) {
+    		$started = false; $finished = true;
+    	}
+    }
+    fclose($handle);
+}
 
 ?>
