@@ -1,4 +1,4 @@
-<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $article_section }} layoutbgimage" onclick="location='{{ uri options="article" }}'"
+<a class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $article_section }} layoutbgimage" href="{{ uri options="article" }}"
 	{{ image rendition="topfront" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 
 	<div class="info_block">
@@ -12,11 +12,11 @@
 					{{ /if }}
 				</time> | 
 			</span>
-			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
+			<h1>{{ $gimme->article->name }}</h1>
 		</div>
 	</div>
 
-	<a class="favorite"><span>Favorite</span></a>
+	<span class="favorite"><span>Favorite</span></span>
 	
-</div>
+</a>
 

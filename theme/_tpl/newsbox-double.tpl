@@ -1,9 +1,9 @@
-<div class="content-double newsbox section-{{ $article_section }} layoutdouble" onclick="location='{{ uri options="article" }}'"
+<a class="content-double newsbox section-{{ $article_section }} layoutdouble" href="{{ uri options="article" }}"
 	{{ image rendition="topfrontdouble" }} style="background-image: url({{ $image->src }});" {{ /image }} >
 	
 	<div class="newsboxcontent_wrapper">
 		<div class="newsboxcontent">
-			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
+			<h1>{{ $gimme->article->name }}</h1>
 			<description><p>{{ $gimme->article->deck|strip_tags|truncate:400:"...":true }}</p></description>
 		</div>
 	</div>
@@ -19,6 +19,6 @@
 		<author>{{ $gimme->article->author->name }}</author>
 	</div>
 	
-	<a class="favorite"><span>Favorite</span></a>
+	<span class="favorite"><span>Favorite</span></span>
 		
-</div>
+</a>
