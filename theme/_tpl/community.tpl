@@ -24,19 +24,14 @@
     	<div class="description">
     		Alle Artikel auf journal-b.ch sind frei verfügbar. Wenn Ihnen unsere Arbeit etwas wert ist, nutzen Sie doch die Gelegenheit, uns mit einer Spende zu unterstützen oder werden Sie Mitglied in unserem Trägerverein. Danke für Ihren Beitrag.
     	</div>
-    	<div class="link"><a href="#" onclick="$(this).parents('.spenden').hide().next().slideDown(); return false;"">Jetzt spenden!</a></div>
+    	<div class="link"><a href="#" onclick="$(this).parent().hide().parents('.spenden').next().slideDown(); return false;"">Jetzt spenden!</a></div>
     </div>
-    <div class="spenden hidden">
-    	<div class="description">
-    	Praesent dictum porta ante, in congue ante ultrices eu. Pellentesque odio enim, faucibus sit amet.
-    	</div>
-    	<center><br/>
-    		<a href="http://flattr.com" target="_blank" class="icon icon-flattr" title="Flattr this"><span /></a>
-    		<a href="https://www.paypal.com/" class="icon icon-paypal" title="Spenden mit PayPal"><span /></a>
-    		<br/>
-    		<a href="https://www.yellowpay.ch" class="icon icon-postfinance" title="Spenden mit PostFinance"><span /></a>
-    		<br/>
-    		<small>Postcheckkonto: PC 80-667-0</small>
-    	</center>
+    <div class="spenden hidden" style="text-align:center; margin-top:1em">
+		<a href="http://flattr.com" target="_blank" class="icon icon-flattr" title="Flattr this"><span /></a>
+		<a href="https://www.paypal.com/" class="icon icon-paypal" title="Spenden mit PayPal"><span /></a>
+		<br/>
+		<a href="https://www.yellowpay.ch" class="icon icon-postfinance" title="Spenden mit PostFinance"><span /></a>
+		<br/>
+		<small>Postcheckkonto: PC 80-667-0</small>
     </div>
 </div>
