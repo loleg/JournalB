@@ -82,15 +82,18 @@ $(document).ready(function() {
 
 	// ** Sidebar
 	// Scale community (requires reverse), allow max. 3 comments on top
-	var max_height = $('.main').height();
-	$('.sidebar .commentbox').reverse().each(function() {
-	    if ($(this).parent().height() > max_height) $(this).hide();
-	});
-	$('.sidebar .supportbox').after($('.sidebar .commentbox:gt(2)'));
-	// Enable external community links
-	$('.sidebar description:contains("http://")').each(function() { 
-		$(this).html(urlify($(this).text(), true)); 
-	});
+	var max_height = $('.main').height(), 
+		sidebar = $('.sidebar');
+	if (!sidebar.hasClass('preview')) {
+		$('.commentbox', sidebar).reverse().each(function() {
+		    if ($(this).parent().height() > max_height) $(this).hide();
+		});
+		$('.supportbox', sidebar).after($('.commentbox:gt(2)', sidebar));
+		// Enable external community links
+		$('description:contains("http://")', sidebar).each(function() { 
+			$(this).html(urlify($(this).text(), true)); 
+		});
+	}
 	// - Sidebar
 	
 	// ** Share
