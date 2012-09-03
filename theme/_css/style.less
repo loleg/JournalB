@@ -4,10 +4,17 @@
 @import "layout.less";
 @import "slider.less";
 
-
 @base-font-color: #000000;
 @base-font-size: 17px;
 @base-line-height: 20px;
+
+/* Section colors */
+@color-front: #cecdcc;
+@color-alltag: #c6ffd8;
+@color-politik: #cde2ff;
+@color-kultur: #ffbe98;
+@color-blogs: #f1e2ef;
+@color-dossiers: #ffffa0;
 
 .underline(@color: "", @height: 1px, @padding-bottom: 0px, @background-position-y: 100%) {
 	background: url("../_img/underline@{color}.png") repeat-x;
@@ -45,6 +52,26 @@ h3 { font-size: 150%; /*26px*/ font-family: "JournalBBold",    "Georgia", "Times
 h4 { font-size: 150%; /*26px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
 h5 { font-size: 125%; /*21px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
 h6 { font-size: 100%; /*17px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
+
+/* Credits / Author / Time / Captions */
+.info                           { font-family: "AlekseiLight"; font-size: 70%; /*12px*/  line-height: 125%; /*15px*/ }
+.info a:hover                   { .underline("",3px,2px); }         /* 3px underline with 3px offset */
+.section-alltag .info a:hover   { .underline("-alltag",3px,2px); }  /* 3px underline with 3px offset */
+.section-kultur .info a:hover   { .underline("-kultur",3px,2px); }  /* 3px underline with 3px offset */
+.section-politik .info a:hover  { .underline("-politik",3px,2px); } /* 3px underline with 3px offset */
+
+/* Community fonts */
+.community-font                 { font-family: "AlekseiRegular"; font-size: 82%; /*14px*/ line-height: 143%; /*20px*/ }
+.community-title                { font-family: "AlekseiBlack"; font-size: 94%; /*16px*/ line-height: 140%; /*20px*/ }
+.community-title.white          { font-size: 82%; /*14px*/ letter-spacing: 0.02em; color: #ffffff; }
+.community-title.grey           { font-size: 100%; /*17px*/ line-height: 133%; /*20px*/ letter-spacing: 0.03em; color: #a19e9c; background: none !important; }
+.community-title.underline      { border-bottom: 2px solid #a19e9c; text-decoration: none !important; display: inline-block; margin-bottom: 6px; }
+.collapse_box.visible .community-title.underline { border-bottom: 2px solid #a19e9c !important; }
+
+/* Lists (Links / Article Titles) */
+.lists a, .baselink             { font-family: "AlekseiBlack"; font-size: 82%; /*14px*/ line-height: 107%; /*15px*/ letter-spacing: 0.02em; &:hover { .underline("-black",1px,0px); } }
+.communitybaselink				{ font-family: "AlekseiBlack"; &:hover { .underline("-black",1px,0px); } }
+.baselinklabel             		{ font-family: "AlekseiBlack"; font-size: 82%; /*14px*/ line-height: 107%; /*15px*/ }
 
 /*Content headings*/
 article h1, article h2, article h3, article h4, article h5 {
@@ -85,29 +112,7 @@ blockquote a {
 	background-image: none !important;
 }
 
-
-/* Credits / Author / Time / Captions */
-.info                           { font-family: "AlekseiLight"; font-size: 70%; /*12px*/  line-height: 125%; /*15px*/ }
-.info a:hover                   { .underline("",3px,2px); }         /* 3px underline with 3px offset */
-.section-alltag .info a:hover   { .underline("-alltag",3px,2px); }  /* 3px underline with 3px offset */
-.section-kultur .info a:hover   { .underline("-kultur",3px,2px); }  /* 3px underline with 3px offset */
-.section-politik .info a:hover  { .underline("-politik",3px,2px); } /* 3px underline with 3px offset */
-
-/* Community fonts */
-.community-font                 { font-family: "AlekseiRegular"; font-size: 82%; /*14px*/ line-height: 143%; /*20px*/ }
-.community-title                { font-family: "AlekseiBlack"; font-size: 94%; /*16px*/ line-height: 140%; /*20px*/ }
-.community-title.white          { font-size: 82%; /*14px*/ letter-spacing: 0.02em; color: #ffffff; }
-.community-title.grey           { font-size: 100%; /*17px*/ line-height: 133%; /*20px*/ letter-spacing: 0.03em; color: #a19e9c; background: none !important; }
-.community-title.underline      { border-bottom: 2px solid #a19e9c; text-decoration: none !important; display: inline-block; margin-bottom: 6px; }
-.collapse_box.visible .community-title.underline { border-bottom: 2px solid #a19e9c !important; }
-
-/* Lists (Links / Article Titles) */
-.lists a, .baselink             { font-family: "AlekseiBlack"; font-size: 82%; /*14px*/ line-height: 107%; /*15px*/ letter-spacing: 0.02em; &:hover { .underline("-black",1px,0px); } }
-.communitybaselink				{ font-family: "AlekseiBlack"; &:hover { .underline("-black",1px,0px); } }
-.baselinklabel             		{ font-family: "AlekseiBlack"; font-size: 82%; /*14px*/ line-height: 107%; /*15px*/ }
-
-
-/* Headings */
+/* Other headings */
 .headline-font					{ font-family: "JournalBBold"; font-weight: normal; }
 .subheading                     { font-family: "AlekseiRegular"; font-size: 100%; /*17px*/ }
 .capitalize                     { text-transform: uppercase; font-family: "JournalBBold"; font-size: 94%; /*16px*/ line-height: 125%; /*20px*/ letter-spacing:0.03em; }
@@ -137,12 +142,12 @@ blockquote a {
 	width: 14px;
 }
 .button-close.grey {
-	background: #CECDCC;
+	background: @color-front;
 }
 .box-rounded-grey { 
 	border-radius: 6px; 
 	padding: 5px; 
-	background: #CECDCC; 
+	background: @color-front; 
 }
 .button-black {
 	background: black;
@@ -156,7 +161,7 @@ blockquote a {
     text-shadow: none;
 }
 .button-black:hover {
-	background: #CECDCC; 
+	background: @color-front; 
 }
 
 em, .italic      { font-style: italic; }

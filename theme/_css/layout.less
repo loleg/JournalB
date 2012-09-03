@@ -78,7 +78,6 @@
 		height: 2.4em;
 		overflow-y: hidden;
 	}
-
 	.newsbox.layoutsimple, .newsbox.layoutbgimage, .newsbox.layoutdouble {
 		cursor: pointer;
 	}
@@ -110,7 +109,6 @@
         margin-top: 15px;
         display: block;
     }
-	
 	
 	.newsbox.layoutlist description {
         margin-top: 15px;
@@ -250,31 +248,39 @@
     /*Newsbox styles for different sections*/
 	
 	.newsbox {
-		background-color: #cecdcc;
+		background-color: @color-front;
 	}
 	.section-front, .newsbox.section-front, .titlebox.section-front, li.section-front, .footer-box.section-front {
-		background-color: #cecdcc;
+		background-color: @color-front;
 	}
     .section-alltag, .newsbox.section-alltag, .titlebox.section-alltag, li.section-alltag, .footer-box.section-alltag {
-        background-color: #c6ffd8;
+        background-color: @color-alltag;
     }
     .section-politik, .newsbox.section-politik, .titlebox.section-politik, li.section-politik, .footer-box.section-politik {
-        background-color: #cde2ff;
+        background-color: @color-politik;
     }
     .section-kultur, .newsbox.section-kultur, .titlebox.section-kultur, li.section-kultur, .footer-box.section-kultur {
-        background-color: #ffbe98;
+        background-color: @color-kultur;
     }
     .section-blogs, .newsbox.section-blogs, .titlebox.section-blogs, li.section-blogs, .footer-box.section-blogs {
-        background-color: #f1e2ef;
+        background-color: @color-blogs;
     }
     .section-dossiers, .newsbox.section-dossiers, .titlebox.section-dossiers, li.section-dossiers, .footer-box.section-dossiers {
-        background-color: #ffffa0;
+        background-color: @color-dossiers;
     }
-    .section-kolumne, .newsbox.section-kolumne, .titlebox.section-kolumne, li.section-kolumne, .footer-box.section-kolumne {
-        background-color: #ffbe98;
-    }
+    
+    /* Fade out when visited */
+        
+    .newsbox:visited, .newsbox:visited h1, .newsbox:visited h2 { color:#555; }
+  
+    .section-front:visited { 	background-color: lighten(@color-front, 5%); }
+    .section-alltag:visited { 	background-color: lighten(@color-alltag, 5%); }
+    .section-politik:visited { 	background-color: lighten(@color-politik, 5%); }
+    .section-kultur:visited { 	background-color: lighten(@color-kultur, 5%); }
+    .section-blogs:visited { 	background-color: lighten(@color-blogs, 5%); }
+    .section-dossiers:visited { background-color: lighten(@color-dossiers, 5%); }
 	
-
+    /* NB: This does not work: .newsbox:visited .newsboxcontent { background-color:rgba(255,255,255,0.5); } */
 
 
 /* #Header Styles
@@ -388,7 +394,7 @@
 	.header .login button {
 		float: left;
 		border: 0 none;
-		background: #cecdcc;
+		background: @color-front;
 		position: relative;
 		color: #000;
 		padding-right: 25px;
@@ -452,7 +458,7 @@
 	    border-bottom: none;
 	}
     .searchform input[type='text'] {
-	    background-color: #CECDCC; color:black;
+	    background-color: @color-front; color:black;
 	    border-radius: 4px; margin-bottom: 5px;
     }
     .searchform .search-keywords input {
@@ -466,8 +472,8 @@
 		width: 2em; height: 2em;
 		left: 520px;
 		text-indent: -9999px;
-		color: #CECDCC;
-	    background: #CECDCC url('../_img/nav-shape-search-white.png') no-repeat center;
+		color: @color-front;
+	    background: @color-front url('../_img/nav-shape-search-white.png') no-repeat center;
 	    border: none;
 		cursor: pointer;
     }
@@ -659,7 +665,7 @@
     }
     .commentbox {
         padding: 15px;
-        background-color: #cecdcc;
+        background-color: @color-front;
         border-radius: 6px;
         position: relative;
         padding-bottom: 9px;
@@ -748,7 +754,7 @@
 	}
     .sharebox {
 	    text-align: center;
-	    background: #CECDCC;
+	    background: @color-front;
 	    padding:10px 5px 2px 5px;
 	    position: absolute;
 	    width: 93px;
@@ -784,7 +790,7 @@
     .adbox {
         padding: 7px 15px 17px 15px;
         position: relative;
-        border-bottom: 4px solid #cecdcc;
+        border-bottom: 4px solid @color-front;
         color: #000000;
     }
     .adbox a { letter-spacing: 0.02em; }
@@ -857,7 +863,7 @@
     .socialbox {
         padding: 10px 0px 14px 0px;
         position: relative;
-        border-bottom: 4px solid #cecdcc;
+        border-bottom: 4px solid @color-front;
         .info;
         margin-bottom: 16px;
     }
@@ -936,7 +942,7 @@
 	    box-shadow: none;
 	}
 	#disqus_thread .dsq-textarea-wrapper {
-	    background: #CECDCC;
+	    background: @color-front;
 	    border-radius: 4px;
 	    height: auto;
 	    margin-bottom: 15px;
@@ -961,7 +967,7 @@
 	    margin-top: 0.2em;
 	}
 	#disqus_thread .dsq-comment-header {
-	    background: #CECDCC;
+	    background: @color-front;
 	    border: none;
 	    border-radius: 4px;
 	    font: 90%/100% AlekseiBlack;
@@ -1211,7 +1217,7 @@
 		height: 20px;
 		line-height: 20px;
 		text-align: center;
-		background-color: #f1e2ef;
+		background-color: @color-blogs;
 	}
 	.blogbox .weiter a {
 		.info;
@@ -1228,7 +1234,7 @@
 		display: block;
 	}
 	.blogbox author.mainauthor a, .blogbox .author.mainauthor a {
-		border-bottom: 4px solid #f1e2ef;
+		border-bottom: 4px solid @color-blogs;
 	}
 	.blogbox .title {
 		width: 240px;
@@ -1247,7 +1253,7 @@
 	.blogcontent {
 		margin: 1em 0;
 		padding-bottom: 1em;
-		border-bottom: 20px solid #f1e2ef;
+		border-bottom: 20px solid @color-blogs;
 	}	
 	.kolumne .blogcontent {
 		border-bottom: 0 none;

@@ -1,25 +1,25 @@
-<div class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $article_section }} layoutsimple" onclick="location='{{ uri options="article" }}'">
+<a class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $article_section }} layoutsimple" href="{{ uri options="article" }}">
 
 	<div class="newsboxcontent">
 
 		{{ if $gimme->article->issue->number == 1 }}
 			{{ $title_len = ceil($gimme->article->name|strlen / 23) + 1 }}
 			<h2>Dossier</h2>
-			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
+			<h1>{{ $gimme->article->name }}</h1>
 
 		{{ elseif $gimme->article->issue->number == 2 }}
 			{{ $title_len = ceil($gimme->article->section->name|strlen / 23) + 1 }}
 			<h2>Blog</h2>
-			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->section->name }}</a></h1>
+			<h1>{{ $gimme->article->section->name }}</h1>
 
 		{{ elseif $gimme->article->issue->number == 4 }}
 			{{ $title_len = ceil($gimme->article->author->name|strlen / 23) + 1 }}
 			<h2>{{ $gimme->article->type_name }}</h2>
-			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->author->name }}</a></h1>
+			<h1>{{ $gimme->article->author->name }}</h1>
 			
 		{{ else }}
 			{{ $title_len = ceil($gimme->article->name|strlen / 23) }}
-			<h1><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></h1>
+			<h1>{{ $gimme->article->name }}</h1>
 			
 		{{ /if }}
 		
@@ -47,6 +47,6 @@
 		<author>{{ $gimme->article->author->name }}</author>
 	</div>
 
-	<a class="favorite"><span>Favorite</span></a>
+	<span class="favorite"><span>Favorite</span></span>
 	
-</div>
+</a>
