@@ -74,6 +74,7 @@
 	<a href="#">Radio Gelb-Schwarz</a>
 </div>
 
+<!-- UI asset caching -->
 <div class="preload hidden">
 	<div class="newsbox"><a class="favorite checked"></a></div>
 	<div class="controlicon share checked"></div>
