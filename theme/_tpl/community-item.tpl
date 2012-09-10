@@ -2,7 +2,7 @@
 
 {{ if $gimme->article->is_twitter }}
 
-	<div class="row commentbox layouttwitter {{ if not $gimme->article->icon or $gimme->article->icon=="" }}without_icon{{ /if }}">
+	<div class="row commentbox layouttwitter {{ if not $gimme->article->icon or $gimme->article->icon=="" }}without_icon{{ /if }} community-item">
 		{{ if $gimme->article->icon }}
 			<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
 		{{ /if }}

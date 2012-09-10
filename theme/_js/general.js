@@ -37,6 +37,8 @@ jQuery.fn.reverse = [].reverse;
 $(document).ready(function() {
 
 	scaleCommunity();
+	
+	drawAds();
 		
 	initShareButton();
 
