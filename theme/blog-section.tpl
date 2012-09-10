@@ -32,7 +32,7 @@
 
         <div class="row content">
             
-			{{ include file="_tpl/community-sectionbox.tpl" }}
+			{{ include file="_tpl/community-sectionbox.tpl" }}	
 			
             {{ include file="_tpl/community.tpl" }}
 

@@ -1,4 +1,4 @@
-<div class="contentbar section-dossiers">
+<div class="contentbar section-dossiers contentbar-section-dossiers">
 
 	<div class="titlebox section-dossiers" id="mobile_startpoint">
 		<h2><a href="{{ uri options="issue" }}">Dossier</a> /</h2>
@@ -16,14 +16,16 @@
 			{{ $gimme->article->full_text }}
 		</div>
 		
-		<div class="dossier-articles">
+	</article>
+	
+	<div class="dossier-articles">
 		{{ list_related_articles }}
 		
 			{{ if $column%2 == 0 }}<div class="row newsrow">{{ /if }}
 			
 			{{ assign var="article_section" value=$gimme->article->section->url_name }}
 					
-			{{ if $gimme->article->has_image(1) }}
+			{{ if $gimme->article->frontpage_image || $gimme->article->frontpage_doubleview }}
 			
 				{{ include file="_tpl/newsbox-bgimage.tpl" }}
 			
@@ -40,6 +42,6 @@
 		{{ /list_related_articles }}
 	</div>
 
-	</article>
+	
 	
 </div>

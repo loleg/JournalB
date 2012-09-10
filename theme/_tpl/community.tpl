@@ -1,9 +1,9 @@
 <!-- Start community feed -->
-{{ list_articles length="30" order="byPublishDate desc" constraints="issue is 5 type is fweet" ignore_section="true" ignore_issue="true" }} 
-	
+
+{{ list_articles length="20" order="byPublishDate desc" constraints="issue is 5 type is fweet is_ad is off" ignore_section="true" ignore_issue="true" }} 
 	{{ include file="_tpl/community-item.tpl" }}
-	
 {{ /list_articles }}
+
 <!-- End community feed -->
 
 <div class="row socialbox">
@@ -18,3 +18,9 @@
 </div>
 
 {{ include file="_tpl/community-spenden.tpl" }}
+
+<div class="community-ads">
+	{{ list_articles length="2" order="byPublishDate desc" constraints="issue is 5 type is fweet is_ad is on" ignore_section="true" ignore_issue="true" }} 
+		{{ include file="_tpl/community-item.tpl" }}
+	{{ /list_articles }}
+</div>

@@ -10,7 +10,7 @@
 
         {{ include file="_tpl/header.tpl" }}
         
-        <div class="mcontentbar searchform">
+        <div class="center_contentbar searchform">
         	
         	{{ include file="_tpl/search-content.tpl" }}
 	                 

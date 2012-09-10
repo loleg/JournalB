@@ -6,10 +6,6 @@
 	</div>
 
 	{{ list_articles ignore_publication="true" ignore_issue="true" ignore_section="true" constraints="author is $escapedName" order="bypublishdate desc" }}
-		{{ if $gimme->issue->number == 1 }}
-			{{ include file="_tpl/itembox-dossier.tpl" }}
-		{{ elseif $gimme->article->issue->number != 3 && $gimme->article->issue->number != 5 }}
-			{{ include file="_tpl/itembox-simple.tpl" }}
-		{{ /if }}
+		{{ include file="_tpl/article-mini.tpl" }}
 	{{ /list_articles }}
 </div>

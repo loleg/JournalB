@@ -11,10 +11,6 @@
         {{ include file="_tpl/header.tpl" }}
 
         <div class="row content">
-			
-			{{ include file="_tpl/mobile-controlbar.tpl" }}
-				
-			{{ include file="_tpl/article-addbar.tpl" }}	
 				
 	        {{ include file="_tpl/blog-article-content.tpl" }}
             

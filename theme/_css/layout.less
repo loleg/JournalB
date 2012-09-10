@@ -39,22 +39,20 @@
         position: relative;
     }
     .newsbox .favorite {
-        width: 0;
-        height: 0;
-        border-bottom: 44px solid transparent;
-        border-right: 44px solid white;
+        width: 44px;
+        height: 44px;
+		background: url(../_img/favorite-grey.png) no-repeat; background-size: 100%;
         position: absolute;
         top: 0px;
         right: 0px;
-        text-indent: -9999px;
         color: transparent;
+		z-index: 9;
+		display: block;
     }
-    .newsbox .favorite span {
-        background: url(../_img/favorite-grey.png) no-repeat;
-        width: 31px; height: 31px; background-size: 100%;
-        left: 13px; position: absolute;
-    }
-    .newsbox .favorite:hover span, .newsbox .favorite.checked span {
+	.ie .newsbox .favorite {
+		right: -16px;
+	}
+    .newsbox .favorite:hover, .newsbox .favorite.checked {
         background-image: url(../_img/favorite-black.png);
     }
     .newsboxcontent {
@@ -84,7 +82,7 @@
 	}
 	
 	.ie .newsbox.layoutsimple  {
-		padding-top: 0px !important;
+		padding-top: 0px;
 	}
 	
     .newsbox.layoutsimple .info_block {
@@ -118,6 +116,9 @@
 	.newsbox.layoutlist .newsboxcontent {
         max-height: 220px;
     }
+	.ie .newsbox.layoutlist h2 {
+		margin-bottom: 14px;
+	}
 
 
     .newsbox.layoutbgimage {
@@ -150,7 +151,7 @@
 		.subheading;
 		display: inline;
 		margin-left: 6px;
-		font-weight: bold;
+		font-family: "AlekseiBold" !important;
 		font-size: 16.5px;
     }
 
@@ -183,21 +184,21 @@
     }
 	
 	
-	.itembox {
+	.article-mini {
 		margin-bottom: 25px;
 	}
-	.itembox info {
+	.article-mini info {
 		display: block;
 		.info;
 	}
-	.itembox .image {
+	.article-mini .image {
 		position: absolute;
 		left: 0px;
 		top: 0px;
 		width: 96px;
 		height: 66px;
 	}
-	.itembox .title {
+	.article-mini .title {
 		margin-bottom: 5px;
 		margin-top: 5px;
 		padding-top: 8px;
@@ -206,28 +207,31 @@
 		padding-left: 110px;
 		padding-right: 10px;
 	}	
-	.itembox .title a:hover{
+	.ie .article-mini .title {
+		height: 71px;
+	}
+	.article-mini .title a:hover{
 		text-decoration: underline;
 	}
-	.itembox description {
+	.article-mini .description {
 		display: block;
 		.community-font;
 	}
-	.itembox.layoutdossier .title {
+	.article-mini.layoutdossier .title {
 		padding-top: 0px;
 		background: none;
 	}
-	.itembox .list {
+	.article-mini .list {
 		padding-top: 3px;
 	}
-	.itembox .list li {
+	.article-mini .list li {
 		margin-bottom: 0px;
 		margin-top: 5px;
 	}
-	.itembox .list a {
+	.article-mini .list a {
 		.baselink;
 	}
-	.itembox .list time {
+	.article-mini .list time {
 		.info;
 		margin-left: 3px;
 	}
@@ -235,8 +239,11 @@
 	
     
     /*Newsboxes as used in Dossiers */
-    .contentbar.section-dossiers {
-	    width:100%;
+    .contentbar-section-dossiers {
+	    width:100% !important;
+    }
+	.contentbar-section-page {
+	    width:100% !important;
     }
     .dossier-content {
 	    margin-top: 1em;
@@ -294,6 +301,9 @@
         padding-top: 10px;
         margin-bottom: 23px;
     }
+	.ie .header {
+		height: 185px;
+	}
 
     /*Top menu*/
     .nav {
@@ -326,7 +336,7 @@
 	.nav li.nav-search a { background: url(../_img/nav-shape-search.png) bottom center no-repeat; }
 	.nav li.unactive a	 { background: none !important; padding-bottom: 4px !important;  }
 
-    .nav li.nav-front    { width: 90px; margin-right: 60px; }
+    .nav li.nav-front    { width: 90px; margin-right: 55px; }
     .nav li.nav-alltag   { width: 137px; }
     .nav li.nav-kultur   { width: 137px; }
     .nav li.nav-politik  { width: 137px; }
@@ -390,8 +400,12 @@
     /* Header login */
     .header .login {
 		padding-left: 30px;
-		margin-top: 55px;
+		position: absolute;
+		bottom: 5px;
     }
+	.ie .header .login {
+		bottom: 25px;
+	}
 	.header .login button {
 		float: left;
 		border: 0 none;
@@ -400,10 +414,9 @@
 		color: #000;
 		padding-right: 25px;
 		padding-left: 15px;
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-top: 11px;
+		padding-bottom: 9px;
 		display: block;
-		font-weight: bold;
 		.community-font;
 		border-radius: 3px;
 		-moz-border-radius: 3px;
@@ -420,16 +433,13 @@
 	.header .login .register {
 		display: block;
 		float: left;
-		margin-left: 130px;
+		left: 160px;
 		position: absolute;
 		.community-font;
 	}
-	.header .login .register span {
-		font-weight: bold;
-		overflow: hidden;
-		height: 1.5em;
-		display: block;
-		width: 10em;
+	.header .login .bold {
+		font-family: "AlekseiBold" !important;
+		font-weight: normal !important;
 	}
 	.header .login .commentbox-bg {
         position: absolute;
@@ -455,8 +465,8 @@
     
     /* Search form */
     .searchform {
-	    margin-left: 15%;
 	    border-bottom: none;
+		position: relative;
 	}
     .searchform input[type='text'] {
 	    background-color: @color-front; color:black;
@@ -471,7 +481,7 @@
 		display: block;
 		position: absolute;
 		width: 2em; height: 2em;
-		left: 520px;
+		right: 0px;
 		text-indent: -9999px;
 		color: @color-front;
 	    background: @color-front url('../_img/nav-shape-search-white.png') no-repeat center;
@@ -668,15 +678,14 @@
 		background-size: 100%; width: 18px; height: 16px;    
     }
     .commentbox {
-        padding: 15px;
+        padding: 15px 15px 9px 15px !important;
         background-color: @color-front;
         border-radius: 6px;
         position: relative;
-        padding-bottom: 9px;
     }
     .commentbox icon, .commentbox .icon {
         position: absolute;
-        top: 33px;
+        top: 15px;
         right: 13px;
     }
     .commentbox .commentbox-bg {
@@ -685,7 +694,7 @@
         bottom: 0px;
     }
 	.ie .commentbox .commentbox-bg {
-		bottom: 0px;
+		bottom: -4px;
 	}
     .commentbox .image {
         display: block;
@@ -709,11 +718,10 @@
     .commentbox.layouttwitter .info_block, .commentbox.layouttwitter info {
         display: block;
         float: left;
-        width: 90px;
+        width: 100px;
     }
     .commentbox.layouttwitter author, .commentbox.layouttwitter .author {
         display: block;
-        width: 140px;
         margin-top: -1px;
     }
     .commentbox.layouttwitter time, .commentbox.layouttwitter date {
@@ -722,6 +730,11 @@
         top: 52px;
         width: 140px;
         .community-font;
+    }
+	.commentbox.without_icon time, .commentbox.without_icon date {
+        display: block;
+		position: inherit;
+		top: 0px;
     }
     .commentbox.layouttwitter description, .commentbox.layouttwitter .description {
         display: block;
@@ -753,7 +766,7 @@
          margin-top: 12px;
     }
     .commentbox.layoutsimple h1 span {
-	    font-family: "alekseilight";
+	    font-family: "AlekseiThin";
 	    font-weight: normal;
 	    letter-spacing: -0.1em;
 	}
@@ -764,6 +777,7 @@
 	    position: absolute;
 	    width: 93px;
 	    height: 160px;
+		z-index: 2;
     }
     .sharebox .shareicon {
 	    margin-bottom: 3px;
@@ -838,6 +852,10 @@
 		.baselink;
 	}
     
+	.community-ads {
+		display: none;
+	}
+	
     .community-box {
     	padding-top: 0px;
         .community-font;
@@ -856,13 +874,11 @@
 	.community-box h1:first-child {
 		margin-top: none;
 	}
-	.community-buttons button:first-child {
-	    margin-right: 2%;
-	}
 	.community-buttons button {
 	    float: left;
 	    font-size: 78%;
-	    width: 49%;
+	    width: 110px;
+		display: block;
 	}
 
     .socialbox {
@@ -884,16 +900,16 @@
 		background-size: 100%; width: 39px; height: 31px;    
     }
     .icon-twitter-white {
-		background: url('../_img/twitter.png') no-repeat;
-		background-size: 100%; width: 38px; height: 31px;    
+		background: url('../_img/twitter-white-small.png') no-repeat;
+		background-size: 100%; width: 26px; height: 20px;    
     }
     .icon-facebook {
 		background: url('../_img/facebook_.png') no-repeat;
 		background-size: 100%; width: 32px; height: 36px;    
     }
     .icon-facebook-white {
-		background: url('../_img/facebook.png') no-repeat;
-		background-size: 100%; width: 26px; height: 31px;    
+		background: url('../_img/facebook-white-small.png') no-repeat;
+		background-size: 100%; width: 26px; height: 20px;    
     }
     .spenden .icon {
 	    position: relative;
@@ -917,8 +933,8 @@
 		background-size: 100%; width: 149px; height: 59px;
     }
     .icon-search {
-	    background: url('../_img/search.png') no-repeat;
-		background-size: 100%; width: 43px; height: 39px;
+		width: 43px; height: 39px;
+		border: 0 none;
     }
     .icon-support { 
 	    background: url('../_img/unterstutzen.png') no-repeat;
@@ -1007,6 +1023,30 @@
 	#disqus_thread #dsq-account-dropdown, #disqus_thread #dsq-subscribe, #dsq-realtime-options {
 		display: none;
 	}
+	.ie #disqus_thread .dsq-like-thread {
+		width: 20px;
+		height: 22px !important;
+		line-height: 22px;
+		overflow: hidden;
+	}
+	.ie #disqus_thread .dsq-like-thread .dsq-toolbar-label {
+		display: none;
+	}
+	.ie #disqus_thread .dsq-dislike-thread {
+		width: 20px;
+		height: 22px !important;
+		line-height: 22px;
+		overflow: hidden;
+	}
+	.ie #disqus_thread .dsq-community-box {
+		width: 20px;
+		height: 22px !important;
+		line-height: 22px;
+		overflow: hidden;
+	}
+	.ie #disqus_thread .dsq-global-toolbar-dropdown-container {
+		display: none;
+	}
 
 
 /* #Article Page Styles
@@ -1022,13 +1062,13 @@
 		margin-top: 0px;
 	}
 	article .article_top {
-		min-height: 180px;
+		min-height: 120px;
 	}
 	article.blog .article_top {
-		min-height: 40px;
+		min-height: 0px;
 	}
 	article.kolumne .article_top {
-		min-height: 40px;
+		min-height: 0px;
 	}
 	article .subtitle {
 		float: left;
@@ -1055,11 +1095,14 @@
 		width: 100px;
 		text-align: center;
 	}
-    .article_info author {
+	.blogcontent .article_info {
+		margin-top: 10px;
+	}
+    .article_info author, .article_info .author {
 		margin-bottom: 25px;
 		display: block;
     }
-	.article_info author a {
+	.article_info author a, .article_info .author a {
         .baselink;
         font-size: 70%;
         line-height: 25px;
@@ -1103,6 +1146,9 @@
 		margin: 0 auto;
 		padding-top: 10px;
 	}
+	.ie .center_contentbar {
+		margin-left: 120px;
+	}
 
 	/* Article quotes */
 	blockquote {
@@ -1129,12 +1175,14 @@
         background-position: center;
         background-repeat: no-repeat;
     }
-    .controlicon.favorite 		{ background-image: url(../_img/control-favorite.png); }
-    .controlicon.favorite.checked, .controlicon.favorite:hover 
+    .controlicons .favorite 		{ background-image: url(../_img/control-favorite.png); position: absolute; left: 610px; width: 100px; }
+    .controlicons .favorite.checked, .controlicon.favorite:hover 
     							{ background-image: url(../_img/control-favorite-black.png); }
+								
     .controlicon.fontize		{ background-image: url(../_img/control-fontize.png); }
     .controlicon.fontize.checked, .controlicon.fontize:hover	
     							{ background-image: url(../_img/control-fontize-black.png); }
+								
     .controlicon.share			{ background-image: url(../_img/control-share.png); }
     .controlicon.share.checked, .controlicon.share:hover	
     							{ background-image: url(../_img/control-share-black.png); }
@@ -1150,6 +1198,9 @@
 		float: left;
 		margin-bottom: 0px;
 		margin-left: 20px;
+		width: 43px !important;
+		left: 0px !important;
+		position: inherit !important;
 	}
 	.controlbar_mobile .aare {
 		float: left;
@@ -1172,15 +1223,18 @@
 		width: 222px !important;
 		height: auto !important;
 		display: block;
+		position: relative;
 	}
-	.cs_img[style*="float:left"] {
+	.cs_img[style*="float:left"], .cs_img_left {
 		margin-right: 20px;
 		margin-left: -120px;
 	}
-	.cs_img[style*="float:right"] {
+	.cs_img[style*="float:right"], .cs_img_right {
 		margin-left: 20px;
 		margin-right: -120px;
 	}
+	
+	
 	
 	.cs_img_caption {
 		width: 100px !important;
@@ -1197,12 +1251,13 @@
 		display: block;
 		margin-left: 232px;
 		text-align: left;
+		right: -110px;
 	}
-    .cs_img[style*="float:left"] .cs_img_caption {
+    .cs_img[style*="float:left"] .cs_img_caption, .cs_img_left .cs_img_caption {
         left: 0px;
 		display: block;
     } 
-	.cs_img[style*="float:right"] .cs_img_caption {
+	.cs_img[style*="float:right"] .cs_img_caption, .cs_img_right .cs_img_caption {
         right: 0px;
 		display: block;
     } 
@@ -1211,6 +1266,7 @@
 		text-align: center;
 		padding: 20px;
 		margin-bottom: 20px;
+		width: 100% !important;
 	}
 	.titlebox h1, .titlebox h2 {
 		display: inline;
@@ -1223,6 +1279,12 @@
 		margin-top: 10px;
 		padding-bottom: 8px;
 		background: #ffffff !important;
+	}
+	.blogbox article img {
+		height: auto !important;
+	}
+	.blogbox #article_image img {
+		width: 100% !important;
 	}
 	.blogbox.last {
 		border-bottom: 0 none !important;
@@ -1241,6 +1303,9 @@
 		.info;
 		text-align: center;
 		display: block;
+	}
+	.ie .blogbox .info_block {
+		background: none !important;
 	}
 	.blogbox author.mainauthor, .blogbox .author.mainauthor {
 		text-align: center;
@@ -1278,7 +1343,10 @@
 		margin-left: 15px;
 	}
 	
-	.collapse_box.visible .collapse_content {
+	.collapse_box {
+		padding-bottom: 2px !important;
+	}
+	.container .collapse_box.visible .collapse_content {
 		display: block !important;
 	}
 

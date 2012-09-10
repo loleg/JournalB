@@ -1,4 +1,4 @@
-<div class="gallery_info">
+<div class="gallery_info stable">
 	<div class="gallery_status">
 		<span class="gallery_current">1</span>
 		 / 
@@ -74,10 +74,6 @@
 	{{ if not $is_image }}
 		<script type="text/javascript">
 			$(".gallery_info").remove();
-			$(document).ready(function(){
-				$(".article_info").css("position","absolute");
-				$(".article_info").css("top","200px");
-			});
 		</script>
 	{{ /if }}
 	

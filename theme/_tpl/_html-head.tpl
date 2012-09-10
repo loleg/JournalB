@@ -21,8 +21,9 @@
 
     <script src="{{ url static_file='_js/less.js' }}" type="text/javascript"></script>
 	<script src="{{ url static_file='_js/jquery.js' }}" type="text/javascript"></script>
+	<script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
     <script src="{{ url static_file='_js/general.js' }}" type="text/javascript"></script>
-	<script src="{{ url static_file='_js/noElasticScroll.js' }}" type="text/javascript"></script>
+	<script src="{{ url static_file='_js/tabs.js' }}" type="text/javascript"></script>
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="{{ url static_file='_img/favicon.ico' }}">

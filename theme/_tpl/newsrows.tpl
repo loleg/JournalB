@@ -3,7 +3,6 @@
 {{ assign var="column" value="0" }}
 {{ assign var="articles_num" value="0" }}
 {{ assign var="articles_num_stock" value="0" }}
-{{ assign var="pagination" value="" }}
 
 {{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue not 5 issue not 3 `$condition` is on" }}
 	{{ $articles[$articles_num]["number"] = $gimme->article->number }}

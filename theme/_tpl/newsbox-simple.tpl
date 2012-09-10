@@ -22,13 +22,13 @@
 			<h1>{{ $gimme->article->name }}</h1>
 			
 		{{ /if }}
-		
-		{{ $len = 38 * floor(9 - $title_len*1.5) }}
+				
+		{{ $len = 36 * floor(9 - $title_len*1.5) }}
 
 		<description>
 			<p>
 				{{ if $gimme->article->deck=="" }} 
-					{{ $gimme->article->full_text->first_paragraph|truncate:$len:"...":true }}
+					{{ $gimme->article->full_text|strip_tags|truncate:$len:"...":true }}
 				{{ else }}
 					{{ $gimme->article->deck|strip_tags|truncate:$len:"...":true }}
 				{{ /if }}

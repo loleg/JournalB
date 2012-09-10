@@ -1,6 +1,6 @@
 <div class="row adbox authorbox collapse_box">
 	<div class="community-title grey collapse_title">Zum Autor</div>
-	<description class="collapse_content">
+	<div class="description collapse_content">
 		<div class='author-block'>
 			<div style="background-image:url('{{ $user->author->picture->imageurl }}')" class="author-pic"></div>
 			<div class="author-name">
@@ -14,5 +14,5 @@
 			</div>
 			{{ $user->author->biography->text }}
 		</div>
-	</description>
+	</div>
 </div>

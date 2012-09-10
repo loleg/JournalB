@@ -1,4 +1,4 @@
-<div class="contentbar section-page">
+<div class="contentbar section-page contentbar-section-page">
 
 	<article>
 		<header> 
@@ -18,7 +18,7 @@
 			
 			{{ assign var="article_section" value=$gimme->article->section->url_name }}
 					
-			{{ if $gimme->article->has_image(1) }}
+			{{ if $gimme->article->frontpage_image || $gimme->article->frontpage_doubleview }}
 			
 				{{ include file="_tpl/newsbox-bgimage.tpl" }}
 			

@@ -1,7 +1,7 @@
 {{ $list_count = 0 }}
 {{ list_related_articles }} {{ $list_count = $list_count + 1 }} {{ /list_related_articles }}
 		
-<div class="itembox layoutdossier">
+<div class="article-mini layoutdossier">
 	<info>({{ $list_count }}) Artikel</info>
 				
 	{{ $section = $gimme->section->url_name }}

@@ -1,3 +1,9 @@
+{{ include file="_tpl/mobile-controlbar.tpl" }}
+		
+<div class="addbar">
+	{{ include file="_tpl/control-icons.tpl" }}
+</div>
+
 <div class="contentbar section-blogs">
 
 	<div class="titlebox section-blogs" id="mobile_startpoint">
@@ -27,21 +33,13 @@
 				</header>
 			
 				<div class="blogcontent">
-					<div class="article_info" {{ if not $is_gallery and $gimme->article->images|count == 0 }}style="top:200px;"{{ /if }}>
-						{{ $i = 0 }}
-						{{ list_article_authors }}
-							{{ $ren = false }}
-							{{ foreach from=$rendered_authors item=author }} {{ if $author == $gimme->author->name }} {{ $ren = true }} {{ break }} {{ /if }} {{ /foreach }}
-							{{ if not $ren }}
-								{{ $i = $i + 1 }}
-								{{ $rendered_authors[$i] = $gimme->author->name }}
-							{{ /if }}
-							<author type="{{ $gimme->author->type }}" {{ if $ren }}style="display: none;"{{ /if }}><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->author->name }}</a></author>
-						{{ /list_article_authors }}
-						<time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y<br>%H:%i" }}</time>
-					</div>
+					{{ include file="_tpl/article-info.tpl" }}
+					
 					<div class="mcontentbar" style="border-bottom: 0 none;">
 						{{ $gimme->article->full_text }}
+						
+						<script type="text/javascript">articleImageAlts();</script>
+						
 						<div style="clear:both"></div>
 					</div>
 				</div>

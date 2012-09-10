@@ -1,8 +1,3 @@
-<script>
-loadFontSize();
-collapsebleElements();
-</script>
-
 {{ if preg_match("/Mobile/", $smarty.server.HTTP_USER_AGENT) }}
 	<script>
 		if ($("#mobile_startpoint").length > 0){
@@ -10,9 +5,6 @@ collapsebleElements();
 		}
 	</script>
 {{ /if }}
-
-
-<script src="{{ url static_file='_js/tabs.js' }}"></script>
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

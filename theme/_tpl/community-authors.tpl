@@ -4,7 +4,7 @@
 		{{ if $gimme->current_list->at_beginning }}
 		<div class="row adbox authorbox collapse_box">
 			<div class="community-title grey collapse_title">Zum Autor</div>
-			<description class="collapse_content">
+			<div class="description collapse_content">
 		{{ /if }}
 			{{ $ren = false }}
 			{{ foreach from=$rendered_authors item=author }} {{ if $author == $gimme->author->name }} {{ $ren = true }} {{ break }} {{ /if }} {{ /foreach }}
@@ -26,7 +26,7 @@
 				{{ $i = $i + 1 }}
 			{{ /if }}
 		{{ if $gimme->current_list->at_end }}
-			</description>
+			</div>
 		</div>
 		{{ /if }}
 	{{ /list_article_authors }}

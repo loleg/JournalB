@@ -93,60 +93,13 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 {{ list_search_results order="bypublishdate desc" }}
 
 	{{ if $gimme->current_list->at_beginning }}
-<ol class="row content search-content">
-	{{ /if }}
-	
-{{ if $gimme->article->issue->number != 3 && $gimme->article->issue->number != 5 }}
-	
-	{{ assign var="article_section" value=$gimme->article->section->url_name }}
-	{{ if $gimme->article->issue->number < 6 }}
-		{{ $article_section = $gimme->article->issue->url_name }}
+		<ol class="row content search-content">
 	{{ /if }}
 
-	<li>
-		<info>
-			<time>
-				{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
-					{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
-				{{ else }}
-					{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
-				{{ /if }}
-			</time> | 
-			<author>{{ $gimme->article->author->name }}</author>
-		</info>
-		
-		<a href="{{ uri options="article" }}">
-			<div class="searchbox section-{{ $article_section }}">
-				{{ image rendition="topfront" width="100" height="50" }}
-					<img src="{{ $image->src }}" width="100" align="left" />
-				{{ /image }}
-				<div class="title">
-				{{ if $gimme->article->issue->number == 1 }}
-					<span>Dossier</span> /
-					{{ $gimme->article->name }}
-		
-				{{ elseif $gimme->article->issue->number == 2 }}
-					<span>Blog</span> /
-					{{ $gimme->article->section->name }}
-		
-				{{ elseif $gimme->article->issue->number == 4 }}
-					<span>Kolumne</span> /
-					{{ $gimme->article->section->name }}
-					
-				{{ else }}
-					{{ $gimme->article->name }}
-					
-				{{ /if }}
-				</div>
-			</div>
-		</a>
-		
-		<description>{{ $gimme->article->deck|strip_tags|truncate:150:"...":true }}</description>
-	</li>   
-{{ /if }}
+		{{ include file="_tpl/article-mini.tpl" }}
 	
 	{{ if $gimme->current_list->at_end }}
-</ol>
+		</ol>
 	{{ /if }}
 
 {{ /list_search_results }}

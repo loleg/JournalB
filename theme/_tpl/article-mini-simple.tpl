@@ -1,13 +1,11 @@
-<div class="itembox layoutsimple">
+<div class="article-mini layoutsimple">
 	<info>
-		<time>
-			{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
-				{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
-			{{ else }}
-				{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
-			{{ /if }}
-		</time> | 
-		<author>{{ $user->author->name }}</author>
+		{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
+			{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+		{{ else }}
+			{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
+		{{ /if }}
+		 | {{ if $user->author->name=="" }} {{ $gimme->article->author->name }} {{ else }} {{ $user->author->name }} {{ /if }}
 	</info>
 				
 	{{ if $gimme->issue->number == 2 }}
@@ -29,11 +27,11 @@
 		</div>
 		<div style="clear: both"></div>
 	</div>
-	<description>
+	<div class="description">
 		{{ if $gimme->article->deck=="" }} 
 			{{ $gimme->article->full_text->first_paragraph }}
 		{{ else }}
 			{{ $gimme->article->deck|strip_tags }}
 		{{ /if }}
-	</description>
+	</div>
 </div>

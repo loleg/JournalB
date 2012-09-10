@@ -73,5 +73,3 @@
 	<div class="controlicon fontize checked"></div>
 	<div class="controlicon favorite checked"></div>
 </div>
-
-<a href="{{ $view->url(['controller' => 'jbarticle', 'action' => 'index']) }}">Test</a>

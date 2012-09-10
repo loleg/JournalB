@@ -24,7 +24,7 @@
 
         <div class="row content">
 	        
-	    	{{ include file="_tpl/user-header.tpl" }}
+	    	{{ include file="_tpl/community-user.tpl" }}
 	            									
             {{ include file="_tpl/community.tpl" }}
 
