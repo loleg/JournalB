@@ -281,8 +281,8 @@
     }
     
     /* Fade out when visited */
-        
-    .newsbox:visited, .newsbox:visited h1, .newsbox:visited h2 { color:#555; }
+    
+    .newsbox:visited h1, .newsbox:visited h2 { border-bottom: 1px solid black; text-decoration: underline !important; }
   
     .section-front:visited { 	background-color: lighten(@color-front, 5%); }
     .section-alltag:visited { 	background-color: lighten(@color-alltag, 5%); }
@@ -426,6 +426,10 @@
 		-moz-border-radius: 3px;
 		-webkit-border-radius: 3px;
 		-khtml-border-radius: 3px;
+		text-shadow: none;
+	}
+	.header .login button:hover, .header .login span:hover {
+		text-decoration: underline;
 	}
 	.ie .header .login button {
 		padding-right: 1px;
@@ -438,6 +442,7 @@
 		display: block;
 		float: left;
 		left: 160px;
+		top: 7px;
 		position: absolute;
 		.community-font;
 	}
@@ -722,7 +727,7 @@
     .commentbox.layouttwitter .info_block, .commentbox.layouttwitter info {
         display: block;
         float: left;
-        width: 100px;
+        width: 111px;
     }
     .commentbox.layouttwitter author, .commentbox.layouttwitter .author {
         display: block;
@@ -806,7 +811,7 @@
 		.community-title;
 	}
 	.authorbox .author-block {
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		margin-top: 6px;
 	}
 	
@@ -859,21 +864,19 @@
 	.community-ads {
 		display: none;
 	}
-	
-    .community-box {
+    .community-box, .collapse_box {    
     	padding-top: 0px;
+    }
+    .community-box p {
         .community-font;
     }
     .community-box h1 {
+    	.community-title.grey;
 	    .community-title;
-	    border-bottom: 2px solid #A19E9C;
 	    display: inline-block;
 	    margin-bottom: 6px;
 	    text-decoration: none !important;
-	    color: #A19E9C;
-	    font-size: 94%;
-	    line-height: 133%;
-	    margin-top: 1em;
+	    margin-top: 0;
 	}
 	.community-box h1:first-child {
 		margin-top: none;
@@ -883,6 +886,7 @@
 	    font-size: 78%;
 	    width: 110px;
 		display: block;
+		margin-bottom: 0;
 	}
 
     .socialbox {
@@ -1352,6 +1356,9 @@
 	}
 	.container .collapse_box.visible .collapse_content {
 		display: block !important;
+	}
+	.collapse_box .collapse_content {
+		margin-bottom: 20px;
 	}
 
 /* #Media Queries
