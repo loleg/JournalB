@@ -36,6 +36,16 @@ jQuery.fn.reverse = [].reverse;
 // When the DOM is loaded
 $(document).ready(function() {
 
+	articleImageAlts();
+	
+	if ($("#slider_box").length)
+	{
+		if (is_gallery) initSlider();
+		else $("#slider_box").remove();
+	}
+		
+	if (search_form) proceedSearchForm();
+
 	scaleCommunity();
 	
 	drawAds();

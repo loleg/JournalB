@@ -37,7 +37,7 @@
 </div>
 
 {{ if $is_gallery }}
-	<script type="text/javascript"> initSlider(); </script>
+	<script type="text/javascript"> var is_gallery = true; </script>
 {{ else }}
-	<script type="text/javascript"> $("#slider_box").remove(); </script>
+	<script type="text/javascript"> var is_gallery = false; </script>
 {{ /if }}

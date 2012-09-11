@@ -74,17 +74,17 @@ function initSlider()
 		updateSliderSize();
 	});
 	
-	$(document).bind('ready',function(){
-		var photo = $('.article_info .author[type="Photographer"]').html();
-		if (photo) 
-		{
-			$("#slider img").each(function(){
-				if ($(this).attr("alt")!="") $(this).attr("alt",$(this).attr("alt")+"<br><br>");
-				$(this).attr("alt",$(this).attr("alt")+"Foto: "+photo+"");
-			});
-			$(".gallery_description").html($(slider).children("ul").children("li:nth-child("+current_slide+")").children(":first").attr("alt"));
-		}
-	});
+
+	var photo = $('.article_info .author[type="Photographer"]').html();
+	if (photo) 
+	{
+		$("#slider img").each(function(){
+			if ($(this).attr("alt")!="") $(this).attr("alt",$(this).attr("alt")+"<br><br>");
+			$(this).attr("alt",$(this).attr("alt")+"Foto: "+photo+"");
+		});
+		$(".gallery_description").html($(slider).children("ul").children("li:nth-child("+current_slide+")").children(":first").attr("alt"));
+	}
+
 
 }
 

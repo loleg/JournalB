@@ -43,9 +43,7 @@
 				{{ include file="_tpl/article-info.tpl" }}
 			
 				{{ $gimme->article->full_text }}
-				
-				<script type="text/javascript">articleImageAlts();</script>
-				
+								
 				<div style="clear:both"></div>
 			</div>
 								

@@ -9,10 +9,10 @@
 <script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/community.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/faves.js' }}" type="text/javascript"></script>
-<script src="{{ url static_file='_js/general.js' }}" type="text/javascript"></script>
-<script src="{{ url static_file='_js/tabs.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/swipe.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/slider.js' }}" type="text/javascript"></script>
+<script src="{{ url static_file='_js/general.js' }}" type="text/javascript"></script>
+<script src="{{ url static_file='_js/tabs.js' }}" type="text/javascript"></script>
 <!-- /DEV -->
 
 <!-- PROD --

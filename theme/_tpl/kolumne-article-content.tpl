@@ -36,8 +36,6 @@
 					
 					<div class="mcontentbar" style="border-bottom: 0 none;">
 						{{ $gimme->article->full_text }}
-						
-						<script type="text/javascript">articleImageAlts();</script>
 				
 						<div style="clear:both"></div>
 					</div>
