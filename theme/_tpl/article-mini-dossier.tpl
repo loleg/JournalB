@@ -10,7 +10,7 @@
 	
 	<div class="title section-{{ $section }}">
 		<div class="image section-{{ $section }}">
-			{{ image rendition="topfront" width="100" height="66" }}
+			{{ image rendition="thumbnail{{ $retina }}" }}
 				<img src="{{ $image->src }}" align="left" />
 			{{ /image }}
 		</div>

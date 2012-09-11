@@ -47,5 +47,7 @@
 	  <meta property="og:image" content="{{ $gimme->article->image->imageurl }}" />
 	{{ /list_article_images }}
 	{{ /if }}
+	
+	<script type="text/javascript">var page = "";</script>
 
 </head>

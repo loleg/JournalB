@@ -212,17 +212,21 @@ function hideActiveSlider()
 
 function showActiveSlider()
 {
-	$("html").addClass("active_slider");
-	$("body").attr("ontouchmove","noElasticScroll(event);");
-	$(".gallery_info").removeClass("stable");
-	
 	if (!navigator.userAgent.match(/Mobile/))
 	{
 		$(slider).append('<div class="carrow left" onclick="moveSlider(0);"></div>');
 		$(slider).append('<div class="carrow right" onclick="moveSlider(1);"></div>');
 		$(slider).append('<div class="close" onclick="changeSliderStatus();"></div>');
 		$("#slider ul").attr('onclick','');
+		
+		$("#slider img").each(function(){
+			$(this).attr("src",$(this).attr("src").replace('470x315','940x630'));
+		});
 	}
+	
+	$("html").addClass("active_slider");
+	$("body").attr("ontouchmove","noElasticScroll(event);");
+	$(".gallery_info").removeClass("stable");
 	
 	slider_status = true;
 	

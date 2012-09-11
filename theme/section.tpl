@@ -1,4 +1,5 @@
 <!-- Section page template -->
+{{ php }} if (isset($_COOKIE["HTTP_IS_RETINA"])) $template->assign('retina','_2x'); else $template->assign('retina',''); {{ /php }} 
 
 {{ include file="_tpl/_html-head.tpl" }}
 

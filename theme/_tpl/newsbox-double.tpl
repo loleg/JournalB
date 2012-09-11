@@ -1,5 +1,8 @@
 <a class="content-double newsbox section-{{ $article_section }} layoutdouble" href="{{ uri options="article" }}"
-	{{ image rendition="topfrontdouble" }} style="background-image: url({{ $image->src }});" {{ /image }} >
+	{{ $is_retina_img = 0 }}
+	{{ image rendition="topfrontdouble{{ $retina }}" }} style="background-image: url({{ $image->src }});" {{ $is_retina_img = 1 }} {{ /image }} 
+	{{ if $retina!="" and not $is_retina_img }} {{ image rendition="topfrontdouble" }} style="background-image: url({{ $image->src }});" {{ /image }} {{ /if }}
+>
 	
 	<div class="newsboxcontent_wrapper">
 		<div class="newsboxcontent">

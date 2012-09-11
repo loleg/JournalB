@@ -2,7 +2,7 @@
 
 	<h2 class="search-keywords">
 		{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"Suche...\"" }}
-		<script type="text/javascript">var search_form = true;</script>
+		<script type="text/javascript">page="search";</script>
 	</h2>
 
 	<div class="lists" style="text-align:right">

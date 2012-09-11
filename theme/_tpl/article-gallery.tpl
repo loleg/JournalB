@@ -7,8 +7,10 @@
 		{{ foreach $gimme->article->slideshows as $slideshow }}
 			{{ foreach $slideshow->items as $item }}
 				{{ if $item->is_image }}
+					{{ if $item->image->width != 470 }} {{ continue }} {{ /if }}
+					{{ if $retina!="" }} {{ $src = $item->image->src|replace:'470x315':'940x630' }} {{ else }} {{ $src = $item->image->src }} {{ /if }}
 					{{ $is_gallery = true }}
-					<li class="sli_image"><img src="{{ $item->image->src }}" alt="{{ $item->caption }}" /></li>
+					<li class="sli_image"><img src="{{ $src }}" alt="{{ $item->caption }}" /></li>
 				{{ /if }}
 				
 				{{ if $item->is_video }}
@@ -26,10 +28,22 @@
 		{{ /foreach }}
 		
 		{{ if not $is_gallery }}
-			{{ image rendition="articlebig" }}
+		
+			{{ $is_retina_img = 0 }}
+		
+			{{ image rendition="articlebig{{ $retina }}" }}
+				{{ $is_retina_img = 1 }}
 				{{ $is_gallery = true }}
 				<li><img src="{{ $image->src }}" alt="{{ $item->caption }}" /></li>
 			{{ /image }} 
+			
+			{{ if $retina!="" and not $is_retina_img }}
+				{{ image rendition="articlebig" }}
+					{{ $is_gallery = true }}
+					<li><img src="{{ $image->src }}" alt="{{ $item->caption }}" /></li>
+				{{ /image }} 
+			{{ /if }}
+				
 		{{ /if }}
 		
 	</ul>

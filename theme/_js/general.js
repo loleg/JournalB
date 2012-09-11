@@ -44,8 +44,8 @@ $(document).ready(function() {
 		else $("#slider_box").remove();
 	}
 		
-	if (search_form) proceedSearchForm();
-
+	if (page=="search") proceedSearchForm();
+	
 	scaleCommunity();
 	
 	drawAds();

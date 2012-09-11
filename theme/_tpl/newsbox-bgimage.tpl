@@ -1,5 +1,5 @@
 <a class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $article_section }} layoutbgimage" href="{{ uri options="article" }}"
-	{{ image rendition="topfront" }} style="background-image: url({{ $image->src }});" {{ /image }}>
+	{{ image rendition="topfront{{ $retina }}" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 
 	<div class="info_block">
 		<div>

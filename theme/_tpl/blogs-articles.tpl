@@ -21,11 +21,20 @@
 				<header>
 					<div class="title"><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></div>
 				</header>
-				{{ image rendition="articlebig" }}
-				  <figure class="clearall">
-					  <img src="{{ $image->src }}" width="{{ $image->width }}" height="{{ $image->height }}" style="width: 100%" alt="{{ $image->caption }} (photo: {{ $image->photographer }})" />
-				  </figure>
+				
+				{{ $is_retina_img = 0 }}
+				
+				{{ image rendition="articlebig{{ $retina }}" }}
+					{{ $is_retina_img = 1 }}
+					<img src="{{ $image->src }}" style="width: 100%" alt="{{ $image->caption }} (photo: {{ $image->photographer }})" />
 				{{ /image }} 
+				
+				{{ if $retina!="" and not $is_retina_img }}
+					{{ image rendition="articlebig" }}
+						<img src="{{ $image->src }}" style="width: 100%" alt="{{ $image->caption }} (photo: {{ $image->photographer }})" />
+					{{ /image }}
+				{{ /if }}
+				
 				{{ if $gimme->current_list->at_beginning }}
 					<description>{{ $gimme->article->full_text }}</description>
 				{{ else }}
