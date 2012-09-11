@@ -10,7 +10,7 @@
 			<div class="info_block">
 				<div class="author">{{ $gimme->article->who }}</div>
 				{{ if $gimme->article->publish_date }}
-					<time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</time>
+					<time>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}</time>
 				{{ /if }}
 			</div>
 			<div class="clear"></div>
@@ -46,7 +46,7 @@
 					schrieb {{ $gimme->article->who }}
 				{{ /if }}
 				{{ if $gimme->article->publish_date }}
-					am {{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }} um 
+					am {{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }} um 
 					{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
 				{{ /if }}
 			</time>
@@ -58,7 +58,7 @@
 			</a>
 			{{ if $gimme->article->publish_date }}
 				<time>
-					schrieb am {{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }} um 
+					schrieb am {{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }} um 
 					{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }} zu
 				</time>
 			{{ /if }}

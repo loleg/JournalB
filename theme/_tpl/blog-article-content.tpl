@@ -16,7 +16,7 @@
 		
 			<div class="info_block">
 				{{ if $gimme->article->publish_date }}
-					<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
+					<date>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}</date> | 
 					<date>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</date> | 
 				{{ /if }}
 				Nummer {{ $gimme->article->number }}

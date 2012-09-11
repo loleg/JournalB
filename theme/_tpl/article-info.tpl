@@ -17,5 +17,5 @@
 		  {{ /if }}
 		</div>
 	{{ /list_article_authors }}
-	<time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y<br>%H:%i" }}</time>
+	<time>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y<br>%H:%i" }}</time>
 </div>

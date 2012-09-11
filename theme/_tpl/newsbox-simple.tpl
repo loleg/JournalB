@@ -38,10 +38,10 @@
 
 	<div class="info_block">
 		<time>
-			{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
+			{{ if $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" == $smarty.now|camp_date_format:"%d.%m.%Y"}}
 				{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
 			{{ else }}
-				{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
+				{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}
 			{{ /if }}
 		</time> | 
 		<author>{{ $gimme->article->author->name }}</author>

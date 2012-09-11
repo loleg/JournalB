@@ -19,7 +19,7 @@
     <div class="aare">
         Aare<br><a class="wert" title="Bundesamt für Umwelt" href="http://www.hydrodaten.admin.ch/de/" target="_blank"></a>&deg;
     </div>
-    <time>{{$smarty.now|camp_date_format:"%e.%m.%Y"}} </time>
+    <time>{{$smarty.now|camp_date_format:"%d.%m.%Y"}} </time>
 
     <h1 class="logo" onclick="document.location.href='/'">
         <a href="/">Journal B</a>

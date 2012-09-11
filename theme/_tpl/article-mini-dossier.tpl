@@ -28,7 +28,7 @@
 		<div class="list">
 			<ul>
 			{{ list_related_articles }}
-				<li><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a> <time>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</time></li>
+				<li><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a> <time>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}</time></li>
 			{{ /list_related_articles }}
 			</ul>
 		</div>

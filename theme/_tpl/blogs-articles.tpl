@@ -10,7 +10,7 @@
 	<div class="blogbox section-blogs">
 
 		<div class="info_block">
-			<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
+			<date>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}</date> | 
 			<date>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</date> | 
 			Nummer {{ $gimme->article->number }}
 		</div>

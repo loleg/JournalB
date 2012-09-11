@@ -1,9 +1,9 @@
 <div class="article-mini layoutsimple">
 	<info>
-		{{ if $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" == $smarty.now|camp_date_format:"%e.%m.%Y"}}
+		{{ if $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" == $smarty.now|camp_date_format:"%d.%m.%Y"}}
 			{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
 		{{ else }}
-			{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}
+			{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}
 		{{ /if }}
 		 | {{ if $user->author->name=="" }} {{ $gimme->article->author->name }} {{ else }} {{ $user->author->name }} {{ /if }}
 	</info>

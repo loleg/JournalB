@@ -32,7 +32,7 @@
 							<a href="{{ url options="section" }}">
 								<div class="description"><span class="capitalize">{{ $section["name"] }}</span> {{ $section["description"]|strip_tags }}</div>
 								<div class="info">
-									<date>{{ $section["date"]|camp_date_format:"%e.%m.%Y" }}</date> | 
+									<date>{{ $section["date"]|camp_date_format:"%d.%m.%Y" }}</date> | 
 									<date>{{ $section["date"]|camp_date_format:"%H:%i" }}</date>
 								</div>
 							</a>
@@ -57,7 +57,7 @@
 							<a href="{{ url options="article" }}">
 								<div class="description"><span class="capitalize">{{ $gimme->article->name }}</span> {{ $gimme->article->subtitle|strip_tags }}</div>
 								<div class="info">
-									<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
+									<date>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}</date> | 
 									<time>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</time>
 								</div>
 							</a>

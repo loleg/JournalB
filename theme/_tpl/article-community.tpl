@@ -25,7 +25,7 @@
 	{{ $publish_date = $gimme->article->publish_date }}
 	{{ if $publish_date }}
 		<div class="info">
-			<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> / 
+			<date>{{ $publish_date|camp_date_format:"%d.%m.%Y" }}</date> / 
 			<time>{{ $publish_date|camp_date_format:"%H:%i" }}</time> /
 			<author>{{ $gimme->article->author->name }}
 		</div>

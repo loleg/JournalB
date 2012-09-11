@@ -20,7 +20,7 @@
 
 			{{ if $publish_date }}
 			<div class="info_block">
-				<date>{{ $publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
+				<date>{{ $publish_date|camp_date_format:"%d.%m.%Y" }}</date> | 
 				<date>{{ $publish_date|camp_date_format:"%H:%i" }}</date> 
 			</div>
 			{{ else }}
