@@ -78,7 +78,5 @@
 	{{ /if }}
 	
 {{ else }}
-	<script type="text/javascript" src="{{ url static_file='_js/swipe.js' }}"></script>
-	<script type="text/javascript" src="{{ url static_file='_js/slider.js' }}"></script>
 	<script type="text/javascript"> initSlider("slider"); </script>
 {{ /if }}

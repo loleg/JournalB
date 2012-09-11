@@ -14,16 +14,8 @@
     <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
 	{{ if $native_application }} <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/native-application.less' }}"> {{ /if }}
 	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">
-
-	<!--[if IE]>
-	<script src="{{ url static_file='_js/html5.js' }}"></script>
-	<![endif]-->
-
-    <script src="{{ url static_file='_js/less.js' }}" type="text/javascript"></script>
-	<script src="{{ url static_file='_js/jquery.js' }}" type="text/javascript"></script>
-	<script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
-    <script src="{{ url static_file='_js/general.js' }}" type="text/javascript"></script>
-	<script src="{{ url static_file='_js/tabs.js' }}" type="text/javascript"></script>
+	
+	<script src="{{ url static_file='_js/less.min.js' }}" type="text/javascript"></script>
 
     <!-- Favicons -->
     <!--
@@ -57,5 +49,3 @@
 	{{ /if }}
 
 </head>
-
-
