@@ -10,6 +10,11 @@ class BernController extends Zend_Controller_Action
     {
         //$this->view->message = "Hello, World";
     }
+	
+	public function resourcesAction()
+	{
+		//$this->view->message = "Hello, World";
+	}
 }
 
 ?>
