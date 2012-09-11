@@ -1,0 +1,9 @@
+[submodule "theme/_js/Socialite"]
+	path = theme/_js/Socialite
+	url = git://github.com/dbushell/Socialite.git
+[submodule "theme/_js/html5shiv"]
+	path = theme/_js/html5shiv
+	url = git://github.com/aFarkas/html5shiv.git
+[submodule "theme/_js/jquery.swipe"]
+	path = theme/_js/jquery.swipe
+	url = git://github.com/sgentile/jquery.swipe.git
