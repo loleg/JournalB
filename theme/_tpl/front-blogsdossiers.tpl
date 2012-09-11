@@ -58,8 +58,7 @@
 								<div class="description"><span class="capitalize">{{ $gimme->article->name }}</span> {{ $gimme->article->subtitle|strip_tags }}</div>
 								<div class="info">
 									<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
-									<time>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</time> | 
-									<author>{{ $gimme->article->author->name }}</author>
+									<time>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</time>
 								</div>
 							</a>
 						</div>
