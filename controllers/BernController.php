@@ -1,10 +1,10 @@
 <?php
 
 /*
- *  Custom controller for Journal B Frontpage
+ *  Custom controller for Journal-B.ch services
  *  - Note: copy into newscoop/application/controllers
  */
-class JBArticleController extends Zend_Controller_Action
+class BernController extends Zend_Controller_Action
 {
     public function indexAction()
     {

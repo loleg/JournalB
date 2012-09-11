@@ -45,7 +45,7 @@
 		
 		<div class="caption">Services</div>
 		<ul><li>
-		<a href="#">Favoriten</a> | 
+		<a href="{{ $view->url(['controller' => 'bern', 'action' => 'index']) }}">Favoriten</a> | 
 		<a href="#">Archiv</a> | 
 		<a href="#">Community</a> | 
 		<a href="#">RSS</a> | 
