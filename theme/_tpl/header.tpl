@@ -21,7 +21,7 @@
     </div>
     <time>{{$smarty.now|camp_date_format:"%e.%m.%Y"}} </time>
 
-    <h1 class="logo">
+    <h1 class="logo" onclick="document.location.href='/'">
         <a href="/">Journal B</a>
     </h1>
     

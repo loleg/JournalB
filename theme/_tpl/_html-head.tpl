@@ -26,10 +26,12 @@
 	<script src="{{ url static_file='_js/tabs.js' }}" type="text/javascript"></script>
 
     <!-- Favicons -->
+    <!--
     <link rel="shortcut icon" href="{{ url static_file='_img/favicon.ico' }}">
     <link rel="apple-touch-icon" href="{{ url static_file='_img/apple-touch-icon.png' }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ url static_file='_img/apple-touch-icon-72x72.png' }}">
     <link rel="apple-touch-icon" sizes="114x114" href="{{ url static_file='_img/apple-touch-icon-114x114.png' }}">
+    -->
 
     {{* Page Meta-info from Newscoop *}}
 	<title>{{ if $gimme->article->defined }}{{ $gimme->article->name }} | {{ elseif $gimme->section->defined }}{{ $gimme->section->name }} | {{ /if }}{{ $gimme->publication->name }}</title>
