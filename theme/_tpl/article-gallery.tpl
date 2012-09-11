@@ -37,8 +37,6 @@
 </div>
 
 {{ if $is_gallery }}
-	<script type="text/javascript" src="{{ url static_file='_js/swipe.js' }}"></script>
-	<script type="text/javascript" src="{{ url static_file='_js/slider.js' }}"></script>
 	<script type="text/javascript"> initSlider(); </script>
 {{ else }}
 	<script type="text/javascript"> $("#slider_box").remove(); </script>
