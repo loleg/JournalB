@@ -1,66 +1,96 @@
 var slider;
-var slider_id;
+var slider_box;
 var current_slide;
 var before_slide;
 var slides_num;
 var slider_easing = false;
 var slider_status = false;
 
-function initSlider(_slider_id)
+function initSlider()
 {
-	slider_id = _slider_id;
-	slider = $("#"+slider_id);
-										
+	slider = $("#slider");
+	slider_box = $("#slider_box");
+	
 	current_slide = 1;
 	slides_num = $(slider).children("ul").children("li").length;			
-	$(slider).children("ul").children("li:first").show();	
+	$(slider).children("ul").children("li:first").show();
+		
+	$(slider).append('<div class="gallery_info stable"><div class="gallery_status"><span class="gallery_current"></span> / <span class="gallery_all"></span></div><div class="gallery_control"></div><div class="gallery_description"></div></div>');
+	$(".gallery_all").html(slides_num);		
+	$(".gallery_current").html(current_slide);		
+	$(".gallery_description").html($(slider).children("ul").children("li:first").children(":first").attr("alt"));	
+	
+	if (slides_num==1)
+	{
+		$(slider_box).addClass("one_slide");
+		if ($("#slider li").hasClass("sli_video")) 
+		{
+			$(slider_box).addClass("video_only");
+			$(slider_box).addClass("video_current");
+			$(".gallery_control").append('<div class="videopict"></div>');
+		}
+	}
+	else if ($(slider).children("ul").children("li:nth-child(1)").hasClass("sli_video"))
+	{
+		$(slider_box).addClass("video_current");
+	}
 
+	updateSliderSize();
+	
 	if (navigator.userAgent.match(/Mobile/))
 	{
-		$(".gallery_control").append('<div class="gpict"></div>');
+		if (slides_num>1) $(".gallery_control").append('<div class="gpict"></div>');
 		$(slider).append('<div class="tip">Hier klicken um Galerie zu offnen</div>');
+		
+		$("#slider_box").touchwipe({
+			wipeRight: "moveSlider(0);",	
+			wipeLeft: "moveSlider(1);",	
+			wipeNone: "changeSliderStatus();",
+			min_move_x: 10,
+			min_move_y: 10,
+			preventDefaultEvents: false
+		});
+		
 	}
 	else
 	{
-		$(".gallery_control").append('<div class="arrow left"></div>');
-		$(".gallery_control").append('<div class="arrow right"></div>');
-		$(".gallery_control").append('<div style="clear:both"></div>');
-		$(".gallery_control").children(".arrow.left").click(function(){ moveSlider(0); });	
-		$(".gallery_control").children(".arrow.right").click(function(){ moveSlider(1); });	
+		if (slides_num>1) 
+		{
+			$(".gallery_control").append('<div class="arrow left"></div>');
+			$(".gallery_control").append('<div class="arrow right"></div>');
+			$(".gallery_control").append('<div style="clear:both"></div>');
+			$(".gallery_control").children(".arrow.left").click(function(){ moveSlider(0); });	
+			$(".gallery_control").children(".arrow.right").click(function(){ moveSlider(1); });	
+		}
+		
+		$("#slider ul").click(function(){
+			changeSliderStatus();
+		});
 	}
-	
-	$(".gallery_all").html(slides_num);
-	$(".gallery_description").html($(slider).children("ul").children("li:first").children(":first").attr("alt"));
-			
-	updateSliderSize()
-			
-	$(slider).touchwipe({
-		wipeRight: "moveSlider(0);",	
-		wipeLeft: "moveSlider(1);",	
-		wipeNone: "changeSliderStatus();",
-		min_move_x: 10,
-		min_move_y: 10,
-		preventDefaultEvents: false
-	});
-	
-	$("#slider_wrapper").touchwipe({
-		wipeRight: "moveSlider(0);",	
-		wipeLeft: "moveSlider(1);",	
-		wipeNone: "changeSliderStatus();",
-		min_move_x: 10,
-		min_move_y: 10,
-		preventDefaultEvents: false
-	});
-	
+				
+	updateSliderSize();
+				
 	$(document).bind("changeScreenMode",function(){
 		updateSliderSize();
+	});
+	
+	$(document).bind('ready',function(){
+		var photo = $('.article_info .author[type="Photographer"]').html();
+		if (photo) 
+		{
+			$("#slider img").each(function(){
+				if ($(this).attr("alt")!="") $(this).attr("alt",$(this).attr("alt")+"<br><br>");
+				$(this).attr("alt",$(this).attr("alt")+"Foto: "+photo+"");
+			});
+			$(".gallery_description").html($(slider).children("ul").children("li:nth-child("+current_slide+")").children(":first").attr("alt"));
+		}
 	});
 
 }
 
 function moveSlider(direction)
 {
-	if (navigator.userAgent.match(/Mobile/) && !$(slider).hasClass("active")) return;
+	if (navigator.userAgent.match(/Mobile/) && !slider_status) return;
 
 	if (slider_easing) return;
 
@@ -88,6 +118,15 @@ function moveSlider(direction)
 			$(".gallery_description").fadeIn();
 			$(".gallery_current").html(current_slide);
 			
+			if ($(slider).children("ul").children("li:nth-child("+current_slide+")").hasClass("sli_video"))
+			{
+				$(slider_box).addClass("video_current");
+			}
+			else
+			{
+				$(slider_box).removeClass("video_current");
+			}
+			
 			if ($(slider).children("ul").children("li:nth-child("+current_slide+")").children()[0].tagName=="OBJECT") $(slider).addClass("video"); else $(slider).removeClass("video");
 				
 			
@@ -109,7 +148,7 @@ function changeSliderStatus()
 	{
 		hideActiveSlider();
 	}
-	else if (navigator.userAgent.match(/Mobile/gi))
+	else
 	{	
 		showActiveSlider();
 	}
@@ -118,27 +157,29 @@ function changeSliderStatus()
 
 function updateSliderSize()
 {
-	$(slider).css("width","100%");
+	var window_height = window.innerHeight;
+	var window_width = window.innerWidth;
+
 	$(slider).height($(slider).width()*0.6695);
 	if (slider_status)
 	{
-		if (navigator.userAgent.match(/iPhone/gi) || navigator.userAgent.match(/iPod/gi))
+		/*if (navigator.userAgent.match(/iPhone/gi) || navigator.userAgent.match(/iPod/gi))
 		{
 			if (screenMode==4) max_height = 430; else max_height = 270;
 		}
 		else
 		{
-			if (screenMode==4) max_height = screen.height-60; else max_height = screen.width-60;
-		}
+			if (screenMode==4) max_height = screen.height-60; else max_height = window_width-60;
+		}*/
 	
-		if ($(slider).height() > max_height)
+		if ($(slider).height() > window_height)
 		{
-			$(slider).height(max_height);
+			$(slider).height(window_height);
 			$(slider).width($(slider).height()/0.6695);
 		}
 		
-		$(slider).css("margin-top","-"+$(slider).height()/2+"px");
-		$(slider).css("margin-left","-"+$(slider).width()/2+"px");
+		$(slider).css("margin-top",(window_height-$(slider).height())/2+"px");
+		$(slider).css("margin-left",(window_width-$(slider).width())/2+"px");
 	}
 	else
 	{
@@ -149,38 +190,40 @@ function updateSliderSize()
 
 function hideActiveSlider()
 {
-	$("html").removeClass("activeSlider");
-	$("html").css("background","#ffffff");
-	$("body").css("background","#ffffff");
-	$(".contentbar").css("background","#ffffff");
-	
-	$(slider).removeClass("active");
-	$(slider).css("margin-top","0px");
-	$("#slider_wrapper").removeClass("active");
-	$(".gallery_info.mobile").remove();
+	$("html").removeClass("active_slider");
 	$("body").attr("ontouchmove","");
-	$(".nav").removeClass("hidden");
+	$(".gallery_info").addClass("stable");
+		
+	if (!navigator.userAgent.match(/Mobile/))
+	{
+		$("#slider .carrow").remove();
+		$("#slider .close").remove();
+		$("#slider ul").click(function(){
+			changeSliderStatus();
+		});
+	}
 	
 	slider_status = false;
+	$("#slider .carrow").remove();
+	$("#slider .close").remove();
 	
 	updateSliderSize();
 }
 
 function showActiveSlider()
 {
-	$(slider).addClass("active");
-	$("#slider_wrapper").addClass("active");
-	$(".gallery_info.mobile").addClass("active");
+	$("html").addClass("active_slider");
 	$("body").attr("ontouchmove","noElasticScroll(event);");
-	$(".nav").addClass("hidden");
-
-	$("html").addClass("activeSlider");
-	$("html").css("background","#000000");
-	$("body").css("background","#000000");
-	$(".contentbar").css("background","#000000");
+	$(".gallery_info").removeClass("stable");
 	
-	$(slider).append('<div class="gallery_info mobile active"><div class="gallery_status"><span class="gallery_current">'+current_slide+'</span> / <span class="gallery_all">'+slides_num+'</span></div><div class="gallery_description">'+$(slider).children("ul").children("li:nth-child("+current_slide+")").children(":first").attr("alt")+'</div></div>');
-			
+	if (!navigator.userAgent.match(/Mobile/))
+	{
+		$(slider).append('<div class="carrow left" onclick="moveSlider(0);"></div>');
+		$(slider).append('<div class="carrow right" onclick="moveSlider(1);"></div>');
+		$(slider).append('<div class="close" onclick="changeSliderStatus();"></div>');
+		$("#slider ul").attr('onclick','');
+	}
+	
 	slider_status = true;
 	
 	updateSliderSize();

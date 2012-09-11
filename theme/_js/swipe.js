@@ -28,7 +28,7 @@
     	 var startX;
     	 var startY;
 		 var isMoving = false;
-
+		 
     	 function cancelTouch() {
     		 this.removeEventListener('touchmove', onTouchMove);
              this.removeEventListener('touchend', onTouchEnd);
@@ -42,6 +42,7 @@
     	 }
 
     	 function onTouchMove(e) {
+			
             tcm = true;
     		 /*if(config.preventDefaultEvents) {
     			 e.preventDefault();
