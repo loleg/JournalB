@@ -16,9 +16,6 @@
 	
 	<div class="title section-{{ $section }}">
 		<div class="image section-{{ $section }}">
-			{{ image rendition="thumbnail{{ $retina }}" }}
-				<img src="{{ $image->src }}" align="left" style="width: 100px; height: 66px;" />
-			{{ /image }}
 		</div>
 		<div class="description">
 			{{ if $gimme->issue->number == 2 }}<span class="minih2"><a href="{{ uri options="section" }}">Blog</a></span> / {{ /if }}
