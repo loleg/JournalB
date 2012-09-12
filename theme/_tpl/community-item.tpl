@@ -29,10 +29,6 @@
 {{ else }}
 
 	<div class="row commentbox layoutsimple">
-		{{ if $gimme->article->icon }}
-			<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
-		{{ /if }}
-		
 		{{ if $gimme->article->is_highlight }}
 			<a href="{{ $gimme->article->link }}">
 				<h1>
@@ -52,6 +48,10 @@
 			</time>
 			
 		{{ else }}
+			{{ if $gimme->article->icon }}
+				<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
+			{{ /if }}
+		
 			<a href="{{ $gimme->article->link }}">
 				<div class="author">{{ $gimme->article->who }}</div>
 				<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
