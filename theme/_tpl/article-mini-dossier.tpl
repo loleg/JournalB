@@ -10,6 +10,9 @@
 	
 	<div class="title section-{{ $section }}">
 		<div class="image section-{{ $section }}">
+		{{ image rendition="thumbnail{{ $retina }}" }}
+			<img src="{{ $image->src }}" align="left" />
+		{{ /image }}
 		</div>
 		<div class="descr">
 			<span class="minih2"><a href="{{ uri options="section" }}">Dossier</a></span> / 
