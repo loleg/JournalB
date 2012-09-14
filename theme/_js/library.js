@@ -108,21 +108,12 @@ function collapseElement(obj)
 }
 
 
-// Variable font sizes (size%, letter-spacing, line-height em) 
-var fontSizes = Array( 
-		Array(82,  'inherit', 1.429), 
-		Array(100, '0.015em', 1.471), 
-		Array(125, '0.015em', 1.429) 
-	);
 var currentFontSize = 1;
 
 // Update fontsize in css
 function updateFontSize()
 {
 	$(".font-sens").removeClass("font0").removeClass("font1").removeClass("font2").addClass("font"+currentFontSize);
-	//$("article").css("font-size",fontSizes[currentFontSize][0]+"%");
-	//$("article").css("letter-spacing",fontSizes[currentFontSize][1]);
-	//$("article").css("line-height",fontSizes[currentFontSize][2]+"em");
 }
 
 // Change font size

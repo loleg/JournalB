@@ -25,7 +25,7 @@
 
 body {
 	background: #fff;
-	font-family: "AlekseiRegular", Helvetica, Arial;
+	font-family: "AlekseiRegular", Georgia, Times, serif;
 	font-size: @base-font-size;
 	line-height: @base-line-height;
 	color: @base-font-color;
@@ -51,6 +51,10 @@ body {
 
 p { margin: 0 0 10px 0; }
 
+em, .italic { font-style: italic; }
+strong  { font-weight: bold; color: #333; }
+small   { font-size: 80%; }
+
 /* Headings */
 h1, h2, h3, h4, h5, h6                  { color: @base-font-color; font-weight: normal; line-height: 100%; }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a      { font-weight: inherit; color: @base-font-color; }
@@ -62,37 +66,37 @@ h1.underline a:hover, h2.underline a:hover, h3.underline a:hover,
 h4.underline a:hover, h5.underline a:hover, h6.underline a:hover    {background: none;}
 
 /* Base headings */
-h1 { font-size: 175%; /*30px*/ font-family: "JournalBBold",    "Georgia", "Times New Roman", serif; margin-bottom: 8px; margin-top: 7px; letter-spacing:0.01em; }
-h2 { font-size: 175%; /*30px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; margin-bottom: 0px; }
-h3 { font-size: 150%; /*26px*/ font-family: "JournalBBold",    "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
-h4 { font-size: 150%; /*26px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; margin-bottom: 8px; }
-h5 { font-size: 125%; /*21px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
-h6 { font-size: 100%; /*17px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
+h1 { font-size: 175%; /*30px*/ font-family: "JournalBBold", Helvetica, Verdana, sans-serif; margin-bottom: 8px; margin-top: 7px; letter-spacing:0.01em; }
+h2 { font-size: 175%; /*30px*/ font-family: "JournalBRegular", Helvetica, Verdana, sans-serif; letter-spacing:-0.015em; margin-bottom: 0px; }
+h3 { font-size: 150%; /*26px*/ font-family: "JournalBBold", Helvetica, Verdana, sans-serif; margin-bottom: 8px; }
+h4 { font-size: 150%; /*26px*/ font-family: "JournalBRegular", Helvetica, Verdana, sans-serif; margin-bottom: 8px; }
+h5 { font-size: 125%; /*21px*/ font-family: "JournalBRegular", Helvetica, Verdana, sans-serif; }
+h6 { font-size: 100%; /*17px*/ font-family: "JournalBRegular", Helvetica, Verdana, sans-serif; }
 
 /* Credits / Author / Time / Captions */
-.info                           { font-family: "AlekseiLight"; font-size: 70%; /*12px*/  line-height: 125%; /*15px*/ }
+.info                           { font-family: "AlekseiThin", Georgia, Times, serif; font-size: 70%; /*12px*/  line-height: 125%; /*15px*/ letter-spacing: 0.04em; }
 .info a:hover                   { .underline("",3px,2px); }         /* 3px underline with 3px offset */
 .section-alltag .info a:hover   { .underline("-alltag",3px,2px); }  /* 3px underline with 3px offset */
 .section-kultur .info a:hover   { .underline("-kultur",3px,2px); }  /* 3px underline with 3px offset */
 .section-politik .info a:hover  { .underline("-politik",3px,2px); } /* 3px underline with 3px offset */
 
 /* Community fonts */
-.community-font                 { font-family: "AlekseiRegular"; font-size: 82%; /*14px*/ line-height: 143%; /*20px*/ }
-.community-title                { font-family: "AlekseiBlack"; font-size: 94%; /*16px*/ line-height: 140%; /*20px*/ }
+.community-font                 { font-family: "AlekseiRegular", Georgia, Times, serif; font-size: 82%; /*14px*/ line-height: 143%; /*20px*/ letter-spacing: 0.015em; }
+.community-title                { font-family: "AlekseiBlack", Georgia, Times, serif; font-size: 94%; /*16px*/ line-height: 140%; /*20px*/ }
 .community-title.white          { font-size: 82%; /*14px*/ letter-spacing: 0.02em; color: #ffffff; }
 .community-title.grey           { font-size: 100%; /*17px*/ line-height: 133%; /*20px*/ letter-spacing: 0.03em; color: #a19e9c; background: none !important; }
 .community-title.underline      { border-bottom: 2px solid #a19e9c; text-decoration: none !important; display: inline-block; margin-bottom: 6px; }
 .collapse_box.visible .community-title.underline { border-bottom: 2px solid #a19e9c !important; }
 
 /* Lists (Links / Article Titles) */
-.lists a, .baselink             { font-family: "AlekseiBlack"; font-size: 82%; /*14px*/ line-height: 107%; /*15px*/ letter-spacing: 0.02em; &:hover { .underline("-black",1px,0px); } }
-.communitybaselink				{ font-family: "AlekseiBlack"; &:hover { .underline("-black",1px,0px); } }
-.baselinklabel             		{ font-family: "AlekseiBlack"; font-size: 82%; /*14px*/ line-height: 107%; /*15px*/ }
+.lists a, .baselink             { font-family: "AlekseiBlack", Georgia, Times, serif; font-size: 82%; /*14px*/ line-height: 107%; /*15px*/ letter-spacing: 0.02em; &:hover { .underline("-black",1px,0px); } }
+.communitybaselink				{ font-family: "AlekseiBlack", Georgia, Times, serif; &:hover { .underline("-black",1px,0px); } }
+.baselinklabel             		{ font-family: "AlekseiBlack", Georgia, Times, serif; font-size: 82%; /*14px*/ line-height: 107%; /*15px*/ }
 
 /*Content headings*/
 article h1, article h2, article h3, article h4, article h5 {
-	font-family: "AlekseiBlack", "Georgia", "Times New Roman", serif; 
-	font-size:16.65px;
+	font-family: "AlekseiBlack", Georgia, Times, serif; 
+	font-size:98%;
 	letter-spacing:0.04em;
 	line-height:25px;
 	margin-bottom:0;
@@ -130,8 +134,8 @@ blockquote a {
 
 /* Other headings */
 .headline-font					{ font-family: "JournalBBold"; font-weight: normal; }
-.subheading                     { font-family: "AlekseiBlack"; font-size: 100%; /*17px*/ letter-spacing:0.04em; }
-.capitalize                     { text-transform: uppercase; font-family: "JournalBBold"; font-size: 94%; /*16px*/ line-height: 125%; /*20px*/ letter-spacing:0.03em; }
+.subheading                     { font-family: "AlekseiBlack", Georgia, Times, serif; font-size: 100%; /*17px*/ letter-spacing:0.04em; }
+.capitalize                     { text-transform: uppercase; font-family: "JournalBBold"; font-size: 94%; /*16px*/ line-height: 125%; /*20px*/ letter-spacing:0.04em; }
 .minih2 						{ letter-spacing: 1px; font-size: 94%; /*16px*/ line-height: 125%; /*20px*/ font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; }
 
 .header .aare                   { font-size: 90%; line-height: 32px; letter-spacing: 1pt; }
@@ -148,16 +152,12 @@ blockquote a {
 
 .button-close {
     float:right; cursor:pointer;
-    border-radius: 6px; 
-    background: #fff;
-    font: 10px/15px sans-serif;
-    line-height: 114%;
-	text-align: center;
-    height: auto;
-	width: 14px;
+    text-indent: -9999px;
+    background: url("../_img/close-black.png") no-repeat;
+    height: 15px; width: 15px;
 }
-.button-close.grey {
-	background: @color-front;
+.button-close:hover, .button-close.grey {
+	background-image: url("../_img/close.png");
 }
 .box-rounded-grey { 
 	border-radius: 6px; 
@@ -171,7 +171,7 @@ blockquote a {
     border-radius: 6px;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
-    font: 100%/70% AlekseiBlack;
+    font: 100%/70% AlekseiBlack, Georgia, Times, serif;
     height: auto;
     letter-spacing: 0.02em;
     line-height: 125%;
@@ -181,10 +181,6 @@ blockquote a {
 	background: black; color: white;
 	text-decoration: underline; 
 }
-
-em, .italic      { font-style: italic; }
-strong  { font-weight: bold; color: #333; }
-small   { font-size: 80%; }
 
 /* Links */
 a, a:visited, a:hover, a:focus  { color: #000; text-decoration: none; outline: 0; }

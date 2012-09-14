@@ -60,7 +60,7 @@
 
 	<div class="article-community mobile"></div>
 	
-	{{ if true}}
+	{{ if $gimme->preview }}
 	
 		<!-- Article frontpage preview -->
 		<h3>Frontpage Vorschau</h3>
