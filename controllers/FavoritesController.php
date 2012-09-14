@@ -23,14 +23,23 @@ class FavoritesController extends Zend_Controller_Action
 	private $shortname = 'journalb-lab'; 
 	private $PUBLIC_KEY = "S2zPf5GHF44MxrBrcsjhUP8aZD5SHIdoSBqB1l10NBtMkjhC1AZAEPpWSqYZauFa";
 	private $SECRET_KEY = "Em5o6RFV2YKZgTowuo6QprVZ8WwLZ5SdhL9hmkAORZXsW5jzbJiPCGZgT6sfYqXr";
+	private $homepage = "http://bern.lab.sourcefabric.org";
+	private $redirect = "http://bern.lab.sourcefabric.org/favorites";
 	
-	public function checkDisqusLogin() {
+	private function checkDisqusLogin() {
 	
 		$jbdisqus = $this->getRequest()->getCookie('jbdisqus');
 		if (!isset($jbdisqus)) {
-			$this->_redirect('/services/disqus.php', array(
-				'auth'=>1
-			));
+			if (!$this->getDisqusLogin($this->getRequest())) {		
+				$this->_redirect('https://disqus.com/api/oauth/2.0/authorize/?' .
+					'client_id=' . $this->PUBLIC_KEY . '&' .
+					'scope=' . 'read' . '&' .
+					'response_type=' . 'code' . '&' .
+					'redirect_uri=' . $this->redirect
+				);
+			} else {
+				$jbdisqus = $this->getRequest()->getCookie('jbdisqus');
+			}
 		}
 				
 		$this->userid = 	$jbdisqus['userid'];
@@ -39,12 +48,72 @@ class FavoritesController extends Zend_Controller_Action
 		$this->refresh = 	$jbdisqus['refresh'];
 			
 		if (!isset($this->userid)) {
+			die('no userid, logging out');
 			$this->_redirect('/services/disqus.php', array(
 				'logout'=>1
 			));
 		}
 		
 		$this->disqusapi = new DisqusAPI($this->SECRET_KEY);
+	}
+	
+	private function getDisqusLogin($request) {
+		// Get the code for request access
+		$CODE = $request->getParam('code');
+		
+		if (!isset($CODE)) { return false; }
+		
+		// Request the access token
+		extract($_POST);
+		
+		$authorize = "authorization_code";
+		$url = 'https://disqus.com/api/oauth/2.0/access_token/?';
+		$fields = array(
+			'grant_type'=>urlencode($authorize),
+			'client_id'=>urlencode($this->PUBLIC_KEY),
+			'client_secret'=>urlencode($this->SECRET_KEY),
+			'redirect_uri'=>urlencode($this->redirect),
+			'code'=>urlencode($CODE)
+		);
+		$fields_string = '';
+		
+		//url-ify the data for the POST
+		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+		rtrim($fields_string, "&");
+		
+		//open connection
+		$ch = curl_init();
+		
+		//set the url, number of POST vars, POST data
+		curl_setopt($ch,CURLOPT_URL,$url);
+		curl_setopt($ch,CURLOPT_POST,count($fields));
+		curl_setopt($ch,CURLOPT_POSTFIELDS,$fields_string);
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER,TRUE);
+		
+		//execute post
+		$resultdata = curl_exec($ch);
+		
+		//close connection
+		curl_close($ch);
+		
+		//get the token if available
+		if (!strstr($resultdata, "access_token")) {
+			die('Error: could not log into Disqus.');
+			
+		} else {
+			$tokdata = json_decode($resultdata);
+			if ($tokdata === NULL) die('Error parsing json');
+			
+			setcookie('jbdisqus[userid]', 	$tokdata->user_id, $expires);
+			setcookie('jbdisqus[username]',	$tokdata->username, $expires);
+			setcookie('jbdisqus[token]', 	$tokdata->access_token, $expires);
+			setcookie('jbdisqus[refresh]', 	$tokdata->refresh_token, $expires);
+		}
+	
+		//header( 'Location: ' . $homepage );
+		
+		//die('Thanks, ' . $tokdata->username);
+
 	}
 	
 	/* User favorites */
@@ -63,10 +132,13 @@ class FavoritesController extends Zend_Controller_Action
 			if (strstr($v->type, "like") && 
 				$v->object->forum->id == $this->shortname) {
 				
-				$results[] = $v->object->thread;
+				$results[] = $v->object->thread->link;
 				
 			}
 		}
+		
+		// results is now an array of URLs
+		// TODO: send back an array of Newscoop Articles 
 		
 		$this->view->articles = $results;
 	}		
