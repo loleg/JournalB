@@ -1,5 +1,7 @@
 <div class="contentbar section-page contentbar-section-page">
 
+	{{ include file="_tpl/control-sharebox.tpl" }}
+
 	<article>
 		<header> 
 			<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>

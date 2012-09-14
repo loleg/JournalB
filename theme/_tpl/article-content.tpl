@@ -6,6 +6,8 @@
 
 <div class="contentbar section-{{ $gimme->section->url_name }}">
 
+	{{ include file="_tpl/control-sharebox.tpl" }}
+
 	<div class="miniarticle hidden">
 		{{ include file="_tpl/article-mini.tpl" }}
 	</div> 

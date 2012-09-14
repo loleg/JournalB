@@ -2,7 +2,7 @@ function initShareButton()
 {
 	// ** Share
 	$('.share').click(function() {
-		var sharebox = $(this).parent().siblings('.sharebox');
+		var sharebox = $('.main .sharebox');
 		if (sharebox.hasClass('hidden')) {
 			sharebox.slideDown().removeClass('hidden');
 		} else {

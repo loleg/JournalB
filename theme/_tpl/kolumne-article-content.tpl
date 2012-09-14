@@ -6,6 +6,8 @@
 
 <div class="contentbar section-{{ $gimme->section->url_name }}">
 
+	{{ include file="_tpl/control-sharebox.tpl" }}
+
 	<div class="titlebox section-{{ $gimme->section->url_name }}" id="mobile_startpoint">
 		<h2 style="text-transform: capitalize;">{{  $gimme->article->type_name }} / </h2><h1><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->article->author->name }}</a></h1>
 	</div>

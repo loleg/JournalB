@@ -23,26 +23,6 @@
 <div id="fb-root"></div>
 
 <script type="text/javascript">
-/* facebook: */
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-/* /facebook */
-
-/* google_plus: */
-  window.___gcfg = {lang: 'de'};
-
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-/* /google_plus */
-
 /* google_analytics: */
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-34737515-1']);
@@ -68,6 +48,7 @@
 	})();
 /* /disqus */
 
+/* flattr: */
 /* <![CDATA[ */
 (function() {
     var s = document.createElement('script');
