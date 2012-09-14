@@ -1,4 +1,6 @@
-<!-- Front page template -->
+<!-- Favorites page template -->
+
+{{ $tpl_favorite = true }}
 
 {{ include file="_tpl/_html-head.tpl" }}
 
@@ -12,7 +14,7 @@
 
 		<div class="row content">
 
-			{{ include file="_tpl/newsrows.tpl" condition="OnFrontPage" show_blogs="true" }}
+			{{ $view->articles }}
 			
 		</div><!-- /content -->
 
