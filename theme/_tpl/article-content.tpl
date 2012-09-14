@@ -17,7 +17,7 @@
 				<div class="article_top">
 					<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
 
-					<div class="deck">
+					<div class="deck font-sens font{{ $smarty.cookies.fontSize }}">
 						{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
 						{{ $gimme->article->deck }}	
 					</div>	
@@ -42,7 +42,7 @@
 			
 				{{ include file="_tpl/article-info.tpl" }}
 			
-				{{ $gimme->article->full_text }}
+				<div class="font-sens font{{ $smarty.cookies.fontSize }}">{{ $gimme->article->full_text }}</div>
 								
 				<div style="clear:both"></div>
 			</div>

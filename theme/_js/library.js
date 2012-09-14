@@ -119,9 +119,10 @@ var currentFontSize = 1;
 // Update fontsize in css
 function updateFontSize()
 {
-	$("article").css("font-size",fontSizes[currentFontSize][0]+"%");
-	$("article").css("letter-spacing",fontSizes[currentFontSize][1]);
-	$("article").css("line-height",fontSizes[currentFontSize][2]+"em");
+	$(".font-sens").removeClass("font0").removeClass("font1").removeClass("font2").addClass("font"+currentFontSize);
+	//$("article").css("font-size",fontSizes[currentFontSize][0]+"%");
+	//$("article").css("letter-spacing",fontSizes[currentFontSize][1]);
+	//$("article").css("line-height",fontSizes[currentFontSize][2]+"em");
 }
 
 // Change font size
@@ -140,7 +141,6 @@ function loadFontSize()
 	if (fontSize != undefined)
 	{
 		currentFontSize = fontSize;
-		updateFontSize();
 	}
 }
 

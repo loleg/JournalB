@@ -27,9 +27,9 @@
 				{{ /image }}
 									
 				{{ if $gimme->current_list->at_beginning }}
-					<description>{{ $gimme->article->full_text }}</description>
+					<description class="font-sens  font{{ $smarty.cookies.fontSize }}">{{ $gimme->article->full_text }}</description>
 				{{ else }}
-					<description>{{ $gimme->article->full_text->first_paragraph }}</description>
+					<description  class="font-sens  font{{ $smarty.cookies.fontSize }}">{{ $gimme->article->full_text->first_paragraph }}</description>
 				{{ /if }}
 			</article>
 		</div>

@@ -36,7 +36,7 @@
 					{{ include file="_tpl/article-info.tpl" }}
 					
 					<div class="mcontentbar" style="border-bottom: 0 none;">
-						{{ $gimme->article->full_text }}
+						<div class="font-sens  font{{ $smarty.cookies.fontSize }}">{{ $gimme->article->full_text }}</div>
 						
 						<div style="clear:both"></div>
 					</div>
