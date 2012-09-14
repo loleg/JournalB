@@ -4,7 +4,7 @@
 {{ assign var="articles_num" value="0" }}
 {{ assign var="articles_num_stock" value="0" }}
 
-{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue not 5 issue not 3 `$condition` is on" }}
+{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue greater_equal 3 `$condition` is on" }}
 	{{ $articles[$articles_num]["number"] = $gimme->article->number }}
 	{{ $articles[$articles_num]["doubleview"] = $gimme->article->frontpage_doubleview }}
 	{{ $articles[$articles_num]["rendered"] = false }}

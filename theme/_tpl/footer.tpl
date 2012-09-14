@@ -13,9 +13,9 @@
     </div>
 	
 	<div class="footer-box section-blogs">
+		{{ set_issue number="5" }}
 		<div class="caption"><a href="{{ url options="issue" }}">Blogs</a></div>
 		<ul>
-		{{ set_issue number="2" }}
 		{{ list_sections order="bynumber desc" length="5" }}
 			<li><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
 		{{ /list_sections }}
@@ -23,9 +23,9 @@
 	</div>
 	
 	<div class="footer-box section-dossiers">
+		{{ set_issue number="4" }}
 		<div class="caption"><a href="{{ url options="issue" }}">Dossiers</a></div>
 		<ul>
-		{{ set_issue number="1" }}
 		{{ list_articles length="5" order="byPublishDate desc" ignore_section="true" }}
 			<li><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></li>
 		{{ /list_articles }}
@@ -33,7 +33,7 @@
 	</div>
 	
 	<div class="footer-box section-front">
-		{{ set_issue number="3" }}
+		{{ set_issue number="1" }}
 		{{ set_section number="1" }}
 		<div class="caption">Journal B</div>
 		<ul><li>

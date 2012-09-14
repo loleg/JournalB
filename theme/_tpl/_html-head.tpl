@@ -8,6 +8,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript">
+	if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
+		document.cookie='HTTP_IS_RETINA=1;path=/';
+	</script>
 
     <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
     
@@ -41,7 +45,5 @@
 	  <meta property="og:image" content="{{ $gimme->article->image->imageurl }}" />
 	{{ /list_article_images }}
 	{{ /if }}
-	
-	<script type="text/javascript">var page = "";</script>
 
 </head>

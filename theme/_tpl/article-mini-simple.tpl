@@ -8,7 +8,7 @@
 		 | {{ if $user->author->name=="" }} {{ $gimme->article->author->name }} {{ else }} {{ $user->author->name }} {{ /if }}
 	</info>
 				
-	{{ if $gimme->issue->url_name == "blogs" }}
+	{{ if $gimme->issue->number == 5 }}
 		{{ $section = "blogs" }}
 	{{ else }}
 		{{ $section = {{ $gimme->section->url_name }} }}

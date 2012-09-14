@@ -3,7 +3,7 @@
     <div class="content-left newsbox section-blogs layoutlist">
         <div class="newsboxcontent">
 			{{ local }}
-				{{ set_issue number="2" }}
+				{{ set_issue number="5" }}
 				<h2><a href="{{ url options="issue" }}">Neuste Blogs</a></h2>
 				<description>
 					{{ $i = 0 }}
@@ -49,7 +49,7 @@
     <div class="content-right newsbox section-dossiers layoutlist">
         <div class="newsboxcontent">
         	{{ local }}
-				{{ set_issue number="1" }}
+				{{ set_issue number="4" }}
 				<h2><a href="{{ url options="issue" }}">Aktuelle Dossiers</a></h2>
 				<description>
 					{{ list_articles length="3" order="byPublishDate desc" ignore_section="true" }}

@@ -14,7 +14,7 @@
 			<div class="collapse_content">
 	{{ /if }}
 
-{{ if $gimme->article->issue->url_name != "static" && $gimme->article->issue->url_name != "community" }}
+{{ if $gimme->article->issue->number > 2 }}
 	<p>
 	<a href="{{ uri options="article" }}" class="baselink">{{ $gimme->article->name }}</a>
 	{{ $publish_date = $gimme->article->publish_date }}

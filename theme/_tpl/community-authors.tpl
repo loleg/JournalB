@@ -1,4 +1,4 @@
-{{ if $gimme->issue->number > 5 or $gimme->issue->url_name == "blogs" }}
+{{ if $gimme->issue->number > 4 }}
 	{{ $i = 0 }}
 	{{ list_article_authors }}
 		{{ if $gimme->current_list->at_beginning }}

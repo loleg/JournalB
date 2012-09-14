@@ -1,4 +1,4 @@
-{{ if $gimme->issue->url_name == "dossiers" }}
+{{ if $gimme->issue->number == 4 }}
 	{{ include file="_tpl/article-mini-dossier.tpl" }}
 {{ else }}
 	{{ include file="_tpl/article-mini-simple.tpl" }}

@@ -2,7 +2,6 @@
 
 	<h2 class="search-keywords">
 		{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"Suche...\"" }}
-		<script type="text/javascript">page="search";</script>
 	</h2>
 
 	<div class="lists" style="text-align:right">
@@ -10,7 +9,6 @@
 	</div>
 
 	<div class="search-advanced hidden">
-		<!-- TODO uncheck when closing -->
 		<div class="button-close grey" onclick="$('.search-advanced').hide();$(this).parents('form').find('input[checked]').val('')">X</div>
 	
 		<ul class="search-dates">
@@ -27,14 +25,6 @@ $lastmonth->format('Y-m-d') }}" type="checkbox"> letzter Monat</li>
 $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 		</ul>
 		
-		<!--
-		<ul class="search-filter">
-			<li><input class="radiobox" name="f_search_scope" value="content" checked="checked" type="checkbox"> Inhalt</li>
-			<li><input class="radiobox" name="f_search_scope" value="title" type="checkbox"> Titel</li>
-			<li><input class="radiobox" name="f_search_scope" value="author" type="checkbox"> Autor</li>
-		</ul>
-		-->
-		
 		<ul class="search-issue">
 			<li><input class="radiobox" name="f_search_issue" value="1" type="checkbox"> Dossier</li>
 			<li><input class="radiobox" name="f_search_issue" value="2" type="checkbox"> Blog</li>
@@ -48,6 +38,40 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 			<li><input class="radiobox" name="f_search_section" value="3" type="checkbox"> Kultur</li>
 		</ul>
 	</div>
+	
+	<script type="text/javascript">
+	$(function() {
+	
+		// Remove header form
+		$('.header .search form').remove();
+		var searchform = $('.main .searchform form');
+		
+		// Put current search query into form
+		var sp = '{{ $gimme->search_articles_action->search_phrase }}';
+		if (sp != '') { $('.search-keywords input').val(sp); }
+		
+		// Submit form when clicking on icon
+		$('.search-keywords', searchform).prepend($('.submit-button', searchform));
+		
+		// Allow only one checkbox per field
+		$('input.radiobox', searchform).click(function() {
+			$(this).parent().siblings().find('input.radiobox').removeAttr('checked');
+		});
+		
+		// Check advanced field submission
+		var adv = $('.search-advanced'),
+			adv_date = '{{ $smarty.post.f_search_start_date }}',
+			adv_issue = '{{ $gimme->search_articles_action->search_issue }}',
+			adv_section = '{{ $gimme->search_articles_action->search_section }}';
+		if (adv_date + adv_issue + adv_section != '') {
+			$('.search-dates input[value="' + adv_date + '"]').attr('checked', 'checked');
+			$('.search-issue input[value="' + adv_issue + '"]').attr('checked', 'checked');
+			$('.search-section input[value="' + adv_section + '"]').attr('checked', 'checked');
+			adv.show();
+		}
+		
+	});
+	</script>
 			
 {{ /search_form }}
 
