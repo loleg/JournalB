@@ -16,7 +16,7 @@
 	
 	<div class="title section-{{ $section }}">
 		<div class="image section-{{ $section }}">
-		{{ image rendition="thumbnail{{ $retina }}" }}
+		{{ image rendition="thumbnail" }}
 			<img src="{{ $image->src }}" align="left" style="width: 100px; height: 66px;" />
 		{{ /image }}
 		</div>

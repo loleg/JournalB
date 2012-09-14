@@ -22,19 +22,10 @@
 					<div class="title"><a href="{{ uri options="article" }}">{{ $gimme->article->name }}</a></div>
 				</header>
 				
-				{{ $is_retina_img = 0 }}
-				
-				{{ image rendition="articlebig{{ $retina }}" }}
-					{{ $is_retina_img = 1 }}
+				{{ image rendition="articlebig" }}
 					<img src="{{ $image->src }}" style="width: 100%" alt="{{ $image->caption }} (photo: {{ $image->photographer }})" />
-				{{ /image }} 
-				
-				{{ if $retina!="" and not $is_retina_img }}
-					{{ image rendition="articlebig" }}
-						<img src="{{ $image->src }}" style="width: 100%" alt="{{ $image->caption }} (photo: {{ $image->photographer }})" />
-					{{ /image }}
-				{{ /if }}
-				
+				{{ /image }}
+									
 				{{ if $gimme->current_list->at_beginning }}
 					<description>{{ $gimme->article->full_text }}</description>
 				{{ else }}

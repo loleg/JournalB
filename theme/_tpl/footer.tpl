@@ -46,10 +46,10 @@
 		<div class="caption">Services</div>
 		<ul><li>
 		<a href="/bern">Favoriten</a> | 
-		<a href="#">Archiv</a> | 
-		<a href="#">Community</a> | 
-		<a href="#">RSS</a> | 
-		<a href="#">Newsletter</a> | 
+		<a href="?tpl=51">Suche</a> | 
+		<a href="http://journalb-lab.disqus.com/community.html?lang=de_inf" class="community-popup">Community</a> | 
+		<a href="http://{{ $gimme->publication->site }}/en/static/rss/">RSS</a> | 
+		<a href="http://eepurl.com/pgobL">Newsletter</a> | 
 		<a href="http://www.facebook.com/journalb.bern">Facebook</a> | 
 		<a href="http://twitter.com/journalb">Twitter</a>
 		</li></ul>
