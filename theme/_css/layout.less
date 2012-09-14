@@ -1001,8 +1001,9 @@
 	    opacity: 1;
 	    overflow: visible;
 	}
-	#disqus_thread .dsq-button {
+	#disqus_thread .dsq-button, #disqus_thread #dsq-content button.dsq-submit {
 	    .button-black;
+	    text-shadow: none;
 	}
 	#disqus_thread .dsq-reply {
 	    border-bottom: 2px solid black;
@@ -1066,6 +1067,10 @@
 	.ie #disqus_thread .dsq-global-toolbar-dropdown-container {
 		display: none;
 	}
+	
+	/* Mobile */
+	#dsq-topwrapper #dsq-topbar #dsq-thread-like-wrapper { background: none; }
+	#dsq-topwrapper #dsq-sortby, #dsq-topwrapper #dsq-logout { display: none; }
 
 
 /* #Article Page Styles
