@@ -56,18 +56,6 @@ function getCookie(c_name)
 	}
 }
 
-// Retina cookie via Shaun Inman
-function determineRetinaDisplay()
-{
-	if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1) 
-	{
-		var retina_cookie_set=false;
-		if (getCookie("HTTP_IS_RETINA")) retina_cookie_set=true; 
-		document.cookie='HTTP_IS_RETINA=1;path=/';
-		if (!retina_cookie_set) location.reload();
-	}
-}
-
 // Create legends around inline images
 function articleImageAlts()
 {

@@ -14,7 +14,7 @@
 			<div class="collapse_content">
 	{{ /if }}
 
-{{ if $gimme->article->issue->number != 3 && $gimme->article->issue->number != 5 }}
+{{ if $gimme->article->issue->url_name != "static" && $gimme->article->issue->url_name != "community" }}
 	<p>
 	<a href="{{ uri options="article" }}" class="baselink">{{ $gimme->article->name }}</a>
 	{{ $publish_date = $gimme->article->publish_date }}
@@ -42,7 +42,7 @@
 
 {{ list_related_articles }}
 
-	{{ if $gimme->article->issue->number == 5 }}
+	{{ if $gimme->article->issue->url_name == "community" }}
 		{{ include file="_tpl/community-item.tpl" }}
 	{{ /if }}
 	

@@ -52,7 +52,7 @@
 		{{ if $column%2 == 0 }}<div class="row newsrow">{{ /if }}
 
 			{{ $article_section = $gimme->article->section->url_name }}
-			{{ if $gimme->article->issue->number == 2 }} {{ $article_section = "blogs" }} {{ /if }}
+			{{ if $gimme->article->issue->url_name == "blogs" }} {{ $article_section = "blogs" }} {{ /if }}
 		
 			{{ if $gimme->article->frontpage_doubleview }}
 			

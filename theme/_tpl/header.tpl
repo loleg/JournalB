@@ -4,7 +4,7 @@
         <ul>
 			{{ local }}
 				{{ $current_section = ""}}
-				{{ if $gimme->issue->number > 5 or $gimme->issue->number == 1}} {{ $current_section = $gimme->section->number }} {{ /if }}
+				{{ if $gimme->issue->number > 5 or $gimme->issue->url_name == "dossiers"}} {{ $current_section = $gimme->section->number }} {{ /if }}
 				{{ set_current_issue }}
 				<li class="nav-front"><a href="/">Front</a></li>
 				{{ list_sections }}

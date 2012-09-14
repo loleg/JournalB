@@ -8,7 +8,7 @@
 		 | {{ if $user->author->name=="" }} {{ $gimme->article->author->name }} {{ else }} {{ $user->author->name }} {{ /if }}
 	</info>
 				
-	{{ if $gimme->issue->number == 2 }}
+	{{ if $gimme->issue->url_name == "blogs" }}
 		{{ $section = "blogs" }}
 	{{ else }}
 		{{ $section = {{ $gimme->section->url_name }} }}
@@ -21,8 +21,8 @@
 		{{ /image }}
 		</div>
 		<div class="description">
-			{{ if $gimme->issue->number == 2 }}<span class="minih2"><a href="{{ uri options="section" }}">Blog</a></span> / {{ /if }}
-			{{ if $gimme->issue->number == 4 }}<span class="minih2" style="text-transform: capitalize;">{{ $gimme->article->type_name }}</span> / {{ /if }}
+			{{ if $gimme->issue->url_name == "blogs" }}<span class="minih2"><a href="{{ uri options="section" }}">Blog</a></span> / {{ /if }}
+			{{ if $gimme->issue->url_name == "klkm" }}<span class="minih2" style="text-transform: capitalize;">{{ $gimme->article->type_name }}</span> / {{ /if }}
 			<span class="capitalize"><a href="{{ uri options="article" }}">{{ $gimme->article->title }}</a></span>
 		</div>
 		<div style="clear: both"></div>

@@ -1,19 +1,13 @@
-/*
-Oleg: it is easier to just run localStorage.clear(); in your browser console
-  --- this code needs to be removed for production
-*/
-
-localStorage.clear(); 
-
-destroyLessCache("/themes/publication_2/theme_1/_css/");
-destroyLessCache("/themes/publication_3/theme_4/_css/");
+/* -- DEBUG -- */
+  if (true) {
+	localStorage.clear(); 
+	
+	destroyLessCache("/themes/publication_2/theme_1/_css/");
+	destroyLessCache("/themes/publication_3/theme_4/_css/");
+  }
 /* --- */
 
-determineRetinaDisplay();
-
-$(window).resize(function() {
-	updateScreenMode();	
-});
+$(window).resize(function() { updateScreenMode(); });
 
 $(document).bind("changeScreenMode",function(){
 	if (beforeScreenMode<=2 && screenMode>2) 
