@@ -57,7 +57,8 @@
 		overflow: hidden;
     }
     .newsboxcontent description {
-	    font-size: 16.5px;
+	    font-size:98%;
+	    letter-spacing: 0.02em;
     }
     .newsbox .info_block {
         position: absolute;
@@ -147,7 +148,6 @@
 		.subheading;
 		display: inline;
 		margin-left: 6px;
-		font-family: "AlekseiBold" !important;
 		font-size: 16.5px;
     }
 
@@ -390,8 +390,11 @@
     	.community-title;
         display: block;
         position: absolute;
+        letter-spacing: 0.08em;
+        font-size: 100%;
+        color: #A29E9D;
         bottom: 22px;
-        left: 7px;
+        left: 0px;
 		z-index: 2;
     }
     
@@ -441,7 +444,8 @@
 		.community-font;
 	}
 	.header .login .bold {
-		font-family: "AlekseiBold" !important;
+		.subheading;
+		font-size: inherit;
 		font-weight: normal !important;
 	}
 	.header .login .commentbox-bg {
@@ -484,6 +488,7 @@
 		display: block;
 		position: absolute;
 		width: 2em; height: 2em;
+		margin-top: 1px;
 		right: 0px;
 		text-indent: -9999px;
 		color: @color-front;
@@ -532,26 +537,6 @@
 	    display: block;
         padding-top: 6px;
         .community-font;
-    }
-    .searchbox {
-        padding: 0;
-        height: 71px;
-        overflow: hidden;
-        color: #000;
-    }
-    .searchbox img {
-	    margin-right: 10px;
-	    margin-bottom: 10px;
-    }
-    .searchbox .title {
-        margin-top: 10px;
-        margin-left: 120px;
-        display: block;
-        .capitalize;
-    }
-    .searchbox .title span {
-        font-family: "JournalBRegular", "Georgia", "Times New Roman", serif; 
-        text-transform: none;
     }
     	
 	.main_footer {
@@ -757,7 +742,9 @@
         .community-font;
     }
     .row.commentbox.layoutsimple > time {
+    	font-family: "AlekseiThin", Georgia, Times, serif;
 	    font-size: 70%;
+	    letter-spacing: 0.04em;
 	}
     .commentbox.layoutsimple date, commentbox.layoutsimple time {
         display: block;
@@ -769,7 +756,7 @@
          margin-top: 0;
     }
     .commentbox.layoutsimple h1 span {
-	    font-family: "AlekseiThin";
+	    font-family: "AlekseiThin", Georgia, Times, serif;
 	    font-weight: normal;
 	    letter-spacing: -0.1em;
 	}
@@ -1002,7 +989,7 @@
 	    background: @color-front;
 	    border: none;
 	    border-radius: 4px;
-	    font: 90%/100% AlekseiBlack;
+	    font: 90%/100% AlekseiBlack, Georgia, Times, serif;
 	    letter-spacing: 0.04em;
 	}
 	#disqus_thread .dsq-comment-header span {
@@ -1013,13 +1000,13 @@
 	    opacity: 1;
 	}
 	#disqus_thread .dsq-comment-meta a, .dsq-editedtxt {
-	    font: 90%/100% AlekseiLight;
+	    font: 90%/100% AlekseiThin, Georgia, Times, serif;
 	}
 	#disqus_thread .dsq-editedtxt {
 	    font-size: 12px;
 	}
 	#disqus_thread .dsq-comment-actions a {
-	    font: 110%/100% AlekseiBlack;
+	    font: 110%/100% AlekseiBlack, Georgia, Times, serif;
 	    letter-spacing: 0.02em;
 	}
 	#disqus_thread #dsq-account-dropdown, #disqus_thread #dsq-subscribe, #dsq-realtime-options {
