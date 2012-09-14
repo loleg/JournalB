@@ -60,19 +60,12 @@
 
 	<div class="article-community mobile"></div>
 	
-	{{ if $gimme->preview }}
+	{{ if true}}
 	
 		<!-- Article frontpage preview -->
 		<h3>Frontpage Vorschau</h3>
 		<div class="row newsrow">
-			{{ assign var="article_section" value=$gimme->article->section->url_name }}
-			{{ if $gimme->article->frontpage_doubleview }}
-				{{ include file="_tpl/newsbox-double.tpl" }}
-			{{ elseif $gimme->article->frontpage_image }}
-				{{ include file="_tpl/newsbox-bgimage.tpl" }}
-			{{ else }}
-				{{ include file="_tpl/newsbox-simple.tpl" }}
-			{{ /if }}
+			{{ include file="_tpl/newsbox.tpl" }}
 		</div>
 		
 	{{ else }}

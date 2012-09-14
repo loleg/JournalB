@@ -13,10 +13,10 @@
     </div>
 	
 	<div class="footer-box section-blogs">
-		{{ set_issue number="5" }}
-		<div class="caption"><a href="{{ url options="issue" }}">Blogs</a></div>
+		<div class="caption"><a href="/de/blogs">Blogs</a></div>
 		<ul>
-		{{ list_sections order="bynumber desc" length="5" }}
+		{{ set_issue number="5" }}
+		{{ list_sections  order="bynumber desc" length="5" }}
 			<li><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
 		{{ /list_sections }}
 		</ul>

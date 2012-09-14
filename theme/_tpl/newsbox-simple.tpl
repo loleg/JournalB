@@ -1,4 +1,4 @@
-<a class="{{ if $column%2 == 0 }}content-left{{ else }}content-right{{ /if }} newsbox section-{{ $article_section }} layoutsimple" href="{{ uri options="article" }}">
+<a class="newsbox section-{{ $article_section }} layoutsimple" href="{{ uri options="article" }}">
 
 	<div class="newsboxcontent">
 

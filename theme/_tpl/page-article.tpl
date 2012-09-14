@@ -12,28 +12,36 @@
 		</div>
 		
 		<div class="related-articles">
-		{{ list_related_articles }}
-		
-			{{ if $column%2 == 0 }}<div class="row newsrow">{{ /if }}
+			{{ list_related_articles }}
 			
-			{{ assign var="article_section" value=$gimme->article->section->url_name }}
-					
-			{{ if $gimme->article->frontpage_image || $gimme->article->frontpage_doubleview }}
-			
-				{{ include file="_tpl/newsbox-bgimage.tpl" }}
-			
-			{{ else }}
-			
-				{{ include file="_tpl/newsbox-simple.tpl" }}
+				{{ if $column%2 == 0 }}
+					<div class="row newsrow"><div class="content-left">
+				{{ else }}
+					<div class="content-right">
+				{{ /if }}
 				
-			{{ /if }}
-					
-			{{ if $column%2 == 1 }}</div>{{ /if }}
-				
-			{{ $column=$column+1 }}
+					{{ $article_section = $gimme->article->section->url_name }}
+					{{ if $gimme->article->issue->url_name == "blogs" }} {{ $article_section = "blogs" }} {{ /if }}
+					{{ if $gimme->article->issue->url_name == "dossiers" }} {{ $article_section = "dossiers" }} {{ /if }}
 						
-		{{ /list_related_articles }}
-	</div>
+					{{ if $gimme->article->frontpage_image || $gimme->article->frontpage_doubleview }}
+						{{ include file="_tpl/newsbox-bgimage.tpl" }}
+					{{ else }}
+						{{ include file="_tpl/newsbox-simple.tpl" }}
+					{{ /if }}
+						
+				{{ if $column%2 == 0 }}
+					</div>
+				{{ else }}
+					</div></div>
+				{{ /if }}
+					
+				{{ $column=$column+1 }}
+							
+			{{ /list_related_articles }}
+			
+			{{ if $column%2 == 1 }}</div>{{ /if }}
+		</div>
 
 	</article>
 	
