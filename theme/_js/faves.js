@@ -44,6 +44,7 @@ function initFavorites()
 	
 	// Favorites dialog
 	$('li.nav-fav a').click(function() {
+		return;
 	
 		// TODO: move into template, style using design specs
 		/*

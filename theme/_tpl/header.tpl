@@ -6,11 +6,11 @@
 				{{ $current_section = ""}}
 				{{ if $gimme->issue->number > 5 or $gimme->issue->url_name == "dossiers"}} {{ $current_section = $gimme->section->number }} {{ /if }}
 				{{ set_current_issue }}
-				<li class="nav-front  {{ if $tpl!="front" }}unactive{{ /if }}"><a href="/">Front</a></li>
+				<li class="nav-front  {{ if !$tpl_frontpage }}unactive{{ /if }}"><a href="/">Front</a></li>
 				{{ list_sections }}
 					<li class="nav-{{ $gimme->section->url_name }} {{ if $gimme->section->number != $current_section }}unactive{{ /if }}"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
 				{{ /list_sections }}
-				<li class="nav-fav {{ if $tpl!="favorite" }}unactive{{ /if }}"><a href="#">Favoriten</a></li>
+				<li class="nav-fav {{ if !$tpl_favorite }}unactive{{ /if }}"><a href="{{ $view->url(['controller' => 'bern', 'action' => 'myfaves']) }}">Favoriten</a></li>
 				<div class="clear"></div>
 			{{ /local }}
         </ul>
@@ -33,5 +33,5 @@
     </div>
     {{ /if }}
 
-    <div class="subtitle">die neue digitale Zeitung für Bern</div>
+    <div class="subtitle">Sagt, was Bern bewegt</div>
 </div>

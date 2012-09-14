@@ -45,7 +45,7 @@
 		
 		<div class="caption">Services</div>
 		<ul><li>
-		<a href="/bern">Favoriten</a> | 
+		<a href="#">Favoriten</a> | 
 		<a href="?tpl=51">Suche</a> | 
 		<a href="http://journalb-lab.disqus.com/community.html?lang=de_inf" class="community-popup">Community</a> | 
 		<a href="http://{{ $gimme->publication->site }}/en/static/rss/">RSS</a> | 
