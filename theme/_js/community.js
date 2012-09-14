@@ -5,8 +5,10 @@ function initShareButton()
 		var sharebox = $('.main .sharebox');
 		if (sharebox.hasClass('hidden')) {
 			sharebox.slideDown().removeClass('hidden');
+			$(this).addClass('checked');
 		} else {
 			sharebox.slideUp().addClass('hidden');
+			$(this).removeClass('checked');
 		}
 	});
 	// - Share

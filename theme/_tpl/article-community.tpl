@@ -36,7 +36,7 @@
 {{ /list_related_articles }}
 
 <div class="row community-buttons">
-	<button onclick="$('header,.mcontentbar,.miniarticle').toggle();document.location='#top'" class="button-black" type="button">Kommentare<br>lesen</button>
+	<button onclick="$('header,.mcontentbar,.miniarticle').toggle();document.location='#top'" class="button-black" type="button">Kommentare<br>(<a class="dsq-comment-count" href="{{ $gimme->url->uri_path }}#disqus_thread"></a>) lesen</button>
 	<button style="float: right;" onclick="document.location='#comments'" class="button-black" type="button">Kommentar<br>verfassen</button>
 </div>
 
