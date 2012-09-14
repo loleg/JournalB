@@ -21,15 +21,19 @@
 {{ /if }}
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+
+<script type="text/javascript">
+/* facebook: */
+(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+/* /facebook */
 
-<script type="text/javascript">
+/* google_plus: */
   window.___gcfg = {lang: 'de'};
 
   (function() {
@@ -37,9 +41,21 @@
     po.src = 'https://apis.google.com/js/plusone.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
-</script>
+/* /google_plus */
 
-<script type="text/javascript">
+/* google_analytics: */
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34737515-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+/* /google_analytics */
+
+/* disqus: */
 	var disqus_shortname = 'journalb-lab';
 	var disqus_config = function () { 
 		this.language = "de_inf"; // de_formal
@@ -50,9 +66,8 @@
 		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
 		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 	})();
-</script>
+/* /disqus */
 
-<script type="text/javascript">
 /* <![CDATA[ */
 (function() {
     var s = document.createElement('script');
