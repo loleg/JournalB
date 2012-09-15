@@ -1,12 +1,24 @@
 <?php
 require_once('disqus/disqusapi.php');
 
+use Newscoop\Entity\Article;
+
 /*
  *  Custom controller for Journal-B.ch services
  *  - Note: copy into newscoop/application/controllers
  */
 class FavoritesController extends Zend_Controller_Action
 {
+
+	/** @var Newscoop\Entity\Repository\ArticleRepository */
+    private $articleRepository;
+    
+	public function init()
+    {
+        $this->articleRepository = $this->_helper->entity->getRepository('Newscoop\Entity\Article');
+        
+        return $this;
+    }
 	
 	/** @var int */
     private $userid;
@@ -62,7 +74,7 @@ class FavoritesController extends Zend_Controller_Action
 		$CODE = $request->getParam('code');
 		
 		if (!isset($CODE)) { return false; }
-		
+				
 		// Request the access token
 		extract($_POST);
 		
@@ -116,31 +128,64 @@ class FavoritesController extends Zend_Controller_Action
 
 	}
 	
+	/**
+     * Find article by number
+     *
+     * @param int $num
+     * @return Newscoop\Entity\Article
+     */
+	private function getArticleById($num) {
+	
+		return $this->_helper->entity->getRepository('Newscoop\Entity\Article')->findOneBy(array(
+            'number' => $num,
+        ));
+        
+	}
+	
 	/* User favorites */
 	public function indexAction() {
-		
+			/*
 		$this->checkDisqusLogin();
 			
-		$results = array();
+		$articleIds = array();
 		
 		$activities =
 			$this->disqusapi->users->listActivity(array(
 				'user'=>$this->userid, 'include'=>'user', 'limit'=>50
 			));
-			
+		
 		foreach ($activities as $k => $v) {
 			if (strstr($v->type, "like") && 
 				$v->object->forum->id == $this->shortname) {
-				
-				$results[] = $v->object->thread->link;
-				
+
+				// get article number from link				
+				if (preg_match('/\/de\/[0-9a-z]*\/[a-z]*\/([0-9]+)\//', 
+					$v->object->thread->link, $matches)) {
+					
+					// add article to array
+					$articleIds[] = $matches[1];
+				}
 			}
 		}
 		
-		// results is now an array of URLs
-		// TODO: send back an array of Newscoop Articles 
+		foreach ($articleIds as $id) { 
+			$article = getArticleById($matches[1]);
+					if ($article) {
+						$articles[] = $article;
+					}}
+		*/
+		// -- Test --
+		$articles = array();
+		$articles[] = $this->getArticleById(194);
+		$articles[] = $this->getArticleById(208);
+		$articles[] = $this->getArticleById(203);
+		//
 		
-		$this->view->articles = $results;
+		// Convert Article entity list to MetaArticles
+		$this->view->articles = array_map(function($article) {
+            return new \MetaArticle($article->getLanguageId(), $article->getNumber());
+        }, $articles);
+		
 	}		
 			
 	/* Star a page */
