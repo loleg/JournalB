@@ -135,19 +135,17 @@ class FavoritesController extends Zend_Controller_Action
      * @return Newscoop\Entity\Article
      */
 	private function getArticleById($num) {
-	
 		return $this->_helper->entity->getRepository('Newscoop\Entity\Article')->findOneBy(array(
-            'number' => $num,
-        ));
-        
+	        'number' => $num,
+	    ));
 	}
 	
 	/* User favorites */
 	public function indexAction() {
-			/*
+			
 		$this->checkDisqusLogin();
 			
-		$articleIds = array();
+		$articles = array();
 		
 		$activities =
 			$this->disqusapi->users->listActivity(array(
@@ -158,28 +156,28 @@ class FavoritesController extends Zend_Controller_Action
 			if (strstr($v->type, "like") && 
 				$v->object->forum->id == $this->shortname) {
 
-				// get article number from link				
+				// get article number from Disqus link				
 				if (preg_match('/\/de\/[0-9a-z]*\/[a-z]*\/([0-9]+)\//', 
 					$v->object->thread->link, $matches)) {
 					
-					// add article to array
-					$articleIds[] = $matches[1];
+					// add article if we can find it in Newscoop
+					if (isset($matches[1]) && is_numeric($matches[1])) {
+						$article = $this->getArticleById(intval($matches[1]));
+						if ($article !== null) {
+							$articles[] = $article;
+						}
+					}
 				}
 			}
 		}
 		
-		foreach ($articleIds as $id) { 
-			$article = getArticleById($matches[1]);
-					if ($article) {
-						$articles[] = $article;
-					}}
-		*/
-		// -- Test --
-		$articles = array();
+		/* -- Test --
+		//$articles = array();
 		$articles[] = $this->getArticleById(194);
 		$articles[] = $this->getArticleById(208);
 		$articles[] = $this->getArticleById(203);
-		//
+		*/
+		//die(count($articles)." articles");
 		
 		// Convert Article entity list to MetaArticles
 		$this->view->articles = array_map(function($article) {
@@ -192,7 +190,7 @@ class FavoritesController extends Zend_Controller_Action
 	/*
 	public function voteAction() {
 	
-		checkDisqusLogin();
+		$this->checkDisqusLogin();
 	
 		$vote = intval($_GET['vote']) or die('Invalid request');
 		$page = urldecode($_GET['dofave']);
