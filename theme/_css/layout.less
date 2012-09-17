@@ -527,6 +527,7 @@
 		text-indent: -9999px;
 		color: @color-front;
 	    background: @color-front url('../_img/nav-shape-search-white.png') no-repeat center;
+		background-size: 100%;
 	    border: none;
 		cursor: pointer;
     }
@@ -1197,17 +1198,17 @@
         background-position: center;
         background-repeat: no-repeat;
     }
-    .controlicons .favorite 		{ background-image: url(../_img/control-favorite.png); position: absolute; left: 610px; width: 100px; }
-    .controlicons .favorite.checked, .controlicon.favorite:hover 
-    							{ background-image: url(../_img/control-favorite-black.png); }
+    .controlicons .favorite 		{ background-image: url(../_img/control-favorite.png); position: absolute; left: 610px; width: 100px;  background-size: 43px 39px; }
+    .controlicons .favorite.checked, 
+	.controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite-black.png); }
 								
-    .controlicon.fontize		{ background-image: url(../_img/control-fontize.png); }
-    .controlicon.fontize.checked, .controlicon.fontize:hover	
-    							{ background-image: url(../_img/control-fontize-black.png); }
+    .controlicon.fontize		{ background-image: url(../_img/control-fontize.png); background-size: 43px 39px; }
+    .controlicon.fontize.checked, 
+	.controlicon.fontize:hover	{ background-image: url(../_img/control-fontize-black.png); }
 								
-    .controlicon.share			{ background-image: url(../_img/control-share.png); }
-    .controlicon.share.checked, .controlicon.share:hover	
-    							{ background-image: url(../_img/control-share-black.png); }
+    .controlicon.share			{ background-image: url(../_img/control-share.png); background-size: 43px 39px; }
+    .controlicon.share.checked, 
+	.controlicon.share:hover	{ background-image: url(../_img/control-share-black.png); }
 	
 	.controlbar_mobile {
 		display: none;
