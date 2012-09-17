@@ -83,9 +83,11 @@
 	{{ /if }}	
 		
 </div>
+{{ if $gimme->article->no_forum }}
+	<!-- Community disabled -->
+{{ else }}
 <script language="JavaScript">
 /* disqus: */
-	var disqus_shortname = 'journalb-lab';
 	var disqus_identifier = '{{ $gimme->article->webcode }}';
 	var disqus_config = function () { 
 		this.language = "de_inf"; // de_formal
@@ -98,3 +100,4 @@
 	})();
 /* /disqus */
 </script>
+{{ /if }}

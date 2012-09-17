@@ -1,5 +1,4 @@
 <!-- DEV --
-<script type="text/javascript">var DEBUG_MODE = true;</script>
 <script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/community.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/faves.js' }}" type="text/javascript"></script>
@@ -37,7 +36,6 @@
 /* /google_analytics */
 
 /* disqus: */
-	var disqus_shortname = 'journalb-lab';
 	(function () {
         var s = document.createElement('script'); s.async = true;
         s.type = 'text/javascript';

@@ -8,10 +8,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script type="text/javascript">
-	if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
-		document.cookie='HTTP_IS_RETINA=1;path=/';
-	</script>
 
     <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
     
@@ -20,6 +16,13 @@
 	{{ /if }}
 	
 	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">
+	
+    <script type="text/javascript">
+		var DEBUG_MODE = false;
+		var disqus_shortname = 'journalb';
+		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
+			document.cookie='HTTP_IS_RETINA=1;path=/';
+	</script>
 	
 	<script src="{{ url static_file='_js/less.min.js' }}" type="text/javascript"></script>
 
