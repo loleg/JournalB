@@ -13,9 +13,15 @@ class FavoritesController extends Zend_Controller_Action
 	/** @var Newscoop\Entity\Repository\ArticleRepository */
     private $articleRepository;
     
+    /** @var Session\Namespace */
+    private $sess
+    
 	public function init()
     {
         $this->articleRepository = $this->_helper->entity->getRepository('Newscoop\Entity\Article');
+        
+        $this->sess = new Zend_Session_Namespace('JournalB');
+        if (!isset($this->sess->faves)) { $this->sess->faves = new Array(); }
         
         return $this;
     }
@@ -50,6 +56,7 @@ class FavoritesController extends Zend_Controller_Action
 					'redirect_uri=' . $this->redirect
 				);
 			} else {
+				// Get cookie again now that we've processed the login
 				$jbdisqus = $this->getRequest()->getCookie('jbdisqus');
 			}
 		}
@@ -60,19 +67,17 @@ class FavoritesController extends Zend_Controller_Action
 		$this->refresh = 	$jbdisqus['refresh'];
 			
 		if (!isset($this->userid)) {
-			die('no userid, logging out');
-			$this->_redirect('/services/disqus.php', array(
-				'logout'=>1
-			));
+			// Could not obtain user ID, probably authentication declined
+			return $this->logoutAction();
 		}
 		
 		$this->disqusapi = new DisqusAPI($this->SECRET_KEY);
 	}
 	
+	// Process the token code for request access
 	private function getDisqusLogin($request) {
-		// Get the code for request access
+	
 		$CODE = $request->getParam('code');
-		
 		if (!isset($CODE)) { return false; }
 				
 		// Request the access token
@@ -121,10 +126,6 @@ class FavoritesController extends Zend_Controller_Action
 			setcookie('jbdisqus[token]', 	$tokdata->access_token, $expires);
 			setcookie('jbdisqus[refresh]', 	$tokdata->refresh_token, $expires);
 		}
-	
-		//header( 'Location: ' . $homepage );
-		
-		//die('Thanks, ' . $tokdata->username);
 
 	}
 	
@@ -135,7 +136,7 @@ class FavoritesController extends Zend_Controller_Action
      * @return Newscoop\Entity\Article
      */
 	private function getArticleById($num) {
-		return $this->_helper->entity->getRepository('Newscoop\Entity\Article')->findOneBy(array(
+		return $this->articleRepository->findOneBy(array(
 	        'number' => $num,
 	    ));
 	}
@@ -147,19 +148,11 @@ class FavoritesController extends Zend_Controller_Action
 			
 		$articles = array();
 		
-		$activities =
-			$this->disqusapi->users->listActivity(array(
-				'user'=>$this->userid, 'include'=>'user', 'limit'=>50
-			));
-		
-		foreach ($activities as $k => $v) {
-			if (strstr($v->type, "like") && 
-				$v->object->forum->id == $this->shortname) {
-
-				// get article number from Disqus link				
-				if (preg_match('/\/de\/[0-9a-z]*\/[a-z]*\/([0-9]+)\//', 
-					$v->object->thread->link, $matches)) {
-					
+		if (count($this->sess->faves) > 0) {
+			// Get favorites cached in session
+			foreach ($this->sess->faves as $f) {
+				if (preg_match('/\/de\/[0-9a-z]*\/[a-z]*\/([0-9]+)\//', $f, $matches)) {
+						
 					// add article if we can find it in Newscoop
 					if (isset($matches[1]) && is_numeric($matches[1])) {
 						$article = $this->getArticleById(intval($matches[1]));
@@ -169,6 +162,36 @@ class FavoritesController extends Zend_Controller_Action
 					}
 				}
 			}
+		
+		} else { 
+			// Get favorites from user's Disqus activities
+			$activities =
+				$this->disqusapi->users->listActivity(array(
+					'user'=>$this->userid, 'include'=>'user', 'limit'=>50
+				));
+			
+			foreach ($activities as $k => $v) {
+				if (strstr($v->type, "like") && 
+					$v->object->forum->id == $this->shortname) {
+
+					// get article number from Disqus link				
+					if (preg_match('/\/de\/[0-9a-z]*\/[a-z]*\/([0-9]+)\//', 
+						$v->object->thread->link, $matches)) {
+						
+						// add article if we can find it in Newscoop
+						if (isset($matches[1]) && is_numeric($matches[1])) {
+							$article = $this->getArticleById(intval($matches[1]));
+							if ($article !== null) {
+								$articles[] = $article;
+								
+								// save to session
+								$this->sess->faves[] = $v->object->thread->link;
+							}
+						}
+					}
+				}
+			}
+			
 		}
 		
 		/* -- Test --
@@ -187,22 +210,21 @@ class FavoritesController extends Zend_Controller_Action
 	}		
 			
 	/* Star a page */
-	/*
 	public function voteAction() {
 	
 		$this->checkDisqusLogin();
-	
-		$vote = intval($_GET['vote']) or die('Invalid request');
-		$page = urldecode($_GET['dofave']);
+		
+		$vote = intval($request->getParam('vote')) or die('Invalid request');
+		$page = urldecode($request->getParam('url')) or die('Invalid request');
+		$title = urldecode($request->getParam('title')) or die('Invalid request');
+		
 		if (strstr($page, 'http:') == FALSE) {
-			$page = $_SERVER['HTTP_REFERER'];
+			$page = $request->getHeader('referer');
 		}
-		$title = urldecode($_GET['title']);
 
 		if (strstr($page, $homepage) == FALSE) {
 			die('Invalid request ' . $page);
 		}
-		
 		echo($title . ' ' . $page);
 			
 		$threads =
@@ -210,50 +232,64 @@ class FavoritesController extends Zend_Controller_Action
 				'forum'=>$shortname, 'thread:link'=>$page
 			));
 		
-		//var_dump($threads);
-		
 		$id = -1;
 		
 		if (count($threads) == 0) {
-			
 			// Try creating
 			$thread = $api->threads->create(array(
 					'forum'=>$shortname, 'title'=>$title, 'url'=>$page
 				));
 			$id = $thread->id;
-			
-			error_log('Created thread id: ' . $id);
-				
+			echo(' / created thread: ' . $id);
 		} elseif (count($threads) == 1) {
 		
 			// Take existing match
 			$id = $threads[0]->id;
-			
-			error_log('Found thread id: ' . $id);
-			
+			echo(' / found thread: ' . $id);
 		}
 		
 		if ($id > 0) {
-		
+			// Now vote for it
 			$api->threads->vote(array(
 				'vote'=>$vote, 'thread'=>$id
 			));
 			
-			// save to cache
-			if (isset($_SESSION['jbdisqus'])) {
-				$_SESSION['jbdisqus']['faves'][] = $threads[0];
+			// Save to cache
+			if ($vote > 0) {
+				if (!in_array($page, $this->sess->faves)) {
+					$this->sess->faves[] = $page;
+				}
+			} else {
+				$votekey = array_search($page, $this->sess->faves);
+				if ($votekey) {
+					unset($this->sess->faves[$votekey]);
+				}
 			}
-			
-			echo(' - OK');
+			echo(' / OK');
 			
 		} else {
-		
-			echo(' - ERROR');
+			echo(' / ERROR');
 			error_log("Could not vote on thread: " . $page);
 
 		}
 	}
-	*/
+	
+	// Sign into the service
+	public function loginAction() {
+		$this->checkDisqusLogin();
+		$this->_redirect('/');
+	}
+	
+	// Sign out of our service
+	public function logoutAction() {
+		setcookie('jbdisqus[userid]', "", time() - 3600);
+		setcookie('jbdisqus[username]', "", time() - 3600);
+		setcookie('jbdisqus[token]', "", time() - 3600);
+		setcookie('jbdisqus[refresh]', "", time() - 3600);
+		setcookie("jbdisqus", "", time() - 3600);
+		unset($_COOKIE["jbdisqus"]);
+		$this->_redirect('/');
+	}
 }
 
 ?>
