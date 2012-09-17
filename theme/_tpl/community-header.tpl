@@ -1,5 +1,5 @@
 <div class="row header">
-	<div class="login">
+	<div class="login" style="display:none">
        	<button>
        		<span class="bold">Anmelden</span>
 	       	<div class="commentbox-bg"></div>

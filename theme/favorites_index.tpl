@@ -13,7 +13,9 @@
 		{{ include file="_tpl/header.tpl" }}
 
 		<div class="row content">		
-		
+
+{{ if $view->articles }}
+
 {{ assign var="column" value="0" }}
 {{ assign var="articles_num" value="0" }}
 {{ assign var="articles_num_stock" value="0" }}
@@ -92,8 +94,22 @@
 	
 {{ /foreach }}
 
+
 {{ if $column%2 == 1 }}</div>{{ /if }}
-			
+
+{{ else }}
+
+	{{ if $view->nologin }}
+	
+		<h3>Bitte melden Sie sich in der Journal-B-Community an, um Artikel zu favorisieren und ein persönliches Archiv anzulegen.</h3>
+	
+	{{ else }}
+
+		<h3>Sie haben noch keine Artikel favorisiert.</h3>
+		
+	{{ /if }}
+
+{{ /if }}
 			
 		</div><!-- /content -->
 

@@ -1,3 +1,5 @@
+var favoritesHasLogin = false;
+
 function initFavorites()
 {
 	// ** Favorites	
@@ -28,6 +30,7 @@ function initFavorites()
 				.find('span').html('Abmelden');
 			$(".header .login .register")
 				.html('Salut, <br><span>' + myjson.username + '</span>');
+			favoritesHasLogin = true;
 			
 			// Toggle favorites on page
 			$('.favorite').each(function() {
@@ -47,7 +50,12 @@ function initFavorites()
 		
 	// Favorites icon
 	$('.favorite').click(function() {
-		var vote = ($(this).hasClass('checked')) ? 0 : 1;
+	
+		if (!favoritesHasLogin) {
+			document.location.href = '/favorites';
+		}
+	
+		var vote = ($(this).hasClass('checked')) ? -1 : 1;
 		
 		// Get target details
 		var url = false, title;
