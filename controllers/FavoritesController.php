@@ -44,7 +44,8 @@ class FavoritesController extends Zend_Controller_Action
 	private $homepage = "http://bern.lab.sourcefabric.org";
 	private $redirect = "http://bern.lab.sourcefabric.org/favorites";
 	
-	private function checkDisqusLogin() {
+	// If we are not logged in, redirect us to login
+	private function ensureDisqusLogin() {
 	
 		$jbdisqus = $this->getRequest()->getCookie('jbdisqus');
 		if (!isset($jbdisqus)) {
@@ -144,7 +145,7 @@ class FavoritesController extends Zend_Controller_Action
 	/* User favorites */
 	public function indexAction() {
 			
-		$this->checkDisqusLogin();
+		$this->ensureDisqusLogin();
 			
 		$articles = array();
 				
@@ -207,14 +208,32 @@ class FavoritesController extends Zend_Controller_Action
             return new \MetaArticle($article->getLanguageId(), $article->getNumber());
         }, $articles);
 		
-	}		
+	}
+	
+	// Get a shortlist of our favorites if we're logged in
+	public function myfavesAction() {
+	
+		// make sure the script is not being rendered
+		$this->_helper->layout()->setLayout('empty');
+		$this->_helper->viewRenderer->setNoRender(true);
+		
+		$jbdisqus = $this->getRequest()->getCookie('jbdisqus') or die ('NOLOGIN');
+		
+		// reload our session if needed
+		if (count($this->session->faves) == 0) {
+			$this->indexAction();
+		}
+		
+		die (json_encode($this->session->faves));
+			
+	}
 			
 	/* Star a page */
 	public function voteAction() {
 	
 		$request = $this->getRequest();
 		
-		 // make sure the script is not being rendered
+		// make sure the script is not being rendered
 		$this->_helper->layout()->setLayout('empty');
 		$this->_helper->viewRenderer->setNoRender(true);
 		
@@ -229,15 +248,15 @@ class FavoritesController extends Zend_Controller_Action
 		if (strstr($page, $this->homepage) == FALSE) { die('Invalid request ' . $page); }
 		echo($vote . ' ' . $title . ' ' . $page);
 				
-		$this->checkDisqusLogin();
-			
+		$this->ensureDisqusLogin();
+		
+		// Find this thread
 		$threads =
 			$this->disqusapi->forums->listThreads(array(
 				'forum'=>$this->shortname, 'thread:link'=>$page
 			));
 		
 		$id = -1;
-				
 		if (count($threads) == 0) {
 			// Try creating
 			$thread = $this->disqusapi->threads->create(array(
@@ -251,7 +270,6 @@ class FavoritesController extends Zend_Controller_Action
 			$id = $threads[0]->id;
 			echo(' / found thread: ' . $id);
 		}
-		
 		
 		if ($id > 0) {
 			// Now vote for it
@@ -283,7 +301,7 @@ class FavoritesController extends Zend_Controller_Action
 	
 	// Sign into the service
 	public function loginAction() {
-		$this->checkDisqusLogin();
+		$this->ensureDisqusLogin();
 		$this->_redirect('/');
 	}
 	
@@ -295,8 +313,10 @@ class FavoritesController extends Zend_Controller_Action
 		setcookie('jbdisqus[refresh]', "", time() - 3600);
 		setcookie("jbdisqus", "", time() - 3600);
 		unset($_COOKIE["jbdisqus"]);
+		$this->session->faves = array();
 		$this->_redirect('/');
 	}
+	
 }
 
 ?>
