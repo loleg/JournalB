@@ -4,7 +4,7 @@ require_once('disqus/disqusapi.php');
 use Newscoop\Entity\Article;
 
 /*
- *  Custom controller for Journal-B.ch services
+ *  Custom controller for Journal-B.ch web services
  *  - Note: copy into newscoop/application/controllers
  */
 class FavoritesController extends Zend_Controller_Action
