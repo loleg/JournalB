@@ -13,15 +13,15 @@ class FavoritesController extends Zend_Controller_Action
 	/** @var Newscoop\Entity\Repository\ArticleRepository */
     private $articleRepository;
     
-    /** @var Session\Namespace */
-    private $sess
+    /** @var Zend_Session_Namespace */
+    private $session;
     
 	public function init()
     {
         $this->articleRepository = $this->_helper->entity->getRepository('Newscoop\Entity\Article');
         
-        $this->sess = new Zend_Session_Namespace('JournalB');
-        if (!isset($this->sess->faves)) { $this->sess->faves = new Array(); }
+        $this->session = new Zend_Session_Namespace('JournalB');
+        if (!isset($this->session->faves)) { $this->session->faves = array(); }
         
         return $this;
     }
@@ -147,10 +147,10 @@ class FavoritesController extends Zend_Controller_Action
 		$this->checkDisqusLogin();
 			
 		$articles = array();
-		
-		if (count($this->sess->faves) > 0) {
+				
+		if (count($this->session->faves) > 0) {
 			// Get favorites cached in session
-			foreach ($this->sess->faves as $f) {
+			foreach ($this->session->faves as $f) {
 				if (preg_match('/\/de\/[0-9a-z]*\/[a-z]*\/([0-9]+)\//', $f, $matches)) {
 						
 					// add article if we can find it in Newscoop
@@ -185,7 +185,7 @@ class FavoritesController extends Zend_Controller_Action
 								$articles[] = $article;
 								
 								// save to session
-								$this->sess->faves[] = $v->object->thread->link;
+								$this->session->faves[] = $v->object->thread->link;
 							}
 						}
 					}
@@ -212,57 +212,62 @@ class FavoritesController extends Zend_Controller_Action
 	/* Star a page */
 	public function voteAction() {
 	
+		$request = $this->getRequest();
+		
+		 // make sure the script is not being rendered
+		$this->_helper->layout()->setLayout('empty');
+		$this->_helper->viewRenderer->setNoRender(true);
+		
+		$vote = $request->getParam('vote') or die('vote required');
+		$title = $request->getParam('title') or die('title required');
+		$page = $request->getParam('url') or die('url required');
+			
+		$title = urldecode($title);
+		$page = urldecode($page);
+		$vote = intval($vote) or die('Invalid vote');
+		
+		if (strstr($page, $this->homepage) == FALSE) { die('Invalid request ' . $page); }
+		echo($vote . ' ' . $title . ' ' . $page);
+				
 		$this->checkDisqusLogin();
-		
-		$vote = intval($request->getParam('vote')) or die('Invalid request');
-		$page = urldecode($request->getParam('url')) or die('Invalid request');
-		$title = urldecode($request->getParam('title')) or die('Invalid request');
-		
-		if (strstr($page, 'http:') == FALSE) {
-			$page = $request->getHeader('referer');
-		}
-
-		if (strstr($page, $homepage) == FALSE) {
-			die('Invalid request ' . $page);
-		}
-		echo($title . ' ' . $page);
 			
 		$threads =
-			$api->forums->listThreads(array(
-				'forum'=>$shortname, 'thread:link'=>$page
+			$this->disqusapi->forums->listThreads(array(
+				'forum'=>$this->shortname, 'thread:link'=>$page
 			));
 		
 		$id = -1;
-		
+				
 		if (count($threads) == 0) {
 			// Try creating
-			$thread = $api->threads->create(array(
-					'forum'=>$shortname, 'title'=>$title, 'url'=>$page
+			$thread = $this->disqusapi->threads->create(array(
+					'forum'=>$this->shortname, 'title'=>$title, 'url'=>$page
 				));
 			$id = $thread->id;
 			echo(' / created thread: ' . $id);
-		} elseif (count($threads) == 1) {
-		
+			
+		} else {
 			// Take existing match
 			$id = $threads[0]->id;
 			echo(' / found thread: ' . $id);
 		}
 		
+		
 		if ($id > 0) {
 			// Now vote for it
-			$api->threads->vote(array(
+			$this->disqusapi->threads->vote(array(
 				'vote'=>$vote, 'thread'=>$id
 			));
 			
 			// Save to cache
 			if ($vote > 0) {
-				if (!in_array($page, $this->sess->faves)) {
-					$this->sess->faves[] = $page;
+				if (!in_array($page, $this->session->faves)) {
+					$this->session->faves[] = $page;
 				}
 			} else {
-				$votekey = array_search($page, $this->sess->faves);
+				$votekey = array_search($page, $this->session->faves);
 				if ($votekey) {
-					unset($this->sess->faves[$votekey]);
+					unset($this->session->faves[$votekey]);
 				}
 			}
 			echo(' / OK');
@@ -272,6 +277,8 @@ class FavoritesController extends Zend_Controller_Action
 			error_log("Could not vote on thread: " . $page);
 
 		}
+		
+		die(' / cached: ' . count($this->session->faves));
 	}
 	
 	// Sign into the service
