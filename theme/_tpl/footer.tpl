@@ -45,10 +45,10 @@
 		
 		<div class="caption">Services</div>
 		<ul><li>
-		<a href="#">Favoriten</a> | 
+		<a href="/favorites">Favoriten</a> | 
 		<a href="?tpl=51">Suche</a> | 
 		<a href="http://journalb-lab.disqus.com/community.html?lang=de_inf" class="community-popup">Community</a> | 
-		<a href="http://{{ $gimme->publication->site }}/en/static/rss/">RSS</a> | 
+		<a href="http://{{ $gimme->publication->site }}/de/static/rss/">RSS</a> | 
 		<a href="http://eepurl.com/pgobL">Newsletter</a> | 
 		<a href="http://www.facebook.com/journalb.bern">Facebook</a> | 
 		<a href="http://twitter.com/journalb">Twitter</a>
@@ -61,9 +61,9 @@
 
 <div class="partners">
 	<span class="caption">PARTNER</span> 
-	<a href="#">Apps with love</a> | 
-	<a href="#">Sourcefabric</a> | 
-	<a href="#">Radio Gelb-Schwarz</a>
+	<a href="http://www.appswithlove.com">Apps with love</a> | 
+	<a href="http://www.sourcefabric.org">Sourcefabric</a> | 
+	<a href="http://www.radio-gelb-schwarz.ch">Radio Gelb-Schwarz</a>
 </div>
 
 <!-- UI asset caching -->
