@@ -12,7 +12,7 @@
 <script src="{{ url static_file='_js/all.min.js' }}" type="text/javascript"></script>
 -- /PROD -->
 
-{{ if preg_match("/Mobile/", $smarty.server.HTTP_USER_AGENT) }}
+{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
 	<script>
 		if ($("#mobile_startpoint").length > 0){
 		  window.location = "#mobile_startpoint";
