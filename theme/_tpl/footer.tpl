@@ -68,8 +68,8 @@
 
 <!-- UI asset caching -->
 <div class="preload hidden">
-	<div class="newsbox"><a class="favorite checked"></a></div>
-	<div class="controlicon share checked"></div>
-	<div class="controlicon fontize checked"></div>
-	<div class="controlicon favorite checked"></div>
+	<img src="{{ url static_file='_img/favorite-black.png' }}">
+	<img src="{{ url static_file='_img/control-favorite-black.png' }}">
+	<img src="{{ url static_file='_img/control-fontize-black.png' }}">
+	<img src="{{ url static_file='_img/control-share-black.png' }}">
 </div>

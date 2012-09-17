@@ -26,7 +26,7 @@ function initFavorites()
 
 			// Set up auth button
 			$(".header .login button")
-				.click(function() { document.location='/services/disqus.php?logout'; })
+				.click(function() { document.location='/favorites/logout'; })
 				.find('span').html('Abmelden');
 			$(".header .login .register")
 				.html('Salut, <br><span>' + myjson.user + '</span>');
@@ -41,44 +41,7 @@ function initFavorites()
 		}
 		$(".header .login").show();
 	}); // - Favorites
-	
-	// Favorites dialog
-	$('li.nav-fav a').click(function() {
-		return;
-	
-		// TODO: move into template, style using design specs
-		/*
-		if ($('div.dialog-fav').length == 0) {
-			$('body').append('<div class="dialog-fav" style="position:absolute;display:none; top:50%;left:50%;width:300px;height:300px; margin-left:-150px;margin-top:-150px; border:1px solid black;background:white;color:black; padding:2em;"></div>');
-		}
-		if (myfaveobj.length > 0) {
-			var dialog = $('div.dialog-fav').html('<button style="float:right"> X </button>');
-			$.each(myfaveobj, function() {
-				dialog.append('<p><a href="' + this.href + '">' + this.title + '</a></p>');
-			});
-			dialog.find('button').click(function() { dialog.hide(); });
-			dialog.show();
-		}*/
 		
-		if (myfaveobj.length <= 0) return false;
-		
-		if ($('.main > .content').length == 0) {
-			$('.main > .mcontentbar').hide().parent().append('<div class="row content"></div>');
-		}
-		
-		var newsrow = $('.main > .content').html('<div class="row newsrow"></div>').find('.newsrow:last');
-
-		$.each(myfaveobj, function(i) {
-			if (i > 0 && i % 2 == 0) {
-				newsrow = newsrow.parent().append('<div class="row newsrow"></div>').find('.newsrow:last');
-			}
-			var leftright = (i % 2 == 0) ? 'left' : 'right';
-			newsrow.append('<div class="content-' + leftright + ' newsbox layoutsimple" onclick="location=\'' + this.href + '\'" style="height:7em"><div class="newsboxcontent"><h1><a href="' + this.href + '">' + this.title + '</a></h1><span class="favorite checked">Favorite</span></div>');
-		});
-	
-		return false;
-	}); // - Favorites dialog
-	
 	// Favorites icon
 	$('.favorite').click(function() {
 		var vote = ($(this).hasClass('checked')) ? -1 : 1;
@@ -98,7 +61,7 @@ function initFavorites()
 		if (url) {
 			if (url.indexOf('http:') != 0) 
 				url = document.location.protocol + '//' + document.location.host + url;
-			$.get('/services/disqus.php?dofave=' + encodeURI(url) 
+			$.get('/favorites/vote?url=' + encodeURI(url) 
 					+ '&title=' + encodeURI(title) + '&vote=' + vote, function(data) {
 				if (data != 'OK' && typeof console != 'undefined') console.log(data);
 			});
