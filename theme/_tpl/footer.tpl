@@ -46,7 +46,7 @@
 		<div class="caption">Services</div>
 		<ul><li>
 		<a href="/favorites">Favoriten</a> | 
-		<a href="?tpl=51">Suche</a> | 
+		<a href="#" onclick="$('.header .icon-search').click()">Suche</a> | 
 		<a href="http://journalb-lab.disqus.com/community.html?lang=de_inf" class="community-popup">Community</a> | 
 		<a href="http://{{ $gimme->publication->site }}/de/static/rss/">RSS</a> | 
 		<a href="http://eepurl.com/pgobL">Newsletter</a> | 
