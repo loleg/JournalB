@@ -168,11 +168,12 @@ class FavoritesController extends Zend_Controller_Action
 			// Get favorites from user's Disqus activities
 			$activities =
 				$this->disqusapi->users->listActivity(array(
-					'user'=>$this->userid, 'include'=>'user', 'limit'=>50
+					'user'=>$this->userid, 'include'=>'user', 'limit'=>100
 				));
 			
 			foreach ($activities as $k => $v) {
 				if (strstr($v->type, "like") && 
+					//$v->object->vote == 1 && 
 					$v->object->forum->id == $this->shortname) {
 
 					// get article number from Disqus link				
@@ -224,8 +225,21 @@ class FavoritesController extends Zend_Controller_Action
 			$this->indexAction();
 		}
 		
-		die (json_encode($this->session->faves));
+		die (json_encode(array(
+			'username'=>$jbdisqus['username'],
+			'favorites'=>$this->session->faves
+		)));
 			
+	}
+	
+	// Returns key of array hit if there is a subtring match
+	private function array_part_search($needle = null, $haystack_array = null, $skip = 0) {
+		if ($needle == null || $haystack_array == null) return false;
+		foreach ($haystack_array as $key => $eval) {
+			if ($skip != 0) $eval = substr($eval, $skip);
+			if (stristr($eval, $needle) !== false) return $key;
+		}
+		return false;
 	}
 			
 	/* Star a page */
@@ -246,6 +260,8 @@ class FavoritesController extends Zend_Controller_Action
 		$vote = intval($vote) or die('Invalid vote');
 		
 		if (strstr($page, $this->homepage) == FALSE) { die('Invalid request ' . $page); }
+		
+		$page = str_replace($this->homepage, "", $page);
 		echo($vote . ' ' . $title . ' ' . $page);
 				
 		$this->ensureDisqusLogin();
@@ -260,7 +276,7 @@ class FavoritesController extends Zend_Controller_Action
 		if (count($threads) == 0) {
 			// Try creating
 			$thread = $this->disqusapi->threads->create(array(
-					'forum'=>$this->shortname, 'title'=>$title, 'url'=>$page
+					'forum'=>$this->shortname, 'title'=>$title, 'url'=>$this->homepage . $page
 				));
 			$id = $thread->id;
 			echo(' / created thread: ' . $id);
@@ -279,13 +295,15 @@ class FavoritesController extends Zend_Controller_Action
 			
 			// Save to cache
 			if ($vote > 0) {
-				if (!in_array($page, $this->session->faves)) {
+				if (!$this->array_part_search($page, $this->session->faves)) {
 					$this->session->faves[] = $page;
+					echo (' / added');
 				}
 			} else {
-				$votekey = array_search($page, $this->session->faves);
-				if ($votekey) {
+				$votekey = $this->array_part_search($page, $this->session->faves);
+				if ($votekey !== false) {
 					unset($this->session->faves[$votekey]);
+					echo (' / removed');
 				}
 			}
 			echo(' / OK');
@@ -311,9 +329,9 @@ class FavoritesController extends Zend_Controller_Action
 		setcookie('jbdisqus[username]', "", time() - 3600);
 		setcookie('jbdisqus[token]', "", time() - 3600);
 		setcookie('jbdisqus[refresh]', "", time() - 3600);
-		setcookie("jbdisqus", "", time() - 3600);
-		unset($_COOKIE["jbdisqus"]);
-		$this->session->faves = array();
+		setcookie('jbdisqus', "", time() - 3600);
+		unset($this->session->faves);
+		\Zend_Session::destroy(true);
 		$this->_redirect('/');
 	}
 	
