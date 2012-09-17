@@ -1,10 +1,10 @@
 /* -- DEBUG -- */
-  if (true) {
+if (typeof DEBUG_MODE != 'undefined' && DEBUG_MODE) {
 	localStorage.clear(); 
-	
+
 	destroyLessCache("/themes/publication_2/theme_1/_css/");
 	destroyLessCache("/themes/publication_3/theme_4/_css/");
-  }
+}
 /* --- */
 
 $(window).resize(function() { updateScreenMode(); });
