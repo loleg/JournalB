@@ -5,7 +5,7 @@
     	<div class="description">
     		Alle Artikel auf journal-b.ch sind frei verfügbar. Wenn Ihnen unsere Arbeit etwas wert ist, nutzen Sie doch die Gelegenheit, uns mit einer Spende zu unterstützen oder werden Sie Mitglied in unserem Trägerverein. Danke für Ihren Beitrag.
     	</div>
-    	<div class="link"><a href="/de/static/verein/3/">Jetzt mitglied werden!</a></div>
+    	<div class="link"><a href="/de/static/verein/3/">Jetzt Mitglied werden!</a></div>
     	<div class="link"><a href="#" onclick="$(this).parent().hide().parents('.spenden').next().slideDown(); return false;">Jetzt spenden!</a></div>
     </div>
     <div class="spenden hidden" style="text-align:center; margin-top:1em;">

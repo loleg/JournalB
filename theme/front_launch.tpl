@@ -25,7 +25,7 @@
 	}
 	a.launch { 
 		display:block; width:100%; height:100%;
-		background: url('{{ url static_file='_img/launch.png' }}') no-repeat;
+		background: url('{{ url static_file='_img/launch.png' }}') no-repeat top center;
 		background-size: auto 100%;
 		text-indent: -9999px; color:transparent; font-size:0px;
 	}
@@ -37,11 +37,6 @@
     .sharebox .shareicon {
 	    float:left;
 	    margin-right: 45px;
-	}
-	.sharebox .fb-like {
-	    display: inline-block;
-	    width: 150px; height: 30px;
-	    overflow: hidden;
 	}
 	
 	</style>
