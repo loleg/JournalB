@@ -52,8 +52,10 @@ function initFavorites()
 			
 			// Toggle favorites on page
 			$('.favorite').each(function() {
-				var self = $(this), found = false;
-				var h = self.parents('a').attr('href');
+				var self = $(this), found = false, h;
+				var h = (self.hasClass('controlicon')) ?
+						document.location.pathname :
+						self.parents('a').attr('href');
 				$.each(myjson.favorites, function() {
 					if (!found && this.indexOf(h) >= 0) {
 						self.addClass('checked');
