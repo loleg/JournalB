@@ -3,21 +3,19 @@
 {{/php}}
 
 {{ $articles = array() }}
-{{ $i = 0 }}
 
-{{ list_articles length="50" }}
-	{{ $articles[$i] = array() }}
-	{{ $articles[$i]["url"] = {{ uri options="article" }} }}
-	{{ $articles[$i]["title"] = $gimme->article->name }}
-	{{ $i = $i + 1}}
+{{ list_articles length="50" constraints="issue greater 2" }}
+
+	{{ if !$articles[$gimme->section->url_name] }} 
+		{{ $articles[$gimme->section->url_name] = array() }} 
+	{{ /if }}
+	
+	{{ $article = array() }}
+	{{ $article["url"] = {{ uri options="article" }} }}
+	{{ $article["title"] = $gimme->article->name }}
+	
+	{{ $articles[$gimme->section->url_name][] = $article }}
+	
 {{ /list_articles }}
 
-{{ php }}	
-	$data = array();
-	$data["articles"] = $template->getTemplateVars('articles');
-	
-	$json = json_encode($data);
-	$json = str_replace('\\','',$json);
-
-	echo $json; 
-{{ /php }}
+{{ $view->json($articles)|replace:'\\':'' }}
