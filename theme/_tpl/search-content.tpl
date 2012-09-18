@@ -75,7 +75,10 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 			
 {{ /search_form }}
 
+
+{{ $is_results = false }}
 {{ list_search_results order="bypublishdate desc" }}
+	{{ $is_results = true }}
 
 	{{ if $gimme->current_list->at_beginning }}
 		<ol class="row content search-content">
@@ -90,3 +93,5 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 	{{ /if }}
 
 {{ /list_search_results }}
+
+{{ if !$is_results }}Keine Suchergebnisse zu Ihrer Anfrage.{{ /if }}
