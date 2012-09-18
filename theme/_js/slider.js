@@ -40,7 +40,6 @@ function initSlider()
 	if (navigator.userAgent.match(/Mobile/))
 	{
 		if (slides_num>1) $(".gallery_control").append('<div class="gpict"></div>');
-		$(slider).append('<div class="tip">Hier klicken um Galerie zu offnen</div>');
 		
 		$("#slider_box").touchwipe({
 			wipeRight: "moveSlider(0);",	
