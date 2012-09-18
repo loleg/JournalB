@@ -29,7 +29,7 @@ function initFavorites()
 				.click(function() { document.location='/favorites/logout'; })
 				.find('span').html('Abmelden');
 			$(".header .login .register")
-				.html('Salut, <br><span>' + myjson.username + '</span>');
+				.html('Salut, <br><span class="bold">' + myjson.username + '</span>');
 			favoritesHasLogin = true;
 			
 			// Toggle favorites on page

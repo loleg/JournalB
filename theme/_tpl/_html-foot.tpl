@@ -1,4 +1,6 @@
-<!-- DEV --
+{{ assign var="DEV_ENV" value="1" }}
+{{ if $DEV_ENV }}
+<!-- DEV -->
 <script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/community.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/faves.js' }}" type="text/javascript"></script>
@@ -6,11 +8,12 @@
 <script src="{{ url static_file='_js/slider.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/general.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/tabs.js' }}" type="text/javascript"></script>
--- /DEV -->
-
+<!-- /DEV -->
+{{ else }}
 <!-- PROD -->
 <script src="{{ url static_file='_js/all.min.js' }}" type="text/javascript"></script>
 <!-- /PROD -->
+{{ /if }}
 
 {{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
 	<script>

@@ -1,3 +1,4 @@
+{{ assign var="DEV_ENV" value="1" }}
 <!DOCTYPE html>
 <!--[if IE]>
 <html class="ie" lang="de">
@@ -18,8 +19,12 @@
 	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">
 	
     <script type="text/javascript">
-		var DEBUG_MODE = false;
-		var disqus_shortname = 'journalb';
+    	{{ if $DEV_ENV }}
+			var DEBUG_MODE = true;
+			var disqus_shortname = 'journalb-lab';
+		{{ else }}
+			var disqus_shortname = 'journalb';
+		{{ /if }}
 		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
 			document.cookie='HTTP_IS_RETINA=1;path=/';
 	</script>

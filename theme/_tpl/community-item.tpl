@@ -2,21 +2,25 @@
 
 {{ if $gimme->article->is_twitter }}
 
-	<div class="row commentbox layouttwitter {{ if not $gimme->article->icon or $gimme->article->icon=="" }}without_icon{{ /if }} community-item">
+	<a href="{{ $gimme->article->link }}" class="row commentbox layouttwitter {{ if not $gimme->article->icon or $gimme->article->icon=="" }}without_icon{{ /if }} community-item">
 		{{ if $gimme->article->icon }}
 			<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
 		{{ /if }}
-		<a href="{{ $gimme->article->link }}" target="_blank">
-			<div class="info_block">
-				<div class="author">{{ $gimme->article->who }}</div>
-				{{ if $gimme->article->publish_date }}
-					<time>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}</time>
-				{{ /if }}
-			</div>
-			<div class="clear"></div>
-			<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
-		</a>
+		
+		<div class="info_block">
+			<div class="author">{{ $gimme->article->who }}</div>
+			{{ if $gimme->article->publish_date }}
+				<time>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}</time>
+			{{ /if }}
+		</div>
+		<div class="clear"></div>
+		<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
+
 		<div class="commentbox-bg"></div>
+		
+		<div class="icon icon-twitter-white"></div>
+		
+	</a>
 	
 {{ elseif $gimme->article->is_ad }}	
 
@@ -25,18 +29,17 @@
 		<div class="title">{{ $gimme->article->where }}</div>
 		<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
 		<div class="lists"><a href="{{ $gimme->article->link }}">{{ $gimme->article->who }}</a></div>
+	</div>
 	
 {{ else }}
 
-	<div class="row commentbox layoutsimple">
+	<a class="row commentbox layoutsimple" href="{{ $gimme->article->link }}">
 		{{ if $gimme->article->is_highlight }}
-			<a href="{{ $gimme->article->link }}">
-				<h1>
-					<span>&lsaquo;&lsaquo;</span>
-					{{ $gimme->article->quote|strip_tags }}
-					<span>&rsaquo;&rsaquo;</span>
-				</h1>
-			</a>
+			<h1>
+				<span>&lsaquo;&lsaquo;</span>
+				{{ $gimme->article->quote|strip_tags }}
+				<span>&rsaquo;&rsaquo;</span>
+			</h1>
 			<time>
 				{{ if $gimme->article->who }}
 					schrieb {{ $gimme->article->who }}
@@ -52,10 +55,9 @@
 				<div class="image"><img src="{{ $gimme->article->icon }}" /></div>
 			{{ /if }}
 		
-			<a href="{{ $gimme->article->link }}">
-				<div class="author">{{ $gimme->article->who }}</div>
-				<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
-			</a>
+			<div class="author">{{ $gimme->article->who }}</div>
+			<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
+				
 			{{ if $gimme->article->publish_date }}
 				<time>
 					schrieb am {{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }} um 
@@ -67,12 +69,10 @@
 		<div class="community-title white">{{ $gimme->article->where }}</div>
 		<div class="commentbox-bg"></div>
 		
+	{{ if $gimme->article->is_facebook }}
+		<div class="icon icon-facebook-white"></div>
+	{{ /if }}
+	
+	</a>
+		
 {{ /if }}
-
-{{ if $gimme->article->is_twitter }}
-	<div class="icon icon-twitter-white"></div>
-{{ elseif $gimme->article->is_facebook }}
-	<div class="icon icon-facebook-white"></div>
-{{ /if }}
-
-</div>

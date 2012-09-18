@@ -25,7 +25,7 @@ function scaleCommunity()
 		});
 		$('.supportbox', sidebar).after($('.commentbox:gt(2)', sidebar));
 		// Enable external community links
-		$('description:contains("http://")', sidebar).each(function() { 
+		$('.description:contains("http://")', sidebar).each(function() { 
 			$(this).html(urlify($(this).text(), true)); 
 		});
 	}
