@@ -1,18 +1,34 @@
-var favoritesHasLogin = false;
+var favoritesHasLogin = false,
+	favoritesStartLogin = false;
 
 function initFavorites()
 {
 	// ** Favorites	
 	var myfaves = null, myfaveurls = [];
 	$.get('/favorites/myfaves', function(data) {
-		if (data == 'NOLOGIN') {
+		if (data == null || data == 'NOLOGIN') {
 			// Login link
-			$(".header .login button").click(function() { document.location='/favorites/login'; });
-			
-			// Registration popup
-			$(".header .login .register a").click(function() {
-				DISQUS.dtpl.actions.fire('auth.login');
-				//window.open($(this).attr('href'), 'Disqus', 'width=1000,height=620,menubar=no,resizable=no,scrollbars=no,toolbar=no');
+			$(".header .login button, .header .login .register a").click(function() {
+				if (typeof DISQUS == 'undefined') return true;
+				if (DISQUS.jsonData.request.is_authenticated) {
+					// Proceed to auth confirm page
+					document.location='/favorites/login';
+				} else {
+					// Registration popup
+					DISQUS.dtpl.actions.fire('auth.login');
+					//window.open($(this).attr('href'), 'Disqus', 'width=1000,height=620,menubar=no,resizable=no,scrollbars=no,toolbar=no');
+					if (!favoritesStartLogin) {
+						favoritesStartLogin = true;
+						var checkDisqusLogin = function() {
+							if (DISQUS.jsonData.request.is_authenticated) {
+								document.location='/favorites/login';
+							} else {
+								window.setTimeout(checkDisqusLogin, 100);
+							}
+						};
+						window.setTimeout(checkDisqusLogin, 100);
+					}
+				}
 				return false;
 			});
 		
