@@ -66,10 +66,9 @@
 		
 		<div class="community-title white">{{ $gimme->article->where }}</div>
 		<div class="commentbox-bg"></div>
-		
-	{{ if $gimme->article->is_facebook }}
-		<div class="icon icon-facebook-white"></div>
-	{{ /if }}
+	
+	{{ if $gimme->article->is_facebook }}<div class="icon icon-facebook-white"></div>{{ /if }}
+	{{ if $gimme->article->is_disqus }}<div class="icon icon-disqus-white"></div>{{ /if }}
 	
 	</a>
 		
