@@ -1,7 +1,5 @@
-<!-- Blog page template -->
-
 {{ include file="_tpl/_html-head.tpl" }}
-
+<!-- blog-section.tpl -->
 <body id="body" class="section-page">
 
 <div class="container">

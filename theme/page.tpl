@@ -1,7 +1,5 @@
-<!-- Dossier page template -->
-
 {{ include file="_tpl/_html-head.tpl" }}
-
+<!-- page.tpl -->
 <body id="body" class="section-page">
 
 <div class="container">
@@ -12,7 +10,7 @@
 
         <div class="row content">
 
-			{{ include file="_tpl/article-content.tpl" }}
+			{{ include file="_tpl/page-content.tpl" }}
             
         </div><!-- /content -->
 

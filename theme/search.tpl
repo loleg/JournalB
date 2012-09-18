@@ -1,7 +1,5 @@
-<!-- Search page template -->
-
 {{ include file="_tpl/_html-head.tpl" }}
-
+<!-- search.tpl -->
 <body id="body" class="search-page">
 
 <div class="container">

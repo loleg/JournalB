@@ -1,7 +1,6 @@
-<!-- Article page template -->
 {{ $tpl_subsections = true }}
 {{ include file="_tpl/_html-head.tpl" }}
-
+<!-- article.tpl -->
 <body id="body" class="article-page">
 
 <div class="container">

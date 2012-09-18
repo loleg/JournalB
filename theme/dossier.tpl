@@ -1,7 +1,5 @@
-<!-- Dossier page template -->
-
 {{ include file="_tpl/_html-head.tpl" }}
-
+<!-- dossier.tpl -->
 <body id="body" class="section-page">
 
 <div class="container">

@@ -1,7 +1,5 @@
-<!-- Article page template -->
-
 {{ include file="_tpl/_html-head.tpl" }}
-
+<!-- user_profile.tpl -->
 <body id="body" class="article-page">
 
 <div class="container">
