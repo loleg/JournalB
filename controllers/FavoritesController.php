@@ -45,17 +45,21 @@ class FavoritesController extends Zend_Controller_Action
 	private $redirect = "http://bern.lab.sourcefabric.org/favorites";
 	
 	// If we are not logged in, redirect us to login
-	private function ensureDisqusLogin() {
+	private function ensureDisqusLogin($gotologin = true) {
 	
 		$jbdisqus = $this->getRequest()->getCookie('jbdisqus');
 		if (!isset($jbdisqus)) {
-			if (!$this->getDisqusLogin($this->getRequest())) {		
-				$this->_redirect('https://disqus.com/api/oauth/2.0/authorize/?' .
-					'client_id=' . $this->PUBLIC_KEY . '&' .
-					'scope=' . 'read' . '&' .
-					'response_type=' . 'code' . '&' .
-					'redirect_uri=' . $this->redirect
-				);
+			if (!$this->getDisqusLogin($this->getRequest())) {
+				if ($gotologin) {
+					$this->_redirect('https://disqus.com/api/oauth/2.0/authorize/?' .
+						'client_id=' . $this->PUBLIC_KEY . '&' .
+						//'scope=' . 'read' . '&' .
+						'response_type=' . 'code' . '&' .
+						'redirect_uri=' . $this->redirect
+					);
+				} else {
+					return false;
+				}
 			} else {
 				// Get cookie again now that we've processed the login
 				$jbdisqus = $this->getRequest()->getCookie('jbdisqus');
@@ -73,6 +77,8 @@ class FavoritesController extends Zend_Controller_Action
 		}
 		
 		$this->disqusapi = new DisqusAPI($this->SECRET_KEY);
+		
+		return true;
 	}
 	
 	// Process the token code for request access
@@ -126,6 +132,9 @@ class FavoritesController extends Zend_Controller_Action
 			setcookie('jbdisqus[username]',	$tokdata->username, $expires);
 			setcookie('jbdisqus[token]', 	$tokdata->access_token, $expires);
 			setcookie('jbdisqus[refresh]', 	$tokdata->refresh_token, $expires);
+			
+			// go to home page after logging in
+			$this->_redirect('/');
 		}
 
 	}
@@ -145,7 +154,10 @@ class FavoritesController extends Zend_Controller_Action
 	/* User favorites */
 	public function indexAction() {
 			
-		$this->ensureDisqusLogin();
+		if (!$this->ensureDisqusLogin(false)) {
+			$this->view->nologin = true; 
+			return; 
+		}
 			
 		$articles = array();
 				
@@ -258,6 +270,7 @@ class FavoritesController extends Zend_Controller_Action
 		$title = urldecode($title);
 		$page = urldecode($page);
 		$vote = intval($vote) or die('Invalid vote');
+		// if ($vote < 0) { $vote = 0; }
 		
 		if (strstr($page, $this->homepage) == FALSE) { die('Invalid request ' . $page); }
 		
