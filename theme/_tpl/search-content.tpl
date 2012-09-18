@@ -26,10 +26,10 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 		</ul>
 		
 		<ul class="search-issue">
-			<li><input class="radiobox" name="f_search_issue" value="1" type="checkbox"> Dossier</li>
-			<li><input class="radiobox" name="f_search_issue" value="2" type="checkbox"> Blog</li>
-			<li><input class="radiobox" name="f_search_issue" value="4" type="checkbox"> Kolumne</li>
-			<li><input class="radiobox" name="f_search_issue" value="4" type="checkbox"> Kommentar</li>
+			<li><input class="radiobox" name="f_search_issue" value="4" type="checkbox"> Dossier</li>
+			<li><input class="radiobox" name="f_search_issue" value="5" type="checkbox"> Blog</li>
+			<li><input class="radiobox" name="f_search_issue" value="3" type="checkbox"> Kolumne</li>
+			<li><input class="radiobox" name="f_search_issue" value="3" type="checkbox"> Kommentar</li>
 		</ul>
 		
 		<ul class="search-section">
@@ -81,7 +81,9 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 		<ol class="row content search-content">
 	{{ /if }}
 
+	{{ if $gimme->article->issue->number > 2 }}
 		{{ include file="_tpl/article-mini.tpl" }}
+	{{ /if }}
 	
 	{{ if $gimme->current_list->at_end }}
 		</ol>

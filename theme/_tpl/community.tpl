@@ -9,11 +9,11 @@
 <div class="row socialbox">
 	<a href="http://twitter.com/journalb" target="_blank">
 	    <div style="float: left; width: 60px;">Follow<br>us on<br>Twitter</div>
-    	<div style="float: left; margin-right: 15px; padding-top: 5px;" class="icon icon-twitter"></div>
+    	<div style="float: left; margin-right: 15px; margin-top: 8px;" class="icon icon-twitter"></div>
     </a>
     <a href="http://www.facebook.com/journalb.bern" target="_blank">
-	    <div style="float: left; width: 59px;">Join<br>us on<br>Facebook</div>
-	    <div style="float: left; padding-top: 5px;" class="icon icon-facebook"></div>
+	    <div style="float: left; width: 59px; margin-left: 1em;">Join<br>us on<br>Facebook</div>
+	    <div style="float: left; margin-top: 8px; margin-left: 7px;" class="icon icon-facebook"></div>
     </a>
 </div>
 
