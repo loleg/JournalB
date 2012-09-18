@@ -56,6 +56,7 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 		// Allow only one checkbox per field
 		$('input.radiobox', searchform).click(function() {
 			$(this).parent().siblings().find('input.radiobox').removeAttr('checked');
+			$('.submit-button', searchform).click();
 		});
 		
 		// Check advanced field submission
