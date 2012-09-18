@@ -29,9 +29,9 @@
 	</div>
 	<div class="description">
 		{{ if $gimme->article->deck=="" }} 
-			{{ $gimme->article->full_text->first_paragraph }}
+			{{ $gimme->article->full_text->first_paragraph|truncate:280:"...":true }}
 		{{ else }}
-			{{ $gimme->article->deck|strip_tags }}
+			{{ $gimme->article->deck|strip_tags|truncate:280:"...":true }}
 		{{ /if }}
 	</div>
 </div>

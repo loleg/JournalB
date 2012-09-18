@@ -4,13 +4,13 @@
         <ul>
 			{{ local }}
 				{{ $current_section = ""}}
-				{{ if $gimme->issue->number > 5 or $gimme->issue->url_name == "dossiers"}} {{ $current_section = $gimme->section->number }} {{ /if }}
+				{{ if $gimme->issue->number > 5 or $gimme->issue->number == 3}} {{ $current_section = $gimme->section->number }} {{ /if }}
 				{{ set_current_issue }}
-				<li class="nav-front  {{ if !$tpl_frontpage }}unactive{{ /if }}"><a href="/">Front</a></li>
+				<li class="nav-front"><a href="/">Front</a></li>
 				{{ list_sections }}
-					<li class="nav-{{ $gimme->section->url_name }} {{ if $gimme->section->number != $current_section and !$tpl_frontpage }}unactive{{ /if }}"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
+					<li class="nav-{{ $gimme->section->url_name }} {{ if $current_section and $gimme->section->number != $current_section }}unactive{{ /if }}"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
 				{{ /list_sections }}
-				<li class="nav-fav {{ if !$tpl_favorite and !$tpl_frontpage }}unactive{{ /if }}"><a href="/favorites">Favoriten</a></li>
+				<li class="nav-fav"><a href="/favorites">Favoriten</a></li>
 				<div class="clear"></div>
 			{{ /local }}
         </ul>

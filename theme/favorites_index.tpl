@@ -1,7 +1,5 @@
 <!-- Favorites page template -->
 
-{{ $tpl_favorite = true }}
-
 {{ include file="_tpl/_html-head.tpl" }}
 
 <body id="body" class="front-page">

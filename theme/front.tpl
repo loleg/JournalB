@@ -1,7 +1,5 @@
 <!-- Front page template -->
 
-{{ $tpl_frontpage = true }}
-
 {{ include file="_tpl/_html-head.tpl" }}
 
 <body id="body" class="front-page">
