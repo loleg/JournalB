@@ -36,9 +36,7 @@
 	<a class="row commentbox layoutsimple" href="{{ $gimme->article->link }}">
 		{{ if $gimme->article->is_highlight }}
 			<h1>
-				<span>&lsaquo;&lsaquo;</span>
 				{{ $gimme->article->quote|strip_tags }}
-				<span>&rsaquo;&rsaquo;</span>
 			</h1>
 			<time>
 				{{ if $gimme->article->who }}
