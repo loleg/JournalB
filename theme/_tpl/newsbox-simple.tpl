@@ -5,21 +5,21 @@
 		{{ if $gimme->article->issue->url_name == "dossiers" }}
 			{{ $title_len = ceil($gimme->article->name|strlen / 23) + 1 }}
 			<h2>Dossier</h2>
-			<h1>{{ $gimme->article->name }}</h1>
+			<h1><span>{{ $gimme->article->name }}</span></h1>
 
 		{{ elseif $gimme->article->issue->url_name == "blogs" }}
 			{{ $title_len = ceil($gimme->article->section->name|strlen / 23) + 1 }}
 			<h2>Blog</h2>
-			<h1>{{ $gimme->article->section->name }}</h1>
+			<h1><span>{{ $gimme->article->section->name }}</span></h1>
 
 		{{ elseif $gimme->article->issue->url_name == "klkm" }}
 			{{ $title_len = ceil($gimme->article->author->name|strlen / 23) + 1 }}
 			<h2>{{ $gimme->article->type_name }}</h2>
-			<h1>{{ $gimme->article->author->name }}</h1>
+			<h1><span>{{ $gimme->article->author->name }}</span></h1>
 			
 		{{ else }}
 			{{ $title_len = ceil($gimme->article->name|strlen / 23) }}
-			<h1>{{ $gimme->article->name }}</h1>
+			<h1><span>{{ $gimme->article->name }}</span></h1>
 			
 		{{ /if }}
 				

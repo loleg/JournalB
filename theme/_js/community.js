@@ -25,8 +25,9 @@ function scaleCommunity()
 		});
 		$('.supportbox', sidebar).after($('.commentbox:gt(2)', sidebar));
 		// Enable external community links
-		$('.description:contains("http://")', sidebar).each(function() { 
-			$(this).html(urlify($(this).text(), true)); 
+		$('.description:contains("http://")', sidebar).each(function() {
+			if ($('a', this).length > 0) return;
+			$(this).html(urlify($(this).text(), true));
 		});
 	}
 	// Ensure no double bars

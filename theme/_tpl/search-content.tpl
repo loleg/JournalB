@@ -41,7 +41,6 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 	
 	<script type="text/javascript">
 	$(function() {
-	
 		// Remove header form
 		$('.header .search form').remove();
 		var searchform = $('.main .searchform form');
@@ -51,7 +50,7 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 		if (sp != '') { $('.search-keywords input').val(sp); }
 		
 		// Submit form when clicking on icon
-		$('.search-keywords', searchform).prepend($('.submit-button', searchform));
+		$('.search-keywords', searchform).prepend($('.submit-button', searchform)).find('.submit-button').show();
 		
 		// Allow only one checkbox per field
 		$('input.radiobox', searchform).click(function() {
@@ -95,4 +94,4 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 
 {{ /list_search_results }}
 
-{{ if !$is_results }}Keine Suchergebnisse zu Ihrer Anfrage.{{ /if }}
+{{ if $gimme->search_articles_action->search_phrase!="" and !$is_results }}Keine Suchergebnisse zu Ihrer Anfrage.{{ /if }}

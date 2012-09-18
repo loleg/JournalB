@@ -12,7 +12,7 @@
 					{{ /if }}
 				</time> | 
 			</span>
-			<h1>{{ $gimme->article->name }}</h1>
+			<h1><span>{{ $gimme->article->name }}</span></h1>
 		</div>
 	</div>
 

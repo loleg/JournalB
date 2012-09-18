@@ -2,7 +2,7 @@
 	
 	<div class="newsboxcontent_wrapper">
 		<div class="newsboxcontent">
-			<h1>{{ $gimme->article->name }}</h1>
+			<h1><span>{{ $gimme->article->name }}</span></h1>
 			<description><p>{{ $gimme->article->deck|strip_tags|truncate:400:"...":true }}</p></description>
 		</div>
 	</div>
