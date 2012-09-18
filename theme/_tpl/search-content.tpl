@@ -78,13 +78,13 @@ $lastyear->format('Y-m-d') }}" type="checkbox"> letztes Jahr</li>
 
 {{ $is_results = false }}
 {{ list_search_results order="bypublishdate desc" }}
-	{{ $is_results = true }}
 
 	{{ if $gimme->current_list->at_beginning }}
 		<ol class="row content search-content">
 	{{ /if }}
 
 	{{ if $gimme->article->issue->number > 2 }}
+		{{ $is_results = true }}
 		{{ include file="_tpl/article-mini.tpl" }}
 	{{ /if }}
 	
