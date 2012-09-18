@@ -1,5 +1,7 @@
 <!-- Front page template -->
 
+{{ $tpl_subsections = true }}
+
 {{ include file="_tpl/_html-head.tpl" }}
 
 <body id="body" class="front-page">

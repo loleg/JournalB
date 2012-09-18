@@ -1,4 +1,6 @@
-<!-- Article page template -->
+<!-- Kolumne article page template -->
+
+{{ $tpl_subsections = true }}
 
 {{ include file="_tpl/_html-head.tpl" }}
 
