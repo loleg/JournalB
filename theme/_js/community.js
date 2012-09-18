@@ -17,7 +17,7 @@ function initShareButton()
 function scaleCommunity()
 {
 	// Scale community (requires reverse), allow max. 3 comments on top
-	var max_height = $('.main').height(), 
+	var max_height = $('.main').height() - 100, 
 		sidebar = $('.sidebar');
 	if (!sidebar.hasClass('preview')) {
 		$('.commentbox', sidebar).reverse().each(function() {
@@ -29,6 +29,12 @@ function scaleCommunity()
 			$(this).html(urlify($(this).text(), true)); 
 		});
 	}
+	// Ensure no double bars
+	$('.socialbox').each(function() {
+		if (!$(this).prev().hasClass('layoutsimple')) {
+			$(this).css('border-top', 'none').css('padding-top', '0');
+		}
+	});
 }
 
 

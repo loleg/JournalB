@@ -37,10 +37,10 @@ $(document).ready(function() {
 		if (is_gallery) initSlider();
 		else $("#slider_box").remove();
 	}
-	
-	scaleCommunity();
-	
+		
 	drawAds();
+
+	scaleCommunity();
 		
 	initShareButton();
 
