@@ -32,9 +32,11 @@ function initFavorites()
 				return false;
 			});
 		
-			// Hide forum
+			// Hide forum if not logged in
+			/*
 			$(".forum").prepend('<div class="link"><a href="#">Zum Verfassen von Kommentaren bitte Anmelden</a>.</div>');
 			$('#dsq-reply').hide();
+			*/
 			
 		// Yes, we have data	
 		} else {			
@@ -69,6 +71,7 @@ function initFavorites()
 	
 		if (!favoritesHasLogin) {
 			document.location.href = '/favorites';
+			return false;
 		}
 	
 		var vote = ($(this).hasClass('checked')) ? -1 : 1;
