@@ -4,10 +4,10 @@ function initShareButton()
 	$('.share').click(function() {
 		var sharebox = $('.main .sharebox');
 		if (sharebox.hasClass('hidden')) {
-			sharebox.slideDown().removeClass('hidden');
+			sharebox.slideDown("fast").removeClass('hidden');
 			$(this).addClass('checked');
 		} else {
-			sharebox.slideUp().addClass('hidden');
+			sharebox.slideUp("fast").addClass('hidden');
 			$(this).removeClass('checked');
 		}
 	});
