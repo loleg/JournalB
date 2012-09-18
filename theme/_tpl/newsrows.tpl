@@ -8,6 +8,7 @@
 	{{ $articles[$articles_num]["number"] = $gimme->article->number }}
 	{{ $articles[$articles_num]["doubleview"] = $gimme->article->frontpage_doubleview }}
 	{{ $articles[$articles_num]["rendered"] = false }}
+	{{ $articles[$articles_num]["newsbox"] = {{ include file="_tpl/newsbox.tpl" }} }}
 	{{ $articles_num = $articles_num + 1 }}
 {{ /list_articles }}
 
@@ -15,6 +16,7 @@
 	{{ $articles[$articles_num]["number"] = $gimme->article->number }}
 	{{ $articles[$articles_num]["doubleview"] = $gimme->article->frontpage_doubleview }}
 	{{ $articles[$articles_num]["rendered"] = false }}
+	{{ $articles[$articles_num]["newsbox"] = {{ include file="_tpl/newsbox.tpl" }} }}
 	{{ $articles_num = $articles_num + 1 }}
 {{ /list_articles }}
 
@@ -57,17 +59,7 @@
 			{{ $column=$column+1 }}
 		{{ /if }}
 		
-		{{ $article_section = $gimme->article->section->url_name }}
-		{{ if $gimme->article->issue->url_name == "blogs" }} {{ $article_section = "blogs" }} {{ /if }}
-		{{ if $gimme->article->issue->url_name == "dossiers" }} {{ $article_section = "dossiers" }} {{ /if }}
-
-		{{ if $gimme->article->frontpage_doubleview }}	
-			{{ include file="_tpl/newsbox-double.tpl" }}
-		{{ elseif $gimme->article->frontpage_image }}
-			{{ include file="_tpl/newsbox-bgimage.tpl" }}
-		{{ else }}
-			{{ include file="_tpl/newsbox-simple.tpl" }}
-		{{ /if }}
+		{{ $articles[$ci]["newsbox"] }}
 		
 	{{ if $column%2 == 0 }}
 		</div>
