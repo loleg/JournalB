@@ -11,7 +11,7 @@
 	</div>
 	
 	<div class="shareicon" style="margin-right:0">
-		<div class="fb-like" data-send="false" data-layout="box" data-width="100" data-height="30" data-show-faces="false"></div>
+		<div class="fb-like" data-send="false" data-layout="button_count" data-width="100" data-height="30" data-show-faces="false"></div>
 		<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
 	</div>
 	

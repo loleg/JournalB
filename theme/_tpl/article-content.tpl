@@ -20,7 +20,7 @@
 		{{ include file="_tpl/article-mini.tpl" }}
 	</div> 
 	
-	{{ if $gimme->article->issue->number < 5 }}
+	{{ if $gimme->article->issue->number > 1 and $gimme->article->issue->number < 5 }}
 		<div class="titlebox section-{{ $gimme->section->url_name }}" id="mobile_startpoint">
 			<h2 style="text-transform: capitalize;">{{  $gimme->article->type_name }} / </h2><h1><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->article->author->name }}</a></h1>
 		</div>
@@ -69,6 +69,16 @@
 					{{ /if }}
 					{{ $gimme->article->author->name }}
 				</div>
+				
+			{{ elseif $gimme->article->issue->number == 1 }}
+				<div class="article_top">
+					<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
+
+					<div class="deck font-sens font{{ $smarty.cookies.fontSize }}">
+						{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
+						{{ $gimme->article->deck }}	
+					</div>	
+				</div>
 
 			{{ else }}
 				<div class="blogbox">
@@ -90,8 +100,9 @@
 			</header>
 
 			<div class="mcontentbar">
-			
-				{{ include file="_tpl/article-info.tpl" }}
+				{{ if $gimme->article->issue->number > 2 }}
+					{{ include file="_tpl/article-info.tpl" }}
+				{{ /if }}
 			
 				<div class="font-sens font{{ $smarty.cookies.fontSize }}">{{ $gimme->article->full_text }}</div>
 								
@@ -123,7 +134,7 @@
 
 		<!-- Community disabled -->
 		
-	{{ else }}
+	{{ elseif $gimme->article->issue->number > 2 }}
 	
 		<!-- Article forum -->
 		<div class="forum">

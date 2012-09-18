@@ -12,7 +12,7 @@
 
         <div class="row content">
 
-			{{ include file="_tpl/page-article.tpl" }}
+			{{ include file="_tpl/article-content.tpl" }}
             
         </div><!-- /content -->
 
@@ -24,6 +24,10 @@
 
         <div class="row content">
             
+            <div class="article-community stable">
+				{{ include file="_tpl/page-community.tpl" }}
+			</div>
+			
             {{ include file="_tpl/community.tpl" }}
 
         </div>
