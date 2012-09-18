@@ -7,10 +7,16 @@
 	{{ $article_section = $gimme->section->url_name }}
 	{{ $article_class = $gimme->article->type_name }}
 {{ /if }}
-		
-<div class="addbar">
-	{{ include file="_tpl/control-icons.tpl" }}
-</div>
+
+{{ if $gimme->preview }}
+	<div class="row newsrow">
+		{{ include file="_tpl/newsbox.tpl" }}
+	</div>
+{{ else }}
+	<div class="addbar">
+		{{ include file="_tpl/control-icons.tpl" }}
+	</div>
+{{ /if }}
 
 <div class="contentbar section-{{ $article_section }}">
 
@@ -122,19 +128,11 @@
 
 	<div class="article-community mobile"></div>
 	
-	{{ if $gimme->preview }}
-	
-		<!-- Article frontpage preview -->
-		<h3>__Frontpage_Vorschau__</h3>
-		<div class="row newsrow">
-			{{ include file="_tpl/newsbox.tpl" }}
-		</div>
-		
-	{{ elseif $gimme->article->no_forum }}
+	{{ if $gimme->article->no_forum }}
 
 		<!-- Community disabled -->
 		
-	{{ elseif $gimme->article->issue->number > 2 }}
+	{{ elseif !$gimme->preview && $gimme->article->issue->number > 2 }}
 	
 		<!-- Article forum -->
 		<div class="forum">

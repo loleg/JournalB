@@ -30,57 +30,7 @@
 	{{ if $article->issue->url_name == "blogs" }} {{ $article_section = "blogs" }} {{ /if }}
 	{{ if $article->issue->url_name == "dossiers" }} {{ $article_section = "dossiers" }} {{ /if }}
 
-	<a class="newsbox section-{{ $article_section }} layoutsimple" href="{{ $article->url }}">
-
-	<div class="newsboxcontent">
-
-		{{ if $article->issue->url_name == "dossiers" }}
-			{{ $title_len = ceil($article->name|strlen / 23) + 1 }}
-			<h2>Dossier</h2>
-			<h1>{{ $article->name }}</h1>
-
-		{{ elseif $article->issue->url_name == "blogs" }}
-			{{ $title_len = ceil($article->section->name|strlen / 23) + 1 }}
-			<h2>Blog</h2>
-			<h1>{{ $article->section->name }}</h1>
-
-		{{ elseif $article->issue->url_name == "klkm" }}
-			{{ $title_len = ceil($article->author->name|strlen / 23) + 1 }}
-			<h2>{{ $article->type_name }}</h2>
-			<h1>{{ $article->author->name }}</h1>
-			
-		{{ else }}
-			{{ $title_len = ceil($article->name|strlen / 23) }}
-			<h1>{{ $article->name }}</h1>
-			
-		{{ /if }}
-		
-		{{ $len = 36 * floor(9 - $title_len*1.5) }}
-
-		<description>
-			<p>
-				{{ if $article->deck=="" }} 
-					{{ $article->full_text|strip_tags|truncate:$len:"...":true }}
-				{{ else }}
-					{{ $article->deck|strip_tags|truncate:$len:"...":true }}
-				{{ /if }}
-			</p>
-		</description>	
-	</div>
-
-	<div class="info_block">
-		<time>
-			{{ if $article->publish_date|camp_date_format:"%d.%m.%Y" == $smarty.now|camp_date_format:"%d.%m.%Y"}}
-				{{ $article->publish_date|camp_date_format:"%H:%i" }}
-			{{ else }}
-				{{ $article->publish_date|camp_date_format:"%d.%m.%Y" }}
-			{{ /if }}
-		</time>
-	</div>
-
-	<span class="favorite checked"><span>Favorite</span></span>
-	
-</a>
+	{{ include file="_tpl/newsbox-simple-favorites.tpl" }}
 
 	{{ if $column%2 == 0 }}
 		</div>
