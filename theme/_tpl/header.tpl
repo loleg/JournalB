@@ -25,7 +25,7 @@
         <a href="/">Journal B</a>
     </h1>
     
-    {{ if !$gimme->search_articles_action->search_phrase }} 
+    {{ if !$gimme->search_articles_action->defined }} 
     <div class="search">
     	{{ search_form template="search.tpl" submit_button="Search" button_html_code="class=\"hidden\"" }}
 	    	<input type="image" class="icon icon-search" title="Suchen" value="suchen" name="f_search_articles" src="{{ url static_file='_img/search.png' }}" />

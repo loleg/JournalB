@@ -16,7 +16,7 @@
 		<div class="caption"><a href="/de/blogs">Blogs</a></div>
 		<ul>
 		{{ set_issue number="5" }}
-		{{ list_sections  order="bynumber desc" length="5" }}
+		{{ list_sections order="bynumber desc" length="5" }}
 			<li><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
 		{{ /list_sections }}
 		</ul>

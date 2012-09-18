@@ -1,3 +1,9 @@
+{{ if $gimme->preview }}
+	<div class="row newsrow">
+		{{ include file="_tpl/newsbox.tpl" }}
+	</div>
+{{ /if }}
+
 {{ include file="_tpl/mobile-controlbar.tpl" }}
 
 {{ if $gimme->article->issue->number == 5 }}
@@ -8,20 +14,14 @@
 	{{ $article_class = $gimme->article->type_name }}
 {{ /if }}
 
-{{ if $gimme->preview }}
-	<div class="row newsrow">
-		{{ include file="_tpl/newsbox.tpl" }}
-	</div>
-{{ else }}
-	<div class="addbar">
-		{{ include file="_tpl/control-icons.tpl" }}
-	</div>
-{{ /if }}
+<div class="addbar">
+	{{ include file="_tpl/control-icons.tpl" }}
+</div>
 
 <div class="contentbar section-{{ $article_section }}">
 
 	{{ include file="_tpl/control-sharebox.tpl" }}
-
+	
 	<div class="miniarticle hidden">
 		{{ include file="_tpl/article-mini.tpl" }}
 	</div> 
