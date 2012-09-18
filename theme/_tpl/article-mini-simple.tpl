@@ -9,13 +9,13 @@
 	</info>
 				
 	{{ if $gimme->issue->number == 5 }}
-		{{ $section = "blogs" }}
+		{{ $articlemini_section = "blogs" }}
 	{{ else }}
-		{{ $section = {{ $gimme->section->url_name }} }}
+		{{ $articlemini_section = {{ $gimme->section->url_name }} }}
 	{{ /if }}
 	
-	<div class="title section-{{ $section }}">
-		<div class="image section-{{ $section }}">
+	<div class="title section-{{ $articlemini_section }}">
+		<div class="image section-{{ $articlemini_section }}">
 		{{ image rendition="thumbnail" }}
 			<img src="{{ $image->src }}" align="left" style="width: 100px; height: 66px;" />
 		{{ /image }}
@@ -29,7 +29,7 @@
 	</div>
 	<div class="description">
 		{{ if $gimme->article->deck=="" }} 
-			{{ $gimme->article->full_text->first_paragraph|truncate:280:"...":true }}
+			{{ $gimme->article->full_text->first_paragraph|strip_tags|truncate:280:"...":true }}
 		{{ else }}
 			{{ $gimme->article->deck|strip_tags|truncate:280:"...":true }}
 		{{ /if }}

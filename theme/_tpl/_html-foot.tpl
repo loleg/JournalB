@@ -26,6 +26,7 @@
 <div id="fb-root"></div>
 
 <script type="text/javascript">
+{{ if !$DEV_ENV }}
 /* google_analytics: */
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-34737515-1']);
@@ -37,6 +38,7 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 /* /google_analytics */
+{{ /if }}
 
 /* disqus: */
 	(function () {
