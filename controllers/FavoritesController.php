@@ -13,6 +13,9 @@ class FavoritesController extends Zend_Controller_Action
 	/** @var Newscoop\Entity\Repository\ArticleRepository */
     private $articleRepository;
     
+    /** @var Zend_Session_Namespace */
+    private $session;
+    
     // Location of data store
     private $basefs;
         
@@ -20,7 +23,10 @@ class FavoritesController extends Zend_Controller_Action
     {
         $this->articleRepository = $this->_helper->entity->getRepository('Newscoop\Entity\Article');
         
-        $this->basefs = $_SERVER['DOCUMENT_ROOT'] . "/_users/";
+        $this->session = new Zend_Session_Namespace('JournalB');
+        if (!isset($this->session->faves)) { $this->session->faves = array(); }
+        
+        $this->basefs = $_SERVER['DOCUMENT_ROOT'] . "/services/_users/";
         
         return $this;
     }
@@ -187,14 +193,22 @@ class FavoritesController extends Zend_Controller_Action
 			
 		$articles = array();
 		
-		if ($this->fscache_isset('jb_faves_' . $this->userid)) {
-			// Get favorites cached in server
-			foreach ($this->fscache_get('jb_faves_' . $this->userid) as $id => $f) {
+		if (count($this->session->faves) > 0) {
+			// Get favorites cached in session
+			foreach ($this->session->faves as $id => $f) {
 				$article = $this->getArticleById($id);
-				if ($article !== null) {
-					$articles[] = $article;
-				}
+				if ($article !== null) { $articles[] = $article; }
 			}
+		
+		} elseif ($this->fscache_isset('jb_faves_' . $this->userid)) {
+			// Get favorites cached in server
+			$faves = $this->fscache_get('jb_faves_' . $this->userid);
+			foreach ($faves as $id => $f) {
+				$article = $this->getArticleById($id);
+				if ($article !== null) { $articles[] = $article; }
+			}
+			// save to session
+			$this->session->faves = $faves;
 		
 		} else { 
 			// Get favorites from user's Disqus activities
@@ -224,6 +238,9 @@ class FavoritesController extends Zend_Controller_Action
 				}
 			}
 			
+			// save to session
+			$this->session->faves = $faves;
+			
 			// save to cache
 			$this->fscache_set('jb_faves_' . $this->userid, $faves);			
 		}
@@ -252,14 +269,21 @@ class FavoritesController extends Zend_Controller_Action
 		
 		if (!$this->ensureDisqusLogin(false)) { die('NOLOGIN'); }
 		
-		// reload our cache if needed
-		if (!$this->fscache_isset('jb_faves_' . $this->userid)) {
+		$faves = array();
+		
+		// reload our session or cache if needed
+		if (count($this->session->faves) > 0) {
+			$faves = $this->session->faves;
+		} elseif ($this->fscache_isset('jb_faves_' . $this->userid)) {
+			$faves = $this->fscache_get('jb_faves_' . $this->userid);
+		} else {	
 			$this->indexAction();
+			$faves = $this->session->faves;
 		}
 		
 		die (json_encode(array(
 			'username'=>$this->username,
-			'favorites'=>$this->fscache_get('jb_faves_' . $this->userid)
+			'favorites'=>$faves
 		)));
 			
 	}
@@ -340,7 +364,7 @@ class FavoritesController extends Zend_Controller_Action
 				'vote'=>$vote, 'thread'=>$id, 'forum'=>$this->shortname
 			));
 			
-			// Save to cache
+			// Update cache
 			$faves = $this->fscache_get('jb_faves_' . $this->userid);
 			if ($vote > 0) {
 				if (!isset($faves[$ident])) {
@@ -351,7 +375,10 @@ class FavoritesController extends Zend_Controller_Action
 				unset($faves[$ident]);
 				echo (' / removed');
 			}
+			
+			// Save cache and session
 			$this->fscache_set('jb_faves_' . $this->userid, $faves);
+			$this->session->faves = $faves;
 			
 			die(' / OK / cached: ' . count($faves));
 			//die(var_export($voteresult, true));
@@ -375,7 +402,7 @@ class FavoritesController extends Zend_Controller_Action
 		setcookie('jbdisqus[username]', "", time() - 3600);
 		setcookie('jbdisqus[token]', "", time() - 3600);
 		setcookie('jbdisqus[refresh]', "", time() - 3600);
-		unset($_COOKIE['jbdisqus']);
+		unset($this->session->faves);
 		\Zend_Session::destroy(true);
 		$this->_redirect('/');
 	}
