@@ -12,10 +12,15 @@ class FavoritesController extends Zend_Controller_Action
 
 	/** @var Newscoop\Entity\Repository\ArticleRepository */
     private $articleRepository;
+    
+    // Location of data store
+    private $basefs;
         
 	public function init()
     {
         $this->articleRepository = $this->_helper->entity->getRepository('Newscoop\Entity\Article');
+        
+        $this->basefs = $_SERVER['DOCUMENT_ROOT'] . "/_users/";
         
         return $this;
     }
@@ -162,6 +167,16 @@ class FavoritesController extends Zend_Controller_Action
 		return null;
 	}
 	
+	private function fscache_isset($uri) {
+		return file_exists($this->basefs . $uri);		
+	}
+	private function fscache_get($uri) {
+		return unserialize(file_get_contents($this->basefs . $uri));		
+	}
+	private function fscache_set($uri, $val) {
+		file_put_contents($this->basefs . $uri, serialize($val));
+	}
+	
 	/* User favorites */
 	public function indexAction() {
 			
@@ -171,10 +186,10 @@ class FavoritesController extends Zend_Controller_Action
 		}
 			
 		$articles = array();
-				
-		if (xcache_isset('jb_faves_' . $this->userid)) {
+		
+		if ($this->fscache_isset('jb_faves_' . $this->userid)) {
 			// Get favorites cached in server
-			foreach (xcache_get('jb_faves_' . $this->userid) as $f) {
+			foreach ($this->fscache_get('jb_faves_' . $this->userid) as $f) {
 				$id = $this->getArticleIdent($f);
 				if ($id != null) {
 					$article = $this->getArticleById($id);
@@ -213,7 +228,7 @@ class FavoritesController extends Zend_Controller_Action
 			}
 			
 			// save to cache
-			xcache_set('jb_faves_' . $this->userid, $faves);			
+			$this->fscache_set('jb_faves_' . $this->userid, $faves);			
 		}
 		
 		/* -- Test --
@@ -241,13 +256,13 @@ class FavoritesController extends Zend_Controller_Action
 		if (!$this->ensureDisqusLogin(false)) { die('NOLOGIN'); }
 		
 		// reload our cache if needed
-		if (!xcache_isset('jb_faves_' . $this->userid)) {
+		if (!$this->fscache_isset('jb_faves_' . $this->userid)) {
 			$this->indexAction();
 		}
 		
 		die (json_encode(array(
 			'username'=>$this->username,
-			'favorites'=>xcache_get('jb_faves_' . $this->userid)
+			'favorites'=>$this->fscache_get('jb_faves_' . $this->userid)
 		)));
 			
 	}
@@ -329,7 +344,7 @@ class FavoritesController extends Zend_Controller_Action
 			));
 			
 			// Save to cache
-			$faves = xcache_get('jb_faves_' . $this->userid);
+			$faves = $this->fscache_get('jb_faves_' . $this->userid);
 			if ($vote > 0) {
 				if (!$this->array_part_search($page, $faves)) {
 					$faves[] = $page;
@@ -343,7 +358,7 @@ class FavoritesController extends Zend_Controller_Action
 				}
 			}
 			echo(' / OK / cached: ' . count($faves));
-			xcache_set('jb_faves_' . $this->userid, $faves);
+			$this->fscache_set('jb_faves_' . $this->userid, $faves);
 			die(var_export($voteresult, true));
 			
 		} else {
@@ -365,7 +380,7 @@ class FavoritesController extends Zend_Controller_Action
 		setcookie('jbdisqus[username]', "", time() - 3600);
 		setcookie('jbdisqus[token]', "", time() - 3600);
 		setcookie('jbdisqus[refresh]', "", time() - 3600);
-		setcookie('jbdisqus', "", time() - 3600);
+		unset($_COOKIE['jbdisqus']);
 		\Zend_Session::destroy(true);
 		$this->_redirect('/');
 	}
