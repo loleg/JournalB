@@ -189,13 +189,10 @@ class FavoritesController extends Zend_Controller_Action
 		
 		if ($this->fscache_isset('jb_faves_' . $this->userid)) {
 			// Get favorites cached in server
-			foreach ($this->fscache_get('jb_faves_' . $this->userid) as $f) {
-				$id = $this->getArticleIdent($f);
-				if ($id != null) {
-					$article = $this->getArticleById($id);
-					if ($article !== null) {
-						$articles[] = $article;
-					}
+			foreach ($this->fscache_get('jb_faves_' . $this->userid) as $id => $f) {
+				$article = $this->getArticleById($id);
+				if ($article !== null) {
+					$articles[] = $article;
 				}
 			}
 		
@@ -221,7 +218,7 @@ class FavoritesController extends Zend_Controller_Action
 						$article = $this->getArticleById($id);
 						if ($article !== null) {
 							$articles[] = $article;
-							$faves[] = $url;
+							$faves[$id] = $url;
 						}
 					}
 				}
@@ -346,20 +343,18 @@ class FavoritesController extends Zend_Controller_Action
 			// Save to cache
 			$faves = $this->fscache_get('jb_faves_' . $this->userid);
 			if ($vote > 0) {
-				if (!$this->array_part_search($page, $faves)) {
-					$faves[] = $page;
+				if (!isset($faves[$ident])) {
+					$faves[$ident] = $page;
 					echo (' / added');
 				}
 			} else {
-				$votekey = $this->array_part_search($page, $faves);
-				if ($votekey !== false) {
-					unset($faves[$votekey]);
-					echo (' / removed');
-				}
+				unset($faves[$ident]);
+				echo (' / removed');
 			}
-			echo(' / OK / cached: ' . count($faves));
 			$this->fscache_set('jb_faves_' . $this->userid, $faves);
-			die(var_export($voteresult, true));
+			
+			die(' / OK / cached: ' . count($faves));
+			//die(var_export($voteresult, true));
 			
 		} else {
 			error_log("Could not vote on thread: " . $page);
