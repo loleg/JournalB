@@ -151,6 +151,21 @@ class FavoritesController extends Zend_Controller_Action
 	    ));
 	}
 	
+	/**
+     * Get the article ID from its URL
+     *
+     * @param string $url
+     * @return int
+     */
+	private function getArticleIdent($url) {
+		if (preg_match('/\/de\/[0-9a-z]*\/[a-z]*\/([0-9]+)\//', $url, $matches)) {
+			if (isset($matches[1]) && is_numeric($matches[1])) {
+				return intval($matches[1]);
+			}
+		}
+		return null;
+	}
+	
 	/* User favorites */
 	public function indexAction() {
 			
@@ -164,14 +179,11 @@ class FavoritesController extends Zend_Controller_Action
 		if (count($this->session->faves) > 0) {
 			// Get favorites cached in session
 			foreach ($this->session->faves as $f) {
-				if (preg_match('/\/de\/[0-9a-z]*\/[a-z]*\/([0-9]+)\//', $f, $matches)) {
-						
-					// add article if we can find it in Newscoop
-					if (isset($matches[1]) && is_numeric($matches[1])) {
-						$article = $this->getArticleById(intval($matches[1]));
-						if ($article !== null) {
-							$articles[] = $article;
-						}
+				$id = $this->getArticleIdent($f);
+				if ($id != null) {
+					$article = $this->getArticleById($id);
+					if ($article !== null) {
+						$articles[] = $article;
 					}
 				}
 			}
@@ -188,19 +200,17 @@ class FavoritesController extends Zend_Controller_Action
 					//$v->object->vote == 1 && 
 					$v->object->forum->id == $this->shortname) {
 
-					// get article number from Disqus link				
-					if (preg_match('/\/de\/[0-9a-z]*\/[a-z]*\/([0-9]+)\//', 
-						$v->object->thread->link, $matches)) {
-						
+					// get article number from Disqus link
+					$url = $v->object->thread->link;
+					$id = $this->getArticleIdent($url);
+					if ($id != null) {
 						// add article if we can find it in Newscoop
-						if (isset($matches[1]) && is_numeric($matches[1])) {
-							$article = $this->getArticleById(intval($matches[1]));
-							if ($article !== null) {
-								$articles[] = $article;
-								
-								// save to session
-								$this->session->faves[] = $v->object->thread->link;
-							}
+						$article = $this->getArticleById($id);
+						if ($article !== null) {
+							$articles[] = $article;
+							
+							// save to session
+							$this->session->faves[] = $url;
 						}
 					}
 				}
@@ -253,6 +263,13 @@ class FavoritesController extends Zend_Controller_Action
 		}
 		return false;
 	}
+	
+	// Ensures the browser does not cache
+	private function nocacheResponse() {
+		$this->getResponse()
+			->setHeader('Pragma', 'no-cache', true)
+			->setHeader('Cache-Control', 'no-cache');
+	}
 			
 	/* Star a page */
 	public function voteAction() {
@@ -270,26 +287,33 @@ class FavoritesController extends Zend_Controller_Action
 		$title = urldecode($title);
 		$page = urldecode($page);
 		$vote = intval($vote) or die('Invalid vote');
-		// if ($vote < 0) { $vote = 0; }
+		if ($vote < 0) { $vote = 0; } // don't dislike pages
 		
 		if (strstr($page, $this->homepage) == FALSE) { die('Invalid request ' . $page); }
 		
 		$page = str_replace($this->homepage, "", $page);
-		echo($vote . ' ' . $title . ' ' . $page);
+		$ident = $this->getArticleIdent($page);
+		
+		echo($vote . ' / ' . $title . ' / ' . $ident);
 				
 		$this->ensureDisqusLogin();
+		
+		$this->nocacheResponse();
 		
 		// Find this thread
 		$threads =
 			$this->disqusapi->forums->listThreads(array(
-				'forum'=>$this->shortname, 'thread:link'=>$page
+				'forum'=>$this->shortname, 'thread:ident'=>$ident
 			));
 		
 		$id = -1;
 		if (count($threads) == 0) {
 			// Try creating
 			$thread = $this->disqusapi->threads->create(array(
-					'forum'=>$this->shortname, 'title'=>$title, 'url'=>$this->homepage . $page
+					'forum'=>$this->shortname, 
+					'title'=>$title, 
+					'url'=>$this->homepage . $page,
+					'identifier'=>$ident
 				));
 			$id = $thread->id;
 			echo(' / created thread: ' . $id);
@@ -302,8 +326,8 @@ class FavoritesController extends Zend_Controller_Action
 		
 		if ($id > 0) {
 			// Now vote for it
-			$this->disqusapi->threads->vote(array(
-				'vote'=>$vote, 'thread'=>$id
+			$voteresult = $this->disqusapi->threads->vote(array(
+				'vote'=>$vote, 'thread'=>$id, 'forum'=>$this->shortname
 			));
 			
 			// Save to cache
@@ -319,15 +343,14 @@ class FavoritesController extends Zend_Controller_Action
 					echo (' / removed');
 				}
 			}
-			echo(' / OK');
+			echo(' / OK / cached: ' . count($this->session->faves));
+			die(var_export($voteresult, true));
 			
 		} else {
-			echo(' / ERROR');
 			error_log("Could not vote on thread: " . $page);
+			die(' / ERROR');
 
 		}
-		
-		die(' / cached: ' . count($this->session->faves));
 	}
 	
 	// Sign into the service

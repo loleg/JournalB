@@ -128,7 +128,7 @@
 		
 		</div><!-- /forum -->
 		<script language="JavaScript">
-			var disqus_identifier = '{{ $gimme->article->webcode }}';
+			var disqus_identifier = '{{ $gimme->article->number }}';
 		</script>
 		
 	{{ /if }}	

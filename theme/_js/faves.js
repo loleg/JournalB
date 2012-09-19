@@ -1,5 +1,4 @@
-var favoritesHasLogin = false,
-	favoritesStartLogin = false;
+var favoritesHasLogin = false, favoritesStartLogin = true;
 
 function initFavorites()
 {
@@ -16,27 +15,20 @@ function initFavorites()
 				} else {
 					// Registration popup
 					DISQUS.dtpl.actions.fire('auth.login');
-					//window.open($(this).attr('href'), 'Disqus', 'width=1000,height=620,menubar=no,resizable=no,scrollbars=no,toolbar=no');
-					if (!favoritesStartLogin) {
-						favoritesStartLogin = true;
+					if (favoritesStartLogin) {
+						favoritesStartLogin = false;
 						var checkDisqusLogin = function() {
 							if (DISQUS.jsonData.request.is_authenticated) {
 								document.location='/favorites/login';
 							} else {
-								window.setTimeout(checkDisqusLogin, 100);
+								window.setTimeout(checkDisqusLogin, 200);
 							}
 						};
-						window.setTimeout(checkDisqusLogin, 100);
+						window.setTimeout(checkDisqusLogin, 200);
 					}
 				}
 				return false;
 			});
-		
-			// Hide forum if not logged in
-			/*
-			$(".forum").prepend('<div class="link"><a href="#">Zum Verfassen von Kommentaren bitte Anmelden</a>.</div>');
-			$('#dsq-reply').hide();
-			*/
 			
 		// Yes, we have data	
 		} else {			
@@ -95,7 +87,7 @@ function initFavorites()
 				url = document.location.protocol + '//' + document.location.host + url;
 			$.get('/favorites/vote?url=' + encodeURI(url) 
 					+ '&title=' + encodeURI(title) + '&vote=' + vote, function(data) {
-				if (data != 'OK' && typeof console != 'undefined') console.log(data);
+				if (typeof console != 'undefined') console.log(data);
 			});
 			
 			// Update icon

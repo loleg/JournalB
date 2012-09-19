@@ -78,8 +78,8 @@ class DisqusResource {
         $kwargs = (array)$args[0];
 
         foreach ((array)$resource->required as $k) {
-            if (empty($kwargs[$k])) {
-                throw new Exception('Missing required argument: '.$k);
+            if (empty($kwargs[$k]) && $kwargs[$k] != "0") {
+                throw new Exception('Missing a required argument: '.$k);
             }
         }
 
