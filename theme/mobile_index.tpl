@@ -13,6 +13,7 @@
 	{{ $article = array() }}
 	{{ $article["url"] = {{ uri options="article" }} }}
 	{{ $article["title"] = $gimme->article->name }}
+	{{ $article["time"] = $gimme->article->publish_date|strtotime }}
 	
 	{{ $articles[$gimme->section->url_name][] = $article }}
 	
