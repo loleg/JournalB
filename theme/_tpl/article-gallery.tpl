@@ -36,13 +36,13 @@
 			{{ image rendition="articlebig{{ $retina }}" }}
 				{{ $is_retina_img = 1 }}
 				{{ $is_gallery = true }}
-				<li><img src="{{ $image->src }}" alt="{{ $item->caption }}" /></li>
+				<li><img src="{{ $image->src }}" alt="{{ $image->caption }}" /></li>
 			{{ /image }} 
 			
 			{{ if $retina!="" and not $is_retina_img }}
 				{{ image rendition="articlebig" }}
 					{{ $is_gallery = true }}
-					<li><img src="{{ $image->src }}" alt="{{ $item->caption }}" /></li>
+					<li><img src="{{ $image->src }}" alt="{{ $image->caption }}" /></li>
 				{{ /image }} 
 			{{ /if }}
 				
