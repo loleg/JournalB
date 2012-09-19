@@ -12,16 +12,10 @@ class FavoritesController extends Zend_Controller_Action
 
 	/** @var Newscoop\Entity\Repository\ArticleRepository */
     private $articleRepository;
-    
-    /** @var Zend_Session_Namespace */
-    private $session;
-    
+        
 	public function init()
     {
         $this->articleRepository = $this->_helper->entity->getRepository('Newscoop\Entity\Article');
-        
-        $this->session = new Zend_Session_Namespace('JournalB');
-        if (!isset($this->session->faves)) { $this->session->faves = array(); }
         
         return $this;
     }
@@ -46,6 +40,8 @@ class FavoritesController extends Zend_Controller_Action
 	
 	// If we are not logged in, redirect us to login
 	private function ensureDisqusLogin($gotologin = true) {
+	
+		if (!empty($this->userid)) { return true; }
 	
 		$jbdisqus = $this->getRequest()->getCookie('jbdisqus');
 		if (!isset($jbdisqus)) {
@@ -176,9 +172,9 @@ class FavoritesController extends Zend_Controller_Action
 			
 		$articles = array();
 				
-		if (count($this->session->faves) > 0) {
-			// Get favorites cached in session
-			foreach ($this->session->faves as $f) {
+		if (xcache_isset('jb_faves_' . $this->userid)) {
+			// Get favorites cached in server
+			foreach (xcache_get('jb_faves_' . $this->userid) as $f) {
 				$id = $this->getArticleIdent($f);
 				if ($id != null) {
 					$article = $this->getArticleById($id);
@@ -195,6 +191,8 @@ class FavoritesController extends Zend_Controller_Action
 					'user'=>$this->userid, 'include'=>'user', 'limit'=>100
 				));
 			
+			$faves = array();
+			
 			foreach ($activities as $k => $v) {
 				if (strstr($v->type, "like") && 
 					//$v->object->vote == 1 && 
@@ -208,14 +206,14 @@ class FavoritesController extends Zend_Controller_Action
 						$article = $this->getArticleById($id);
 						if ($article !== null) {
 							$articles[] = $article;
-							
-							// save to session
-							$this->session->faves[] = $url;
+							$faves[] = $url;
 						}
 					}
 				}
 			}
 			
+			// save to cache
+			xcache_set('jb_faves_' . $this->userid, $faves);			
 		}
 		
 		/* -- Test --
@@ -240,16 +238,16 @@ class FavoritesController extends Zend_Controller_Action
 		$this->_helper->layout()->setLayout('empty');
 		$this->_helper->viewRenderer->setNoRender(true);
 		
-		$jbdisqus = $this->getRequest()->getCookie('jbdisqus') or die ('NOLOGIN');
+		if (!$this->ensureDisqusLogin(false)) { die('NOLOGIN'); }
 		
-		// reload our session if needed
-		if (count($this->session->faves) == 0) {
+		// reload our cache if needed
+		if (!xcache_isset('jb_faves_' . $this->userid)) {
 			$this->indexAction();
 		}
 		
 		die (json_encode(array(
-			'username'=>$jbdisqus['username'],
-			'favorites'=>$this->session->faves
+			'username'=>$this->username,
+			'favorites'=>xcache_get('jb_faves_' . $this->userid)
 		)));
 			
 	}
@@ -331,19 +329,21 @@ class FavoritesController extends Zend_Controller_Action
 			));
 			
 			// Save to cache
+			$faves = xcache_get('jb_faves_' . $this->userid);
 			if ($vote > 0) {
-				if (!$this->array_part_search($page, $this->session->faves)) {
-					$this->session->faves[] = $page;
+				if (!$this->array_part_search($page, $faves)) {
+					$faves[] = $page;
 					echo (' / added');
 				}
 			} else {
-				$votekey = $this->array_part_search($page, $this->session->faves);
+				$votekey = $this->array_part_search($page, $faves);
 				if ($votekey !== false) {
-					unset($this->session->faves[$votekey]);
+					unset($faves[$votekey]);
 					echo (' / removed');
 				}
 			}
-			echo(' / OK / cached: ' . count($this->session->faves));
+			echo(' / OK / cached: ' . count($faves));
+			xcache_set('jb_faves_' . $this->userid, $faves);
 			die(var_export($voteresult, true));
 			
 		} else {
@@ -366,7 +366,6 @@ class FavoritesController extends Zend_Controller_Action
 		setcookie('jbdisqus[token]', "", time() - 3600);
 		setcookie('jbdisqus[refresh]', "", time() - 3600);
 		setcookie('jbdisqus', "", time() - 3600);
-		unset($this->session->faves);
 		\Zend_Session::destroy(true);
 		$this->_redirect('/');
 	}
