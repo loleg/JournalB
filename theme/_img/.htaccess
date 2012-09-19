@@ -15,3 +15,12 @@ RewriteCond %1~web.%2 -f
 RewriteRule (.*)\.(png|jpg|jpeg)$ $1~web.$2 [L]
 
 </IfModule>
+
+<IfModule mod_headers.c>
+
+# Cache static images for two weeks
+<FilesMatch "\.(jpe?g|png|gif|swf)$">
+Header set Cache-Control "max-age=1209600, public"
+</FilesMatch>
+
+</IfModule>

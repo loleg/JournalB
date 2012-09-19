@@ -68,8 +68,8 @@
 
 <!-- UI asset caching -->
 <div class="preload hidden">
-	<img src="{{ url static_file='_img/favorite-black.png' }}">
-	<img src="{{ url static_file='_img/control-favorite-black.png' }}">
-	<img src="{{ url static_file='_img/control-fontize-black.png' }}">
-	<img src="{{ url static_file='_img/control-share-black.png' }}">
+	<img src="{{ url static_file='_img/favorite-black.png' }}" height="44" width="44">
+	<img src="{{ url static_file='_img/control-favorite-black.png' }}" height="39" width="43">
+	<img src="{{ url static_file='_img/control-fontize-black.png' }}" height="39" width="43">
+	<img src="{{ url static_file='_img/control-share-black.png' }}" height="39" width="43">
 </div>
