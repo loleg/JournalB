@@ -1,6 +1,6 @@
 {{ include file="_tpl/_html-head.tpl" }}
 <!-- blog-section.tpl -->
-<body id="body" class="section-page">
+<body id="body" class="section-page  font{{ $smarty.cookies.fontSize }}">
 
 <div class="container">
 

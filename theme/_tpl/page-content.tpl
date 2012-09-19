@@ -15,7 +15,7 @@
 
 			<div class="mcontentbar">
 						
-				<div class="font-sens font{{ $smarty.cookies.fontSize }}">{{ $gimme->article->full_text }}</div>
+				<div class="font-sens">{{ $gimme->article->full_text }}</div>
 								
 				<div style="clear:both"></div>
 			</div>

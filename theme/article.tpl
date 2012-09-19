@@ -1,7 +1,7 @@
 {{ $tpl_subsections = true }}
 {{ include file="_tpl/_html-head.tpl" }}
 <!-- article.tpl -->
-<body id="body" class="article-page">
+<body id="body" class="article-page font{{ $smarty.cookies.fontSize }}">
 
 <div class="container">
 

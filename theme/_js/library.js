@@ -113,7 +113,7 @@ var currentFontSize = 1;
 // Update fontsize in css
 function updateFontSize()
 {
-	$(".font-sens").removeClass("font0").removeClass("font1").removeClass("font2").addClass("font"+currentFontSize);
+	$("body").removeClass("font").removeClass("font0").removeClass("font1").removeClass("font2").addClass("font"+currentFontSize);
 }
 
 // Change font size

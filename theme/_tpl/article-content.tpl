@@ -58,7 +58,7 @@
 				<div class="article_top">
 					<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
 
-					<div class="deck font-sens font{{ $smarty.cookies.fontSize }}">
+					<div class="deck font-sens">
 						{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
 						{{ $gimme->article->deck }}	
 					</div>	
@@ -98,7 +98,7 @@
 			<div class="mcontentbar">
 				{{ include file="_tpl/article-info.tpl" }}
 			
-				<div class="font-sens font{{ $smarty.cookies.fontSize }}">{{ $gimme->article->full_text }}</div>
+				<div class="font-sens">{{ $gimme->article->full_text }}</div>
 								
 				<div style="clear:both"></div>
 			</div>
