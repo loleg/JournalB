@@ -38,7 +38,10 @@
         position: absolute;
         top: -1px;
         right: -1px;
+		border-top: 1px solid white;
+		border-right: 1px solid white;
         color: transparent;
+        text-indent: -9999px;
 		z-index: 9;
 		display: block;
     }
@@ -358,9 +361,9 @@
         padding-bottom: 2em;
         background-size: 56px auto;
         background-position: 50% 100%;
-        -webkit-transition: background-position 0.1s ease;
-        transition-property: background-position;
-        transition-duration: 1s;
+		transition: background-position 0.1s ease-in-out;
+		-moz-transition: background-position 0.1s ease-in-out;
+		-webkit-transition: background-position 0.1s ease-in-out;
     }
     #body .nav li a:hover {
         background-position: 50% 85%;
@@ -416,6 +419,10 @@
         letter-spacing: 1px;
     }
     .aare {
+    	opacity: 0;
+		transition: opacity .25s;
+		-moz-transition: opacity .25s;
+		-webkit-transition: opacity .25s;
         position: absolute;
         left: 14px;
         top: 64px;
@@ -1068,9 +1075,6 @@
 	    font: 110%/100% AlekseiBlack, Georgia, Times, serif;
 	    letter-spacing: 0.02em;
 	}
-	#disqus_thread #dsq-account-dropdown, #disqus_thread #dsq-subscribe, #dsq-realtime-options {
-		display: none;
-	}
 	.ie #disqus_thread .dsq-like-thread {
 		width: 20px;
 		height: 22px !important;
@@ -1095,6 +1099,8 @@
 	.ie #disqus_thread .dsq-global-toolbar-dropdown-container {
 		display: none;
 	}
+	#disqus_thread #dsq-account-dropdown, #disqus_thread #dsq-subscribe, 
+	#dsq-realtime-options, #disqus_thread .dsq-like-activity { display: none; }
 	
 	/* Mobile */
 	#dsq-topwrapper #dsq-topbar #dsq-thread-like-wrapper { background: none; }
