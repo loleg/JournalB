@@ -33,16 +33,21 @@ function initFavorites() {
 	var myfaves = null, myfaveurls = [];
 	$.get('/favorites/myfaves', function(data) {
 		if (data == null || data == 'NOLOGIN') {
-			if (navigator.userAgent.match(/iPhone/gi) || navigator.userAgent.match(/iPod/gi)) {
-				$("#disqus_thread")
-						.prepend($(".header .dsq-login-buttons"))
-							.find('.dsq-login-buttons').show().css('text-align', 'center')
-							.prepend('<p>Zum kommentieren bitte anmelden</p>')
-							.parent().find('.dsq-login-button-disqus').remove();
-			} else {
-				// Login link
-				$(".header .login button, .header .login .register a").click(loginDisqus);			
+			if (navigator.userAgent.match(/Mobile/)) {
+				$("#disqus_thread").prepend($(".header .dsq-login-buttons"))
+					.find('.dsq-login-buttons').show().css('text-align', 'center')
+					.prepend('<p>Zum kommentieren bitte anmelden</p>')
+					.parent().find('.dsq-login-button-disqus').remove();
+				window.setTimeout(function() {
+					if (typeof DISQUS == 'undefined') return true;
+					if (DISQUS.jsonData.request.is_authenticated) {
+						$("#disqus_thread .dsq-login-buttons").hide();
+					}
+				}, 2000);
 			}
+			
+			// Login link
+			$(".header .login button, .header .login .register a").click(loginDisqus);
 			
 		// Yes, we have data	
 		} else {			

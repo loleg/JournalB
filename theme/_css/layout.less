@@ -1101,7 +1101,7 @@
 	    color: black;
 	    opacity: 1;
 	}
-	#disqus_thread .dsq-commenter-name {
+	#disqus_thread .dsq-commenter-name, #disqus_thread #dsq-content .dsq-name {
 	    font-weight: normal;
 	}
 	#disqus_thread .dsq-comment-meta a, .dsq-editedtxt {
@@ -1144,7 +1144,15 @@
 	/* Mobile */
 	#dsq-topwrapper #dsq-topbar #dsq-thread-like-wrapper { background: none; }
 	#dsq-topwrapper #dsq-sortby, #dsq-topwrapper #dsq-logout { display: none; }
-
+	#disqus_thread .dsq-mobile {
+		.dsq-name, .dsq-name a {
+	    	font-family: "AlekseiBlack", Georgia, Times, serif;
+	    	font-weight: normal;
+	    }
+	    .dsq-collapse, .dsq-comment-text p {
+		    font: 110%/125% "AlekseiRegular", Georgia, Times, serif;
+	    }
+	}
 
 /* #Article Page Styles
 ================================================== */
