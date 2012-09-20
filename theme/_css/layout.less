@@ -1262,6 +1262,7 @@
     .controlicon {
         cursor: pointer;
         width: 100%; height: 39px;
+        background-size: 43px 39px;
         background-position: center;
         background-repeat: no-repeat;
 		-webkit-touch-callout: none;
@@ -1271,11 +1272,11 @@
 		-ms-user-select: none;
 		user-select: none;
     }
-    .controlicons .favorite 		{ background-image: url(../_img/control-favorite.png); position: absolute; left: 610px; width: 100px;  background-size: 43px 39px; }
+    .controlicons .favorite 		{ background-image: url(../_img/control-favorite.png); position: absolute; left: 610px; width: 100px; }
     .controlicons .favorite.checked, 
 	.controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite-black.png); }
 								
-    .controlicon.fontize		{ background-image: url(../_img/control-fontize.png); background-size: 43px 39px; }
+    .controlicon.fontize		{ background-image: url(../_img/control-fontize.png); }
 
     .font0 .controlicon.fontize			{ background-image: url(../_img/control-fontize-black-small.png); }
 	
@@ -1284,9 +1285,13 @@
 
 	.font2 .controlicon.fontize			{ background-image: url(../_img/control-fontize-black-big.png); }
 								
-    .controlicon.share			{ background-image: url(../_img/control-share.png); background-size: 43px 39px; margin-bottom: 20px; }
+    .controlicon.share			{ background-image: url(../_img/control-share.png); margin-bottom: 20px; }
     .controlicon.share.checked, 
 	.controlicon.share:hover	{ background-image: url(../_img/control-share-black.png); }
+	
+	.controlicon.comments { background-image: url(../_img/control-comments-grey.png); margin-right: 5px; }
+	.controlicon.comments.checked, 
+	.controlicon.comments:hover { background-image: url(../_img/control-comments-black.png); }
 	
 	.controlbar_mobile {
 		display: none;
@@ -1298,7 +1303,7 @@
 	.controlbar_mobile .controlicon {
 		float: left;
 		margin-bottom: 0px;
-		margin-left: 20px;
+		margin-right: 20px;
 		width: 43px !important;
 		left: 0px !important;
 		position: inherit !important;
@@ -1307,9 +1312,10 @@
 		float: left;
 		position: static;
 		font-size: 12px;
-		margin-left: 10px;
 		line-height: 26px;
 		margin-top: -10px;
+		margin-left: -4px;
+		margin-right: 5px;
 	}
 	
 	#article_image img {

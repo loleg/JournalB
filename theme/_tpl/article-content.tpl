@@ -4,6 +4,8 @@
 	</div>
 {{ /if }}
 
+<a name="mobile_startpoint"></a>
+
 {{ include file="_tpl/mobile-controlbar.tpl" }}
 
 {{ if $gimme->article->issue->number == 5 }}
@@ -24,15 +26,15 @@
 	
 	<div class="miniarticle hidden">
 		{{ include file="_tpl/article-mini.tpl" }}
-	</div> 
+	</div>
 	
 	{{ if $gimme->article->issue->number < 5 }}
-		<div class="titlebox section-{{ $gimme->section->url_name }}" id="mobile_startpoint">
+		<div class="titlebox section-{{ $gimme->section->url_name }}">
 			<h2 style="text-transform: capitalize;">{{  $gimme->article->type_name }} / </h2><h1><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->article->author->name }}</a></h1>
 		</div>
 		
 	{{ elseif $gimme->article->issue->number == 5 }}
-		<div class="titlebox section-blogs" id="mobile_startpoint">
+		<div class="titlebox section-blogs">
 			<h2><a href="{{ uri options="issue" }}">Blog</a> / </h2><h1><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></h1>
 		</div>
 		<div class="blogbox">
@@ -56,7 +58,7 @@
 			
 			{{ if $gimme->article->issue->number > 5 }}
 				<div class="article_top">
-					<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
+					<h1>{{ $gimme->article->name }}</h1>
 
 					<div class="deck font-sens">
 						{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}

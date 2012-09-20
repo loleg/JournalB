@@ -5,9 +5,11 @@
 	<article class="page">
 		{{ if $gimme->article->content_accessible }}    
 		
+			<a name="mobile_startpoint"></a>
+		
 			<header>
 			
-				<h1 id="mobile_startpoint">{{ $gimme->article->name }}</h1>
+				<h1>{{ $gimme->article->name }}</h1>
 						
 				{{ include file="_tpl/article-gallery.tpl" }}
 				

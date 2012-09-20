@@ -158,6 +158,11 @@ function updateScreenMode()
 	else _screenMode = 4;
 
 	if (_screenMode != screenMode) setScreenMode(_screenMode);
+	
+	// Scroll to top of article
+	if ($("a[name='mobile_startpoint']").length > 0 &&
+		(navigator.userAgent.match(/iPhone/gi) || navigator.userAgent.match(/iPod/gi))) {
+			$(window).scrollTop(40); }
 }
 
 // Update screen mode and trigger action
@@ -168,9 +173,9 @@ function setScreenMode(_screenMode)
 	$(document).trigger('changeScreenMode');
 }
 
+// Load temperature widget
 function aareTemperaturen()
 {
-	// TODO: move to Newscoop service
 	$.get('/services/hydrodaten.php', function(data) {
 		$.each(data.getElementsByTagName('MesPar'), function() { 
 		if ($(this).attr('DH') == 'HBCHa' && 
@@ -183,4 +188,11 @@ function aareTemperaturen()
 		}			
 		});
 	});
+}
+
+// Hide article except comments
+function showComments() {
+	$('header,.mcontentbar,.miniarticle,.box-under').toggle();
+	document.location='#top';
+	return false;
 }

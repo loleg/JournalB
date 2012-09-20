@@ -1,7 +1,9 @@
 {{ $escapedName=str_replace(" ", "\ ", $user->author->name) }}
 
 <div class="center_contentbar">
-	<div class="titlebox section-front" id="mobile_startpoint">
+	<a name="mobile_startpoint"></a>
+
+	<div class="titlebox section-front">
 		<h2><a href="{{ uri options="publication" }}">Artikel</a> / </h2><h1>{{ $user->author->name }}</h1>
 	</div>
 

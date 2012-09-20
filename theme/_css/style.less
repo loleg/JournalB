@@ -164,6 +164,10 @@ blockquote a {
 .button-close:hover, .button-close.grey {
 	background-image: url("../_img/close.png");
 }
+.button-close.big, .button-close.big:hover {
+	background-image: url("../_img/close-black-big.png");
+	height: 30px; width: 30px;
+}
 .box-rounded-grey { 
 	border-radius: 6px; 
 	padding: 5px; 
@@ -191,8 +195,8 @@ blockquote a {
 /* Links */
 a, a:visited, a:hover, a:focus  { color: #000; text-decoration: none; outline: 0; }
 p a                             { line-height: inherit; .underline("",3px,1px); }
-.section-alltag p a             { .underline("-alltag",3px,1px); }
-.section-kultur p a             { .underline("-kultur",3px,1px); }
-.section-politik p a            { .underline("-politik",3px,1px); }
-.section-blogs p a            	{ .underline("-blogs",3px,1px); }
+.section-alltag p a[href^='http://www.journal-b.ch'] { .underline("-alltag",3px,1px); }
+.section-kultur p a[href^='http://www.journal-b.ch'] { .underline("-kultur",3px,1px); }
+.section-politik p a[href^='http://www.journal-b.ch'] { .underline("-politik",3px,1px); }
+.section-blogs p a[href^='http://www.journal-b.ch'] { .underline("-blogs",3px,1px); }
 p a:visited						{ .underline("",3px,1px); }

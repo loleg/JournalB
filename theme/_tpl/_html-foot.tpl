@@ -15,14 +15,6 @@
 <!-- /PROD -->
 {{ /if }}
 
-{{ if preg_match("/(iPhone|iPod)/", $smarty.server.HTTP_USER_AGENT) }}
-	<script>
-		if ($("#mobile_startpoint").length > 0){
-		  window.location = "#mobile_startpoint";
-		}
-	</script>
-{{ /if }}
-
 <div id="fb-root"></div>
 
 <script type="text/javascript">

@@ -1,8 +1,10 @@
 <div class="contentbar section-dossiers contentbar-section-dossiers">
 
 	{{ include file="_tpl/control-sharebox.tpl" }}
+	
+	<a name="mobile_startpoint"></a>
 
-	<div class="titlebox section-dossiers" id="mobile_startpoint">
+	<div class="titlebox section-dossiers">
 		<h2><a href="{{ uri options="issue" }}">Dossier</a> /</h2>
 		<h1>{{ $gimme->article->name }}</h1>
 	</div>
