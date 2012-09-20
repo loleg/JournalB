@@ -145,6 +145,7 @@ class FavoritesController extends Zend_Controller_Action
 			$tokdata = json_decode($resultdata);
 			if ($tokdata === NULL) die('Error parsing json');
 			
+			$expires = time() + 1209600; // login for two weeks
 			setcookie('jbdisqus[userid]', 	$tokdata->user_id, $expires);
 			setcookie('jbdisqus[username]',	$tokdata->username, $expires);
 			setcookie('jbdisqus[token]', 	$tokdata->access_token, $expires);
@@ -408,11 +409,13 @@ class FavoritesController extends Zend_Controller_Action
 	
 	// Sign out of our service
 	public function logoutAction() {
-		setcookie('jbdisqus[userid]', "", time() - 3600);
-		setcookie('jbdisqus[username]', "", time() - 3600);
-		setcookie('jbdisqus[token]', "", time() - 3600);
-		setcookie('jbdisqus[refresh]', "", time() - 3600);
+		setcookie('jbdisqus[userid]', "", 1, "/");
+		setcookie('jbdisqus[username]', "", 1, "/");
+		setcookie('jbdisqus[token]', "", 1, "/");
+		setcookie('jbdisqus[refresh]', "", 1, "/");
+		setcookie('jbdisqus', "", 1, "/");
 		unset($this->session->faves);
+		\Zend_Session::ForgetMe();
 		\Zend_Session::destroy(true);
 		$this->_redirect('/');
 	}
