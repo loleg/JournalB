@@ -1,0 +1,139 @@
+{{ include file="_tpl/_html-head.tpl" }}
+<!-- front_mitglied.tpl -->
+<body id="body" class="mitglied-page">
+
+<div class="container">
+
+	<div class="main">
+
+		{{ include file="_tpl/header.tpl" }}
+
+		<div class="row content">
+
+<div class="addbar"></div>
+<div class="contentbar section-page">
+	<article class="page">
+			<a name="mobile_startpoint"></a>
+			<header>
+			
+				<h1>Mitgliederformular</h1>	
+				
+				<script type="text/javascript"> var is_gallery = false; </script>
+			</header>
+<div class="mcontentbar"><div class="font-sens">
+				
+<h1>Unterstützen Sie Berns Medienvielfalt</h1>
+<p>Ihnen gefälllt Journal B? Werden Sie Mitglied des Vereins Berner Onlinemedien und unterstützen Sie die Trägerschaft des «Journal&nbsp;B». (<span class="ss-required-asterisk">*</span> Erforderlich)</p>
+
+<!-- start of form ---- -->
+<form action="https://docs.google.com/spreadsheet/formResponse?formkey=dEdNR3FabVNIYVVnTC0xbzBjeE5UX2c6MA&amp;theme=0AX42CRMsmRFbUy1iOGYwN2U2Mi1hNWU0LTRlNjEtYWMyOC1lZmU4ODg1ODc1ODI&amp;embedded=true&amp;ifq" method="POST" id="ss-form" target="_blank">
+
+<div class="errorbox-good">
+<div class="ss-item ss-item-required ss-radio"><div class="ss-form-entry"><label class="ss-q-title" for="entry_6">Ja, mir liegt Berns Medienvielfalt am Herzen!
+<span class="ss-required-asterisk">*</span></label>
+<label class="ss-q-help" for="entry_6"></label>
+<ul class="ss-choices"><li class="ss-choice-item"><label class="ss-choice-label"><input type="radio" name="entry.6.group" value="Ich will Vereinsmitglied werden" class="ss-q-radio" id="group_6_1">
+
+Ich will Vereinsmitglied werden (Mitgliederbeitrag CHF 250 Franken pro Jahr für natürliche, 500 Franken für juristische Personen)
+
+</label></li> <li class="ss-choice-item"><label class="ss-choice-label"><input type="radio" name="entry.6.group" value="Den Verein mit einer Spende unterstützen" class="ss-q-radio" id="group_6_2">
+
+Ich möchte den Verein mit einer Spende unterstützen, bitte senden Sie mir einen Einzahlungsschein.
+
+</label></li> <li class="ss-choice-item"><label class="ss-choice-label"><input type="radio" name="entry.6.group" value="Ich habe eine Frage zum Verein" class="ss-q-radio" id="group_6_3">
+
+Ich habe eine Frage zum Verein.
+
+</label></li>
+</ul></div></div></div>
+
+
+ <div class="errorbox-good">
+<div class="ss-item ss-item-required ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_8">Name
+<span class="ss-required-asterisk">*</span></label>
+<label class="ss-q-help" for="entry_8"></label>
+<input type="text" name="entry.8.single" value="" class="ss-q-short" id="entry_8"></div></div></div>
+ <div class="errorbox-good">
+<div class="ss-item ss-item-required ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_2">Vorname
+<span class="ss-required-asterisk">*</span></label>
+<label class="ss-q-help" for="entry_2"></label>
+<input type="text" name="entry.2.single" value="" class="ss-q-short" id="entry_2"></div></div></div>
+ <div class="errorbox-good">
+<div class="ss-item ss-item-required ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_3">Email
+<span class="ss-required-asterisk">*</span></label>
+<label class="ss-q-help" for="entry_3"></label>
+<input type="text" name="entry.3.single" value="" class="ss-q-short" id="entry_3"></div></div></div>
+ <div class="errorbox-good">
+<div class="ss-item ss-item-required ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_9">Adresse
+<span class="ss-required-asterisk">*</span></label>
+<label class="ss-q-help" for="entry_9"></label>
+<input type="text" name="entry.9.single" value="" class="ss-q-short" id="entry_9"></div></div></div>
+ <div class="errorbox-good">
+<div class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_10">Adresszusatz
+</label>
+<label class="ss-q-help" for="entry_10"></label>
+<input type="text" name="entry.10.single" value="" class="ss-q-short" id="entry_10"></div></div></div>
+ <div class="errorbox-good">
+<div class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_11">PLZ
+</label>
+<label class="ss-q-help" for="entry_11"></label>
+<input type="text" name="entry.11.single" value="" class="ss-q-short" id="entry_11"></div></div></div>
+ <div class="errorbox-good">
+<div class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_12">Ort
+</label>
+<label class="ss-q-help" for="entry_12"></label>
+<input type="text" name="entry.12.single" value="" class="ss-q-short" id="entry_12"></div></div></div>
+ <div class="errorbox-good">
+<div class="ss-item  ss-select"><div class="ss-form-entry"><label class="ss-q-title" for="entry_4">Land
+</label>
+<label class="ss-q-help" for="entry_4"></label>
+<select name="entry.4.single" id="entry_4"><option value="Schweiz">Schweiz</option> <option value="Deutschland">Deutschland</option> <option value="Frankreich">Frankreich</option></select></div></div></div>
+ <div class="errorbox-good">
+<div class="ss-item  ss-paragraph-text"><div class="ss-form-entry"><label class="ss-q-title" for="entry_7">Mitteilung
+</label>
+<label class="ss-q-help" for="entry_7"></label>
+<textarea name="entry.7.single" rows="8" cols="75" class="ss-q-long" id="entry_7"></textarea></div></div></div>
+
+<input type="hidden" name="pageNumber" value="0">
+<input type="hidden" name="backupCache" value="">
+<!-- ----- end of google form -->
+
+<!-- custom form submit button -->
+<div class="ss-item ss-navigate"><div class="ss-form-entry">
+<button class="button-black" onclick="$('#form_submit').click()">Absenden</button>
+</div></div>
+
+<input type="submit" name="submit" value="Submit" id="form_submit" class="hidden">
+
+</form>
+</div>
+
+               <div style="clear:both"></div>
+			</div>				
+			</article>
+		    <div class="article-community mobile"></div>
+		</div>
+			
+		</div><!-- /content -->
+
+	</div><!-- /main -->
+
+	<div class="sidebar">
+
+		{{ include file="_tpl/community-header.tpl" }}
+
+		<div class="row content">
+			
+			{{ include file="_tpl/community.tpl" }}
+			
+			{{ include file="_tpl/community-front.tpl" }}
+
+		</div>
+
+	</div>
+		
+	{{ include file="_tpl/footer.tpl" }}
+
+</div><!-- /container -->
+
+{{ include file="_tpl/_html-foot.tpl" }}
