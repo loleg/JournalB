@@ -176,7 +176,7 @@ function aareTemperaturen()
 			$(this).attr('Typ') =="03" &&
 			$(this).attr('Var') =="00") {
 				var txt = $(this).find('Wert[dt="-24h"]').text();
-				$('.aare .wert').html(parseFloat(txt).toFixed(1)).parent().show();
+				$('.aare .wert').html(parseFloat(txt).toFixed(1)).parent().css('opacity','1');
 				return;
 		}			
 		});
