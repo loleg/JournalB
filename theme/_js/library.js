@@ -123,6 +123,8 @@ function changeFontSize()
 	if (currentFontSize==3) currentFontSize = 0;
 	setCookie("fontSize",currentFontSize,700);
 	updateFontSize();
+	$(this).blur();
+	return false;
 }
 
 // Load selected font size from cookies

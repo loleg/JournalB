@@ -1,34 +1,35 @@
 var favoritesHasLogin = false, favoritesStartLogin = true;
 
-function initFavorites()
-{
+function loginDisqus() {
+	if (typeof DISQUS == 'undefined') return true;
+	if (DISQUS.jsonData.request.is_authenticated) {
+		// Proceed to auth confirm page
+		document.location='/favorites/login';
+	} else {
+		// Registration popup
+		DISQUS.dtpl.actions.fire('auth.login');
+		if (favoritesStartLogin) {
+			favoritesStartLogin = false;
+			var checkDisqusLogin = function() {
+				if (DISQUS.jsonData.request.is_authenticated) {
+					document.location='/favorites/login';
+				} else {
+					window.setTimeout(checkDisqusLogin, 200);
+				}
+			};
+			window.setTimeout(checkDisqusLogin, 200);
+		}
+	}
+	return false;
+}
+
+function initFavorites() {
 	// ** Favorites	
 	var myfaves = null, myfaveurls = [];
 	$.get('/favorites/myfaves', function(data) {
 		if (data == null || data == 'NOLOGIN') {
 			// Login link
-			$(".header .login button, .header .login .register a").click(function() {
-				if (typeof DISQUS == 'undefined') return true;
-				if (DISQUS.jsonData.request.is_authenticated) {
-					// Proceed to auth confirm page
-					document.location='/favorites/login';
-				} else {
-					// Registration popup
-					DISQUS.dtpl.actions.fire('auth.login');
-					if (favoritesStartLogin) {
-						favoritesStartLogin = false;
-						var checkDisqusLogin = function() {
-							if (DISQUS.jsonData.request.is_authenticated) {
-								document.location='/favorites/login';
-							} else {
-								window.setTimeout(checkDisqusLogin, 200);
-							}
-						};
-						window.setTimeout(checkDisqusLogin, 200);
-					}
-				}
-				return false;
-			});
+			$(".header .login button, .header .login .register a").click(loginDisqus);
 			
 		// Yes, we have data	
 		} else {			
@@ -36,7 +37,7 @@ function initFavorites()
 
 			// Set up auth button
 			$(".header .login button")
-				.click(function() { document.location='/favorites/logout'; })
+				.click(function() { document.location='/favorites/logout'; return false; })
 				.find('span').html('Abmelden');
 			$(".header .login .register")
 				.html('Salut, <br><span class="bold">' + myjson.username + '</span>');

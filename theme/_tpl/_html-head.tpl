@@ -23,7 +23,7 @@
 			var DEBUG_MODE = true;
 			var disqus_shortname = 'journalb-lab';
 		{{ else }}
-			var DEBUG_MODE = true; /* REMOVE IN PRODUCTION */
+			var DEBUG_MODE = false; /* REMOVE IN PRODUCTION */
 			var disqus_shortname = 'journalb';
 		{{ /if }}
 		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)

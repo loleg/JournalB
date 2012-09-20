@@ -8,7 +8,7 @@
 		{{ /if }}
 		
 		<div class="info_block">
-			<div class="author">{{ $gimme->article->who }}</div>
+			<div class="author"><span>{{ $gimme->article->who }}</span></div>
 			{{ if $gimme->article->publish_date }}
 				<time>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}</time>
 			{{ /if }}

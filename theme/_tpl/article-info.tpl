@@ -11,7 +11,7 @@
 		  {{ if $gimme->author->user->defined }}
 			<a href="{{ $view->url(['username' => $gimme->author->user->uname], 'user') }}">
 		  {{ /if }}
-		  {{ $gimme->author->name }}
+		  <span>{{ $gimme->author->name }}</span>
 		  {{ if $gimme->author->user->defined }}
 			</a>
 		  {{ /if }}

@@ -109,7 +109,7 @@
 	</article>
 	
 	{{ if $gimme->article->box_under != "" }}
-		<div class="row adbox community-box"><article>
+		<div class="row adbox community-box box-under"><article>
 			{{ $gimme->article->box_under }}
 		</article></div>
 	{{ /if }}

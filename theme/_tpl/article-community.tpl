@@ -22,7 +22,7 @@
 		<div class="info">
 			<date>{{ $publish_date|camp_date_format:"%d.%m.%Y" }}</date> / 
 			<time>{{ $publish_date|camp_date_format:"%H:%i" }}</time> /
-			<author>{{ $gimme->article->author->name }}
+			<author><span>{{ $gimme->article->author->name }}</span></author>
 		</div>
 	{{ /if }}
 	</p>
@@ -36,7 +36,7 @@
 {{ /list_related_articles }}
 
 <div class="row community-buttons">
-	<button onclick="$('header,.mcontentbar,.miniarticle').toggle();document.location='#top'" class="button-black" type="button">Kommentare<br>(<a href="{{ $gimme->url->uri_path }}#disqus_thread" onchange="return;"></a>) lesen</button>
+	<button onclick="$('header,.mcontentbar,.miniarticle,.box-under').toggle();document.location='#top'" class="button-black" type="button">Kommentare<br>(<a href="{{ $gimme->url->uri_path }}#disqus_thread" onchange="return;"></a>) lesen</button>
 	<button style="float: right;" onclick="document.location='#comments'" class="button-black" type="button">Kommentar<br>verfassen</button>
 </div>
 

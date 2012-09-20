@@ -45,9 +45,6 @@
 		z-index: 9;
 		display: block;
     }
-	.ie .newsbox .favorite {
-		right: -16px;
-	}
     .newsbox .favorite:hover, .newsbox .favorite.checked {
         background-image: url(../_img/favorite-black.png);
     }
@@ -312,7 +309,7 @@
     
     /* Fade out when visited */
     
-    .newsbox:visited h1, .newsbox:visited h2 { border-bottom: 1px solid black; text-decoration: underline !important; }
+    .newsbox:visited h1 span, .newsbox:visited h2 span { .underline("-black",1px,0px,95%); }
   
     .section-front:visited { 	background-color: lighten(@color-front, 5%); }
     .section-alltag:visited { 	background-color: lighten(@color-alltag, 5%); }
@@ -476,10 +473,7 @@
 		.underlineblack;
 	}
 	.ie .header .login button {
-		padding-right: 1px;
-		padding-left: 1px;
-		padding-top: 6px;
-		padding-bottom: 6px;
+		padding: 6px;
 		behavior: url(border-radius.htc);
 	}
 	.header .login .register {
@@ -501,6 +495,9 @@
         bottom: 0px;
 		width: 18px;
 		height: 16px;
+    }
+    .ie .header .login .bold {
+	    letter-spacing: normal;
     }
 	
     
@@ -686,7 +683,7 @@
 		width: 389px;
 	}
 	.ie .footer-box.section-front {
-		width: 419px;
+		width: 325px;
 	}	
 	.partners {
 		padding-top: 15px;
@@ -1162,7 +1159,7 @@
 		display: block;
 		.baselink;
         font-size: 70%;
-        line-height: 25px;
+        line-height: 143%;
     }
     .article_info time {
         display: block;
@@ -1224,30 +1221,31 @@
 		margin-bottom: 30px;
     }
     .controlicon {
-        margin-bottom: 20px;
         cursor: pointer;
         width: 100%; height: 39px;
         background-position: center;
         background-repeat: no-repeat;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
     }
     .controlicons .favorite 		{ background-image: url(../_img/control-favorite.png); position: absolute; left: 610px; width: 100px;  background-size: 43px 39px; }
     .controlicons .favorite.checked, 
 	.controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite-black.png); }
 								
     .controlicon.fontize		{ background-image: url(../_img/control-fontize.png); background-size: 43px 39px; }
-    /*.controlicon.fontize.checked, 
-	.controlicon.fontize:hover	{ background-image: url(../_img/control-fontize-black.png); }*/
 
     .font0 .controlicon.fontize			{ background-image: url(../_img/control-fontize-black-small.png); }
-	/*.font0 .controlicon.fontize:hover 	{ background-image: url(../_img/control-fontize.png); }	*/
 	
 	.font1 .controlicon.fontize			{ background-image: url(../_img/control-fontize.png); }
-	/*.font1 .controlicon.fontize:hover 	{ background-image: url(../_img/control-fontize-black-big.png); }*/
+	.font1 .controlicon.fontize:hover	{ background-image: url(../_img/control-fontize-black.png); }
 
 	.font2 .controlicon.fontize			{ background-image: url(../_img/control-fontize-black-big.png); }
-	/*.font2 .controlicon.fontize:hover 	{ background-image: url(../_img/control-fontize-black-small.png); }	*/
 								
-    .controlicon.share			{ background-image: url(../_img/control-share.png); background-size: 43px 39px; }
+    .controlicon.share			{ background-image: url(../_img/control-share.png); background-size: 43px 39px; margin-bottom: 20px; }
     .controlicon.share.checked, 
 	.controlicon.share:hover	{ background-image: url(../_img/control-share-black.png); }
 	
