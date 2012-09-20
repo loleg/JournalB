@@ -7,7 +7,12 @@ function loginDisqus() {
 		document.location='/favorites/login';
 	} else {
 		// Registration popup
-		DISQUS.dtpl.actions.fire('auth.login');
+		if (navigator.userAgent.match(/Mobile/)) {
+			$('.header .login').hide();
+			$('.header .dsq-login-buttons').slideDown();
+		} else {
+			DISQUS.dtpl.actions.fire('auth.login');
+		}
 		if (favoritesStartLogin) {
 			favoritesStartLogin = false;
 			var checkDisqusLogin = function() {

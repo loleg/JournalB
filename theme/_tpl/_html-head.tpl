@@ -34,7 +34,11 @@
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="{{ url static_file='_img/favicon.ico' }}">
-
+    <link rel="apple-touch-icon-precomposed" href="{{ url static_file='_img/57_Journal-B_Web_Icon.png' }}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ url static_file='_img/72_Journal-B_Web_Icon.png' }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ url static_file='_img/114_Journal-B_Web_Icon.png' }}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ url static_file='_img/144_Journal-B_Web_Icon.png' }}">
+    
 	<title>{{ if $gimme->article->defined }}{{ $gimme->article->name }} | {{ elseif $gimme->section->defined }}{{ $gimme->section->name }} | {{ /if }}{{ $gimme->publication->name }}</title>
 	<meta name="author" content="{{ if $gimme->article->defined }}{{ $gimme->article->author->name }} - {{ /if }}{{ $gimme->publication->name }}" >
 	{{ if empty($siteinfo) }}{{ $siteinfo=['description' => '', 'keywords' => ''] }}{{ /if }}
