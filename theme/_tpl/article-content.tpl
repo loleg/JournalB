@@ -109,9 +109,9 @@
 	</article>
 	
 	{{ if $gimme->article->box_under != "" }}
-		<div class="row adbox community-box">
+		<div class="row adbox community-box"><article>
 			{{ $gimme->article->box_under }}
-		</div>
+		</article></div>
 	{{ /if }}
 
 	<div class="article-community mobile"></div>

@@ -38,7 +38,7 @@ function scaleCommunity()
 	});
 }
 
-
+// Draw two random ads on every page, and cycle them
 function drawAds()
 {
 	var community_count = $(".sidebar .content .community-item").length;
