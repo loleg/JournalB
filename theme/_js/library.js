@@ -159,10 +159,18 @@ function updateScreenMode()
 
 	if (_screenMode != screenMode) setScreenMode(_screenMode);
 	
+	var scroll_top = 0;
+	
+	// Scroll search field
+	if (navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/)) 
+		scroll_top += 50;
+	
 	// Scroll to top of article
 	if ($("a[name='mobile_startpoint']").length > 0 &&
 		(navigator.userAgent.match(/iPhone/gi) || navigator.userAgent.match(/iPod/gi))) {
-			$(window).scrollTop(40); }
+			scroll_top += 40; }
+			
+	$(window).scrollTop(scroll_top);
 }
 
 // Update screen mode and trigger action

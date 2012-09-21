@@ -35,3 +35,10 @@
 
     <div class="subtitle">Sagt, was Bern bewegt</div>
 </div>
+
+<div class="search-mobile">
+	{{ search_form template="search.tpl" submit_button="Search" button_html_code="class=\"hidden\"" }}
+		{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"Suchen\"" }}
+	    <input type="image" class="icon-search-mobile" title="Suchen" value="suchen" name="f_search_articles" src="{{ url static_file='_img/search-mobile.png' }}" />
+	{{ /search_form }}
+</div>

@@ -558,6 +558,23 @@
     .search-advanced li {
     	min-height:1.8em; padding:0; margin:0;
     }
+		
+	.search-mobile {
+		position: relative;
+		margin-top: 5px;
+		display: none;
+	}
+	.search-mobile input[type="text"] {
+		width: 256px;	
+	}
+	.search-mobile input[type="image"] {
+		position: absolute;
+		right: 0px;
+		top: 5px;
+		width: 22px;
+		height: 20px;
+	}
+		
     
     /* Search results */
     ol.search-content {
@@ -1299,7 +1316,7 @@
     .controlicon.share.checked, 
 	.controlicon.share:hover	{ background-image: url(../_img/control-share-black.png); }
 	
-	.controlicon.comments { background-image: url(../_img/control-comments-grey.png); margin-right: 5px; }
+	.controlicon.comments { background-image: url(../_img/control-comments-grey.png); margin-right: 5px; display: none; }
 	.controlicon.comments.checked, 
 	.controlicon.comments:hover { background-image: url(../_img/control-comments-black.png); }
 	
