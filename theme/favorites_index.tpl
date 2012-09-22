@@ -67,7 +67,7 @@
 
 		<div class="row content">
 			
-			{{ include file="_tpl/community.tpl" }}
+			{{ render file="_tpl/community.tpl" section=2 article=0 }}
 			
 			{{ include file="_tpl/community-front.tpl" }}
 

@@ -1,6 +1,8 @@
 {{ include file="_tpl/_html-head.tpl" }}
 <!-- page.tpl -->
+{{ dynamic }}
 <body id="body" class="section-page  font{{ $smarty.cookies.fontSize }}">
+{{ /dynamic }}
 
 <div class="container">
 
@@ -26,7 +28,7 @@
 				{{ include file="_tpl/page-community.tpl" }}
 			</div>
 			
-            {{ include file="_tpl/community.tpl" }}
+            {{ render file="_tpl/community.tpl" section=2 article=0 }}
 
         </div>
 
