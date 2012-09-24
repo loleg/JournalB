@@ -1,10 +1,25 @@
 var favoritesHasLogin = false, favoritesStartLogin = true;
 
 function loginDisqus() {
-	if (typeof DISQUS == 'undefined') return true;
+	if (typeof DISQUS == 'undefined') return false;
+	if (typeof DISQUS.jsonData == 'undefined') return false;
+	if (typeof DISQUS.jsonData.request == 'undefined') return false;
+	var checkDisqusLogin = function() {
+		if (DISQUS.jsonData.request.is_authenticated) {
+			if (DISQUS.jsonData.request.has_email) {
+				// Proceed to auth confirm page
+				window.location='/favorites/login';
+			} else {
+				// Complete profile signup
+				return true;
+			}
+		} else {
+			window.setTimeout(checkDisqusLogin, 200);
+		}
+		return false;
+	};
 	if (DISQUS.jsonData.request.is_authenticated) {
-		// Proceed to auth confirm page
-		document.location='/favorites/login';
+		return checkDisqusLogin();
 	} else {
 		// Registration popup
 		if (navigator.userAgent.match(/Mobile/)) {
@@ -15,13 +30,7 @@ function loginDisqus() {
 		}
 		if (favoritesStartLogin) {
 			favoritesStartLogin = false;
-			var checkDisqusLogin = function() {
-				if (DISQUS.jsonData.request.is_authenticated) {
-					document.location='/favorites/login';
-				} else {
-					window.setTimeout(checkDisqusLogin, 200);
-				}
-			};
+			
 			window.setTimeout(checkDisqusLogin, 200);
 		}
 	}
@@ -47,18 +56,19 @@ function initFavorites() {
 			}
 			
 			// Login link
-			$(".header .login button, .header .login .register a").click(loginDisqus);
+			$(".header .login a").click(loginDisqus);
 			
 		// Yes, we have data	
 		} else {			
 			myjson = $.parseJSON(data);
 
 			// Set up auth button
-			$(".header .login button")
+			$(".header .login .button")
 				.click(function() { document.location='/favorites/logout'; return false; })
 				.find('span').html('Abmelden');
 			$(".header .login .register")
-				.html('Salut, <br><span class="bold">' + myjson.username + '</span>');
+				.html('Salut, <br><span class="bold">' + myjson.username + '</span>')
+				.parent().attr('href', 'https://disqus.com/' + myjson.username);
 			favoritesHasLogin = true;
 			
 			// Toggle favorites on page
@@ -83,7 +93,7 @@ function initFavorites() {
 	$('.favorite').click(function() {
 	
 		if (!favoritesHasLogin) {
-			document.location.href = '/favorites';
+			window.location = '/favorites';
 			return false;
 		}
 	
