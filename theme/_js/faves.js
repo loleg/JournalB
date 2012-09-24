@@ -1,4 +1,4 @@
-var favoritesHasLogin = false, favoritesStartLogin = true;
+var favoritesHasLogin = false, favoritesStartLogin = true, favoritesMustReload = false;
 
 function loginDisqus() {
 	if (typeof DISQUS == 'undefined') return false;
@@ -6,11 +6,13 @@ function loginDisqus() {
 	if (typeof DISQUS.jsonData.request == 'undefined') return false;
 	var checkDisqusLogin = function() {
 		if (DISQUS.jsonData.request.is_authenticated) {
-			if (DISQUS.jsonData.request.has_email) {
+			if (!DISQUS.jsonData.request.is_remote) {
 				// Proceed to auth confirm page
 				window.location='/favorites/login';
 			} else {
 				// Complete profile signup
+				if (favoritesMustReload) window.location.reload();
+				favoritesMustReload = true;
 				return true;
 			}
 		} else {
