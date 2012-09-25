@@ -1,9 +1,14 @@
 var favoritesHasLogin = false, favoritesStartLogin = true, favoritesMustReload = false;
 
-function loginDisqus() {
+function checkDisqusApi() {
 	if (typeof DISQUS == 'undefined') return false;
 	if (typeof DISQUS.jsonData == 'undefined') return false;
 	if (typeof DISQUS.jsonData.request == 'undefined') return false;
+	return true;
+}
+
+function loginDisqus() {
+	if (!checkDisqusApi()) return false;
 	var checkDisqusLogin = function() {
 		if (DISQUS.jsonData.request.is_authenticated) {
 			if (!DISQUS.jsonData.request.is_remote) {
@@ -20,6 +25,7 @@ function loginDisqus() {
 		}
 		return false;
 	};
+	// Process login request
 	if (DISQUS.jsonData.request.is_authenticated) {
 		return checkDisqusLogin();
 	} else {
@@ -40,7 +46,7 @@ function loginDisqus() {
 }
 
 function initFavorites() {
-	// ** Favorites	
+	// ** Favorites	login
 	var myfaves = null, myfaveurls = [];
 	$.get('/favorites/myfaves', function(data) {
 		if (data == null || data == 'NOLOGIN') {
@@ -88,9 +94,18 @@ function initFavorites() {
 			});
 			
 		}
+		
+		// Events on header icons
 		$(".header .login").show();
-		$('.nav li.nav-fav').removeClass("unactive");	
-	}); // - Favorites
+		$('.nav li.nav-fav').removeClass("unactive");
+		
+		// Community link
+		$('.community-popup').click(function() {
+			if (!checkDisqusApi()) return true;
+			DISQUS.dtpl.actions.fire('community.show');
+			return false;	
+		});
+	}); // - Favorites login
 		
 	// Favorites icon
 	$('.favorite').click(function() {
@@ -132,4 +147,5 @@ function initFavorites() {
 		return false;
 	});
 	// - Favorites icon
+	
 }
