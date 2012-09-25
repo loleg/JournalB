@@ -15,7 +15,7 @@ function initSlider()
 	slides_num = $(slider).children("ul").children("li").length;			
 	$(slider).children("ul").children("li:first").show();
 		
-	$(slider).append('<div class="gallery_info stable"><div class="gallery_status"><span class="gallery_current"></span> / <span class="gallery_all"></span></div><div class="gallery_control"></div><div class="gallery_description"></div></div>');
+	$(slider).append('<div class="gallery_info stable"><div class="gallery_status"><span class="gallery_current"></span>&nbsp;/&nbsp;<span class="gallery_all"></span></div><div class="gallery_control"></div><div class="gallery_description"></div></div>');
 	$(".gallery_all").html(slides_num);		
 	$(".gallery_current").html(current_slide);		
 	$(".gallery_description").html($(slider).children("ul").children("li:first").children(":first").attr("alt"));	
