@@ -153,10 +153,12 @@ html.active_slider .tip {
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
-	width: 100%;
+	right: 0px;
 	background-color: rgba(255,255,255,0.6);
 	padding-top: 5px;
 	padding-bottom: 5px;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 .active_slider .gallery_info .gallery_status {
 	bottom: 0px;
@@ -165,6 +167,7 @@ html.active_slider .tip {
 	color: black;
 	z-index: 99;
 	padding: 0 0 5px 10px;
+	position: absolute;
 }
 .active_slider .gallery_info {
 	position: absolute;
@@ -212,6 +215,7 @@ html.active_slider .tip {
 	.container .gallery_info.stable .gallery_description { display: none !important; }	
 	.slider										{ max-width: 380px; }
 	html.active_slider .slider, .one_slide .slider{ width: 100%; max-width: 480px; }	
+	.active_slider .gallery_info .gallery_description { padding-right: 20px !important; }
 }
 
 @media only screen and (max-width: 479px) {
@@ -224,4 +228,5 @@ html.active_slider .tip {
 	.container .gallery_info.stable .gallery_description { display: none !important; }	
 	.slider										{ max-width: 220px; }
 	html.active_slider .slider, .one_slide .slider { width: 100%; max-width: 320px; }
+	.active_slider .gallery_info .gallery_description { padding-right: 20px !important; }
 }
