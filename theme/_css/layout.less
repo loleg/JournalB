@@ -513,6 +513,17 @@
 	.ie .header .search {
 		top: 120px !important;
 	}
+	.header .search input[type="image"] {
+		position: absolute;
+		top: 0px;
+		transition: top 0.1s ease-in-out;
+		-moz-transition: top 0.1s ease-in-out;
+		-webkit-transition: top 0.1s ease-in-out;
+	}
+	.header .search input[type="image"]:hover {
+		top: -3px;
+	}
+	
     
     /* Search form */
     .searchform {
