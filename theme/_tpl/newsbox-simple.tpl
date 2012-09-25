@@ -1,33 +1,34 @@
 <a class="newsbox section-{{ $article_section }} layoutsimple" href="{{ uri options="article" }}">
 
 	<div class="newsboxcontent">
+		<div class="newsboxheading">
+			{{ if $gimme->article->issue->url_name == "dossiers" }}
+				<h2>Dossier</h2>
+				<h1><span>{{ $gimme->article->name }}</span></h1>
 
-		{{ if $gimme->article->issue->url_name == "dossiers" }}
-			<h2>Dossier</h2>
-			<h1><span>{{ $gimme->article->name }}</span></h1>
+			{{ elseif $gimme->article->issue->url_name == "blogs" }}
+				<h2>Blog</h2>
+				<h1><span>{{ $gimme->article->section->name }}</span></h1>
 
-		{{ elseif $gimme->article->issue->url_name == "blogs" }}
-			<h2>Blog</h2>
-			<h1><span>{{ $gimme->article->section->name }}</span></h1>
-
-		{{ elseif $gimme->article->issue->url_name == "klkm" }}
-			<h2>{{ $gimme->article->type_name }}</h2>
-			<h1><span>{{ $gimme->article->author->name }}</span></h1>
-			
-		{{ else }}
-			<h1><span>{{ $gimme->article->name }}</span></h1>
-			
-		{{ /if }}
+			{{ elseif $gimme->article->issue->url_name == "klkm" }}
+				<h2>{{ $gimme->article->type_name }}</h2>
+				<h1><span>{{ $gimme->article->author->name }}</span></h1>
+				
+			{{ else }}
+				<h1><span>{{ $gimme->article->name }}</span></h1>
+				
+			{{ /if }}
+		</div>
 				
 		<description>
 			<p>
 				{{ if $gimme->article->deck=="" }} 
-					{{ $gimme->article->full_text|strip_tags|truncate:400:"...":true }}
+					{{ $gimme->article->full_text->first_paragraph|strip_tags }}
 				{{ else }}
 					{{ $gimme->article->deck|strip_tags }}
 				{{ /if }}
 			</p>
-		</description>		
+		</description>	
 	</div>
 
 	<div class="info_block">

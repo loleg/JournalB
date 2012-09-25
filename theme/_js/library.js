@@ -207,3 +207,12 @@ function showComments() {
 	document.location='#top';
 	return false;
 }
+
+
+function calculateNewsboxOverflow()
+{
+	$(".newsbox.layoutsimple .newsboxcontent").each(function(){
+		var heading_lines = Math.floor($(this).children(".newsboxheading").height()/30);
+		if (heading_lines%2==1) $(this).css("max-height","11.4em");
+	});
+}
