@@ -206,9 +206,16 @@ blockquote a {
 
 /* Links */
 a, a:visited, a:hover, a:focus  { color: #000; text-decoration: none; outline: 0; }
-p a                             { line-height: inherit; .underline("",3px,1px); }
-.section-alltag p a[href^='http://www.journal-b.ch'] { .underline("-alltag",3px,1px); }
-.section-kultur p a[href^='http://www.journal-b.ch'] { .underline("-kultur",3px,1px); }
-.section-politik p a[href^='http://www.journal-b.ch'] { .underline("-politik",3px,1px); }
-.section-blogs p a[href^='http://www.journal-b.ch'] { .underline("-blogs",3px,1px); }
-p a:visited						{ .underline("",3px,1px); }
+p a                             { line-height: inherit; .underline("-black",3px,1px); }
+p a[href^='http://www.journal-b.ch'] { .underline("",3px,1px); }
+p a[href*='/alltag/'] { .underline("-alltag",3px,1px); }
+p a[href*='/kultur/'] { .underline("-kultur",3px,1px); }
+p a[href*='/politik/'] { .underline("-politik",3px,1px); }
+p a[href*='/blogs/'] { .underline("-blogs",3px,1px); }
+p a[href*='/dossiers/'] { .underline("-dossiers",3px,1px); }
+p a[href*='/alltag/']:hover { .underline("-alltag",3px,1px); color:@color-alltag; }
+p a[href*='/kultur/']:hover { .underline("-kultur",3px,1px); color:@color-kultur; }
+p a[href*='/politik/']:hover { .underline("-politik",3px,1px); color:@color-politik; }
+p a[href*='/blogs/']:hover { .underline("-blogs",3px,1px); color:@color-blogs; }
+p a[href*='/dossiers/']:hover { .underline("-dossiers",3px,1px); color:@color-dossiers; }
+/*p a:visited						{ .underline("",3px,1px); }*/
