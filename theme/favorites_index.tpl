@@ -44,7 +44,7 @@
 {{ if $column%2 == 1 }}</div>{{ /if }}
 
 {{ else }}
-
+	<div class="mcontentbar">
 	{{ if $view->nologin }}
 	
 		<h3>Bitte melden Sie sich in der Journal-B-Community an, um Artikel zu favorisieren und ein persönliches Archiv anzulegen.</h3>
@@ -54,7 +54,7 @@
 		<h3>Sie haben noch keine Artikel favorisiert.</h3>
 		
 	{{ /if }}
-
+	</div>
 {{ /if }}
 			
 		</div><!-- /content -->

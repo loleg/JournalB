@@ -97,7 +97,6 @@ function initFavorites() {
 		
 		// Events on header icons
 		$(".header .login").show();
-		$('.nav li.nav-fav').removeClass("unactive");
 		
 		// Community link
 		$('.community-popup').click(function() {
