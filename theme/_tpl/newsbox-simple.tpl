@@ -23,7 +23,7 @@
 		<description>
 			<p>
 				{{ if $gimme->article->deck=="" }} 
-					{{ $gimme->article->full_text->first_paragraph|strip_tags }}
+					{{ $gimme->article->full_text->first_paragraph|strip_tags|truncate:400:"...":true }}
 				{{ else }}
 					{{ $gimme->article->deck|strip_tags }}
 				{{ /if }}
