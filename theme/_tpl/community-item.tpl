@@ -10,7 +10,13 @@
 		<div class="info_block">
 			<div class="author"><span>{{ $gimme->article->who }}</span></div>
 			{{ if $gimme->article->publish_date }}
-				<time>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}</time>
+				<time>
+					{{ if $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" == $smarty.now|camp_date_format:"%d.%m.%Y"}}
+						{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+					{{ else }}
+						{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}
+					{{ /if }}
+				</time>
 			{{ /if }}
 		</div>
 		<div class="clear"></div>
