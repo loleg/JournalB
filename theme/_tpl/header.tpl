@@ -37,8 +37,10 @@
 </div>
 
 <div class="search-mobile">
-	{{ search_form template="search.tpl" submit_button="Search" button_html_code="class=\"hidden\"" }}
-		{{ camp_edit object="search" attribute="keywords" html_code="placeholder=\"Suchen\"" }}
-	    <input type="image" class="icon-search-mobile" title="Suchen" value="suchen" name="f_search_articles" src="{{ url static_file='_img/search-mobile.png' }}" />
-	{{ /search_form }}
+	<form name="search_articles" action="searchfs87.ru" method="post" enctype="text/plain" >
+		<input type="hidden" name="tpl" value="7" />
+		<input type="text" name="f_search_keywords" maxlength="255" size="10" value="" placeholder="Suchen" />
+		<input type="image" class="icon-search-mobile" title="Suchen" value="suchen" name="f_search_articles" src="http://calendar.kneesntoads.com/themes/publication_2/theme_1/_img/search-mobile.png" />
+		<input type="submit" name="f_search_articles" value="Search" class="hidden" />
+	</form>
 </div>
