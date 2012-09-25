@@ -158,7 +158,10 @@ function updateScreenMode()
 	else _screenMode = 4;
 
 	if (_screenMode != screenMode) setScreenMode(_screenMode);
-	
+}
+
+// Skips over the menu when loading an article
+function scrollToArticleTop() {	
 	var scroll_top = 0;
 	
 	// Scroll search field
