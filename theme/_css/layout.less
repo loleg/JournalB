@@ -779,17 +779,28 @@
         display: block;
         float: left;
         width: 111px;
+		position: relative;
     }
     .commentbox.layouttwitter author, .commentbox.layouttwitter .author {
         display: block;
-        margin-top: -1px;
+		position: absolute;
+		background-color: @color-front;
+		z-index: 2;
+		top: -1px;
+		width: 100%;
+    }
+	.commentbox.without_icon author, .commentbox.without_icon .author {
+		position: inherit !important;
+		top: 0px !important;
+		width: auto !important;
     }
     .commentbox.layouttwitter time, .commentbox.layouttwitter date {
         display: block;
         position: absolute;
-        top: 52px;
+        top: 34px;
         width: 140px;
         .community-font;
+		z-index: 1;
     }
 	.commentbox.without_icon time, .commentbox.without_icon date {
         display: block;
