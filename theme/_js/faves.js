@@ -89,6 +89,7 @@ function initFavorites() {
 			
 		}
 		$(".header .login").show();
+		$('.nav li.nav-fav').removeClass("unactive");	
 	}); // - Favorites
 		
 	// Favorites icon
@@ -130,6 +131,5 @@ function initFavorites() {
 		}
 		return false;
 	});
-
 	// - Favorites icon
 }
