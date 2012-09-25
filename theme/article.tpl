@@ -26,7 +26,7 @@
         <div class="row content">
             
 			<div class="article-community stable">
-				{{ render file="_tpl/article-community.tpl" }}
+				{{ include file="_tpl/article-community.tpl" }}
 			</div>
 			
             {{ render file="_tpl/community.tpl" section=2 article=0 }}
