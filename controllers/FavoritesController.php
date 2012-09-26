@@ -390,15 +390,18 @@ class FavoritesController extends Zend_Controller_Action
 		}
 			
 		// Update cache
-		$faves = $this->fscache_get('jb_faves_' . $this->userid);
-		if ($vote > 0) {
-			if (!isset($faves[$ident])) {
-				$faves[$ident] = $page;
-				echo (' / added');
+		$faves = array();
+		if ($this->fscache_isset('jb_faves_' . $this->userid)) {
+			$faves = $this->fscache_get('jb_faves_' . $this->userid);
+			if ($vote > 0) {
+				if (!isset($faves[$ident])) {
+					$faves[$ident] = $page;
+					echo (' / added');
+				}
+			} else {
+				unset($faves[$ident]);
+				echo (' / removed');
 			}
-		} else {
-			unset($faves[$ident]);
-			echo (' / removed');
 		}
 		
 		// Save cache and session

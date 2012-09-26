@@ -33,7 +33,7 @@ function loginDisqus() {
 			return helloDisqus();
 			if (!DISQUS.jsonData.request.is_remote) {
 				// Proceed to auth confirm page
-				window.location='/favorites/login';
+				window.location = '/favorites/login';
 			} else {
 				// Complete profile signup
 				if (favoritesMustReload) window.location.reload();
@@ -67,10 +67,10 @@ function loginDisqus() {
 
 function logoutDisqus() {
 	if (typeof getCookie('jsdisqus') == 'undefined') {
-		document.location='/favorites/logout'; return false; 
+		window.location = '/favorites/logout'; return false; 
 	} else {
 		if (window.confirm('Aus Disqus Community abmelden?')) {
-			$('.dsq-logout-link a').click();
+			window.location = $('.dsq-logout-link a').attr('href')
 		}
 	}
 }
@@ -94,7 +94,7 @@ function initFavorites() {
 			}
 			
 			// Login link
-			$(".header .login a").click(loginDisqus);
+			$(".header .login").click(loginDisqus);
 			
 		// Yes, we have data	
 		} else {			
@@ -105,8 +105,9 @@ function initFavorites() {
 				.click(logoutDisqus)
 				.find('span').html('Abmelden');
 			$(".header .login .register")
-				.html('Salut, <br><span class="bold">' + myjson.username + '</span>')
-				.parent().attr('href', 'https://disqus.com/' + myjson.username);
+				.html('Salut, <br><span class="bold">' + myjson.username + '</span>');
+				//.parent().attr('href', 'https://disqus.com/' + myjson.username);
+			$('.header .dsq-login-buttons').hide();
 			favoritesHasLogin = true;
 			
 			// Toggle favorites on page
