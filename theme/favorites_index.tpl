@@ -27,6 +27,11 @@
 	{{ $article_section = $article->section->url_name }}
 	{{ if $article->issue->url_name == "blogs" }} {{ $article_section = "blogs" }} {{ /if }}
 	{{ if $article->issue->url_name == "dossiers" }} {{ $article_section = "dossiers" }} {{ /if }}
+	
+	{{ $article_author = "" }}
+	{{ if $article->authors|@count gt 0 }}
+		{{ $article_author = "`$article->authors[0]->first_name` `$article->authors[0]->last_name`" }}
+	{{ /if }}
 
 	{{ include file="_tpl/newsbox-simple-favorites.tpl" }}
 

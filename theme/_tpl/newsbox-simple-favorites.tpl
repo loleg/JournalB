@@ -12,7 +12,7 @@
 
 		{{ elseif $article->issue->url_name == "klkm" }}
 			<h2>{{ $article->type_name }}</h2>
-			<h1><span>{{ $article->author->name }}</span></h1>
+			<h1><span>{{ $article_author }}</span></h1>
 			
 		{{ else }}
 			<h1><span>{{ $article->name }}</span></h1>
@@ -33,7 +33,8 @@
 	<div class="info_block">
 		<time>
 			{{ $article->publish_date|camp_date_format:"%d.%m.%Y" }}
-		</time>
+		</time> | 
+		<author>{{ $article_author }}</author>
 	</div>
 
 	<span class="favorite checked"><span>Favorite</span></span>
