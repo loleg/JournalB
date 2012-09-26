@@ -22,6 +22,7 @@
 					</div>
 					{{ $gimme->author->biography->text }}
 				</div>
+				<div class='clear'></div>
 				{{ $rendered_authors[$i] = $gimme->author->name }}
 				{{ $i = $i + 1 }}
 			{{ /if }}
