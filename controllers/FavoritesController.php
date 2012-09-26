@@ -63,10 +63,18 @@ class FavoritesController extends Zend_Controller_Action
 	private function ensureDisqusLogin($gotologin = true) {
 	
 		if (!empty($this->userid)) { return true; }
-	
+		
+		$jsdisqus = $this->getRequest()->getCookie('jsdisqus');
 		$jbdisqus = $this->getRequest()->getCookie('jbdisqus');
 		if (!isset($jbdisqus)) {
-			if (!$this->getDisqusLogin($this->getRequest())) {
+			if (isset($jsdisqus) && strpos($jsdisqus, ';') > 1) {
+				$jsdisqus = explode(';', $jsdisqus);
+				$username = explode(' ', $jsdisqus[1]);
+				$jbdisqus = array(	
+					'userid'=>$jsdisqus[0],
+					'username'=>$username[0]
+				);
+			} elseif (!$this->getDisqusLogin($this->getRequest())) {
 				if ($gotologin) {
 					$this->_redirect('https://disqus.com/api/oauth/2.0/authorize/?' .
 						'client_id=' . $this->PUBLIC_KEY . '&' .
@@ -92,9 +100,9 @@ class FavoritesController extends Zend_Controller_Action
 			// Could not obtain user ID, probably authentication declined
 			return $this->logoutAction();
 		}
-		
-		$this->disqusapi = new DisqusAPI($this->SECRET_KEY);
-		
+		if (isset($this->token)) {
+			$this->disqusapi = new DisqusAPI($this->SECRET_KEY);
+		}	
 		return true;
 	}
 	
@@ -138,7 +146,7 @@ class FavoritesController extends Zend_Controller_Action
 		curl_close($ch);
 		
 		//get the token if available
-		if (!strstr($resultdata, "access_token")) {
+		if (strpos($resultdata, "access_token") === FALSE) {
 			die('Error: could not log into Disqus.');
 			
 		} else {
@@ -221,7 +229,7 @@ class FavoritesController extends Zend_Controller_Action
 			// save to session
 			$this->session->faves = $faves;
 		
-		} else { 
+		} elseif (isset($this->disqusapi)) { 
 			// Get favorites from user's Disqus activities
 			$activities =
 				$this->disqusapi->users->listActivity(array(
@@ -231,7 +239,7 @@ class FavoritesController extends Zend_Controller_Action
 			$faves = array();
 			
 			foreach ($activities as $k => $v) {
-				if (strstr($v->type, "like") && 
+				if (strpos($v->type, "like") !== FALSE && 
 					//$v->object->vote == 1 && 
 					$v->object->forum->id == $this->shortname) {
 
@@ -334,7 +342,7 @@ class FavoritesController extends Zend_Controller_Action
 		$vote = intval($vote) or die('Invalid vote');
 		if ($vote < 0) { $vote = 0; } // don't dislike pages
 		
-		if (strstr($page, $this->homepage) == FALSE) { die('Invalid request ' . $page); }
+		if (strpos($page, $this->homepage) === FALSE) { die('Invalid request ' . $page); }
 		
 		$page = str_replace($this->homepage, "", $page);
 		$ident = $this->getArticleIdent($page);
@@ -346,59 +354,58 @@ class FavoritesController extends Zend_Controller_Action
 		$this->nocacheResponse();
 		
 		// Find this thread
-		$threads =
-			$this->disqusapi->forums->listThreads(array(
-				'forum'=>$this->shortname, 'thread:ident'=>$ident
-			));
-		
-		$id = -1;
-		if (count($threads) == 0) {
-			// Try creating
-			$thread = $this->disqusapi->threads->create(array(
-					'forum'=>$this->shortname, 
-					'title'=>$title, 
-					'url'=>$this->homepage . $page,
-					'identifier'=>$ident
+		if (isset($this->disqusapi)) {
+			$threads =
+				$this->disqusapi->forums->listThreads(array(
+					'forum'=>$this->shortname, 'thread:ident'=>$ident
 				));
-			$id = $thread->id;
-			echo(' / created thread: ' . $id);
+		
+			$id = -1;
+			if (count($threads) == 0) {
+				// Try creating
+				$thread = $this->disqusapi->threads->create(array(
+						'forum'=>$this->shortname, 
+						'title'=>$title, 
+						'url'=>$this->homepage . $page,
+						'identifier'=>$ident
+					));
+				$id = $thread->id;
+				echo(' / created thread: ' . $id);
 			
+			} else {
+				// Take existing match
+				$id = $threads[0]->id;
+				echo(' / found thread: ' . $id);
+			}
+		
+			if ($id > 0) {
+				// Now vote for it
+				$voteresult = $this->disqusapi->threads->vote(array(
+					'vote'=>$vote, 'thread'=>$id, 'forum'=>$this->shortname
+				));
+			} else {
+				error_log("Could not vote on thread: " . $page);
+				die(' / ERROR');
+			}
+		}
+			
+		// Update cache
+		$faves = $this->fscache_get('jb_faves_' . $this->userid);
+		if ($vote > 0) {
+			if (!isset($faves[$ident])) {
+				$faves[$ident] = $page;
+				echo (' / added');
+			}
 		} else {
-			// Take existing match
-			$id = $threads[0]->id;
-			echo(' / found thread: ' . $id);
+			unset($faves[$ident]);
+			echo (' / removed');
 		}
 		
-		if ($id > 0) {
-			// Now vote for it
-			$voteresult = $this->disqusapi->threads->vote(array(
-				'vote'=>$vote, 'thread'=>$id, 'forum'=>$this->shortname
-			));
-			
-			// Update cache
-			$faves = $this->fscache_get('jb_faves_' . $this->userid);
-			if ($vote > 0) {
-				if (!isset($faves[$ident])) {
-					$faves[$ident] = $page;
-					echo (' / added');
-				}
-			} else {
-				unset($faves[$ident]);
-				echo (' / removed');
-			}
-			
-			// Save cache and session
-			$this->fscache_set('jb_faves_' . $this->userid, $faves);
-			$this->session->faves = $faves;
-			
-			die(' / OK / cached: ' . count($faves));
-			//die(var_export($voteresult, true));
-			
-		} else {
-			error_log("Could not vote on thread: " . $page);
-			die(' / ERROR');
-
-		}
+		// Save cache and session
+		$this->fscache_set('jb_faves_' . $this->userid, $faves);
+		$this->session->faves = $faves;
+		
+		die(' / OK / cached: ' . count($faves));
 	}
 	
 	// Sign into the service
@@ -414,6 +421,7 @@ class FavoritesController extends Zend_Controller_Action
 		setcookie('jbdisqus[token]', "", 1, "/");
 		setcookie('jbdisqus[refresh]', "", 1, "/");
 		setcookie('jbdisqus', "", 1, "/");
+		setcookie('jsdisqus', "", 1, "/");
 		unset($this->session->faves);
 		\Zend_Session::ForgetMe();
 		\Zend_Session::destroy(true);

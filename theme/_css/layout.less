@@ -504,7 +504,6 @@
     /* Header search area */
 	.header .search {
         position: absolute;
-        text-align: center;
         top: 123px; right: -25px;
         width: 150px; height: 40px;
 		z-index: 2;
@@ -512,9 +511,12 @@
 	.ie .header .search {
 		top: 120px !important;
 	}
+	.header .search input { 
+		display: none;
+	}
 	.header .search input[type="image"] {
 		position: absolute;
-		top: 0px;
+		top: 0px; right: 58px;
 		transition: top 0.1s ease-in-out;
 		-moz-transition: top 0.1s ease-in-out;
 		-webkit-transition: top 0.1s ease-in-out;

@@ -44,7 +44,7 @@
     }
 	var disqus_config = function () { 
 		this.language = "de_inf"; // de_formal
-		// console.log(this);
+		this.callbacks.afterRender = [helloDisqus];
 	};
 	(function() {
 		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

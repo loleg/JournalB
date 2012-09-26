@@ -7,10 +7,30 @@ function checkDisqusApi() {
 	return true;
 }
 
+function helloDisqus() {
+	if (!checkDisqusApi()) {
+		if (typeof console != 'undefined') { console.log('API unavailable!'); }
+		return false;
+	}
+	if (DISQUS.jsonData.request.is_authenticated) {
+		var u = DISQUS.jsonData.request.display_name;
+		if (typeof u == 'undefined') {
+			u = DISQUS.jsonData.request.display_username;
+		}
+		var c = DISQUS.jsonData.request.user_id + ";" + u;
+		setCookie('jsdisqus', c, 7);
+	} else {
+		setCookie('jsdisqus', '', 7);
+	}
+	initFavorites();
+	return true;
+}
+
 function loginDisqus() {
 	if (!checkDisqusApi()) return false;
 	var checkDisqusLogin = function() {
 		if (DISQUS.jsonData.request.is_authenticated) {
+			return helloDisqus();
 			if (!DISQUS.jsonData.request.is_remote) {
 				// Proceed to auth confirm page
 				window.location='/favorites/login';
@@ -45,9 +65,19 @@ function loginDisqus() {
 	return false;
 }
 
+function logoutDisqus() {
+	if (typeof getCookie('jsdisqus') == 'undefined') {
+		document.location='/favorites/logout'; return false; 
+	} else {
+		if (window.confirm('Aus Disqus Community abmelden?')) {
+			$('.dsq-logout-link a').click();
+		}
+	}
+}
+
 function initFavorites() {
-	// ** Favorites	login
 	var myfaves = null, myfaveurls = [];
+	// ** Favorites	login
 	$.get('/favorites/myfaves', function(data) {
 		if (data == null || data == 'NOLOGIN') {
 			if (navigator.userAgent.match(/Mobile/) && $(".forum").length > 0) {
@@ -72,7 +102,7 @@ function initFavorites() {
 
 			// Set up auth button
 			$(".header .login .button")
-				.click(function() { document.location='/favorites/logout'; return false; })
+				.click(logoutDisqus)
 				.find('span').html('Abmelden');
 			$(".header .login .register")
 				.html('Salut, <br><span class="bold">' + myjson.username + '</span>')
@@ -131,10 +161,11 @@ function initFavorites() {
 		if (url) {
 			if (url.indexOf('http:') != 0) 
 				url = document.location.protocol + '//' + document.location.host + url;
-			$.get('/favorites/vote?url=' + encodeURI(url) 
-					+ '&title=' + encodeURI(title) + '&vote=' + vote, function(data) {
-				if (typeof console != 'undefined') console.log(data);
-			});
+			$.get('/favorites/vote?url=' + encodeURIComponent(url) 
+					+ '&title=' + encodeURI(title) + '&vote=' + vote, 
+				function(data) {
+					if (typeof console != 'undefined') console.log(data);
+				});
 			
 			// Update icon
 			if (vote == -1) {
