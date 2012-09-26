@@ -23,12 +23,14 @@
 		<center class="spenden-paypal">
 			<input type="hidden" name="cmd" value="_s-xclick">
 			<input type="hidden" name="hosted_button_id" value="2ZCCLVSGXWRS8">
-			<select name="os0">
-					<option value="2 Franken">2 Franken</option>
-					<option value="5 Franken">5 Franken</option>
-					<option value="10 Franken">10 Franken</option>
-					<option value="Selber entscheiden">Selber entscheiden</option>
-			</select>
+			<div align="center" class="os0_wrapper">
+				<select name="os0">
+						<option value="2 Franken">2 Franken</option>
+						<option value="5 Franken">5 Franken</option>
+						<option value="10 Franken">10 Franken</option>
+						<option value="Selber entscheiden">Selber entscheiden</option>
+				</select>
+			</div>
 			<input type="hidden" name="currency_code" value="CHF">
 			<input type="image" src="https://www.paypalobjects.com/de_DE/CH/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="Spenden mit PayPal.">
 			<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
