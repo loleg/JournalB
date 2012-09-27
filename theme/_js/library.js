@@ -6,10 +6,8 @@ function noElasticScroll (e)
 
 // Destroy css cache
 function destroyLessCache(pathToCss) {
-
-    if (!window.localStorage || !less) {
-        return;
-    }
+	if (typeof less == 'undefined') return;
+    if (!window.localStorage || !less) return;
     var host = window.location.host;
     var protocol = window.location.protocol;
     var keyPrefix = protocol + '//' + host + pathToCss;
