@@ -55,5 +55,5 @@
 {{ if $is_gallery }}
 	<script type="text/javascript"> var is_gallery = true; </script>
 {{ else }}
-	<script type="text/javascript"> var is_gallery = false; </script>
+	<script type="text/javascript"> var is_gallery = false; $('article .deck').css('padding-bottom','10px'); </script>
 {{ /if }}
