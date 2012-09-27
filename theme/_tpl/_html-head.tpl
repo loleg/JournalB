@@ -22,7 +22,7 @@
 			document.cookie='HTTP_IS_RETINA=1;path=/';
 	</script>
 
-   	{{ if !$DEV_ENV }}
+   	{{ if $DEV_ENV }}
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
 		
 		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
