@@ -22,6 +22,8 @@
 		
 	</article>
 	
+	{{ set_default_section }}
+
 	<div class="dossier-articles">
 		{{ list_related_articles }}
 		
