@@ -62,12 +62,11 @@ function loginDisqus() {
 }
 
 function logoutDisqus() {
-	if (typeof getCookie('jsdisqus') == 'undefined') {
-		window.location = '/favorites/logout'; return false; 
-	} else {
-		if (window.confirm('Aus Disqus Community abmelden?')) {
-			window.location = $('.dsq-logout-link a').attr('href')
-		}
+	$.get('/favorites/logout', function(data) {
+		if (typeof console != 'undefined') console.log(data);
+	});
+	if (window.confirm('Aus Journal B-Community abmelden?')) {
+		window.location = $('.dsq-logout-link a').attr('href')
 	}
 }
 
