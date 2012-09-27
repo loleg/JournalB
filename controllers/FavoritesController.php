@@ -184,7 +184,7 @@ class FavoritesController extends Zend_Controller_Action
      * @return int
      */
 	private function getArticleIdent($url) {
-		if (preg_match('/\/de\/[0-9a-z]*\/[a-z]*\/([0-9]+)\//', $url, $matches)) {
+		if (preg_match('/\/de\/[0-9a-z]*\/[0-9a-z]*\/([0-9]+)\//', $url, $matches)) {
 			if (isset($matches[1]) && is_numeric($matches[1])) {
 				return intval($matches[1]);
 			}
