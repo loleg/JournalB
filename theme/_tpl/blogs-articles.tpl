@@ -4,6 +4,8 @@
 	<h2><a href="{{ uri options="issue" }}">Blog</a> / </h2><h1><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></h1>
 </div>
 
+<script>$('.favorite').hide();</script>
+
 {{ assign var="articles_on_page" value="10" }}
 
 {{ list_articles order="byPublishDate desc" length="`$articles_on_page`" }}
