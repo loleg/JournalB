@@ -1,6 +1,8 @@
 {{ assign var="column" value="0" }}
 {{ assign var="article_section" value="dossiers" }}
 
+{{ set_default_section }}
+
 {{ list_articles }}
 
 	{{ if $column%2 == 0 }}

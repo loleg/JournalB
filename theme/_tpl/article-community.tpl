@@ -1,3 +1,5 @@
+{{ set_default_section }}
+
 {{ include file="_tpl/community-authors.tpl" }}
 
 {{ if $gimme->article->box!="" }}
