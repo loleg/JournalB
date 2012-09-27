@@ -65,8 +65,9 @@ function logoutDisqus() {
 	$.get('/favorites/logout', function(data) {
 		if (typeof console != 'undefined') console.log(data);
 	});
-	if (window.confirm('Aus Journal B-Community abmelden?')) {
-		window.location = $('.dsq-logout-link a').attr('href')
+	var logoutlink = $('.dsq-logout-link a').attr('href');
+	if (typeof logoutlink != 'undefined' && window.confirm('Aus Journal B-Community abmelden?')) {
+		window.location = logoutlink;
 	}
 }
 

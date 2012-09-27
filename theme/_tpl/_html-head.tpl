@@ -1,8 +1,8 @@
 {{ assign var="DEV_ENV" value="1" }}
 <!DOCTYPE html>
-<!--[if IE]-->
+<!--[if IE]>
 <html class="ie" lang="de">
-<!--[else]-->
+<![endif]--><!--[if !IE]><!-->
 <html lang="de">
 <!--<![endif]--> 
 <head>
