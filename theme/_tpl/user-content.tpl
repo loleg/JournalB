@@ -8,7 +8,7 @@
 	</div>
 
 	{{ $articles = array() }}
-	{{ list_articles ignore_publication="true" ignore_issue="true" ignore_section="true" constraints="author is $escapedName" order="bypublishdate desc" }}
+	{{ list_articles ignore_publication="true" ignore_issue="true" ignore_section="true" constraints="author is $escapedName issue greater_equal 3" order="bypublishdate desc" }}
 		{{ if not $articles[$gimme->article->number] }}
 			{{ $articles[$gimme->article->number]=true }}
 			{{ include file="_tpl/article-mini.tpl" }}
