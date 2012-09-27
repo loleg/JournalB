@@ -1,5 +1,4 @@
-var favoritesHasLogin = false, favoritesStartLogin = true, favoritesMustReload = false;
-
+// Is the DISQUS API available
 function checkDisqusApi() {
 	if (typeof DISQUS == 'undefined') return false;
 	if (typeof DISQUS.jsonData == 'undefined') return false;
@@ -7,6 +6,7 @@ function checkDisqusApi() {
 	return true;
 }
 
+// Check Disqus state on load
 function helloDisqus() {
 	if (!checkDisqusApi()) {
 		if (typeof console != 'undefined') { console.log('API unavailable!'); }
@@ -26,26 +26,23 @@ function helloDisqus() {
 	return true;
 }
 
+// Process login request
+var favoritesHasLogin = false, 
+	favoritesStartLogin = false;
 function loginDisqus() {
 	if (!checkDisqusApi()) return false;
 	var checkDisqusLogin = function() {
 		if (DISQUS.jsonData.request.is_authenticated) {
-			return helloDisqus();
-			if (!DISQUS.jsonData.request.is_remote) {
-				// Proceed to auth confirm page
-				window.location = '/favorites/login';
+			if (favoritesStartLogin) {
+				window.location.reload();
 			} else {
-				// Complete profile signup
-				if (favoritesMustReload) window.location.reload();
-				favoritesMustReload = true;
-				return true;
+				return helloDisqus();
 			}
 		} else {
 			window.setTimeout(checkDisqusLogin, 200);
 		}
 		return false;
 	};
-	// Process login request
 	if (DISQUS.jsonData.request.is_authenticated) {
 		return checkDisqusLogin();
 	} else {
@@ -56,9 +53,8 @@ function loginDisqus() {
 		} else {
 			DISQUS.dtpl.actions.fire('auth.login');
 		}
-		if (favoritesStartLogin) {
-			favoritesStartLogin = false;
-			
+		if (!favoritesStartLogin) {
+			favoritesStartLogin = true;
 			window.setTimeout(checkDisqusLogin, 200);
 		}
 	}

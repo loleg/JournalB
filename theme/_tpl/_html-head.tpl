@@ -9,14 +9,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
-    
-    {{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
-    	<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/native-application.less' }}">
-	{{ /if }}
-	
-	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">
 	
     <script type="text/javascript">
     	{{ if $DEV_ENV }}
@@ -29,8 +21,24 @@
 		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
 			document.cookie='HTTP_IS_RETINA=1;path=/';
 	</script>
+
+   	{{ if !$DEV_ENV }}
+		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
+		
+		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
+			<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/native-application.less' }}">
+		{{ /if }}
+		
+		<script src="{{ url static_file='_js/less.min.js' }}" type="text/javascript"></script>
+	{{ else }}
+		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/style.css' }}">
+		
+		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
+			<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/native-application.css' }}">
+		{{ /if }}
+	{{ /if }}
 	
-	<script src="{{ url static_file='_js/less.min.js' }}" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="{{ url static_file='_img/favicon.ico' }}">
