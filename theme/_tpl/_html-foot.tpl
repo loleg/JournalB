@@ -68,7 +68,7 @@
 /* ]]> */
 
 /* browser-update */
-var $buoop = { l: 'de', text: 'Um die volle Funktionalität der Journal-B-Website zu geniessen, empfehlen wir Ihnen, ihren Browser auf die neuste Version aufzurüsten' }
+var $buoop = { l: 'de', text: 'Um die volle Funktionalit&auml;t der Journal-B-Website zu geniessen, empfehlen wir Ihnen, ihren Browser auf die neuste Version aufzur&uuml;sten' }
 $buoop.ol = window.onload; 
 window.onload=function(){ 
  try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
