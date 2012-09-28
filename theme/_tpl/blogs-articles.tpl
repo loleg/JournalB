@@ -14,8 +14,7 @@
 
 		<div class="info_block">
 			<date>{{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}</date> | 
-			<date>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</date> | 
-			Nummer {{ $gimme->article->number }}
+			<date>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</date>
 		</div>
 		<div class="author mainauthor"><a href="{{ if $gimme->article->author->user->uname }}{{ $view->url(['username' => $gimme->article->author->user->uname], 'user') }}{{ /if }}">{{ $gimme->article->author->name }}</a></div>
 	
