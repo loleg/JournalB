@@ -1,8 +1,10 @@
-{{ if $smarty.get.limit }} {{ $articles_on_page = $smarty.get.limit }} {{ else }} {{ $articles_on_page = 30 }}  {{ /if }}
-
-{{ assign var="column" value="0" }}
-{{ assign var="articles_num" value="0" }}
-{{ assign var="articles_num_stock" value="0" }}
+{{ $articles_on_page = 30 }}
+{{ $column = 0 }}
+{{ $articles_num = 0 }}
+{{ $articles_num_stock = 0 }}
+{{ $articles_num_rendered = 0 }}
+{{ $articles_num_total = 0 }}
+{{ php }} $template->assign('articles_start',$_GET['ls-art0']); {{ /php }}
 
 {{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue greater_equal 3 `$condition` is on" length="{{ $articles_on_page }}" }}
 	{{ $articles[$articles_num]["number"] = $gimme->article->number }}
@@ -10,6 +12,7 @@
 	{{ $articles[$articles_num]["rendered"] = false }}
 	{{ $articles[$articles_num]["newsbox"] = {{ include file="_tpl/newsbox.tpl" }} }}
 	{{ $articles_num = $articles_num + 1 }}
+	{{ $articles_num_total = $articles_num_total + $gimme->current_list->count }}
 {{ /list_articles }}
 
 {{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue greater_equal 6 `$condition` is off" length="`$articles_on_page + 2 - $articles_num`" }}
@@ -18,12 +21,15 @@
 	{{ $articles[$articles_num]["rendered"] = false }}
 	{{ $articles[$articles_num]["newsbox"] = {{ include file="_tpl/newsbox.tpl" }} }}
 	{{ $articles_num = $articles_num + 1 }}
+	{{ $articles_num_total = $articles_num_total + $gimme->current_list->count }}
 {{ /list_articles }}
 
 {{ $articles_num_stock = $articles_num }}
 {{ if $articles_num > $articles_on_page }} {{ $articles_num = $articles_on_page }} {{ /if }}
 				
 {{ if $articles_num >= 8 }} {{ $blogs_pos = 8 }} {{ else }} {{ $blogs_pos = 2 }} {{ /if }}
+
+{{ if $articles_start > $blogs_pos }} {{ $show_blogs = false }} {{ /if }}
 				
 {{ $i = 0 }}
 {{ while $i < $articles_num_stock }}
@@ -61,6 +67,8 @@
 		
 		{{ $articles[$ci]["newsbox"] }}
 		
+		{{ $articles_num_rendered = $articles_num_rendered+1 }}
+		
 	{{ if $column%2 == 0 }}
 		</div>
 	{{ else }}
@@ -75,10 +83,10 @@
 
 {{ if $column%2 == 1 }}</div>{{ /if }}
 
-{{ if $articles_on_page<=$articles_num_stock }}
+{{ if ($articles_start+$articles_num_rendered)<$articles_num_total }}
 	<div class="weitere">
 		<div class="wline"></div>
-		<a href="{{ url options="section" }}?limit={{ $articles_on_page+30 }}">weitere Artikel</a>
+		<a href="{{ url options="section" }}?ls-art0={{ $articles_start+$articles_on_page }}">weitere Artikel</a>
 	</div>
 {{ /if }}
 
