@@ -17,12 +17,12 @@
 				
 				{{ if $item->is_video }}
 					{{ $is_gallery = true }}
-					{{ $url = $item->video->url|replace:'youtu.be':'youtube.com/v' }}
-					{{ $url = $url|replace:'youtube.com/embed':'youtube.com/v' }}
+					{{ $url = $item->video->url|replace:'youtu.be':'www.youtube.com/embed' }}
+					{{ $url = $url|replace:'youtube.com/embed':'youtube.com/embed' }}
 					{{ if preg_match("/youtube/", $url) }}
-						<li class="sli_video"><iframe src="{{ $url }}?feature=player_embedded&html5=1" frameborder="0"  alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
+						<li class="sli_video"><iframe src="{{ $url }}?hl=de_DE" frameborder="0" alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
 					{{ else }}
-						<li class="sli_video"><iframe src="{{ $url }}" frameborder="0"  alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
+						<li class="sli_video"><iframe src="{{ $url }}" frameborder="0" alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
 					{{ /if }}
 				{{ /if }}
 			{{ /foreach }}
