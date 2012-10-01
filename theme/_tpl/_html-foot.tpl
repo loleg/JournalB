@@ -1,4 +1,4 @@
-{{ assign var="DEV_ENV" value="0" }}
+{{ assign var="DEV_ENV" value="1" }}
 {{ if $DEV_ENV }}
 <!-- DEV -->
 <script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
@@ -33,12 +33,6 @@
 {{ /if }}
 
 /* disqus: */
-	(function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
     if ($('#disqus_thread').length == 0) {
     	$('body').append('<div class="hidden" id="disqus_thread"></div>');
     }
@@ -58,7 +52,7 @@
 	(function() {
 		var flt = document.createElement('script'); flt.type = 'text/javascript'; flt.async = true;
 		flt.src = '//api.flattr.com/js/0.6/load.js?mode=auto';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(flt);
 	})();
 /* ]]> */
 /* /flattr */

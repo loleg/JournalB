@@ -38,7 +38,7 @@
 {{ /list_related_articles }}
 
 <div class="row community-buttons">
-	<button onclick="showComments()" class="button-black" type="button">Kommentare<br>(<a href="{{ $gimme->url->uri_path }}#disqus_thread" onchange="return;"></a>) lesen</button>
+	<button onclick="showComments()" class="button-black" type="button">Kommentare<br>(<a href="{{ $gimme->url->url }}#disqus_thread" class="num-comments" onchange="return;"></a>) lesen</button>
 	<button style="float: right;" onclick="document.location='#comments'" class="button-black" type="button">Kommentar<br>verfassen</button>
 </div>
 

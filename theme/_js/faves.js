@@ -23,6 +23,8 @@ function helloDisqus() {
 		setCookie('jsdisqus', '', 7);
 	}
 	initFavorites();
+	/* Sets the article count */
+	$('.num-comments').html($('#dsq-num-posts').text());
 	return true;
 }
 
