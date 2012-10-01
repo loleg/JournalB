@@ -52,11 +52,11 @@
 	<div class="mcontentbar">
 	{{ if $view->nologin }}
 	
-		<h3>Bitte melde dich in der Journal-B-Community an, um Artikel zu favorisieren und ein persönliches Archiv anzulegen.</h3>
+		<h3>Bitte melden Sie sich in der Journal-B-Community an, um Artikel zu favorisieren und ein persönliches Archiv anzulegen.</h3>
 	
 	{{ else }}
 
-		<h3>Du hast noch keine Artikel favorisiert.</h3>
+		<h3>Sie haben noch keine Artikel favorisiert.</h3>
 		
 	{{ /if }}
 	</div>

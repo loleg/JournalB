@@ -1,4 +1,4 @@
-{{ assign var="DEV_ENV" value="1" }}
+{{ assign var="DEV_ENV" value="0" }}
 {{ if $DEV_ENV }}
 <!-- DEV -->
 <script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
@@ -43,7 +43,7 @@
     	$('body').append('<div class="hidden" id="disqus_thread"></div>');
     }
 	var disqus_config = function () { 
-		this.language = "de_inf"; // de_formal
+		this.language = "de_formal";
 		this.callbacks.afterRender = [helloDisqus];
 	};
 	(function() {
@@ -55,17 +55,13 @@
 
 /* flattr: */
 /* <![CDATA[ */
-(function() {
-    var s = document.createElement('script');
-    var t = document.getElementsByTagName('script')[0];
-
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = '//api.flattr.com/js/0.6/load.js?mode=auto';
-
-    t.parentNode.insertBefore(s, t);
- })();
+	(function() {
+		var flt = document.createElement('script'); flt.type = 'text/javascript'; flt.async = true;
+		flt.src = '//api.flattr.com/js/0.6/load.js?mode=auto';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
 /* ]]> */
+/* /flattr */
 
 /* browser-update */
 var $buoop = { l: 'de', text: 'Um die volle Funktionalit&auml;t der Journal-B-Website zu geniessen, empfehlen wir Ihnen, ihren Browser auf die neuste Version aufzur&uuml;sten' }

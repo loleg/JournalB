@@ -20,11 +20,7 @@
 					{{ $url = $item->video->url|replace:'youtu.be':'youtube.com/v' }}
 					{{ $url = $url|replace:'youtube.com/embed':'youtube.com/v' }}
 					{{ if preg_match("/youtube/", $url) }}
-						<li class="sli_video"><object>
-							<param name="movie" value="{{ $url }}"></param>
-							<param name="wmode" value="opaque">
-							<embed src="{{ $url }}" type="application/x-shockwave-flash"></embed>
-						</object></li>
+						<li class="sli_video"><iframe src="{{ $url }}?feature=player_embedded&html5=1" frameborder="0"  alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
 					{{ else }}
 						<li class="sli_video"><iframe src="{{ $url }}" frameborder="0"  alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
 					{{ /if }}
