@@ -48,9 +48,10 @@
 				{{ if $gimme->article->who }}
 					schrieb {{ $gimme->article->who }}
 				{{ /if }}
-				{{ if $gimme->article->publish_date }}
-					am {{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }} um 
-					{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+				{{ if $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" == $smarty.now|camp_date_format:"%d.%m.%Y"}}
+					um {{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+				{{ else }}
+					am {{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }}
 				{{ /if }}
 			</time>
 			
@@ -64,8 +65,12 @@
 				
 			{{ if $gimme->article->publish_date }}
 				<time>
-					schrieb am {{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }} um 
-					{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }} zu
+					schrieb  
+					{{ if $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" == $smarty.now|camp_date_format:"%d.%m.%Y"}}
+						um {{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
+					{{ else }}
+						am {{ $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" }} zu
+					{{ /if }} 
 				</time>
 			{{ /if }}
 		{{ /if }}
