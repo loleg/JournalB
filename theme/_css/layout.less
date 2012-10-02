@@ -472,7 +472,7 @@
 		text-shadow: none;
 	}
 	.header .login .button:hover, .header .login span:hover {
-		.underlineblack;
+		text-decoration: underline;
 	}
 	.ie .header .login .button {
 		padding: 6px;
@@ -981,7 +981,7 @@
         text-decoration: none;
     }
     .socialbox a:hover div {
-	    .underlineblack;
+		text-decoration: underline;
     }
     
     .icon {
@@ -1102,92 +1102,103 @@
 	}
 	
 	/* Disqus Classic */
-	#disqus_thread h3 { 
-		font-size: 175%; margin: 0 0 0.5em; 
-		content: "Kommentare";
+	#disqus_thread {
+		#dsq-content h3, h3 { 
+			font-size: 175%; 
+			margin: 0; padding: 1em 0 0.5em; 
+			content: "Kommentare";
+		}
+		.dsq-textarea-background, .dsq-post-tools {
+		    background: none;
+		    border: none;
+		    border-radius: 6px 6px 6px 6px;
+		    box-shadow: none;
+		}
+		.dsq-textarea-wrapper {
+		    background: @color-front;
+		    border-radius: 4px;
+		    height: auto;
+		    margin-bottom: 15px;
+		}
+	    #dsq-reply .dsq-post-tools {
+		    height: 3em;
+		    opacity: 1;
+		    overflow: visible;
+		}
+		.dsq-button, #dsq-content button.dsq-submit {
+		    .button-black;
+		    text-shadow: none;
+		}
+		.dsq-reply {
+		    border-bottom: 2px solid black;
+		    margin-bottom: 1.5em;
+		}
+		.dsq-h3-reactions {
+			border-top: 2px solid black;
+		}
+		.dsq-textarea-reply {
+		    margin-bottom: 10px;
+		}
+		#dsq-sort-by {
+		    float: right;
+		    margin-top: 0.2em;
+		}
+		.dsq-comment-header {
+		    background: @color-front;
+		    border: none;
+		    border-radius: 4px;
+		    font: 90%/100% AlekseiBlack, Georgia, Times, serif;
+		    letter-spacing: 0.04em;
+		}
+		.dsq-comment-header span {
+			font-weight: normal;
+		}
+		.dsq-comment-meta a, .dsq-comment-actions a {
+		    color: black;
+		    opacity: 1;
+		}
+		.dsq-commenter-name, #dsq-content .dsq-name {
+		    font-weight: normal;
+		}
+		.dsq-comment-meta a, .dsq-editedtxt {
+		    font: 90%/100% AlekseiThin, Georgia, Times, serif;
+		}
+		.dsq-editedtxt {
+		    font-size: 12px;
+		}
+		.dsq-comment-actions a {
+		    font: 110%/100% AlekseiBlack, Georgia, Times, serif;
+		    letter-spacing: 0.02em;
+		}
+		.dsq-comment-text p {
+		    font: 98%/114% "AlekseiRegular", Georgia, Times, serif;
+	    }
 	}
-	#disqus_thread .dsq-textarea-background, #disqus_thread .dsq-post-tools {
-	    background: none;
-	    border: none;
-	    border-radius: 6px 6px 6px 6px;
-	    box-shadow: none;
-	}
-	#disqus_thread .dsq-textarea-wrapper {
-	    background: @color-front;
-	    border-radius: 4px;
-	    height: auto;
-	    margin-bottom: 15px;
-	}
-    #disqus_thread #dsq-reply .dsq-post-tools {
-	    height: 3em;
-	    opacity: 1;
-	    overflow: visible;
-	}
-	#disqus_thread .dsq-button, #disqus_thread #dsq-content button.dsq-submit {
-	    .button-black;
-	    text-shadow: none;
-	}
-	#disqus_thread .dsq-reply {
-	    border-bottom: 2px solid black;
-	    margin-bottom: 1.5em;
-	}
-	#disqus_thread .dsq-textarea-reply {
-	    margin-bottom: 10px;
-	}
-	#dsq-sort-by {
-	    float: right;
-	    margin-top: 0.2em;
-	}
-	#disqus_thread .dsq-comment-header {
-	    background: @color-front;
-	    border: none;
-	    border-radius: 4px;
-	    font: 90%/100% AlekseiBlack, Georgia, Times, serif;
-	    letter-spacing: 0.04em;
-	}
-	#disqus_thread .dsq-comment-header span {
-		font-weight: normal;
-	}
-	#disqus_thread .dsq-comment-meta a, #disqus_thread .dsq-comment-actions a {
-	    color: black;
-	    opacity: 1;
-	}
-	#disqus_thread .dsq-commenter-name, #disqus_thread #dsq-content .dsq-name {
-	    font-weight: normal;
-	}
-	#disqus_thread .dsq-comment-meta a, .dsq-editedtxt {
-	    font: 90%/100% AlekseiThin, Georgia, Times, serif;
-	}
-	#disqus_thread .dsq-editedtxt {
-	    font-size: 12px;
-	}
-	#disqus_thread .dsq-comment-actions a {
-	    font: 110%/100% AlekseiBlack, Georgia, Times, serif;
-	    letter-spacing: 0.02em;
-	}
-	.ie #disqus_thread .dsq-like-thread {
-		width: 20px;
-		height: 22px !important;
-		line-height: 22px;
-		overflow: hidden;
-	}
-	.ie #disqus_thread .dsq-like-thread .dsq-toolbar-label {
-		display: none;
-	}
-	.ie #disqus_thread .dsq-dislike-thread {
-		width: 20px;
-		height: 22px !important;
-		line-height: 22px;
-		overflow: hidden;
-	}
-	.ie #disqus_thread .dsq-community-box {
-		width: 20px;
-		height: 22px !important;
-		line-height: 22px;
-		overflow: hidden;
-	}
-	.ie #disqus_thread .dsq-global-toolbar-dropdown-container {
-		display: none;
+	.ie #disqus_thread {
+		.dsq-like-thread {
+			width: 20px;
+			height: 22px !important;
+			line-height: 22px;
+			overflow: hidden;
+		}
+		.dsq-like-thread .dsq-toolbar-label {
+			display: none;
+		}
+		.dsq-dislike-thread {
+			width: 20px;
+			height: 22px !important;
+			line-height: 22px;
+			overflow: hidden;
+		}
+		.dsq-community-box {
+			width: 20px;
+			height: 22px !important;
+			line-height: 22px;
+			overflow: hidden;
+		}
+		.dsq-global-toolbar-dropdown-container {
+			display: none;
+		}
 	}
 	#disqus_thread #dsq-account-dropdown, #disqus_thread #dsq-subscribe, #dsq-realtime-options, 
 	#disqus_thread #dsq-dislike-thread-button, #disqus_thread .dsq-like-activity { display: none; }
@@ -1201,7 +1212,7 @@
 	    	font-weight: normal;
 	    }
 	    .dsq-collapse, .dsq-comment-text p {
-		    font: 110%/125% "AlekseiRegular", Georgia, Times, serif;
+		    font: 98%/114% "AlekseiRegular", Georgia, Times, serif;
 	    }
 	}
 
@@ -1231,12 +1242,12 @@
 	}
 	article .subtitle {
 		float: left;
-		line-height: 1.35em;
+		line-height: 1.6em;
 		letter-spacing: 0.03em;
 		margin-bottom: -0.1em;
 		margin-right: .3em;
 		text-transform: uppercase;
-		font-size: 105%;
+		font-size: 94%;
 		.headline-font;
 	}
 
