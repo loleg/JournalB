@@ -68,7 +68,7 @@
     .newsbox .dsect {
         margin-bottom: 3px;
     }
-    .newsbox .dsect .description {
+    .newsbox.layoutlist .dsect .description {
 		height: 2.4em;
 		overflow-y: hidden;
 	}
@@ -1270,7 +1270,7 @@
 		margin-bottom: 28px;
 		display: block;
 	}
-	.article_info author a, .article_info .author a {
+	.article_info author span, .article_info .author span {
 		.baselink;
         font-size: 70%;
         line-height: 143%;
@@ -1371,7 +1371,7 @@
 	.controlicon.comments:hover { background-image: url(../_img/control-comments-black.png); }
 	
 	.controlbar_mobile {
-		display: none;
+		display: none; margin-bottom:1em;
 	}
 	.controlbar_mobile .controlicons {
 		margin-bottom: 8px;
@@ -1381,8 +1381,8 @@
 	.controlbar_mobile .controlicon {
 		float: left;
 		margin-bottom: 0px;
-		margin-right: 20px;
-		width: 43px !important;
+		margin-left: 10px;
+		width: 56px !important;
 		left: 0px !important;
 		position: inherit !important;
 	}
@@ -1394,6 +1394,19 @@
 		margin-top: -10px;
 		margin-left: -4px;
 		margin-right: 5px;
+	}
+	.controlbar_mobile h1 {
+	    font-size: 222%;
+	    left: 50%;
+	    margin: 5px 0 0 -2.1em;
+	    position: absolute;
+	}
+	.controlbar_mobile .search {
+	    float: right;
+	    margin-right: 16px;
+	}
+	.controlbar_mobile .search form {
+		margin: 0;
 	}
 	
 	#article_image img {

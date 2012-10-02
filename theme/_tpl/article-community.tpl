@@ -18,7 +18,6 @@
 
 {{ if $gimme->article->issue->number > 2 }}
 	<p>
-	<a href="{{ uri options="article" }}" class="baselink">{{ $gimme->article->name }}</a>
 	{{ $publish_date = $gimme->article->publish_date }}
 	{{ if $publish_date }}
 		<div class="info">
@@ -27,6 +26,7 @@
 			<author><span>{{ $gimme->article->author->name }}</span></author>
 		</div>
 	{{ /if }}
+		<a href="{{ uri options="article" }}" class="baselink">{{ $gimme->article->name }}</a>
 	</p>
 {{ /if }}
 

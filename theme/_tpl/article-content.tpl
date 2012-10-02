@@ -114,6 +114,12 @@
 			<p><em>403</em></p>
 		{{ /if }}
 	</article>
+	
+	{{ if $gimme->article->box_under != "" }}
+		<div class="row adbox community-box">
+			{{ $gimme->article->box_under }}
+		</div>
+	{{ /if }}
 
 	<div class="article-community mobile"></div>
 	

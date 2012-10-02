@@ -7,10 +7,14 @@
 	    {{ /search_form }}
     </div>
     {{ /if }}
-    
+
 	<div class="aare">
         Aare<br><span class="wert"></span>&deg;
     </div>
     
-	{{ include file="_tpl/control-icons.tpl" }}
+    <h1 class="logo" onclick="document.location.href='/'">
+        <a href="/">Journal B</a>
+    </h1>
+    
+    <br clear="all"/>
 </div>

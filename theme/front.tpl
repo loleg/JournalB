@@ -10,6 +10,8 @@
 		{{ include file="_tpl/header.tpl" }}
 
 		<div class="row content">
+		
+			{{ include file="_tpl/mobile-controlbar-front.tpl" }}
 
 			{{ include file="_tpl/newsrows.tpl" condition="OnFrontPage" show_blogs="true" }}
 			

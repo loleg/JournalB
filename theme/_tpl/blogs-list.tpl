@@ -12,23 +12,19 @@
 					<h1><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></h1>
 					<description>
 						{{ $publish_date = false }}
-						{{ list_articles }}
-							<p><a href="{{ uri options="article" }}"> - {{ $gimme->article->name }}</a></p>
-							{{ if not $publish_date }} {{ $publish_date = $gimme->article->publish_date }} {{ /if }}
+						{{ list_articles length="3" }}
+							<div class="dsect">
+							<a href="{{ url options="article" }}">
+								<div class="description"><span class="capitalize">{{ $gimme->article->author->name }}</span> {{ $gimme->article->name }}</div>
+								<div class="info">
+									<date>{{ $gimme->article->publish_date|camp_date_format:"%e.%m.%Y" }}</date> | 
+									<date>{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}</date>
+								</div>
+							</a>
+							</div>
 						{{ /list_articles }}
 					</description>
 				</div>
-
-				{{ if $publish_date }}
-				<div class="info_block">
-					<date>{{ $publish_date|camp_date_format:"%d.%m.%Y" }}</date> | 
-					<date>{{ $publish_date|camp_date_format:"%H:%i" }}</date> 
-				</div>
-				{{ else }}
-				<div class="info_block">
-					No articles published
-				</div>
-				{{ /if }}
 				
 			</div>
 		</div>
