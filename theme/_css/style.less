@@ -22,9 +22,8 @@
 	background-size: 1px @height;
 	padding-bottom: @padding-bottom;
 }
-.underlineblack {
-	text-decoration: underline;
-}
+.underlineblack { .underline("-black",1px,0px); }
+.underlinewhite { .underline("-white",1px,0px); }
 
 body {
 	background: #fff;
@@ -100,6 +99,7 @@ h6 { font-size: 100%; /*17px*/ font-family: "JournalBRegular", Helvetica, Verdan
 .community-title.underline      { border-bottom: 2px solid #a19e9c; text-decoration: none !important; display: inline-block; margin-bottom: 6px; }
 .collapse_box.visible .community-title.underline { border-bottom: 2px solid #a19e9c !important; }
 a:hover .community-title, a:hover .author span { .underlineblack; }
+a:hover .community-title.white { .underlinewhite; }
 .ie .community-title			{ letter-spacing: normal; }
 
 /* Lists (Links / Article Titles) */
@@ -208,8 +208,9 @@ blockquote a {
 
 /* Links */
 a, a:visited, a:hover, a:focus  { color: #000; text-decoration: none; outline: 0; }
-p a                             { line-height: inherit; .underline("-black",3px,1px); }
-p a[href^='http://www.journal-b.ch'] { .underline("",3px,1px); font-family: "AlekseiRegular", Georgia, Times, serif !important; }
+p a                             { line-height: inherit; .underlineblack; }
+p a[href^='http://www.journal-b.ch'], p a[href^='http://bern.lab.sourcefabric.org'], p a[href^='/']
+{ .underline("",3px,1px); font-family: "AlekseiRegular", Georgia, Times, serif !important; }
 p a[href*='/alltag/'] { .underline("-alltag",3px,1px); }
 p a[href*='/kultur/'] { .underline("-kultur",3px,1px); }
 p a[href*='/politik/'] { .underline("-politik",3px,1px); }
