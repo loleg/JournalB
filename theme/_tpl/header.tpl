@@ -10,7 +10,7 @@
 				{{ list_sections }}
 					<li class="nav-{{ $gimme->section->url_name }} {{ if $tpl_subsections and $current_section and $gimme->section->number != $current_section }}unactive{{ /if }}"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
 				{{ /list_sections }}
-				<li class="nav-fav"><a href="/favorites">Favoriten</a></li>
+				<li class="nav-fav"><a href="/favorites" style="background-size:0">Favoriten</a></li>
 				<div class="clear"></div>
 			{{ /local }}
         </ul>

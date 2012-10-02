@@ -15,6 +15,13 @@
 		<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
 	</div>
 	
+	<div class="shareicon" style="margin-right:0">
+		<span class='st_email' displayText='Email'></span>
+		<script type="text/javascript">var switchTo5x=true;</script>
+		<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+		<script type="text/javascript">stLight.options({publisher: "ur-73cd3ab1-2cfc-3b8e-1133-f5a29e68dd9a"});</script>
+	</div>
+	
 	<div style="clear:both"></div>
 </div>
 {{ /if }}

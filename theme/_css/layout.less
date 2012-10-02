@@ -646,7 +646,7 @@
 	}
 	.footer-sections li {
 		display: block;
-		margin-top: 10px;
+		margin-top: 14px;
 		margin-bottom: 0px;
 		height: 30px;
 		padding: 0px;
@@ -676,19 +676,18 @@
 	}
 	.footer-box {
 		width: 133px;
-		height: 140px;
+		height: 152px;
 		padding-left: 15px;
 		padding-right: 15px;
 		margin-left: 20px;
 		float: left;
 		padding-top: 5px;
 		padding-bottom: 5px;
-		overflow: hidden;
 		margin-top: 0px;
 		display: block;
 	}
 	.ie .footer-box {
-		height: 150px;
+		height: 152px;
 		width: 163px;
 	}
 	.footer-box .caption {
@@ -786,6 +785,8 @@
 	.commentbox author, .commentbox .author {
 		.baselink;
 		line-height: 140%; /*20px*/
+		overflow: hidden;
+		max-height: 4.2em;
 	}
 	.commentbox author:hover, .commentbox .author:hover {
 		background: none;
@@ -802,7 +803,6 @@
 		background-color: @color-front;
 		z-index: 2;
 		top: -1px;
-		width: 100%;
     }
 	.commentbox.without_icon author, .commentbox.without_icon .author {
 		position: inherit !important;
@@ -988,23 +988,23 @@
 	    display:inline-block; text-indent: -9999px; color:transparent;
     }
     .icon-disqus-white {
-		background: url('../_img/disqus-white-small.png') no-repeat;
+		background: #CECDCC url('../_img/disqus-white-small.png') no-repeat;
 		background-size: 100%; width: 26px; height: 20px;    
     }
     .icon-twitter {
-		background: url('../_img/twitter_.png') no-repeat;
+		background: #FFFFFF url('../_img/twitter_.png') no-repeat;
 		background-size: 100%; width: 39px; height: 31px;    
     }
     .icon-twitter-white {
-		background: url('../_img/twitter-white-small.png') no-repeat;
+		background: #CECDCC url('../_img/twitter-white-small.png') no-repeat;
 		background-size: 100%; width: 26px; height: 20px;    
     }
     .icon-facebook {
-		background: url('../_img/facebook_.png') no-repeat;
+		background: #FFFFFF url('../_img/facebook_.png') no-repeat;
 		background-size: 100%; width: 32px; height: 36px;    
     }
     .icon-facebook-white {
-		background: url('../_img/facebook-white-small.png') no-repeat;
+		background: #CECDCC url('../_img/facebook-white-small.png') no-repeat;
 		background-size: 100%; width: 26px; height: 20px;    
     }
     .spenden .icon {
@@ -1253,7 +1253,7 @@
 		left: 0px;
 		width: 100px;
 		text-align: center;
-		margin-top: 5px;
+		margin-top: 2px;
 	}
     .article_info author, .article_info .author {
 		margin-bottom: 28px;

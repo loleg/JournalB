@@ -126,6 +126,7 @@ function initFavorites() {
 		
 		// Events on header icons
 		$(".header .login").show();
+		$(".nav li.nav-fav a").css('background-size', '');
 		
 		// Community link
 		$('.community-popup').click(function() {
