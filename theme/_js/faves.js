@@ -24,7 +24,9 @@ function helloDisqus() {
 	}
 	initFavorites();
 	/* Sets the article count */
-	$('.num-comments').html('(' + $('#dsq-num-posts').text() + ')');
+	if ($('#dsq-num-posts').length > 0 && $('#dsq-num-posts').text() != "0") {
+		$('.num-comments').html('(' + $('#dsq-num-posts').text() + ')');
+	}
 	return true;
 }
 

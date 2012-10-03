@@ -220,16 +220,18 @@ blockquote a {
 /* Links */
 a, a:visited, a:hover, a:focus  { color: #000; text-decoration: none; outline: 0; }
 p a                             { line-height: inherit; .underlineblack; }
-p a[href^='http://www.journal-b.ch'], p a[href^='http://bern.lab.sourcefabric.org'], p a[href^='/']
-{ .underline("",3px,1px); font-family: "AlekseiRegular", Georgia, Times, serif !important; }
-p a[href*='/alltag/'] { .underline("-alltag",3px,1px); }
-p a[href*='/kultur/'] { .underline("-kultur",3px,1px); }
-p a[href*='/politik/'] { .underline("-politik",3px,1px); }
-p a[href*='/blogs/'] { .underline("-blogs",3px,1px); }
-p a[href*='/dossiers/'] { .underline("-dossiers",3px,1px); }
-p a[href*='/alltag/']:hover { .underline("-alltag",3px,1px); }
-p a[href*='/kultur/']:hover { .underline("-kultur",3px,1px); }
-p a[href*='/politik/']:hover { .underline("-politik",3px,1px); }
-p a[href*='/blogs/']:hover { .underline("-blogs",3px,1px); }
-p a[href*='/dossiers/']:hover { .underline("-dossiers",3px,1px); }
+p a[href^='http://www.journal-b.ch'], p a[href^='http://bern.lab.sourcefabric.org'], p a[href^='/'] { 
+	.underline("",3px,1px); 
+	font-family: "AlekseiRegular", Georgia, Times, serif !important; 
+	&[href*='/alltag/'] { .underline("-alltag",3px,1px); }
+	&[href*='/kultur/'] { .underline("-kultur",3px,1px); }
+	&[href*='/politik/'] { .underline("-politik",3px,1px); }
+	&[href*='/blogs/'] { .underline("-blogs",3px,1px); }
+	&[href*='/dossiers/'] { .underline("-dossiers",3px,1px); }
+	&[href*='/alltag/']:hover { .underline("-alltag",3px,1px); }
+	&[href*='/kultur/']:hover { .underline("-kultur",3px,1px); }
+	&[href*='/politik/']:hover { .underline("-politik",3px,1px); }
+	&[href*='/blogs/']:hover { .underline("-blogs",3px,1px); }
+	&[href*='/dossiers/']:hover { .underline("-dossiers",3px,1px); }
+}
 /*p a:visited						{ .underline("",3px,1px); }*/
