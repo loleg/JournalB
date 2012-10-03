@@ -83,6 +83,9 @@ function articleImageAlts()
 		}
 		
 	});
+	$('.author-block .author-bio').each(function() {
+		$(this).html(urlify($(this).text()));
+	});
 }
 
 // Init collapse elements

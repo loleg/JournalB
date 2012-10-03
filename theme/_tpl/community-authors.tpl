@@ -9,7 +9,7 @@
 			{{ $ren = false }}
 			{{ foreach from=$rendered_authors item=author }} {{ if $author == $gimme->author->name }} {{ $ren = true }} {{ break }} {{ /if }} {{ /foreach }}
 			{{ if not $ren }}		
-				<div class='author-block'>
+				<div class="author-block">
 					<div style="background-image:url('{{ $gimme->author->picture->imageurl }}')" class="author-pic"></div>
 					<div class="author-name">
 					  {{ if $gimme->author->user->defined }}
@@ -20,7 +20,9 @@
 					    </a>
 					  {{ /if }}	
 					</div>
-					{{ $gimme->author->biography->text }}
+					<div class="author-bio">
+						{{ $gimme->author->biography->text }}
+					</div>
 				</div>
 				<div class='clear'></div>
 				{{ $rendered_authors[$i] = $gimme->author->name }}
