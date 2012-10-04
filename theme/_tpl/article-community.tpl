@@ -11,9 +11,9 @@
 {{ list_related_articles }}
 
 	{{ if $gimme->current_list->at_beginning }}
-		<div class="row adbox collapse_box">
-			<div class="community-title grey collapse_title">Weitere Artikel zum Thema</div>
-			<div class="collapse_content">
+		<div class="row adbox">
+			<div class="community-title grey">Weitere Artikel zum Thema</div>
+			<div>
 	{{ /if }}
 
 {{ if $gimme->article->issue->number > 2 }}

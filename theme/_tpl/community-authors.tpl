@@ -2,9 +2,9 @@
 	{{ $i = 0 }}
 	{{ list_article_authors }}
 		{{ if $gimme->current_list->at_beginning }}
-		<div class="row adbox authorbox collapse_box">
-			<div class="community-title grey collapse_title">Autor/Autorin</div>
-			<div class="description collapse_content">
+		<div class="row adbox authorbox">
+			<div class="community-title grey">Autor/Autorin</div>
+			<div class="description">
 		{{ /if }}
 			{{ $ren = false }}
 			{{ foreach from=$rendered_authors item=author }} {{ if $author == $gimme->author->name }} {{ $ren = true }} {{ break }} {{ /if }} {{ /foreach }}

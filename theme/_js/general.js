@@ -46,8 +46,6 @@ $(document).ready(function() {
 	scaleCommunity();
 		
 	initShareButton();
-
-	//initFavorites();
 	
 	aareTemperaturen();
 	
@@ -55,7 +53,7 @@ $(document).ready(function() {
 		
 	updateScreenMode();	
 	
-	collapsableElements();
+	//collapsableElements();
 
 	scrollToArticleTop();
 
