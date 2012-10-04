@@ -10,7 +10,7 @@
 		<script>window.___gcfg = {lang: 'de'}; (function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })();</script>
 	</div>
 	
-	<div class="shareicon" style="margin-right:0; margin-top:1px">
+	<div class="shareicon" style="margin-top:1px">
 		<div class="fb-like" data-send="false" data-layout="button_count" data-width="100" data-height="30" data-show-faces="false"></div>
 		<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
 	</div>

@@ -26,6 +26,8 @@ function helloDisqus() {
 	/* Sets the article count */
 	if ($('#dsq-num-posts').length > 0 && $('#dsq-num-posts').text() != "0") {
 		$('.num-comments').html('(' + $('#dsq-num-posts').text() + ')');
+	} else if ($('.dsq-comment').length > 0) {
+		$('.num-comments').html('(' + $('.dsq-comment').length + ')');
 	}
 	return true;
 }

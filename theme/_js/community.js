@@ -4,9 +4,10 @@ function initShareButton()
 	$('.share').click(function() {
 		var sharebox = $('.main .sharebox');
 		if (sharebox.hasClass('initial')) {
-			sharebox.addClass('hidden')
-				.css({ position:'', visibility:'' })
-				.find('.shareicon.hidden').removeClass('hidden');
+			sharebox
+				.addClass('hidden').removeClass('initial')
+				.css({ position:'', visibility:'' }) // fix visibility for Facebook
+				.find('.shareicon.hidden').removeClass('hidden'); // unhide G+
 		}
 		if (sharebox.hasClass('hidden')) {
 			sharebox.slideDown("fast").removeClass('hidden');
