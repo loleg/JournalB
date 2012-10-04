@@ -3,6 +3,11 @@ function initShareButton()
 	// ** Share
 	$('.share').click(function() {
 		var sharebox = $('.main .sharebox');
+		if (sharebox.hasClass('initial')) {
+			sharebox.addClass('hidden')
+				.css({ position:'', visibility:'' })
+				.find('.shareicon.hidden').removeClass('hidden');
+		}
 		if (sharebox.hasClass('hidden')) {
 			sharebox.slideDown("fast").removeClass('hidden');
 			$(this).addClass('checked');

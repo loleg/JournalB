@@ -1,11 +1,11 @@
 {{ if !preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
-<div class="sharebox hidden">
+<div class="sharebox initial" style="position:absolute;visibility:hidden">
 	<div class="shareicon">
 		<a href="https://twitter.com/share" class="twitter-share-button" data-via="journalb" data-lang="de" data-related="journalb" data-hashtags="Bern">Twittern</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	</div>
 
-	<div class="shareicon">
+	<div class="shareicon hidden">
 		<div class="g-plusone" data-size="medium"></div>
 		<script>window.___gcfg = {lang: 'de'}; (function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })();</script>
 	</div>
