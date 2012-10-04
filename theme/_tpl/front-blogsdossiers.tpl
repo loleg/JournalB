@@ -5,8 +5,7 @@
 			<div class="newsboxcontent">
 				<h2><a href="/de/blogs">Neuste Blogs</a></h2>
 				<description>
-				
-					{{ list_articles length="3" order="byPublishDate desc" constraints="issue is 5" ignore_section="true" ignore_issue="true" }}
+					{{ list_articles length="3" order="byPublishDate desc" constraints="issue is 5 onFrontPage is on" ignore_section="true" ignore_issue="true" }}
 						<div class="dsect">
 						<a href="{{ url options="section" }}">
 							<div class="description"><span class="capitalize">{{ $gimme->article->section->name }}</span> {{ $gimme->article->section->description|strip_tags }}</div>
@@ -17,7 +16,6 @@
 						</a>
 						</div>
 					{{ /list_articles }}
-					
 				</description>
 			</div>
 		</div>
