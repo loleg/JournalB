@@ -219,7 +219,7 @@ function showActiveSlider()
 		$("#slider ul").attr('onclick','');
 		
 		$("#slider img").each(function(){
-			$(this).attr("src",$(this).attr("src").replace('470x315','940x630'));
+			$(this).attr("src",$(this).attr("src").replace('470x315','1600x1072'));
 		});
 	}
 	

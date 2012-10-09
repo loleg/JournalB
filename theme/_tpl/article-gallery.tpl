@@ -10,7 +10,7 @@
 			{{ foreach $slideshow->items as $item }}
 				{{ if $item->is_image }}
 					{{ if $item->image->width != 470 }} {{ continue }} {{ /if }}
-					{{ if $retina!="" }} {{ $src = $item->image->src|replace:'470x315':'940x630' }} {{ else }} {{ $src = $item->image->src }} {{ /if }}
+					{{ if $retina!="" }} {{ $src = $item->image->src|replace:'470x315':'1600x1072' }} {{ else }} {{ $src = $item->image->src }} {{ /if }}
 					{{ $is_gallery = true }}
 					<li class="sli_image"><img src="{{ $src }}" alt="{{ $item->caption }}" /></li>
 				{{ /if }}

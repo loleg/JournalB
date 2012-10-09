@@ -9,11 +9,17 @@ class MobileController extends Zend_Controller_Action
 	/* Latest 50 articles */
 	public function indexAction()
 	{
-			// Logic in template
+		// Logic in template
 	}
 	
 	/* List of web resources */
 	public function resourcesAction()
+	{
+		// Logic in template
+	}
+	
+	/* Only newsrows for a specific page */
+	public function newsPageAction()
 	{
 		// Logic in template
 	}
