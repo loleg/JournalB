@@ -166,7 +166,7 @@ function scrollToArticleTop() {
 	var scroll_top = 0;
 	
 	// Scroll search field
-	if (navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/)) 
+	if (navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/)) 
 		scroll_top += 50;
 	
 	// Scroll to top of article
