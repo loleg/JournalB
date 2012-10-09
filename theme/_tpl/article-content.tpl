@@ -62,8 +62,8 @@
 			<header>
 			
 			{{ if $gimme->article->issue->number > 5 }}
-				<div class="article_top">
-					<h1 id='articleTitle'>{{ $gimme->article->name }}</h1>
+				<div class="article_top">				
+					<h1 id="articleTitle">{{ $gimme->article->name }}</h1>
 
 					<div class="deck font-sens">
 						{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
