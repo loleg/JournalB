@@ -63,7 +63,7 @@
 			
 			{{ if $gimme->article->issue->number > 5 }}
 				<div class="article_top">
-					<h1>{{ $gimme->article->name }}</h1>
+					<h1 id='articleTitle'>{{ $gimme->article->name }}</h1>
 
 					<div class="deck font-sens">
 						{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
@@ -94,7 +94,7 @@
 						</div>
 					{{ /if }}
 					<div class="article_top">
-						<div class="title"><a name="top">{{ $gimme->article->name }}</a></div>
+						<div class="title"><a name="top" id="articleTitle">{{ $gimme->article->name }}</a></div>
 					</div>
 				</div>
 			{{ /if }}
