@@ -1,4 +1,3 @@
-{{ $tpl_subsections = true }}
 {{ include file="_tpl/_html-head.tpl" }}
 <!-- front.tpl -->
 <body id="body" class="front-page">
