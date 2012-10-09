@@ -217,3 +217,16 @@ function calculateNewsboxOverflow()
 		if (heading_lines%2==1) $(this).css("max-height","11.4em");
 	});
 }
+
+
+function getArticleTitle()
+{
+	if ($("#articleTitle").length)
+	{
+		return $("#articleTitle").html();
+	}
+	else
+	{
+		return false;
+	}
+}
