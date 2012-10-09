@@ -2,17 +2,13 @@
 
     <div class="row nav">
         <ul>
-			{{ local }}
-				{{ $current_section = ""}}
-				{{ if $gimme->issue->number > 5 or $gimme->issue->number == 3}} {{ $current_section = $gimme->section->number }} {{ /if }}
-				{{ set_current_issue }}
-				<li class="nav-front"><a href="/">Front</a></li>
-				{{ list_sections }}
-					<li class="nav-{{ $gimme->section->url_name }} {{ if $tpl_subsections and $current_section and $gimme->section->number != $current_section }}unactive{{ /if }}"><a href="{{ uri options="section" }}">{{ $gimme->section->name }}</a></li>
-				{{ /list_sections }}
-				<li class="nav-fav"><a href="/favorites" style="background-size:0">Favoriten</a></li>
-				<div class="clear"></div>
-			{{ /local }}
+			{{ if $gimme->issue->number > 5 or $gimme->issue->number == 3}} {{ $current_section = $gimme->section->number }} {{ /if }}
+			<li class="nav-front"><a href="/">Front</a></li>
+			<li class="nav-alltag {{ if $tpl_subsections and $gimme->section->url_name != 'alltag' }}unactive{{ /if }}"><a href="/mobile/alltag">alltag</a></li>
+			<li class="nav-politik {{ if $tpl_subsections and $gimme->section->url_name != 'politik' }}unactive{{ /if }}"><a href="/mobile/politik">politik</a></li>
+			<li class="nav-kultur {{ if $tpl_subsections and $gimme->section->url_name != 'kultur' }}unactive{{ /if }}"><a href="/mobile/kultur">kultur</a></li>
+			<li class="nav-fav"><a href="/favorites" style="background-size:0">Favoriten</a></li>
+			<div class="clear"></div>
         </ul>
     </div>
 
