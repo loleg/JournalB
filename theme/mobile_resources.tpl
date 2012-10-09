@@ -2,7 +2,7 @@
 
 header('Content-type: application/json');
 
-$path_to_theme = "themes/publication_2/theme_1/";
+$path_to_theme = "themes/publication_1/theme_1/";
 
 $folders = array("_css","_js","_css/webfonts","_img");
 
