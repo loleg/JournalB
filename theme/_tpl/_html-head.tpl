@@ -25,7 +25,7 @@
    	{{ if $DEV_ENV }}
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
 		
-		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
+		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
 			<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/native-application.less' }}">
 		{{ /if }}
 		

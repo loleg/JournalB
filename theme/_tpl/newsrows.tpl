@@ -6,7 +6,7 @@
 {{ $articles_num_total = 0 }}
 {{ php }} $template->assign('articles_start',$_GET['ls-art0']); {{ /php }}
 
-{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue greater_equal 3 `$condition` is on" length="{{ $articles_on_page }}" }}
+{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue greater_equal 3 `$condition` is on" length="{{ $articles_on_page + 2 }}" }}
 	{{ $articles[$articles_num]["number"] = $gimme->article->number }}
 	{{ $articles[$articles_num]["doubleview"] = $gimme->article->frontpage_doubleview }}
 	{{ $articles[$articles_num]["rendered"] = false }}
@@ -15,7 +15,7 @@
 	{{ $articles_num_total = $articles_num_total + $gimme->current_list->count }}
 {{ /list_articles }}
 
-{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue greater_equal 6 `$condition` is off" length="`$articles_on_page + 2 - $articles_num`" }}
+{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue greater_equal 6 `$condition` is off" length="{{ $articles_on_page + 2 - $articles_num }}" }}
 	{{ $articles[$articles_num]["number"] = $gimme->article->number }}
 	{{ $articles[$articles_num]["doubleview"] = $gimme->article->frontpage_doubleview }}
 	{{ $articles[$articles_num]["rendered"] = false }}
