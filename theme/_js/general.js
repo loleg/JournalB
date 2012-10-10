@@ -1,10 +1,13 @@
 /* -- DEBUG -- */
-if (typeof DEBUG_MODE != 'undefined' && DEBUG_MODE) {
-	localStorage.clear(); 
-	var p = "/themes/publication_";
-	destroyLessCache(p + "1/theme_1/_css/");
-	destroyLessCache(p + "2/theme_1/_css/");
-	destroyLessCache(p + "3/theme_4/_css/");
+if (!navigator.userAgent.match(/Journal/))
+{
+	if (typeof DEBUG_MODE != 'undefined' && DEBUG_MODE && false) {
+		localStorage.clear(); 
+		var p = "/themes/publication_";
+		destroyLessCache(p + "1/theme_1/_css/");
+		destroyLessCache(p + "2/theme_1/_css/");
+		destroyLessCache(p + "3/theme_4/_css/");
+	}
 }
 /* --- */
 

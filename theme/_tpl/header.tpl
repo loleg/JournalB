@@ -30,4 +30,5 @@
     {{ /if }}
 
     <div class="subtitle">Sagt, was Bern bewegt</div>
+
 </div>

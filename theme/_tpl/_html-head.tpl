@@ -25,7 +25,7 @@
    	{{ if $DEV_ENV }}
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
 		
-		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
+		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) or preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
 			<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/native-application.less' }}">
 		{{ /if }}
 		
@@ -33,7 +33,7 @@
 	{{ else }}
 		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/style.css' }}">
 		
-		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
+		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) or preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
 			<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/native-application.css' }}">
 		{{ /if }}
 	{{ /if }}
@@ -66,9 +66,11 @@
 	  <meta property="og:image" content="{{ $gimme->article->image->imageurl }}" />
 	{{ /list_article_images }}
 	{{ /if }}
-
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="_js/jquery.min.js"><\/script>')</script>
+	
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
+	<script>window.jQuery || document.write('<script src="{{ url static_file='_js/jquery.min.js' }}"><\/script>')</script> -->
+	
+	<script src="{{ url static_file='_js/jquery.min.js' }}"></script>
 	
 	<!--[if IE]>
 	<script src="{{ url static_file='_js/html5shiv.min.js' }}"></script>

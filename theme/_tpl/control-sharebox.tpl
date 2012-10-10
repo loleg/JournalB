@@ -1,4 +1,4 @@
-{{ if !preg_match("/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) }}
+{{ if !preg_match("/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) and !preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
 <div class="sharebox initial" style="position:absolute;visibility:hidden">
 	<div class="shareicon">
 		<a href="https://twitter.com/share" class="twitter-share-button" data-via="journalb" data-lang="de" data-related="journalb" data-hashtags="Bern">Twittern</a>
