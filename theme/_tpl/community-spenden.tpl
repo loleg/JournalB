@@ -26,15 +26,17 @@
 			<input type="hidden" name="on0" value="Spenden">
 			<div align="center" class="os0_wrapper">	
 				<select name="os0">
-			        <option value="2 Franken">2 Franken 2.00 CHF</option>
-			        <option value="5 Franken">5 Franken 5.00 CHF</option>
-			        <option value="10 Franken">10 Franken 10.00 CHF</option>
+			        <option value="2 Franken">2 Franken</option>
+			        <option value="5 Franken">5 Franken</option>
+			        <option value="10 Franken">10 Franken</option>
 			    </select>
 			</div>
 			<input type="hidden" name="currency_code" value="CHF">
 			<input type="image" src="https://www.paypalobjects.com/de_DE/CH/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="Spenden mit PayPal.">
 			<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
 		</form>
+		
+		<div class="icon icon-paypal-cc">VISA, MasterCard, Discover, AmEx</div>
 		
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 			<input type="hidden" name="cmd" value="_s-xclick">

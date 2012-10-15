@@ -32,6 +32,7 @@
 {{ if $articles_start > $blogs_pos }} {{ $show_blogs = false }} {{ /if }}
 				
 {{ $i = 0 }}
+<!-- /start articlerows/ -->
 {{ while $i < $articles_num_stock }}
 						
 	{{ if $column == $blogs_pos and $show_blogs }} {{ include file="_tpl/front-blogsdossiers.tpl" }} {{ $show_blogs = false }} {{ /if }}
@@ -80,10 +81,10 @@
 	{{ if not $f }} {{ $i = $i + 1 }} {{ /if }}
 	
 {{ /while }}
+<!-- /end articlerows/ -->
 
 {{ if $column%2 == 1 }}</div>{{ /if }}
 
-<!-- /end newsrows/ -->
 {{ if ($articles_start+$articles_num_rendered)<$articles_num_total }}
 	<div class="weitere">
 		<div class="wline"></div>

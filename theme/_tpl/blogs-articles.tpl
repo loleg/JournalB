@@ -8,6 +8,7 @@
 
 {{ assign var="articles_on_page" value="5" }}
 
+<!-- /start articlerows/ -->
 {{ list_articles order="byPublishDate desc" length="`$articles_on_page`" }}
 
 	<div class="blogbox section-blogs">
@@ -41,6 +42,7 @@
 	</div>
 	
 	{{ if $gimme->current_list->at_end }}
+		<!-- /end articlerows/ -->
 
 		{{ $pages=ceil($gimme->current_list->count/$articles_on_page) }}
 		{{ $curpage=intval($gimme->url->get_parameter($gimme->current_list_id())) }}

@@ -213,10 +213,10 @@ function showComments() {
 function loadWeitereArtikel() {
     var self = $(this);
     $.get(self.attr('href'), function(data) {
-        var top = data.indexOf('<div class="row newsrow">');
-        var bot = data.indexOf('/end newsrows/') - 6;
+        var top = data.indexOf('/start articlerows/');
+        var bot = data.indexOf('/end articlerows/');
         self.parent().after(
-            data.substring(top, bot)
+            data.substring(top - 6, bot - 6)
         ).remove();
         $('.weitere a').click(loadWeitereArtikel);
     }); 
