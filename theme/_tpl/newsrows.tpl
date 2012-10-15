@@ -83,11 +83,12 @@
 
 {{ if $column%2 == 1 }}</div>{{ /if }}
 
+<!-- /end newsrows/ -->
 {{ if ($articles_start+$articles_num_rendered)<$articles_num_total }}
-<!--	<div class="weitere">
+	<div class="weitere">
 		<div class="wline"></div>
 		<a href="{{ url options="section" }}?ls-art0={{ $articles_start+$articles_on_page }}">weitere Artikel</a>
-	</div> -->
+	</div>
 {{ /if }}
 
 <!-- Hidden Disqus on Frontpage -->
