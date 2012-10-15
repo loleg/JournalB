@@ -19,23 +19,31 @@
 			href="http://www.journal-b.ch">Flattr</a>
 		</div>
 		
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 		<center class="spenden-paypal">
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 			<input type="hidden" name="cmd" value="_s-xclick">
 			<input type="hidden" name="hosted_button_id" value="2ZCCLVSGXWRS8">
-			<div align="center" class="os0_wrapper">
+			<input type="hidden" name="on0" value="Spenden">
+			<div align="center" class="os0_wrapper">	
 				<select name="os0">
-						<option value="2 Franken">2 Franken</option>
-						<option value="5 Franken">5 Franken</option>
-						<option value="10 Franken">10 Franken</option>
-						<option value="Selber entscheiden">Selber entscheiden</option>
-				</select>
+			        <option value="2 Franken">2 Franken 2.00 CHF</option>
+			        <option value="5 Franken">5 Franken 5.00 CHF</option>
+			        <option value="10 Franken">10 Franken 10.00 CHF</option>
+			    </select>
 			</div>
 			<input type="hidden" name="currency_code" value="CHF">
-			<input type="image" src="https://www.paypalobjects.com/de_DE/CH/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="Spenden mit PayPal.">
+			<input type="image" src="https://www.paypalobjects.com/de_DE/CH/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="Spenden mit PayPal.">
 			<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
-		</center>
 		</form>
+		
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="4249SYQ5J6EH8">
+			<input type="image" src="https://www.paypalobjects.com/de_DE/CH/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Spenden mit PayPal.">
+			<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+		
+		</form>
+		</center>
 		
 		<!--
 		<br/>
