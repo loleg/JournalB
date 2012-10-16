@@ -1,3 +1,5 @@
+{{ include file="_tpl/control-sharebox.tpl" }}
+
 <a name="mobile_startpoint"></a>
 
 <div class="titlebox section-blogs">
