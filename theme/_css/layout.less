@@ -5,9 +5,7 @@
 	#Front Page Styles
 	#Header Styles
 	#Sidebar Styles
-	#Article Page Styles
-	#Media Queries
-	#Font-Face */
+	#Article Page Styles */
 
 /* #Front Page Styles
 ================================================== */
@@ -256,7 +254,10 @@
 		width: 120px;
 		text-align: center;
 		margin-left: -60px;
-		top: -5px;
+		top: -3px;
+	}
+	.weitere a:hover {
+		text-decoration: underline;
 	}
 	.weitere .wline {
 		position: absolute;
@@ -1040,6 +1041,12 @@
     	background: url('../_img/spenden-paypal.gif') no-repeat;
 		background-size: 100%; width: 74px; height: 21px;
     }
+    .icon-paypal-cc {
+    	background: url('../_img/spenden-paypal-cc.png') no-repeat;
+		background-size: 100%; width: 106px; height: 15px;
+		right: 0px !important; 
+		top: 0px !important;
+    }
     .icon-postfinance {
     	background: url('../_img/spenden-postfinance.gif') no-repeat;
 		background-size: 100%; width: 149px; height: 59px;
@@ -1568,23 +1575,6 @@
 		margin-bottom: 20px;
 	}
 
-/* #Media Queries
-================================================== */
+/* For media queries see skeleton.less */
 
-	/* Smaller than standard 960 (devices and browsers) */
-	@media only screen and (min-width: 768px) {}
-
-	/* Tablet Portrait size to standard 960 (devices and browsers) */
-	@media only screen and (min-width: 768px) and (max-width: 959px) {}
-
-	/* All Mobile Sizes (devices and browser) */
-	@media only screen and (max-width: 767px) {}
-
-	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-	@media only screen and (min-width: 480px) and (max-width: 767px) {}
-
-	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-	@media only screen and (max-width: 479px) {}
-	
-	/* Print layout - see print.css */
-	@media print {}
+/* For print layout see print.css */

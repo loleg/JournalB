@@ -1,7 +1,7 @@
 /* -- DEBUG -- */
 if (!navigator.userAgent.match(/Journal/))
 {
-	if (typeof DEBUG_MODE != 'undefined' && DEBUG_MODE && false) {
+	if (typeof DEBUG_MODE != 'undefined' && DEBUG_MODE) {
 		localStorage.clear(); 
 		var p = "/themes/publication_";
 		destroyLessCache(p + "1/theme_1/_css/");
@@ -43,7 +43,7 @@ $(document).ready(function() {
 		if (is_gallery) initSlider();
 		else $("#slider_box").remove();
 	}
-		
+			
 	drawAds();
 
 	scaleCommunity();
@@ -57,6 +57,8 @@ $(document).ready(function() {
 	updateScreenMode();	
 	
 	//collapsableElements();
+
+	$('.weitere a').click(loadWeitereArtikel);
 
 	scrollToArticleTop();
 

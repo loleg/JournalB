@@ -209,6 +209,19 @@ function showComments() {
 	return false;
 }
 
+// Load more content dynamically
+function loadWeitereArtikel() {
+    var self = $(this);
+    $.get(self.attr('href'), function(data) {
+        var top = data.indexOf('/start articlerows/');
+        var bot = data.indexOf('/end articlerows/');
+        self.parent().after(
+            data.substring(top - 6, bot - 6)
+        ).remove();
+        $('.weitere a').click(loadWeitereArtikel);
+    }); 
+    return false;
+}
 
 function calculateNewsboxOverflow()
 {

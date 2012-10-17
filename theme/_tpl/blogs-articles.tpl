@@ -1,3 +1,5 @@
+{{ include file="_tpl/control-sharebox.tpl" }}
+
 <a name="mobile_startpoint"></a>
 
 <div class="titlebox section-blogs">
@@ -6,8 +8,9 @@
 
 <script>$('.favorite').hide();</script>
 
-{{ assign var="articles_on_page" value="10" }}
+{{ assign var="articles_on_page" value="5" }}
 
+<!-- /start articlerows/ -->
 {{ list_articles order="byPublishDate desc" length="`$articles_on_page`" }}
 
 	<div class="blogbox section-blogs">
@@ -41,27 +44,16 @@
 	</div>
 	
 	{{ if $gimme->current_list->at_end }}
-	
-		<!-- Page Navigation -->
-		
+		<!-- /end articlerows/ -->
+
 		{{ $pages=ceil($gimme->current_list->count/$articles_on_page) }}
 		{{ $curpage=intval($gimme->url->get_parameter($gimme->current_list_id())) }}
-		{{ if $pages gt 1 }}
-			<ul class="pagination">
-				{{ if $gimme->current_list->has_previous_elements }}<li class="prev"><a href="{{ uripath options="section" }}?{{ urlparameters options="previous_items" }}">Previous</a></li>{{ /if }}
-				{{ for $i=0 to $pages - 1 }}
-					{{ $curlistid=$i*$articles_on_page }}
-					{{ $gimme->url->set_parameter($gimme->current_list_id(),$curlistid) }}
-					{{ if $curlistid != $curpage }}
-				<li><a href="{{ uripath options="section" }}?{{ urlparameters }}">{{ $i+1 }}</a></li>
-					{{ else }}
-				<li class="selected"><a href="{{ uripath options="section" }}?{{ urlparameters }}">{{ $i+1 }}</a></li>
-					{{ $remi=$i+1 }}
-					{{ /if }}
-				{{ /for }}
-				{{ if $gimme->current_list->has_next_elements }}<li class="next"><a href="{{ uripath options="section" }}?{{ urlparameters options="next_items" }}">Next</a></li>{{ /if }}
-			</ul>
-			<div style="clear: both"></div>
+		{{ if $pages gt 1 && $curpage < $pages }}	
+			<!-- Page Navigation -->
+			<div class="weitere">
+				<div class="wline"></div>
+				<a href="{{ uripath options="section" }}?{{ urlparameters options="next_items" }}">weitere Einträge</a>
+			</div>
 			{{ $gimme->url->set_parameter($gimme->current_list_id(),$curpage) }}
 		{{ /if }}
 	
