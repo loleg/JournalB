@@ -203,15 +203,20 @@ function showComments() {
 }
 
 // Load more content dynamically
-function loadWeitereArtikel() {
-    var self = $(this);
+function loadWeitereArtikel(self,append) {
+	self = $(self);
     $.get(self.attr('href'), function(data) {
         var top = data.indexOf('/start articlerows/');
         var bot = data.indexOf('/end articlerows/');
-        self.parent().after(
-            data.substring(top - 6, bot - 6)
-        ).remove();
-        $('.weitere a').click(loadWeitereArtikel);
+		if (append)
+		{
+			$('.dynamic-articlerows .weitere').remove();
+			$('.dynamic-articlerows').append(data.substring(top - 6, bot - 6));
+		}
+		else
+		{
+			$('.dynamic-articlerows').html(data.substring(top - 6, bot - 6));
+		}
     }); 
     return false;
 }

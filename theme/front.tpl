@@ -12,9 +12,7 @@
 		
 			{{ include file="_tpl/mobile-controlbar-front.tpl" }}
 
-			{{ php }} $template->assign('start',$_GET['ls-art0']); {{ /php }}
-			
-			{{ render file="_tpl/newsrows.tpl" params=$start }}
+			{{ render file="_tpl/newsrows.tpl" params=$smarty.get.limit }}
 			
 		</div><!-- /content -->
 

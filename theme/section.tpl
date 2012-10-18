@@ -10,7 +10,9 @@
 
 		<div class="row content">
 
-			{{ include file="_tpl/newsrows.tpl" condition="OnSection" }}
+			{{ php }} $template->assign('start',$_GET['ls-art0']); {{ /php }}
+			
+			{{ render file="_tpl/newsrows.tpl" params=$start }}
 			
 		</div><!-- /content -->
 
