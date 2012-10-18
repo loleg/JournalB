@@ -4,7 +4,7 @@ function initShareButton()
 	$('.share').click(function() {
 		if (navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/) || navigator.userAgent.match(/Journal/)) 
 		{
-			location = "shr://share_article";
+			window.location = "shr://share_article";
 		}
 		else
 		{

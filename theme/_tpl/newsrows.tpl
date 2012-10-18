@@ -1,3 +1,7 @@
+{{ $condition = "OnFrontPage" }}
+{{ $show_blogs = true }}
+
+
 {{ $articles_on_page = 30 }}
 {{ $column = 0 }}
 {{ $articles_num = 0 }}

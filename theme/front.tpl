@@ -12,7 +12,9 @@
 		
 			{{ include file="_tpl/mobile-controlbar-front.tpl" }}
 
-			{{ include file="_tpl/newsrows.tpl" condition="OnFrontPage" show_blogs="true" }}
+			{{ php }} $template->assign('start',$_GET['ls-art0']); {{ /php }}
+			
+			{{ render file="_tpl/newsrows.tpl" params=$start }}
 			
 		</div><!-- /content -->
 
