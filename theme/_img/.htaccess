@@ -6,13 +6,8 @@ RewriteEngine on
 # redirect for retina devices
 RewriteCond %{HTTP_COOKIE} HTTP_IS_RETINA [NC]
 RewriteCond %{REQUEST_FILENAME} (.*)\.(png|jpg|jpeg)$
-RewriteCond %1@2x~web.%2 -f
+RewriteCond %1@2x.%2 -f
 RewriteRule (.*)\.(png|jpg|jpeg)$ $1@2x~web.$2 [L]
-
-# all other devices
-RewriteCond %{REQUEST_FILENAME} (.*)\.(png|jpg|jpeg)$
-RewriteCond %1~web.%2 -f
-RewriteRule (.*)\.(png|jpg|jpeg)$ $1~web.$2 [L]
 
 </IfModule>
 
