@@ -29,7 +29,7 @@ header("Last-Modified: " . $mod_gmt);
 header("Cache-Control: public, max-age=" . $ttl * 60);
 // for MSIE 5
 header("Cache-Control: pre-check=" . $ttl * 60, FALSE);  
-header ('Content-Type: text/xml');
+header('Content-type: application/json');
 
 // push the entire cache out
 
@@ -48,7 +48,11 @@ if ($handle) {
 	    	$started = true;
     	}
     	if ($started) {
-	        echo $buffer;
+	        if (preg_match("/<Wert dt=\"-24h\">([.0-9]+)<\/Wert>/",$buffer,$matches))
+			{
+				$temp = round($matches[1]*10)/10;
+				echo '{"temperature": "'.$temp.'"}';
+			}
 	    }
 	    if ($started && strpos($buffer, '</MesPar>') > 0) {
     		$started = false; $finished = true;

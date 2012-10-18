@@ -182,16 +182,7 @@ function setScreenMode(_screenMode)
 function aareTemperaturen()
 {
 	$.get('/services/hydrodaten.php', function(data) {
-		$.each(data.getElementsByTagName('MesPar'), function() { 
-		if ($(this).attr('DH') == 'HBCHa' && 
-			$(this).attr('StrNr') =="2135" &&
-			$(this).attr('Typ') =="03" &&
-			$(this).attr('Var') =="00") {
-				var txt = $(this).find('Wert[dt="-24h"]').text();
-				$('.aare .wert').html(parseFloat(txt).toFixed(1)).parent().css('opacity','1');
-				return;
-		}			
-		});
+		$('.aare .wert').html(data.temperature).parent().css('opacity','1');
 	});
 }
 
