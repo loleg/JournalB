@@ -9,7 +9,7 @@
 <script>$('.favorite').hide();</script>
 
 {{ php }} $template->assign('start',$_GET['ls-art0']); {{ /php }}
-{{ $articles_on_page = 2 }}
+{{ $articles_on_page = 5 }}
 {{ $articles_num_total = 0 }}
 
 <div class="dynamic-articlerows">
@@ -53,7 +53,7 @@
 {{ if ($start + $articles_on_page ) < $articles_num_total }}
 	<div class="weitere">
 		<div class="wline"></div>
-		<a href="{{ url options="section" }}?ls-art0={{ $start+2 }}" onclick="return loadWeitereArtikel(this,true);">weitere Artikel</a>
+		<a href="{{ url options="section" }}?ls-art0={{ $start+5 }}" onclick="return loadWeitereArtikel(this,true);">weitere Artikel</a>
 	</div>
 {{ /if }}
 
