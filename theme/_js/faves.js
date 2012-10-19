@@ -174,6 +174,7 @@ function initFavorites() {
 			// Update icon
 			if (vote == -1) {
 				$(this).removeClass('checked');
+					
 			} else {
 				$(this).addClass('checked');
 			}
