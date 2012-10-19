@@ -23,6 +23,9 @@
 	</script>
 
    	{{ if $DEV_ENV }}
+		{{ if preg_match("/Windows/", $smarty.server.HTTP_USER_AGENT) }}
+			<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/windows-application.less' }}">
+		{{ /if }}
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
 		
 		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) or preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
@@ -36,6 +39,7 @@
 		{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) or preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
 			<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/native-application.css' }}">
 		{{ /if }}
+		<!-- TODO: windows-application.css -->
 	{{ /if }}
 	
 	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">
