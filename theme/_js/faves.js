@@ -118,8 +118,14 @@ function initFavorites() {
 				var h = (self.hasClass('controlicon')) ?
 						document.location.pathname :
 						self.parents('a').attr('href');
+						
+				var parts = h.split('/');				
+				if (parts.length<5) return;
+				var s = "/";
+				for (var i =1; i<5; i++) s+= parts[i]+"/";
+				
 				$.each(myjson.favorites, function() {
-					if (!found && this.indexOf(h) >= 0) {
+					if (!found && this.indexOf(s) >= 0) {
 						self.addClass('checked');
 						found = true;
 					}
@@ -142,7 +148,7 @@ function initFavorites() {
 		
 	// Favorites icon
 	$('.favorite').click(function() {
-	
+		
 		if (!favoritesHasLogin) {
 			window.location = '/favorites';
 			return false;
