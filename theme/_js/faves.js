@@ -150,7 +150,7 @@ function initFavorites() {
 	$('.favorite').click(function() {
 				
 		if (!favoritesHasLogin) {
-			if (navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/) || navigator.userAgent.match(/Journal/))
+			if (navigator.userAgent.match(/Journal/))
 			{
 				window.location = 'fvr://want_to_login';
 			}
