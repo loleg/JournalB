@@ -35,7 +35,7 @@ jQuery.fn.reverse = [].reverse;
 $(document).ready(function() {
 
 	//calculateNewsboxOverflow();
-	
+		
 	adjustNewsrows();
 	
 	articleImageAlts();
