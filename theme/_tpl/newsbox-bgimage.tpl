@@ -1,4 +1,4 @@
-<a class="newsbox section-{{ $article_section }} layoutbgimage" href="{{ uri options="article" }}"
+<a class="content-single newsbox section-{{ $article_section }} layoutbgimage" href="{{ uri options="article" }}"
 	{{ image rendition="topfront" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 
 	<div class="info_block">

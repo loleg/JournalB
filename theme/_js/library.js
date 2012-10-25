@@ -194,20 +194,15 @@ function showComments() {
 }
 
 // Load more content dynamically
-function loadWeitereArtikel(self,append) {
+function loadWeitereArtikel(self) {
 	self = $(self);
     $.get(self.attr('href'), function(data) {
         var top = data.indexOf('/start articlerows/');
         var bot = data.indexOf('/end articlerows/');
-		if (append)
-		{
-			$('.dynamic-articlerows .weitere').remove();
-			$('.dynamic-articlerows').append(data.substring(top - 6, bot - 6));
-		}
-		else
-		{
-			$('.dynamic-articlerows').html(data.substring(top - 6, bot - 6));
-		}
+
+		$('.dynamic-articlerows .weitere').remove();
+		$('.dynamic-articlerows').append(data.substring(top - 6, bot - 6));
+		adjustNewsrows();
     }); 
     return false;
 }
@@ -231,4 +226,39 @@ function getArticleTitle()
 	{
 		return false;
 	}
+}
+
+function adjustNewsrows()
+{
+	var content_double_num = 0;
+
+	$(".newsrows .content-double").each(function(){
+		if($(this).index()%2!=content_double_num%2)
+		{
+			var i = 1;
+			while ($(".newsrows .newsbox:nth-child("+($(this).index()+i)+")").length)
+			{
+				var obj = $(".newsrows .newsbox:nth-child("+($(this).index()+i)+")");
+				if (obj.hasClass('content-single'))
+				{
+					$(this).before(obj);
+					break;
+				}
+				i++;
+			}
+		}
+		content_double_num++;
+	});
+	
+	$(".newsrows .newsbox").show();
+	
+	if ($(".newsrows .weitere").length && $(".newsrows .content-single").length%2==1)
+	{
+		var obj = $(".newsrows .content-single").last();
+		$(".newsrows .newsbox").last().after(obj);
+		obj.hide();
+	}
+	
+	$(".newsrows .content-single").removeClass('content-right');
+	$(".newsrows .content-single:odd").addClass('content-right');
 }

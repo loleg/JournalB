@@ -33,7 +33,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/style.css' }}">		
 	{{ /if }}
 	
-	{{ if preg_match("/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/", $smarty.server.HTTP_USER_AGENT) or preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
+	{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
 		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/native-application.css' }}">
 	{{ /if }}
 	

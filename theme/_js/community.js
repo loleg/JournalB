@@ -2,7 +2,7 @@ function initShareButton()
 {
 	// ** Share
 	$('.share').click(function() {
-		if (navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/) || navigator.userAgent.match(/Journal/)) 
+		if (navigator.userAgent.match(/Journal/)) 
 		{
 			window.location = "shr://share_article";
 		}

@@ -148,9 +148,16 @@ function initFavorites() {
 		
 	// Favorites icon
 	$('.favorite').click(function() {
-		
+				
 		if (!favoritesHasLogin) {
-			window.location = '/favorites';
+			if (navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/) || navigator.userAgent.match(/Journal/))
+			{
+				window.location = 'fvr://want_to_login';
+			}
+			else
+			{
+				window.location = '/favorites';
+			}
 			return false;
 		}
 	
@@ -177,10 +184,11 @@ function initFavorites() {
 					if (typeof console != 'undefined') console.log(data);
 				});
 			
+			window.location = "fvr://add_to_favorites?url="+url+"&vote="+vote;
+			
 			// Update icon
 			if (vote == -1) {
 				$(this).removeClass('checked');
-					
 			} else {
 				$(this).addClass('checked');
 			}

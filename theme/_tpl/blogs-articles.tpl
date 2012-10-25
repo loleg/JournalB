@@ -53,7 +53,7 @@
 {{ if ($start + $articles_on_page ) < $articles_num_total }}
 	<div class="weitere">
 		<div class="wline"></div>
-		<a href="{{ url options="section" }}?ls-art0={{ $start+5 }}" onclick="return loadWeitereArtikel(this,true);">weitere Artikel</a>
+		<a href="{{ url options="section" }}?ls-art0={{ $start+5 }}&time={{ php }}echo time();{{ /php }}" onclick="return loadWeitereArtikel(this);">weitere Artikel</a>
 	</div>
 {{ /if }}
 

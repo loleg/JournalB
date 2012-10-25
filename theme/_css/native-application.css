@@ -13,3 +13,6 @@
 .container .controlbar_mobile_front,
 .container .aare
 { display: none !important; }
+
+.newsbox .favorite:hover {  background-image: url(../_img/favorite-grey.png) !important; }
+.controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite-grey.png) !important; }

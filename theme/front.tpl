@@ -7,12 +7,15 @@
 	<div class="main">
 
 		{{ include file="_tpl/header.tpl" }}
-
+		
 		<div class="row content">
 		
 			{{ include file="_tpl/mobile-controlbar-front.tpl" }}
 
-			{{ render file="_tpl/newsrows.tpl" params=$smarty.get.limit }}
+			{{ php }} $template->assign('start',$_GET['ls-art0']); {{ /php }}
+			{{ php }} $template->assign('start2',$_GET['ls-art1']); {{ /php }}
+			{{ $param = $start|cat:$start2 }} 
+			{{ render file="_tpl/newsrows.tpl" params="{{ $param }}" }}
 			
 		</div><!-- /content -->
 
