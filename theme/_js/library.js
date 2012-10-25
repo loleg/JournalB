@@ -165,7 +165,14 @@ function updateScreenMode()
 function scrollToArticleTop() {	
 	var scroll_top = 0;
 	
-	if ($(".controlbar_mobile").length && $(".controlbar_mobile").height()>0 && navigator.userAgent.match(/Mobile/)) scroll_top += $(".controlbar_mobile").height()+15;
+	// Scroll search field
+	if (navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/) || navigator.userAgent.match(/Journal/)) 
+		scroll_top += 50;
+	
+	// Scroll to top of article
+	if ($("a[name='mobile_startpoint']").length > 0 &&
+		(navigator.userAgent.match(/iPhone/gi) || navigator.userAgent.match(/iPod/gi))) {
+			scroll_top += 40; }
 			
 	$(window).scrollTop(scroll_top);
 }
@@ -203,20 +210,15 @@ function showComments() {
 }
 
 // Load more content dynamically
-function loadWeitereArtikel(self,append) {
-	self = $(self);
+function loadWeitereArtikel() {
+    var self = $(this);
     $.get(self.attr('href'), function(data) {
         var top = data.indexOf('/start articlerows/');
         var bot = data.indexOf('/end articlerows/');
-		if (append)
-		{
-			$('.dynamic-articlerows .weitere').remove();
-			$('.dynamic-articlerows').append(data.substring(top - 6, bot - 6));
-		}
-		else
-		{
-			$('.dynamic-articlerows').html(data.substring(top - 6, bot - 6));
-		}
+        self.parent().after(
+            data.substring(top - 6, bot - 6)
+        ).remove();
+        $('.weitere a').click(loadWeitereArtikel);
     }); 
     return false;
 }

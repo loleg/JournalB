@@ -2,26 +2,19 @@ function initShareButton()
 {
 	// ** Share
 	$('.share').click(function() {
-		if (navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/) || navigator.userAgent.match(/Journal/)) 
-		{
-			window.location = "shr://share_article";
+		var sharebox = $('.main .sharebox');
+		if (sharebox.hasClass('initial')) {
+			sharebox
+				.addClass('hidden').removeClass('initial')
+				.css({ position:'', visibility:'' }) // fix visibility for Facebook
+				.find('.shareicon.hidden').removeClass('hidden'); // unhide G+
 		}
-		else
-		{
-			var sharebox = $('.main .sharebox');
-			if (sharebox.hasClass('initial')) {
-				sharebox
-					.addClass('hidden').removeClass('initial')
-					.css({ position:'', visibility:'' }) // fix visibility for Facebook
-					.find('.shareicon.hidden').removeClass('hidden'); // unhide G+
-			}
-			if (sharebox.hasClass('hidden')) {
-				sharebox.slideDown("fast").removeClass('hidden');
-				$(this).addClass('checked');
-			} else {
-				sharebox.slideUp("fast").addClass('hidden');
-				$(this).removeClass('checked');
-			}
+		if (sharebox.hasClass('hidden')) {
+			sharebox.slideDown("fast").removeClass('hidden');
+			$(this).addClass('checked');
+		} else {
+			sharebox.slideUp("fast").addClass('hidden');
+			$(this).removeClass('checked');
 		}
 	});
 	// - Share
