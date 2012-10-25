@@ -1,4 +1,4 @@
-{{ assign var="DEV_ENV" value="1" }}
+{{ assign var="DEV_ENV" value="0" }}
 <!DOCTYPE html>
 <!--[if IE]>
 <html class="ie" lang="de">

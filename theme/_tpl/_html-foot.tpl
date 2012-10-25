@@ -1,4 +1,4 @@
-{{ assign var="DEV_ENV" value="1" }}
+{{ assign var="DEV_ENV" value="0" }}
 {{ if $DEV_ENV }}
 <!-- DEV -->
 <script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
