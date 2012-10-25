@@ -165,7 +165,7 @@ function updateScreenMode()
 function scrollToArticleTop() {	
 	var scroll_top = 0;
 	
-	if ($(".controlbar_mobile").length && $(".controlbar_mobile").height()>0 && navigator.userAgent.match(/Mobile/)) scroll_top += $(".controlbar_mobile").height()+15;
+	if ($(".controlbar_mobile").length && $(".controlbar_mobile").height()>0 && navigator.userAgent.match(/(Mobile|iPhone)/)) scroll_top += $(".controlbar_mobile").height()+15;
 			
 	$(window).scrollTop(scroll_top);
 }

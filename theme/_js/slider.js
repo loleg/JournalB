@@ -37,7 +37,7 @@ function initSlider()
 
 	updateSliderSize();
 	
-	if (navigator.userAgent.match(/Mobile/))
+	if (navigator.userAgent.match(/(Mobile|iPhone)/))
 	{
 		if (slides_num>1) $(".gallery_control").append('<div class="gpict"></div>');
 		
@@ -89,7 +89,7 @@ function initSlider()
 
 function moveSlider(direction)
 {
-	if (navigator.userAgent.match(/Mobile/) && !slider_status) return;
+	if (navigator.userAgent.match(/(Mobile|iPhone)/) && !slider_status) return;
 
 	if (slider_easing) return;
 
@@ -193,7 +193,7 @@ function hideActiveSlider()
 	$("body").attr("ontouchmove","");
 	$(".gallery_info").addClass("stable");
 		
-	if (!navigator.userAgent.match(/Mobile/))
+	if (!navigator.userAgent.match(/(Mobile|iPhone)/))
 	{
 		$("#slider .carrow").remove();
 		$("#slider .close").remove();
@@ -211,7 +211,7 @@ function hideActiveSlider()
 
 function showActiveSlider()
 {
-	if (!navigator.userAgent.match(/Mobile/))
+	if (!navigator.userAgent.match(/(Mobile|iPhone)/))
 	{
 		$(slider).append('<div class="carrow left" onclick="moveSlider(0);"></div>');
 		$(slider).append('<div class="carrow right" onclick="moveSlider(1);"></div>');
