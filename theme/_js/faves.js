@@ -53,7 +53,7 @@ function loginDisqus() {
 		return checkDisqusLogin();
 	} else {
 		// Registration popup
-		if (navigator.userAgent.match(/Mobile/)) {
+		if (navigator.userAgent.match(/(Mobile|iPhone)/)) {
 			$('.header .login').hide();
 			$('.header .dsq-login-buttons').slideDown();
 		} else {
@@ -82,7 +82,7 @@ function initFavorites() {
 	// ** Favorites	login
 	$.get('/favorites/myfaves', function(data) {
 		if (data == null || data == 'NOLOGIN') {
-			if (navigator.userAgent.match(/Mobile/) && $(".forum").length > 0) {
+			if (navigator.userAgent.match(/(Mobile|iPhone)/) && $(".forum").length > 0) {
 				$("#disqus_thread").prepend($(".header .dsq-login-buttons"))
 					.find('.dsq-login-buttons').show().css('text-align', 'center')
 					.prepend('<p>Zum kommentieren bitte anmelden</p>')
