@@ -166,7 +166,7 @@ function scrollToArticleTop() {
 	var scroll_top = 0;
 	
 	// Scroll search field
-	if (navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit.*Mobile(?!.*Safari)/) || navigator.userAgent.match(/Journal/)) 
+	if (navigator.userAgent.match(/Journal/)) 
 		scroll_top += 50;
 	
 	// Scroll to top of article
