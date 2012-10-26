@@ -26,11 +26,20 @@
     .container                                  { position: relative; width: 968px; margin: 0 auto; text-align: left; }
     .row                                        { margin-bottom: 20px; }
 
-    .container .main                            { width: 710px; float: left; }
-    .container .sidebar                         { width: 256px; float: left; }
-    .container .sidebar .content                { padding-left: 28px; }
-    .container .newsbox                         { width: 345px; }
-    .container .newsbox.layoutdouble            { width: 710px; }
+	
+/* #Desktop
+================================================== */
+
+    /* Note: Design for a width of 1024px */
+
+    @media only screen and (min-width: 1024px) {
+		.container .main                            { width: 710px; float: left; }
+		.container .sidebar                         { width: 256px; float: left; }
+		.container .sidebar .content                { padding-left: 28px; }
+		.container .newsbox                         { width: 345px; }
+		.container .newsbox.layoutdouble            { width: 710px; }
+		.container .controlbar_mobile				{ display: none !important; }
+	}
 
 
 /* #Tablet (Portrait)
@@ -50,6 +59,7 @@
 		.container .footer-box.section-front		{ float: none; clear: both; margin-top: 20px; margin-left: 0px; width: auto !important; }
 		.container .community-buttons				{ display: none; }
 		.container .collapse_content				{ display: none !important; }
+		.container .controlbar_mobile				{ display: none !important; }
 	}
 
 /*  #Mobile
