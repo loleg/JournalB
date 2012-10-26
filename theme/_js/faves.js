@@ -57,7 +57,14 @@ function loginDisqus() {
 			$('.header .login').hide();
 			$('.header .dsq-login-buttons').slideDown();
 		} else {
-			DISQUS.dtpl.actions.fire('auth.login');
+			if (navigator.userAgent.match(/iPad/))
+			{
+				showLoginPopup();
+			}
+			else
+			{
+				DISQUS.dtpl.actions.fire('auth.login');
+			}
 		}
 		if (!favoritesStartLogin) {
 			favoritesStartLogin = true;
@@ -71,9 +78,12 @@ function logoutDisqus() {
 	$.get('/favorites/logout', function(data) {
 		if (typeof console != 'undefined') console.log(data);
 	});
+	
 	var logoutlink = $('.dsq-logout-link a').attr('href');
-	if (typeof logoutlink != 'undefined' && window.confirm('Aus Journal B-Community abmelden?')) {
-		window.location = logoutlink;
+	
+	if (window.confirm('Aus Journal B-Community abmelden?')) {
+		if (typeof logoutlink == 'undefined') window.location.reload();
+		else window.location = logoutlink;
 	}
 }
 
@@ -150,13 +160,13 @@ function initFavorites() {
 	$('.favorite').click(function() {
 				
 		if (!favoritesHasLogin) {
-			if (navigator.userAgent.match(/Journal/))
+			if (navigator.userAgent.match(/(Journal|iPad)/))
 			{
-				window.location = 'fvr://want_to_login';
+				showLoginPopup();
 			}
 			else
 			{
-				window.location = '/favorites';
+				DISQUS.dtpl.actions.fire('auth.login');
 			}
 			return false;
 		}
@@ -184,7 +194,10 @@ function initFavorites() {
 					if (typeof console != 'undefined') console.log(data);
 				});
 			
-			window.location = "fvr://add_to_favorites?url="+url+"&vote="+vote;
+			if (navigator.userAgent.match(/Journal/))
+			{
+				window.location = "fvr://add_to_favorites?url="+url+"&vote="+vote;
+			}
 			
 			// Update icon
 			if (vote == -1) {
@@ -197,4 +210,31 @@ function initFavorites() {
 	});
 	// - Favorites icon
 	
+}
+
+
+function showLoginPopup()
+{
+	html = "<div class='popup_wrapper' onclick='closeLoginPopup();'></div>";
+	html += "<div class='login_popup'>";
+	html += "<div class='caption'>Melden Sie sich an</div>";
+	html += "<ul>";
+	html += "<a href='#' onclick='setCloseLoginHook(); return DISQUS.dtpl.actions.fire(\"auth.facebook\");'><li class='facebook'><div class='tbutton'>Facebook</div></li>";
+	html += "<a href='#' onclick='setCloseLoginHook(); return DISQUS.dtpl.actions.fire(\"auth.twitter\");'><li class='twitter'><div class='tbutton'>Twitter</div></li>";
+	html += "<a href='#' onclick='setCloseLoginHook(); return DISQUS.dtpl.actions.fire(\"auth.disqus\");'><li class='disqus'><div class='tbutton'>Disqus</div></li>";
+	html += "</ul>";
+	html += "</div>";
+	
+	$("body").append(html);
+}
+
+function setCloseLoginHook()
+{
+	$(window).bind('focus', function() {location.reload();});
+}
+
+function closeLoginPopup()
+{
+	$(".popup_wrapper").remove();
+	$(".login_popup").remove();
 }

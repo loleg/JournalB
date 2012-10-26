@@ -1600,6 +1600,57 @@
 	.collapse_box .collapse_content {
 		margin-bottom: 20px;
 	}
+	
+	
+	.popup_wrapper {
+		width: 100%;
+		height: 100%;
+		left: 0px;
+		top: 0px;
+		position: fixed;
+		background: rgba(0,0,0,0.90);
+		z-index: 999;
+	}
+	.login_popup {
+		background: #ffffff;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: 230px;
+		height: 210px;
+		margin-left: -135px;
+		margin-top: -125px;
+		padding: 20px;
+		z-index: 1000;
+		
+		.subheading;
+		letter-spacing: 1px;
+	}
+	.login_popup .tbutton {
+		background: #000000;
+		color: #ffffff;
+		width: 150px;
+		border-radius: 5px;
+		-webkit-border-radius: 5px;
+		padding: 10px;
+	}
+	.login_popup li {
+		padding-left: 50px;
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: 38px 36px;
+		margin-top: 20px;
+	}
+	.login_popup .facebook {
+		background-image: url(../_img/login-facebook.png);
+	}
+	.login_popup .twitter {
+		background-image: url(../_img/login-twitter.png);
+	}
+	.login_popup .disqus {
+		background-image: url(../_img/login-disqus.png);
+	}
+	
 
 /* For media queries see skeleton.less */
 
