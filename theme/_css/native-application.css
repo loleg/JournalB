@@ -10,9 +10,12 @@
 .container .controlbar_mobile .search h6
 { display: block !important; }
 
-.container .controlbar_mobile_front,
 .container .aare
 { display: none !important; }
 
 .newsbox .favorite:hover {  background-image: url(../_img/favorite-grey.png) !important; }
 .controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite-grey.png) !important; }
+
+.controlbar_mobile_front {
+	margin-bottom: 5px;
+}
