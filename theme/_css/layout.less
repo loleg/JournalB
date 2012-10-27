@@ -73,7 +73,7 @@
 		height: 2.4em;
 		overflow-y: hidden;
 	}
-	.newsbox .dsect a:hover span {
+	.newsbox .dsect a:hover .subtitle {
 		.underlineblack;
 	}
 	.newsbox.layoutsimple, .newsbox.layoutbgimage, .newsbox.layoutdouble {
@@ -327,6 +327,8 @@
     .newsbox.section-dossiers:visited { background-color: lighten(@color-dossiers, 5%); }
 	
     /* NB: This does not work: .newsbox:visited .newsboxcontent { background-color:rgba(255,255,255,0.5); } */
+    
+    .newsbox .commentcount { float: right; }
 
 
 /* #Header Styles
@@ -1195,7 +1197,7 @@
 		    letter-spacing: 0.02em;
 		}
 		.dsq-comment-text p {
-		    font: 98%/114% "AlekseiRegular", Georgia, Times, serif;
+		    font: 90%/114% "AlekseiRegular", Georgia, Times, serif;
 	    }
 	}
 	.ie #disqus_thread {
@@ -1238,6 +1240,9 @@
 	    .dsq-collapse, .dsq-comment-text p {
 		    font: 98%/114% "AlekseiRegular", Georgia, Times, serif;
 	    }
+	}
+	#dsq-content .dsq-comment-message, #dsq-content .dsq-comment {
+		font: inherit !important;
 	}
 
 /* #Article Page Styles
