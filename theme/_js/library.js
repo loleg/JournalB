@@ -260,4 +260,10 @@ function adjustNewsrows()
 	
 	$(".newsrows .content-single").removeClass('content-right');
 	$(".newsrows .content-single:odd").addClass('content-right');
+	
+	// Move comment counts into info - necessary because Newscoop chokes on A inside of A
+	$(".newsrows .commentcount").each(function(){
+		$(this).prev().find(".info,.info_block").first().prepend(this);
+	});
+	
 }

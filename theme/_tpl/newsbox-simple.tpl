@@ -30,9 +30,7 @@
 			</p>
 		</description>	
 	</div>
-
 	<div class="info_block">
-		<a class="commentcount" href="{{ uri options="article" }}#disqus_thread"></a>
 		<time>
 			{{ if $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" == $smarty.now|camp_date_format:"%d.%m.%Y"}}
 				{{ $gimme->article->publish_date|camp_date_format:"%H:%i" }}
@@ -44,5 +42,5 @@
 	</div>
 
 	<span class="favorite"><span>Favorite</span></span>
-	
 </a>
+<a class="commentcount" href="{{ uri options="article" }}#disqus_thread"></a>

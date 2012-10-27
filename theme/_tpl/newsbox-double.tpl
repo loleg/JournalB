@@ -21,3 +21,4 @@
 	<span class="favorite"><span>Favorite</span></span>
 		
 </a>
+<a class="commentcount" href="{{ uri options="article" }}#disqus_thread"></a>

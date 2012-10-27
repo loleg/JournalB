@@ -128,9 +128,11 @@ function initFavorites() {
 				var h = (self.hasClass('controlicon')) ?
 						document.location.pathname :
 						self.parents('a').attr('href');
-						
+				
+				if (typeof h == "undefined") return;
 				var parts = h.split('/');				
 				if (parts.length<5) return;
+				
 				var s = "/";
 				for (var i =1; i<5; i++) s+= parts[i]+"/";
 				
