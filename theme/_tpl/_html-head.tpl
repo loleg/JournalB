@@ -22,20 +22,19 @@
 			document.cookie='HTTP_IS_RETINA=1;path=/';
 	</script>
 
+	{{ if preg_match("/Windows/", $smarty.server.HTTP_USER_AGENT) }}
+		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/windows-application.css' }}">
+	{{ /if }}
+	
    	{{ if $DEV_ENV }}
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
-		
-		{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
-			<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/native-application.less' }}">
-		{{ /if }}
-		
 		<script src="{{ url static_file='_js/less.min.js' }}" type="text/javascript"></script>
 	{{ else }}
-		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/style.css' }}">
-		
-		{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
-			<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/native-application.css' }}">
-		{{ /if }}
+		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/style.css' }}">		
+	{{ /if }}
+	
+	{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
+		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/native-application.css' }}">
 	{{ /if }}
 	
 	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">

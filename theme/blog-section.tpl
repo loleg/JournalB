@@ -19,8 +19,7 @@
 			</div>
 			
 			<div class="contentbar">
-				{{ php }} $template->assign('start',$_GET['ls-art0']); {{ /php }}
-				{{ render file="_tpl/blogs-articles.tpl" params=$start }}
+				{{ include file="_tpl/blogs-articles.tpl" }}
 			</div>
             
         </div><!-- /content -->

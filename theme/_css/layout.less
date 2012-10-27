@@ -522,7 +522,7 @@
 	}
 	.header .search input[type="image"] {
 		position: absolute;
-		top: 0px; right: 54px;
+		top: 0px; right: 58px;
 		transition: top 0.1s ease-in-out;
 		-moz-transition: top 0.1s ease-in-out;
 		-webkit-transition: top 0.1s ease-in-out;
@@ -1370,7 +1370,7 @@
 		-ms-user-select: none;
 		user-select: none;
     }
-    .controlicons .favorite 		{ background-image: url(../_img/control-favorite.png); position: absolute; left: 610px; top: 5px; width: 100px; }
+    .controlicons .favorite 		{ background-image: url(../_img/control-favorite.png); position: absolute; left: 610px; width: 100px; }
     .controlicons .favorite.checked, 
 	.controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite-black.png); }
 								
@@ -1402,14 +1402,10 @@
 	.controlbar_mobile .controlicon {
 		float: left;
 		margin-bottom: 0px;
-		margin-left: 0px;
-		margin-right: 23px;
+		margin-left: 10px;
 		width: 56px !important;
 		left: 0px !important;
 		position: inherit !important;
-	}
-	.controlbar_mobile .controlicon.last {
-		margin-right: 0px !important;
 	}
 	.controlbar_mobile .aare {
 		float: left;
@@ -1427,29 +1423,11 @@
 	    position: absolute;
 	}
 	.controlbar_mobile .search {
-	    margin-top: 5px;
+	    float: right;
+	    margin-right: 16px;
 	}
 	.controlbar_mobile .search form {
 		margin: 0;
-	}
-	.controlbar_mobile .search input[type='text'] {
-	    background-color: @color-front; color:black;
-	    border-radius: 4px; margin-bottom: 5px;
-		font: inherit; color: black;
-	    height: 1.9em; text-align: center;
-	    margin: 0px; padding: 0px;
-		width: 164px;
-		margin-left: 65px;
-    }
-	.controlbar_mobile .searchsubmit {
-	    margin-top: 2px;
-		float: right;
-		margin-right: 6px;
-    }
-	.controlbar_mobile .search .search-keywords {
-		float: left;
-		margin-bottom: 20px;
-		margin-top: 5px;
 	}
 	
 	#article_image img {

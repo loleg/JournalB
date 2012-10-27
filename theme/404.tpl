@@ -1,3 +1,4 @@
+{{ $tpl_subsections = true }}
 {{ include file="_tpl/_html-head.tpl" }}
 <!-- 404.tpl -->
 <body id="body" class="article-page">

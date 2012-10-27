@@ -1,3 +1,4 @@
+{{ $tpl_subsections = true }}
 {{ include file="_tpl/_html-head.tpl" }}
 <!-- section.tpl -->
 <body id="body" class="section-page">
@@ -10,7 +11,7 @@
 
 		<div class="row content">
 
-			{{ render file="_tpl/newsrows.tpl" params=$smarty.get.limit }}
+			{{ include file="_tpl/newsrows.tpl" condition="OnSection" }}
 			
 		</div><!-- /content -->
 
