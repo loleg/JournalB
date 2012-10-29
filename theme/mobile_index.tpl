@@ -35,6 +35,11 @@
 {{ $sections["front"]["title"] = "Front" }}
 {{ $sections["front"]["time"] = $smarty.now }}
 
+{{ $sections["favorites"] = array() }}
+{{ $sections["favorites"]["url"] = "/favorites" }}
+{{ $sections["favorites"]["title"] = "Favoriten" }}
+{{ $sections["favorites"]["time"] = $smarty.now }}
+
 {{ $articles["sections"] = array() }}
 {{foreach from=$sections item=section}}
     {{ $articles["sections"][] = $section }}
