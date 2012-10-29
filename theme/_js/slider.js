@@ -158,14 +158,14 @@ function updateSliderSize()
 {
 	var window_height = window.innerHeight;
 	var window_width = window.innerWidth;
-
-	$(slider).height($(slider).width()*0.6695);
+	
+	$(slider).height($(slider).width()*0.6702);
 	if (slider_status)
 	{	
 		if ($(slider).height() > window_height)
 		{
 			$(slider).height(window_height);
-			$(slider).width($(slider).height()/0.6695);
+			$(slider).width($(slider).height()/0.6702);
 		}
 		
 		$(slider).css("margin-top",(window_height-$(slider).height())/2+"px");
@@ -176,6 +176,8 @@ function updateSliderSize()
 		$(slider).css("margin-top","0px");
 		$(slider).css("margin-left","0px");
 	}
+	
+	$("#slider ul img").css("max-height",$(slider).height());
 }
 
 function hideActiveSlider()
