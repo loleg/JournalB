@@ -31,6 +31,13 @@ $(document).bind("changeScreenMode",function(){
 // Reverse plugin
 jQuery.fn.reverse = [].reverse;
 
+var document_loaded = false;
+
+function isDocumentLoaded()
+{
+	return document_loaded;
+}
+
 // When the DOM is loaded
 $(document).ready(function() {
 
@@ -61,5 +68,10 @@ $(document).ready(function() {
 	//collapsableElements();
 
 	scrollToArticleTop();
+	
+	
+});
 
+$(window).load(function(){
+	document_loaded = true;
 });
