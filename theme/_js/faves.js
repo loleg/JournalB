@@ -208,7 +208,8 @@ function goToFavorites()
 {
 	if (DISQUS.jsonData.request.is_authenticated)
 	{
-		window.location = "/favorites";
+		$("body").append("<form id='redirect' action='/favorites' method='post'></form>");
+		$("#redirect").submit();
 	}
 	else
 	{
