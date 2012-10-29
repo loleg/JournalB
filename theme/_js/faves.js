@@ -53,19 +53,16 @@ function loginDisqus() {
 		return checkDisqusLogin();
 	} else {
 		// Registration popup
-		if (navigator.userAgent.match(/(Mobile|iPhone)/)) {
-			$('.header .login').hide();
-			$('.header .dsq-login-buttons').slideDown();
-		} else {
-			if (navigator.userAgent.match(/iPad/))
-			{
-				showLoginPopup();
-			}
-			else
-			{
-				DISQUS.dtpl.actions.fire('auth.login');
-			}
+
+		if (navigator.userAgent.match(/(iPad|Journal)/))
+		{
+			showLoginPopup();
 		}
+		else
+		{
+			DISQUS.dtpl.actions.fire('auth.login');
+		}
+		
 		if (!favoritesStartLogin) {
 			favoritesStartLogin = true;
 			window.setTimeout(checkDisqusLogin, 200);
@@ -162,14 +159,7 @@ function initFavorites() {
 	$('.favorite').click(function() {
 				
 		if (!favoritesHasLogin) {
-			if (navigator.userAgent.match(/(Journal|iPad)/))
-			{
-				showLoginPopup();
-			}
-			else
-			{
-				DISQUS.dtpl.actions.fire('auth.login');
-			}
+			loginDisqus();
 			return false;
 		}
 	
@@ -214,6 +204,17 @@ function initFavorites() {
 	
 }
 
+function goToFavorites()
+{
+	if (DISQUS.jsonData.request.is_authenticated)
+	{
+		window.location = "/favorites";
+	}
+	else
+	{
+		loginDisqus();
+	}
+}
 
 function showLoginPopup()
 {
