@@ -1,4 +1,4 @@
-<a class="newsbox section-{{ $article_section }} layoutsimple" href="{{ $article->url }}">
+<a class="content-single newsbox section-{{ $article_section }} layoutsimple" href="{{ $article->url }}">
 
 	<div class="newsboxcontent">
 
