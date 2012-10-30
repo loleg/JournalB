@@ -15,34 +15,40 @@
 		
 		{{ $article = array() }}
 		{{ $article["url"] = {{ uri options="article" }} }}
-		{{ $article["title"] = $gimme->article->name }}
 		{{ $article["time"] = $gimme->article->publish_date|strtotime }}
 		{{ $articles[$gimme->section->url_name][] = $article }}
 		
 		{{ if !$sections[$gimme->section->url_name] }} 
 			{{ $sections[$gimme->section->url_name] = array() }}
 			{{ $sections[$gimme->section->url_name]["url"] = {{ uri options="section" }} }}
-			{{ $sections[$gimme->section->url_name]["title"] = $gimme->section->name }}
-			{{ $sections[$gimme->section->url_name]["time"] = $smarty.now }}
+			{{ $sections[$gimme->section->url_name]["time"] = $gimme->article->publish_date|strtotime }}
+		{{ else }}
+			{{ if $article["time"] > $sections[$gimme->section->url_name]["time"] }} {{ $sections[$gimme->section->url_name]["time"] = $article["time"] }} {{ /if }}
 		{{ /if }}
-		
 	{{ /if }}
 	
 {{ /list_articles }}
 
-{{ $sections["front"] = array() }}
-{{ $sections["front"]["url"] = "/" }}
-{{ $sections["front"]["title"] = "Front" }}
-{{ $sections["front"]["time"] = $smarty.now }}
-
 {{ $sections["favorites"] = array() }}
 {{ $sections["favorites"]["url"] = "/favorites" }}
-{{ $sections["favorites"]["title"] = "Favoriten" }}
-{{ $sections["favorites"]["time"] = $smarty.now }}
+{{ $sections["favorites"]["time"] = $favorites_time }}
+
+{{ $articles["favorites"] = array() }}
+{{foreach from=$faves item=article}}
+    {{ $articles["favorites"][] = $article }}
+{{/foreach}}
+
+{{ $sections["front"] = array() }}
+{{ $sections["front"]["url"] = "/" }}
+{{ $sections["front"]["time"] = 0 }}
+{{foreach from=$sections item=section}}
+    {{ if $section["time"] > $sections["front"]["time"] }} {{ $sections["front"]["time"] = $section["time"] }} {{ /if }}
+{{/foreach}}
 
 {{ $articles["sections"] = array() }}
 {{foreach from=$sections item=section}}
     {{ $articles["sections"][] = $section }}
 {{/foreach}}
 
-{{ $view->json($articles)|replace:'\\':'' }}
+
+{{ $view->json($articles) }}
