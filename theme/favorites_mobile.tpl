@@ -20,7 +20,7 @@
 		
 		{{ if !$sections[$gimme->section->url_name] }} 
 			{{ $sections[$gimme->section->url_name] = array() }}
-			{{ $sections[$gimme->section->url_name]["url"] = {{ uri options="section" }} }}
+			{{ $sections[$gimme->section->url_name]["url"] = "/mobile/"|cat:$gimme->section->url_name }}
 			{{ $sections[$gimme->section->url_name]["time"] = $gimme->article->publish_date|strtotime }}
 		{{ else }}
 			{{ if $article["time"] > $sections[$gimme->section->url_name]["time"] }} {{ $sections[$gimme->section->url_name]["time"] = $article["time"] }} {{ /if }}
