@@ -1,3 +1,4 @@
+{{ image rendition="topfront" }}<img src="{{ $image->src }}" style="display: none;" />{{ /image }}
 <a class="content-single newsbox section-{{ $article_section }} layoutbgimage" href="{{ uri options="article" }}"
 	{{ image rendition="topfront" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 
