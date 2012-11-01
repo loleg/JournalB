@@ -1,4 +1,4 @@
-{{ assign var="DEV_ENV" value="1" }}
+{{ assign var="DEV_ENV" value="0" }}
 <!DOCTYPE html>
 <!--[if IE]>
 <html class="ie" lang="de">
@@ -11,15 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
     <script type="text/javascript">
-    	{{ if $DEV_ENV }}
-			var DEBUG_MODE = true;
-			var disqus_shortname = 'journalb-lab';
-		{{ else }}
-			var DEBUG_MODE = false;
-			var disqus_shortname = 'journalb';
-		{{ /if }}
 		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
 			document.cookie='HTTP_IS_RETINA=1;path=/';
+{* ---------------- COMMUNITY SETTING -------------------- *}
+    	var disqus_shortname = 'journalb-lab';
+{* ---------------- FRONTEND MODE SET -------------------- *}
+    	var DEBUG_MODE = ({{ $DEV_ENV }} == 1);
 	</script>
 
 	{{ if preg_match("/Windows/", $smarty.server.HTTP_USER_AGENT) }}
