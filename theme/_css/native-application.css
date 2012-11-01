@@ -14,7 +14,7 @@
 { display: none !important; }
 
 .container .newsbox .favorite:hover {  background-image: url(../_img/favorite-grey.png); }
-.container .controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite-grey.png); }
+.container .controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite.png); }
 
 .controlbar_mobile_front {
 	margin-bottom: 5px;
