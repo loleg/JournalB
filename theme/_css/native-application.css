@@ -19,3 +19,7 @@
 .controlbar_mobile_front {
 	margin-bottom: 5px;
 }
+
+@media only screen and (min-width: 768px) {
+	.header  { margin-top: -60px; }
+}
