@@ -13,9 +13,7 @@
     <script type="text/javascript">
 		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
 			document.cookie='HTTP_IS_RETINA=1;path=/';
-{* ---------------- COMMUNITY SETTING -------------------- *}
     	var disqus_shortname = 'journalb-lab';
-{* ---------------- FRONTEND MODE SET -------------------- *}
     	var DEBUG_MODE = ({{ $DEV_ENV }} == 1);
 	</script>
 
