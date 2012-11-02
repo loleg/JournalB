@@ -206,16 +206,19 @@ function hideActiveSlider()
 
 function showActiveSlider()
 {
+	if (!navigator.userAgent.match(/Offline/))
+	{
+		$("#slider img").each(function(){
+			$(this).attr("src",$(this).attr("src").replace('470x315','1600x1072'));		
+		});
+	}
+
 	if (!navigator.userAgent.match(/(Mobile|iPhone|iPad)/))
 	{
 		$(slider).append('<div class="carrow left" onclick="moveSlider(0);"></div>');
 		$(slider).append('<div class="carrow right" onclick="moveSlider(1);"></div>');
 		$(slider).append('<div class="close" onclick="changeSliderStatus();"></div>');
 		$("#slider ul").attr('onclick','');
-		
-		$("#slider img").each(function(){
-			$(this).attr("src",$(this).attr("src").replace('470x315','1600x1072'));
-		});
 	}
 	
 	$("html").addClass("active_slider");

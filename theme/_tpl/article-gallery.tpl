@@ -1,5 +1,3 @@
-{{ php }} if (isset($_COOKIE["HTTP_IS_RETINA"])) $template->assign('retina','_2x'); else $template->assign('retina',''); {{ /php }} 
-
 {{ $is_gallery = false }}
 
 <div id="slider_box" class="slider_box">
@@ -10,9 +8,8 @@
 			{{ foreach $slideshow->items as $item }}
 				{{ if $item->is_image }}
 					{{ if $item->image->width != 470 }} {{ continue }} {{ /if }}
-					{{ if $retina!="" }} {{ $src = $item->image->src|replace:'470x315':'1600x1072' }} {{ else }} {{ $src = $item->image->src }} {{ /if }}
 					{{ $is_gallery = true }}
-					<li class="sli_image"><img src="{{ $src }}" alt="{{ $item->caption }}" /></li>
+					<li class="sli_image"><img src="{{ $item->image->src }}" alt="{{ $item->caption }}" /></li>
 				{{ /if }}
 				
 				{{ if $item->is_video }}
@@ -30,22 +27,10 @@
 		{{ /foreach }}
 		
 		{{ if not $is_gallery }}
-		
-			{{ $is_retina_img = 0 }}
-		
-			{{ image rendition="articlebig{{ $retina }}" }}
-				{{ $is_retina_img = 1 }}
+			{{ image rendition="articlebig" }}
 				{{ $is_gallery = true }}
 				<li><img src="{{ $image->src }}" alt="{{ $image->caption }}" /></li>
 			{{ /image }} 
-			
-			{{ if $retina!="" and not $is_retina_img }}
-				{{ image rendition="articlebig" }}
-					{{ $is_gallery = true }}
-					<li><img src="{{ $image->src }}" alt="{{ $image->caption }}" /></li>
-				{{ /image }} 
-			{{ /if }}
-				
 		{{ /if }}
 		
 	</ul>
