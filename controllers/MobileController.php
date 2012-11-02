@@ -49,6 +49,11 @@ class MobileController extends Zend_Controller_Action
 		header("Location: /de/".$issue->getUrlName()."/".$section,true,301);
 		exit();
 	}
+	
+	public function communityAction()
+	{
+		// Logic in template
+	}
 		
 }
 
