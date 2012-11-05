@@ -18,7 +18,13 @@ require_once('disqus/disqusapi.php');
 use Newscoop\Entity\Article;
 
 class FavoritesController extends Zend_Controller_Action
-{
+{    
+    // Account details
+	private $shortname = 'journalb-lab'; 
+	private $PUBLIC_KEY = "S2zPf5GHF44MxrBrcsjhUP8aZD5SHIdoSBqB1l10NBtMkjhC1AZAEPpWSqYZauFa";
+	private $SECRET_KEY = "Em5o6RFV2YKZgTowuo6QprVZ8WwLZ5SdhL9hmkAORZXsW5jzbJiPCGZgT6sfYqXr";
+	private $homepage = "http://dev.journal-b.ch";
+	private $redirect = "http://dev.journal-b.ch/favorites";
 
 	/** @var Newscoop\Entity\Repository\ArticleRepository */
     private $articleRepository;
@@ -51,13 +57,6 @@ class FavoritesController extends Zend_Controller_Action
     private $refresh;
     /** @var DisqusAPI */
     private $disqusapi;
-    
-    // Account details
-	private $shortname = 'journalb-lab'; 
-	private $PUBLIC_KEY = "S2zPf5GHF44MxrBrcsjhUP8aZD5SHIdoSBqB1l10NBtMkjhC1AZAEPpWSqYZauFa";
-	private $SECRET_KEY = "Em5o6RFV2YKZgTowuo6QprVZ8WwLZ5SdhL9hmkAORZXsW5jzbJiPCGZgT6sfYqXr";
-	private $homepage = "http://calendar.kneesntoads.com";
-	private $redirect = "http://calendar.kneesntoads.com/favorites";
 	
 	// If we are not logged in, redirect us to login
 	private function ensureDisqusLogin($gotologin = true) {
