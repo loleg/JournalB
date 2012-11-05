@@ -1,4 +1,4 @@
-{{ assign var="DEV_ENV" value="0" }}
+{{ assign var="DEV_ENV" value="1" }}
 {{ if $DEV_ENV }}
 <center style="font-size:60%">{{ $smarty.server.HTTP_USER_AGENT }}</center>
 <!-- DEV -->
