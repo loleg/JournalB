@@ -209,8 +209,17 @@ function showActiveSlider()
 	//Load high resolution image in online mode
 	if (getCookie('PHPSESSID')) //Detect online mode
 	{
+		if (navigator.userAgent.match(/Journal/)) window.location = "indicator://enable";
+		loaded_images = 0;
 		$("#slider img").each(function(){
-			$(this).attr("src",$(this).attr("src").replace('470x315','1600x1072'));		
+			if (navigator.userAgent.match(/Journal/))
+			{
+				$(this).load(function(){
+					loaded_images++;
+					if (loaded_images == $("#slider img").length) window.location = "indicator://disable";
+				});		
+			}
+			$(this).attr("src",$(this).attr("src").replace('470x315','1600x1072'));
 		});
 	}
 
