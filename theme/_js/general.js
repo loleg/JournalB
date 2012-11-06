@@ -69,9 +69,7 @@ $(document).ready(function() {
 
 	scrollToArticleTop();
 	
-	
-});
-
-$(window).load(function(){
 	document_loaded = true;
+	
+	if (navigator.userAgent.match(/Journal/) && getCookie('PHPSESSID')) loadCommunity();
 });

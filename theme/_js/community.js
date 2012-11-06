@@ -62,11 +62,15 @@ function drawAds()
 	var ad1=0,ad2=0;
 		
 	var ads_count = $(".community-ads .adbox").length;
-	switch (ads_count) {
-	case 0: return;
-	case 1: ad1 = 1; break;
-	case 2: ad1 = 1; ad2 = 2; break;
-	default:
+	if (ads_count==0) return;
+	else if (ads_count==1) ad1 = 1;
+	else if (ads_count==2)
+	{
+		ad1 = 1;
+		ad2 = 2;
+	}
+	else
+	{
 		var current_ad_shift = getCookie("adShift");
 		if (!current_ad_shift) current_ad_shift = 0; else current_ad_shift = parseInt(current_ad_shift);
 		ad1 = current_ad_shift + 1;
@@ -88,4 +92,12 @@ function drawAds()
 			
 	if (ad1) $(".community-ads .adbox:nth-child("+ad1+")").insertAfter($(".sidebar .content .community-item")[pos1]);
 	if (ad2) $(".community-ads .adbox:nth-child("+ad2+")").insertAfter($(".sidebar .content .community-item")[pos2]);
+}
+
+
+function loadCommunity()
+{
+	$.get('/mobile/community', function(data) {
+		$('#community').html(data);		
+	});
 }
