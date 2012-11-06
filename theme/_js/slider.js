@@ -206,7 +206,8 @@ function hideActiveSlider()
 
 function showActiveSlider()
 {
-	if (!navigator.userAgent.match(/Offline/))
+	//Load high resolution image in online mode
+	if (getCookie('PHPSESSID')) //Detect online mode
 	{
 		$("#slider img").each(function(){
 			$(this).attr("src",$(this).attr("src").replace('470x315','1600x1072'));		

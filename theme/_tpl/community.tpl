@@ -1,3 +1,5 @@
+{{ if !$custom }}<div id="community">{{ /if }}
+
 {{ if !preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) || $custom }}
 
 <!-- Start community feed -->
@@ -75,3 +77,5 @@
 </script>
 
 {{ /if }}
+
+{{ if !$custom }}</div>{{ /if }}
