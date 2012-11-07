@@ -186,8 +186,7 @@ function initFavorites() {
 					if (typeof console != 'undefined') console.log(data);
 				});
 			
-			if (navigator.userAgent.match(/Journal/))
-			{
+			if (NATIVE_APP) {
 				window.location = "fvr://add_to_favorites?url="+url+"&vote="+vote;
 			}
 			

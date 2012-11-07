@@ -1,13 +1,10 @@
 /* -- DEBUG -- */
-if (!navigator.userAgent.match(/Journal/))
-{
-	if (typeof DEBUG_MODE != 'undefined' && DEBUG_MODE) {
-		localStorage.clear(); 
-		var p = "/themes/publication_";
-		destroyLessCache(p + "1/theme_1/_css/");
-		destroyLessCache(p + "2/theme_1/_css/");
-		destroyLessCache(p + "3/theme_4/_css/");
-	}
+if (!NATIVE_APP && typeof DEBUG_MODE != 'undefined' && DEBUG_MODE) {
+	localStorage.clear(); 
+	var p = "/themes/publication_";
+	destroyLessCache(p + "1/theme_1/_css/");
+	destroyLessCache(p + "2/theme_1/_css/");
+	destroyLessCache(p + "3/theme_4/_css/");
 }
 /* --- */
 
@@ -71,5 +68,5 @@ $(document).ready(function() {
 	
 	document_loaded = true;
 	
-	if (navigator.userAgent.match(/Journal/) && getCookie('PHPSESSID')) loadCommunity();
+	if (NATIVE_APP && getCookie('PHPSESSID')) loadCommunity();
 });

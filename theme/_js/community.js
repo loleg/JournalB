@@ -2,12 +2,9 @@ function initShareButton()
 {
 	// ** Share
 	$('.share').click(function() {
-		if (navigator.userAgent.match(/Journal/)) 
-		{
+		if (NATIVE_APP) {
 			window.location = "shr://share_article";
-		}
-		else
-		{
+		} else {
 			var sharebox = $('.main .sharebox');
 			if (sharebox.hasClass('initial')) {
 				sharebox
