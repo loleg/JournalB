@@ -31,7 +31,7 @@ function scaleCommunity()
 		sidebar = $('.sidebar');
 	if (!sidebar.hasClass('preview')) {
 		$('.commentbox', sidebar).reverse().each(function() {
-		    if ($(this).parent().height() > max_height) $(this).hide();
+		    if ($(sidebar).height() > max_height) $(this).hide();
 		});
 		$('.supportbox', sidebar).after($('.commentbox:gt(2)', sidebar));
 		// Enable external community links
