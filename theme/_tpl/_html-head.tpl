@@ -1,6 +1,6 @@
 {{ assign var="DEV_ENV" value="1" scope="global" }}
 {{ assign var="VER_ENV" value=".v1.5" scope="global" }}
-{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}{{ assign var="NATIVEAPP" value="1" scope="global" }}{{ /if }}
+{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}{{ assign var="NATIVEAPP" value="1" scope="global" }}{{ else }}{{ assign var="NATIVEAPP" value="0" scope="global" }}{{ /if }}
 <!DOCTYPE html>
 <!--[if IE]>
 <html class="ie" lang="de">
