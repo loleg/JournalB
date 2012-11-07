@@ -16,8 +16,8 @@
 		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
 			document.cookie='HTTP_IS_RETINA=1;path=/';
     	var disqus_shortname = 'journalb-lab';
-    	var DEBUG_MODE = ({{ $DEV_ENV }} == 1);
-    	var NATIVE_APP = ({{ $NATIVEAPP }} == 1);
+    	var DEBUG_MODE = ('{{ $DEV_ENV }}' == '1');
+    	var NATIVE_APP = ('{{ $NATIVEAPP }}' == '1');
 	</script>
 
 	{{ if preg_match("/Windows/", $smarty.server.HTTP_USER_AGENT) }}
@@ -32,7 +32,7 @@
 	{{ /if }}
 	
 	{{ if $NATIVEAPP }}
-		<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application$VER_ENV.css" }}">
+		<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application.css" }}">
 	{{ /if }}
 	
 	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">

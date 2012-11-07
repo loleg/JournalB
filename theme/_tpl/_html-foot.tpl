@@ -1,5 +1,9 @@
 {{ if $DEV_ENV }}
-<center style="font-size:60%">{{ $smarty.server.HTTP_USER_AGENT }}</center>
+<center style="font-size:60%">
+	{{ $smarty.server.HTTP_USER_AGENT }}
+	{{ if $NATIVEAPP }} - Native App Detected -{{ /if }}
+	<script language="JavaScript">document.write(NATIVE_APP)</script>
+</center>
 <!-- DEV -->
 <script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/community.js' }}" type="text/javascript"></script>
