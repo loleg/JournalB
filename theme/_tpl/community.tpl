@@ -1,6 +1,6 @@
 {{ if !$custom }}<div id="community">{{ /if }}
 
-{{ if !preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) || $custom }}
+{{ if !$NATIVEAPP || $custom }}
 
 <!-- Start community feed -->
 

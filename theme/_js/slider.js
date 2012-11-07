@@ -201,7 +201,7 @@ function hideActiveSlider()
 	
 	updateSliderSize();
 	
-	if (navigator.userAgent.match(/Journal/)) window.location = "fullscreen://disable";
+	if (NATIVE_APP) window.location = "fullscreen://disable";
 }
 
 function showActiveSlider()
@@ -209,11 +209,10 @@ function showActiveSlider()
 	//Load high resolution image in online mode
 	if (getCookie('PHPSESSID')) //Detect online mode
 	{
-		if (navigator.userAgent.match(/Journal/)) window.location = "indicator://enable";
+		if (NATIVE_APP) window.location = "indicator://enable";
 		loaded_images = 0;
 		$("#slider img").each(function(){
-			if (navigator.userAgent.match(/Journal/))
-			{
+			if (NATIVE_APP) {
 				$(this).load(function(){
 					loaded_images++;
 					if (loaded_images == $("#slider img").length) window.location = "indicator://disable";
@@ -239,5 +238,5 @@ function showActiveSlider()
 	
 	updateSliderSize();
 	
-	if (navigator.userAgent.match(/Journal/)) window.location = "fullscreen://enable";
+	if (NATIVE_APP) window.location = "fullscreen://enable";
 }

@@ -40,6 +40,6 @@
 	<span class="favorite checked"><span>Favorite</span></span>
 	
 </a>
-{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
+{{ if $NATIVEAPP }}
 	<a class="commentcount" href="{{ uri options="article" }}#disqus_thread"></a>
 {{ /if }}

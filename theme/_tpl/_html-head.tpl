@@ -1,5 +1,6 @@
 {{ assign var="DEV_ENV" value="1" scope="global" }}
 {{ assign var="VER_ENV" value=".v1.5" scope="global" }}
+{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}{{ assign var="NATIVEAPP" value="1" scope="global" }}{{ /if }}
 <!DOCTYPE html>
 <!--[if IE]>
 <html class="ie" lang="de">
@@ -16,6 +17,7 @@
 			document.cookie='HTTP_IS_RETINA=1;path=/';
     	var disqus_shortname = 'journalb-lab';
     	var DEBUG_MODE = ({{ $DEV_ENV }} == 1);
+    	var NATIVE_APP = ({{ $NATIVEAPP }} == 1);
 	</script>
 
 	{{ if preg_match("/Windows/", $smarty.server.HTTP_USER_AGENT) }}
@@ -29,7 +31,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/style$VER_ENV.css" }}">		
 	{{ /if }}
 	
-	{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
+	{{ if $NATIVEAPP }}
 		<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application$VER_ENV.css" }}">
 	{{ /if }}
 	
