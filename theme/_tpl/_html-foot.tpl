@@ -1,4 +1,3 @@
-{{ assign var="DEV_ENV" value="1" }}
 {{ if $DEV_ENV }}
 <center style="font-size:60%">{{ $smarty.server.HTTP_USER_AGENT }}</center>
 <!-- DEV -->
@@ -12,7 +11,7 @@
 <!-- /DEV -->
 {{ else }}
 <!-- PROD -->
-<script src="{{ url static_file='_js/all.min.js' }}" type="text/javascript"></script>
+<script src="{{ url static_file="_js/all$VER_ENV.min.js" }}" type="text/javascript"></script>
 <!-- /PROD -->
 {{ /if }}
 

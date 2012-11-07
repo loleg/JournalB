@@ -1,4 +1,5 @@
-{{ assign var="DEV_ENV" value="1" }}
+{{ assign var="DEV_ENV" value="1" scope="global" }}
+{{ assign var="VER_ENV" value=".v1.5" scope="global" }}
 <!DOCTYPE html>
 <!--[if IE]>
 <html class="ie" lang="de">
@@ -25,11 +26,11 @@
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
 		<script src="{{ url static_file='_js/less.min.js' }}" type="text/javascript"></script>
 	{{ else }}
-		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/style.css' }}">		
+		<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/style$VER_ENV.css" }}">		
 	{{ /if }}
 	
 	{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
-		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/native-application.css' }}">
+		<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application$VER_ENV.css" }}">
 	{{ /if }}
 	
 	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">
