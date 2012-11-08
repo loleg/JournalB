@@ -26,6 +26,11 @@ class MobileController extends Zend_Controller_Action
 		// Logic in template
 	}
 	
+	/* Header bar for mobile web/native app */
+	public function controlbarAction() {
+		// Logic in template
+	}
+	
 	/* Redirect static urls to current issue */
 	public function alltagAction()
 	{

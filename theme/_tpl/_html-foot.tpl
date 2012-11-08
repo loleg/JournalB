@@ -25,6 +25,8 @@ if (NATIVE_APP) {
 		$.get('{{ url static_file="_html/control-sharebox.html" }}', 
 			function(data) { $('.contentbar').first().prepend(data); });
 	}
+	$.get('/mobile/controlbar', 
+		function(data) { $('.controlbar_mobile_front').prepend(data); });
 }
 
 if (MOBILE_WEB) {
