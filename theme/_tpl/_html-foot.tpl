@@ -26,7 +26,7 @@ if (NATIVE_APP) {
 			function(data) { $('.contentbar').first().prepend(data); });
 	}
 	$.get('/mobile/controlbar', 
-		function(data) { $('.controlbar_mobile_front').prepend(data); });
+		function(data) { $('.controlbar_mobile_front').html(data); });
 }
 if (MOBILE_WEB) {
 	$('body').addClass('mobile-web');
@@ -42,6 +42,9 @@ if (MOBILE_WEB) {
 	} 
 	/* /browser-update */
 }
+</script>
+
+<script type="text/javascript">
 /* disqus: */
 if ($('#disqus_thread').length == 0) {
 	$('body').append('<div class="hidden" id="disqus_thread"></div>');

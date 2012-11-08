@@ -1,4 +1,3 @@
-
 <div class="controlbar_mobile">
 	<div class="aare">
         Aare<br><span class="wert"></span>&deg;
