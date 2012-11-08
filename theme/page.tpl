@@ -1,8 +1,7 @@
 {{ include file="_tpl/_html-head.tpl" }}
 <!-- page.tpl -->
-{{ dynamic }}
-<body id="body" class="section-page font{{ $smarty.cookies.fontSize }}">
-{{ /dynamic }}
+<body id="body" class="section-page">
+{{ include file="_tpl/detect-fontsize.tpl" }}
 
 <div class="container">
 

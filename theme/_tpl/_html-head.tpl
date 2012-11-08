@@ -59,6 +59,23 @@
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
 	<script>window.jQuery || document.write('<script src="{{ url static_file='_js/jquery.min.js' }}"><\/script>')</script>
+	<script>
+	// Get Cookie by name
+	function getCookie(c_name)
+	{
+		var i,x,y,ARRcookies=document.cookie.split(";");
+		for (i=0;i<ARRcookies.length;i++)
+		{
+		  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+		  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+		  x=x.replace(/^\s+|\s+$/g,"");
+		  if (x==c_name)
+			{
+			return unescape(y);
+			}
+		}
+	}
+	</script>
 	
 	<!--[if IE]>
 	<script src="{{ url static_file='_js/html5shiv.min.js' }}"></script>
