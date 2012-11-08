@@ -16,7 +16,7 @@
 			{{ php }} $template->assign('start',$_GET['ls-art0']); {{ /php }}
 			{{ php }} $template->assign('start2',$_GET['ls-art1']); {{ /php }}
 			{{ $param = $start|cat:$start2 }} 
-			{{ render file="_tpl/newsrows.tpl" params=$param }}
+			{{ include file="_tpl/newsrows.tpl" }}
 			
 		</div><!-- /content -->
 
