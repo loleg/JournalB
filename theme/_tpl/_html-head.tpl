@@ -16,13 +16,10 @@
 			document.cookie='HTTP_IS_RETINA=1;path=/';
     	var disqus_shortname = 'journalb-lab';
     	var DEBUG_MODE = ('{{ $DEV_ENV }}' == '1');
-    	var NATIVE_APP = navigator.userAgent.match(/Journal/);
-    	var MOBILE_WEB = navigator.userAgent.match(/(Mobile|iPhone|iPad)/);
+    	var NATIVE_APP = (navigator.userAgent.match(/Journal/) || false);
+    	var MOBILE_WEB = (navigator.userAgent.match(/(Mobile|iPhone|iPad)/) || false);
+    	if (navigator.userAgent.match(/Windows/)) { document.write('<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/windows-application.css' }}">'); }
 	</script>
-
-	{{ if preg_match("/Windows/", $smarty.server.HTTP_USER_AGENT) }}
-		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/windows-application.css' }}">
-	{{ /if }}
 	
    	{{ if $DEV_ENV }}
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
