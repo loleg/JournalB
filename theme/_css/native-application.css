@@ -10,9 +10,8 @@
 .container .controlbar_mobile .search h6
 { display: block !important; }
 
-.container .aare,
-.controlbar_mobile_front .logo
-{ display: none !important; }
+.container .aare { display: none; }
+.controlbar_mobile_front .logo { display: none !important; }
 
 .container .newsbox .favorite:hover {  background-image: url(../_img/favorite-grey.png); }
 .container .controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite.png); }
