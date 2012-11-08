@@ -95,6 +95,12 @@ function drawAds()
 function loadCommunity()
 {
 	$.get('/mobile/community', function(data) {
-		$('#community').html(data);		
+		$('#community').html(data);
 	});
+	if (NATIVE_APP) {
+    	// Move comment counts into info - necessary because Newscoop chokes on A inside of A
+		$(".newsrows .commentcount").each(function(){
+			$(this).prev().find(".info,.info_block").first().prepend(this);
+		}).removeClass('hidden');
+	}
 }
