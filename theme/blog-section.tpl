@@ -35,7 +35,7 @@
             
 			{{ include file="_tpl/community-sectionbox.tpl" }}	
 			
-            {{ render file="_tpl/community.tpl" section=2 article=0 }}
+            <div id="community">
 
         </div>
 

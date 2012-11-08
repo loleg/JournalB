@@ -27,7 +27,7 @@
 
 		<div class="row content">
 			
-			{{ render file="_tpl/community.tpl" section=2 article=0 }}
+			<div id="community">
 			
 			{{ include file="_tpl/community-front.tpl" }}
 

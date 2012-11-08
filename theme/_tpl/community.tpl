@@ -1,7 +1,3 @@
-{{ if !$custom }}<div id="community">{{ /if }}
-
-{{ if !$NATIVEAPP || $custom }}
-
 <!-- Start community feed -->
 
 {{ list_articles length="20" order="byPublishDate desc" constraints="issue is 2 type is fweet is_ad is off" ignore_section="true" ignore_issue="true" }} 
@@ -75,7 +71,3 @@
 /* /flattr */
 
 </script>
-
-{{ /if }}
-
-{{ if !$custom }}</div>{{ /if }}

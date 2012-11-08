@@ -68,5 +68,5 @@ $(document).ready(function() {
 	
 	document_loaded = true;
 	
-	if (NATIVE_APP && getCookie('PHPSESSID')) loadCommunity();
+	loadCommunity();
 });

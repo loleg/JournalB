@@ -28,7 +28,7 @@
 				{{ include file="_tpl/page-community.tpl" }}
 			</div>
 			
-            {{ render file="_tpl/community.tpl" section=2 article=0 }}
+            <div id="community">
 
         </div>
 
