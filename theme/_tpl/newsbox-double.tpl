@@ -1,3 +1,4 @@
+{{ image rendition="topfrontdouble" }}<img src="{{ $image->src }}" style="display: none;" />{{ /image }}
 <a class="content-double newsbox section-{{ $article_section }} layoutdouble" href="{{ uri options="article" }}" {{ image rendition="topfrontdouble" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 	
 	<div class="newsboxcontent_wrapper">
@@ -21,3 +22,6 @@
 	<span class="favorite"><span>Favorite</span></span>
 		
 </a>
+{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
+	<a class="commentcount" href="{{ uri options="article" }}#disqus_thread"></a>
+{{ /if }}

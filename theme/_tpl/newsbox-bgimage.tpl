@@ -1,4 +1,5 @@
-<a class="newsbox section-{{ $article_section }} layoutbgimage" href="{{ uri options="article" }}"
+{{ image rendition="topfront" }}<img src="{{ $image->src }}" style="display: none;" />{{ /image }}
+<a class="content-single newsbox section-{{ $article_section }} layoutbgimage" href="{{ uri options="article" }}"
 	{{ image rendition="topfront" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 
 	<div class="info_block">
@@ -19,4 +20,6 @@
 	<span class="favorite"><span>Favorite</span></span>
 	
 </a>
-
+{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
+	<a class="commentcount" href="{{ uri options="article" }}#disqus_thread"></a>
+{{ /if }}

@@ -2,19 +2,26 @@ function initShareButton()
 {
 	// ** Share
 	$('.share').click(function() {
-		var sharebox = $('.main .sharebox');
-		if (sharebox.hasClass('initial')) {
-			sharebox
-				.addClass('hidden').removeClass('initial')
-				.css({ position:'', visibility:'' }) // fix visibility for Facebook
-				.find('.shareicon.hidden').removeClass('hidden'); // unhide G+
+		if (navigator.userAgent.match(/Journal/)) 
+		{
+			window.location = "shr://share_article";
 		}
-		if (sharebox.hasClass('hidden')) {
-			sharebox.slideDown("fast").removeClass('hidden');
-			$(this).addClass('checked');
-		} else {
-			sharebox.slideUp("fast").addClass('hidden');
-			$(this).removeClass('checked');
+		else
+		{
+			var sharebox = $('.main .sharebox');
+			if (sharebox.hasClass('initial')) {
+				sharebox
+					.addClass('hidden').removeClass('initial')
+					.css({ position:'', visibility:'' }) // fix visibility for Facebook
+					.find('.shareicon.hidden').removeClass('hidden'); // unhide G+
+			}
+			if (sharebox.hasClass('hidden')) {
+				sharebox.slideDown("fast").removeClass('hidden');
+				$(this).addClass('checked');
+			} else {
+				sharebox.slideUp("fast").addClass('hidden');
+				$(this).removeClass('checked');
+			}
 		}
 	});
 	// - Share
@@ -85,4 +92,12 @@ function drawAds()
 			
 	if (ad1) $(".community-ads .adbox:nth-child("+ad1+")").insertAfter($(".sidebar .content .community-item")[pos1]);
 	if (ad2) $(".community-ads .adbox:nth-child("+ad2+")").insertAfter($(".sidebar .content .community-item")[pos2]);
+}
+
+
+function loadCommunity()
+{
+	$.get('/mobile/community', function(data) {
+		$('#community').html(data);		
+	});
 }

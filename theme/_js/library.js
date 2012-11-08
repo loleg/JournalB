@@ -161,20 +161,26 @@ function updateScreenMode()
 	if (_screenMode != screenMode) setScreenMode(_screenMode);
 }
 
+var scrolling = false;
+
 // Skips over the menu when loading an article
-function scrollToArticleTop() {	
+function scrollToArticleTop(animate) {	
+	if (scrolling) return false;
+	scrolling = true;
+	
 	var scroll_top = 0;
 	
-	// Scroll search field
-	if (navigator.userAgent.match(/Journal/)) 
-		scroll_top += 50;
-	
-	// Scroll to top of article
-	if ($("a[name='mobile_startpoint']").length > 0 &&
-		(navigator.userAgent.match(/iPhone/gi) || navigator.userAgent.match(/iPod/gi))) {
-			scroll_top += 40; }
-			
-	$(window).scrollTop(scroll_top);
+	if ($(".controlbar_mobile").length && $(".controlbar_mobile").height()>0 && navigator.userAgent.match(/(Mobile|iPhone)/)) scroll_top += $(".controlbar_mobile").height()+15;
+	if (!animate)
+	{
+		$(window).scrollTop(scroll_top);
+		scrolling = false;
+	}
+	else
+	{
+		
+		$('html, body').animate({scrollTop:scroll_top}, 'slow', function() {scrolling = false;});
+	}
 }
 
 // Update screen mode and trigger action
@@ -189,16 +195,7 @@ function setScreenMode(_screenMode)
 function aareTemperaturen()
 {
 	$.get('/services/hydrodaten.php', function(data) {
-		$.each(data.getElementsByTagName('MesPar'), function() { 
-		if ($(this).attr('DH') == 'HBCHa' && 
-			$(this).attr('StrNr') =="2135" &&
-			$(this).attr('Typ') =="03" &&
-			$(this).attr('Var') =="00") {
-				var txt = $(this).find('Wert[dt="-24h"]').text();
-				$('.aare .wert').html(parseFloat(txt).toFixed(1)).parent().css('opacity','1');
-				return;
-		}			
-		});
+		$('.aare .wert').html(data.temperature).parent().css('opacity','1');
 	});
 }
 
@@ -210,15 +207,15 @@ function showComments() {
 }
 
 // Load more content dynamically
-function loadWeitereArtikel() {
-    var self = $(this);
+function loadWeitereArtikel(self) {
+	self = $(self);
     $.get(self.attr('href'), function(data) {
         var top = data.indexOf('/start articlerows/');
         var bot = data.indexOf('/end articlerows/');
-        self.parent().after(
-            data.substring(top - 6, bot - 6)
-        ).remove();
-        $('.weitere a').click(loadWeitereArtikel);
+
+		$('.dynamic-articlerows .weitere').remove();
+		$('.dynamic-articlerows').append(data.substring(top - 6, bot - 6));
+		adjustNewsrows();
     }); 
     return false;
 }
@@ -242,4 +239,45 @@ function getArticleTitle()
 	{
 		return false;
 	}
+}
+
+function adjustNewsrows()
+{
+	var content_double_num = 0;
+
+	$(".newsrows .content-double").each(function(){	
+		if($('.newsrows .newsbox').index(this)%2!=content_double_num%2)
+		{
+			var i = 1;
+			while ($(".newsrows .newsbox").eq($('.newsrows .newsbox').index(this)+i).length)
+			{
+				var obj = $(".newsrows .newsbox").eq($('.newsrows .newsbox').index(this)+i);
+				if (obj.hasClass('content-single'))
+				{
+					$(this).before(obj);
+					break;
+				}
+				i++;
+			}
+		}
+		content_double_num++;
+	});
+	
+	$(".newsrows .newsbox").show();
+	
+	if ($(".newsrows .weitere").length && $(".newsrows .content-single").length%2==1)
+	{
+		var obj = $(".newsrows .content-single").last();
+		$(".newsrows .newsbox").last().after(obj);
+		obj.hide();
+	}
+	
+	$(".newsrows .content-single").removeClass('content-right');
+	$(".newsrows .content-single:odd").addClass('content-right');
+	
+	// Move comment counts into info - necessary because Newscoop chokes on A inside of A
+	$(".newsrows .commentcount").each(function(){
+		$(this).prev().find(".info,.info_block").first().prepend(this);
+	});
+	
 }

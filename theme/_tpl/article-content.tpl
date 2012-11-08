@@ -1,8 +1,6 @@
 {{ if $gimme->preview }}
 	{{ if $gimme->article->issue->number > 2 }}
-	<div class="row newsrow">
 		{{ include file="_tpl/newsbox.tpl" }}
-	</div>
 	{{ else }}
 	<div class="sidebar">
 		{{ include file="_tpl/community-item.tpl" }}

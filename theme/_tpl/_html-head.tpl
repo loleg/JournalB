@@ -11,15 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
     <script type="text/javascript">
-    	{{ if $DEV_ENV }}
-			var DEBUG_MODE = true;
-			var disqus_shortname = 'journalb-lab';
-		{{ else }}
-			var DEBUG_MODE = false;
-			var disqus_shortname = 'journalb';
-		{{ /if }}
 		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
 			document.cookie='HTTP_IS_RETINA=1;path=/';
+    	var disqus_shortname = 'journalb';
+    	var DEBUG_MODE = ({{ $DEV_ENV }} == 1);
 	</script>
 
 	{{ if preg_match("/Windows/", $smarty.server.HTTP_USER_AGENT) }}
@@ -30,11 +25,11 @@
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
 		<script src="{{ url static_file='_js/less.min.js' }}" type="text/javascript"></script>
 	{{ else }}
-		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/style.css' }}">		
+		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/style.v1.5.css' }}">		
 	{{ /if }}
 	
 	{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
-		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/native-application.css' }}">
+		<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/native-application.v1.5.css' }}">
 	{{ /if }}
 	
 	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">

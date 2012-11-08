@@ -1,4 +1,4 @@
-<a class="newsbox section-{{ $article_section }} layoutsimple" href="{{ uri options="article" }}">
+<a class="content-single newsbox section-{{ $article_section }} layoutsimple" href="{{ uri options="article" }}">
 
 	<div class="newsboxcontent">
 		<div class="newsboxheading">
@@ -30,7 +30,6 @@
 			</p>
 		</description>	
 	</div>
-
 	<div class="info_block">
 		<time>
 			{{ if $gimme->article->publish_date|camp_date_format:"%d.%m.%Y" == $smarty.now|camp_date_format:"%d.%m.%Y"}}
@@ -43,5 +42,7 @@
 	</div>
 
 	<span class="favorite"><span>Favorite</span></span>
-	
 </a>
+{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
+	<a class="commentcount" href="{{ uri options="article" }}#disqus_thread"></a>
+{{ /if }}

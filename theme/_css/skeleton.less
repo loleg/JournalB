@@ -26,11 +26,21 @@
     .container                                  { position: relative; width: 968px; margin: 0 auto; text-align: left; }
     .row                                        { margin-bottom: 20px; }
 
-    .container .main                            { width: 710px; float: left; }
-    .container .sidebar                         { width: 256px; float: left; }
-    .container .sidebar .content                { padding-left: 28px; }
-    .container .newsbox                         { width: 345px; }
-    .container .newsbox.layoutdouble            { width: 710px; }
+	.container .main                            { width: 710px; float: left; }
+	.container .sidebar                         { width: 256px; float: left; }
+	.container .sidebar .content                { padding-left: 28px; }
+	.container .newsbox                         { width: 345px; }
+	.container .newsbox.layoutdouble            { width: 710px; }
+	.container .article-community .adbox hr 	{ width: 224px; margin-left: -15px; }
+		
+/* #Desktop
+================================================== */
+
+    /* Note: Design for a width of 1024px */
+
+    @media only screen and (min-width: 1024px) {
+		.container .controlbar_mobile				{ display: none !important; }
+	}
 
 
 /* #Tablet (Portrait)
@@ -50,6 +60,7 @@
 		.container .footer-box.section-front		{ float: none; clear: both; margin-top: 20px; margin-left: 0px; width: auto !important; }
 		.container .community-buttons				{ display: none; }
 		.container .collapse_content				{ display: none !important; }
+		.container .controlbar_mobile				{ display: none !important; }
 	}
 
 /*  #Mobile
@@ -64,7 +75,6 @@
         .container .newsbox                         { width: 294px; margin-bottom: 20px; height: auto; padding-bottom: 30px; }
 		.container .newsbox.layoutdouble            { width: 294px !important; height: auto !important; min-height: 200px; }
 		.container .newsbox.layoutbgimage           { height: auto !important; min-height: 150px; }
-        .container .newsrow                         { margin-bottom: 0px; }
         .container .header .aare                    { display: none; }
         .container .header date                     { display: none; }
         .container .header .search                  { display: none; }
@@ -100,10 +110,12 @@
 		.container .footer-sections					{ display: none; }
 		.container .community-buttons				{ display: none; }
 		.container article .article_top 			{ min-height: 0px; }
-		.container .controlbar_mobile .favorite		{ display: none; }
-		.container .controlbar_mobile .share		{ display: none; }
 		.container .newsbox .favorite				{ display: none; }
 		.container .controlicon.comments 			{ display: block; }
+		.container .controlicon.share 				{ display: none; }
+		.container .controlicon.favorite 			{ display: none; }
+		.container .controlbar_mobile .search h6	{ display: none; }
+		.container .content-right					{ margin-left: 0px !important; }
     }
 
 /* #Mobile (Portrait)
@@ -111,7 +123,6 @@
 	@media only screen and (max-width: 479px) {
 		.container .row 							{ margin-bottom: 13px; }
 		.container .newsbox 						{ margin-bottom: 13px !important; }
-		.container .newsrow 						{ margin-bottom: 0px !important; }
 		.container .header .nav 					{ width: 320px; }
 		.container blockquote 						{ float: none !important; margin: 0 auto !important; margin-bottom: 20px !important; text-align: center;  }
 		.container .cs_img            				{ float: none !important; margin-right: 0px !important; margin-left: 0px !important; margin-bottom: 10px; width: 100% !important; text-align: center;  }
@@ -127,6 +138,8 @@
 		.container .article-community.stable 		{ display: none !important; }
 		.container .sharebox 						{ left: 300px; }
 		.container article iframe 					{ max-width: 294px !important; }
+		.container .controlbar_mobile .aare			{ margin-right: 15px; }
+		.container .article-community .adbox hr 	{ width: 290px; margin-left: -15px; }
     }
 
 /* #Mobile (Landscape)
@@ -152,6 +165,10 @@
 		.container .footer-sections					{ width: 440px !important; margin-bottom: 20px; }
 		.container .sharebox 						{ left: 220px; }
 		.container article iframe 					{ max-width: 440px !important; }
+		.container .controlbar_mobile .controlicon  { margin-right: 71px; }
+		.container .controlbar_mobile .search input[type='text'] { margin-left: 90px; width: 260px; }
+		.container .controlbar_mobile .aare			{ margin-right: 71px; }
+		.container .article-community .adbox hr 	{ width: 436px; margin-left: -15px; }
     }
 
 

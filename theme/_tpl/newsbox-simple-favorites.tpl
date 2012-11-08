@@ -1,4 +1,4 @@
-<a class="newsbox section-{{ $article_section }} layoutsimple" href="{{ $article->url }}">
+<a class="content-single newsbox section-{{ $article_section }} layoutsimple" href="{{ $article->url }}">
 
 	<div class="newsboxcontent">
 
@@ -40,3 +40,6 @@
 	<span class="favorite checked"><span>Favorite</span></span>
 	
 </a>
+{{ if preg_match("/Journal/", $smarty.server.HTTP_USER_AGENT) }}
+	<a class="commentcount" href="{{ uri options="article" }}#disqus_thread"></a>
+{{ /if }}

@@ -15,16 +15,14 @@
 		margin-bottom: 0px !important;
     }
 
-    .newsrow {
-        overflow: hidden;
-        margin-bottom: 20px;
-        position: relative;
-    }
     .newsbox {
         height: 245px;
         display: block;
         position: relative;
 		background-size: cover;
+		margin-bottom: 20px;
+		margin-right: 0px !important;
+		float: left;
     }
     .newsbox.content-double {
         width: 100% !important;
@@ -45,9 +43,15 @@
 		z-index: 9;
 		display: block;
     }
-    .content-right .newsbox .favorite { right:-2px; }
-    .newsbox .favorite:hover, .newsbox .favorite.checked {
+    .content-right {
+		margin-left: 20px;
+	}
+
+    .newsbox .favorite:hover {
         background-image: url(../_img/favorite-black.png);
+    }
+	.newsbox .favorite.checked {
+        background-image: url(../_img/favorite-black.png) !important;
     }
     .newsboxcontent {
         display: block;
@@ -72,7 +76,7 @@
 		height: 2.4em;
 		overflow-y: hidden;
 	}
-	.newsbox .dsect a:hover span {
+	.newsbox .dsect a:hover .subtitle {
 		.underlineblack;
 	}
 	.newsbox.layoutsimple, .newsbox.layoutbgimage, .newsbox.layoutdouble {
@@ -85,10 +89,11 @@
 	
     .newsbox.layoutsimple .info_block {
         bottom: 10px;
-        padding-left: 16px;
-        padding-right: 16px;
+        left: 16px;
+        right: 16px;
         .info;
 		background: none !important;
+		width: auto;
     }
     .newsbox.layoutsimple h1 {
         padding-right: 10px;
@@ -178,6 +183,8 @@
         bottom: 10px;
         margin-left: 16px;
         .info;
+		width: auto;
+		right: 0px;
     }
 	
 	.content-left .newsbox {
@@ -323,6 +330,8 @@
     .newsbox.section-dossiers:visited { background-color: lighten(@color-dossiers, 5%); }
 	
     /* NB: This does not work: .newsbox:visited .newsboxcontent { background-color:rgba(255,255,255,0.5); } */
+    
+    .newsbox .commentcount { float: right; }
 
 
 /* #Header Styles
@@ -522,7 +531,7 @@
 	}
 	.header .search input[type="image"] {
 		position: absolute;
-		top: 0px; right: 58px;
+		top: 0px; right: 54px;
 		transition: top 0.1s ease-in-out;
 		-moz-transition: top 0.1s ease-in-out;
 		-webkit-transition: top 0.1s ease-in-out;
@@ -1191,7 +1200,7 @@
 		    letter-spacing: 0.02em;
 		}
 		.dsq-comment-text p {
-		    font: 98%/114% "AlekseiRegular", Georgia, Times, serif;
+		    font: 90%/114% "AlekseiRegular", Georgia, Times, serif;
 	    }
 	}
 	.ie #disqus_thread {
@@ -1234,6 +1243,9 @@
 	    .dsq-collapse, .dsq-comment-text p {
 		    font: 98%/114% "AlekseiRegular", Georgia, Times, serif;
 	    }
+	}
+	#dsq-content .dsq-comment-message, #dsq-content .dsq-comment {
+		font: inherit !important;
 	}
 
 /* #Article Page Styles
@@ -1370,8 +1382,8 @@
 		-ms-user-select: none;
 		user-select: none;
     }
-    .controlicons .favorite 		{ background-image: url(../_img/control-favorite.png); position: absolute; left: 610px; width: 100px; }
-    .controlicons .favorite.checked, 
+    .controlicons .favorite 		{ background-image: url(../_img/control-favorite.png); position: absolute; left: 610px; top: 5px; width: 100px; }
+    .controlicons .favorite.checked { background-image: url(../_img/control-favorite-black.png) !important; } 
 	.controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite-black.png); }
 								
     .controlicon.fontize		{ background-image: url(../_img/control-fontize.png); }
@@ -1402,10 +1414,14 @@
 	.controlbar_mobile .controlicon {
 		float: left;
 		margin-bottom: 0px;
-		margin-left: 10px;
+		margin-left: 0px;
+		margin-right: 23px;
 		width: 56px !important;
 		left: 0px !important;
 		position: inherit !important;
+	}
+	.controlbar_mobile .controlicon.last {
+		margin-right: 0px !important;
 	}
 	.controlbar_mobile .aare {
 		float: left;
@@ -1423,11 +1439,29 @@
 	    position: absolute;
 	}
 	.controlbar_mobile .search {
-	    float: right;
-	    margin-right: 16px;
+	    margin-top: 5px;
 	}
 	.controlbar_mobile .search form {
 		margin: 0;
+	}
+	.controlbar_mobile .search input[type='text'] {
+	    background-color: @color-front; color:black;
+	    border-radius: 4px; margin-bottom: 5px;
+		font: inherit; color: black;
+	    height: 1.9em; text-align: center;
+	    margin: 0px; padding: 0px;
+		width: 170px;
+		margin-left: 65px;
+    }
+	.controlbar_mobile .searchsubmit {
+	    margin-top: 2px;
+		float: right;
+		margin-right: 6px;
+    }
+	.controlbar_mobile .search .search-keywords {
+		float: left;
+		margin-bottom: 20px;
+		margin-top: 5px;
 	}
 	
 	#article_image img {
@@ -1574,6 +1608,57 @@
 	.collapse_box .collapse_content {
 		margin-bottom: 20px;
 	}
+	
+	
+	.popup_wrapper {
+		width: 100%;
+		height: 100%;
+		left: 0px;
+		top: 0px;
+		position: fixed;
+		background: rgba(0,0,0,0.90);
+		z-index: 999;
+	}
+	.login_popup {
+		background: #ffffff;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: 230px;
+		height: 210px;
+		margin-left: -135px;
+		margin-top: -125px;
+		padding: 20px;
+		z-index: 1000;
+		
+		.subheading;
+		letter-spacing: 1px;
+	}
+	.login_popup .tbutton {
+		background: #000000;
+		color: #ffffff;
+		width: 150px;
+		border-radius: 5px;
+		-webkit-border-radius: 5px;
+		padding: 10px;
+	}
+	.login_popup li {
+		padding-left: 50px;
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: 38px 36px;
+		margin-top: 20px;
+	}
+	.login_popup .facebook {
+		background-image: url(../_img/login-facebook.png);
+	}
+	.login_popup .twitter {
+		background-image: url(../_img/login-twitter.png);
+	}
+	.login_popup .disqus {
+		background-image: url(../_img/login-disqus.png);
+	}
+	
 
 /* For media queries see skeleton.less */
 

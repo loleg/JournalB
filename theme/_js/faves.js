@@ -53,12 +53,16 @@ function loginDisqus() {
 		return checkDisqusLogin();
 	} else {
 		// Registration popup
-		if (navigator.userAgent.match(/Mobile/)) {
-			$('.header .login').hide();
-			$('.header .dsq-login-buttons').slideDown();
-		} else {
+
+		if (navigator.userAgent.match(/(iPad|Journal)/))
+		{
+			showLoginPopup();
+		}
+		else
+		{
 			DISQUS.dtpl.actions.fire('auth.login');
 		}
+		
 		if (!favoritesStartLogin) {
 			favoritesStartLogin = true;
 			window.setTimeout(checkDisqusLogin, 200);
@@ -71,9 +75,12 @@ function logoutDisqus() {
 	$.get('/favorites/logout', function(data) {
 		if (typeof console != 'undefined') console.log(data);
 	});
+	
 	var logoutlink = $('.dsq-logout-link a').attr('href');
-	if (typeof logoutlink != 'undefined' && window.confirm('Aus Journal B-Community abmelden?')) {
-		window.location = logoutlink;
+	
+	if (window.confirm('Aus Journal B-Community abmelden?')) {
+		if (typeof logoutlink == 'undefined') window.location.reload();
+		else window.location = logoutlink;
 	}
 }
 
@@ -82,7 +89,7 @@ function initFavorites() {
 	// ** Favorites	login
 	$.get('/favorites/myfaves', function(data) {
 		if (data == null || data == 'NOLOGIN') {
-			if (navigator.userAgent.match(/Mobile/) && $(".forum").length > 0) {
+			if (navigator.userAgent.match(/(Mobile|iPhone)/) && $(".forum").length > 0) {
 				$("#disqus_thread").prepend($(".header .dsq-login-buttons"))
 					.find('.dsq-login-buttons').show().css('text-align', 'center')
 					.prepend('<p>Zum kommentieren bitte anmelden</p>')
@@ -118,8 +125,16 @@ function initFavorites() {
 				var h = (self.hasClass('controlicon')) ?
 						document.location.pathname :
 						self.parents('a').attr('href');
+				
+				if (typeof h == "undefined") return;
+				var parts = h.split('/');				
+				if (parts.length<5) return;
+				
+				var s = "/";
+				for (var i =1; i<5; i++) s+= parts[i]+"/";
+				
 				$.each(myjson.favorites, function() {
-					if (!found && this.indexOf(h) >= 0) {
+					if (!found && this.indexOf(s) >= 0) {
 						self.addClass('checked');
 						found = true;
 					}
@@ -142,9 +157,9 @@ function initFavorites() {
 		
 	// Favorites icon
 	$('.favorite').click(function() {
-	
+				
 		if (!favoritesHasLogin) {
-			window.location = '/favorites';
+			loginDisqus();
 			return false;
 		}
 	
@@ -171,6 +186,11 @@ function initFavorites() {
 					if (typeof console != 'undefined') console.log(data);
 				});
 			
+			if (navigator.userAgent.match(/Journal/))
+			{
+				window.location = "fvr://add_to_favorites?url="+url+"&vote="+vote;
+			}
+			
 			// Update icon
 			if (vote == -1) {
 				$(this).removeClass('checked');
@@ -182,4 +202,43 @@ function initFavorites() {
 	});
 	// - Favorites icon
 	
+}
+
+function goToFavorites()
+{
+	if (DISQUS.jsonData.request.is_authenticated)
+	{
+		$("body").append("<form id='redirect' action='/favorites' method='post'></form>");
+		$("#redirect").submit();
+	}
+	else
+	{
+		loginDisqus();
+	}
+}
+
+function showLoginPopup()
+{
+	html = "<div class='popup_wrapper' onclick='closeLoginPopup();'></div>";
+	html += "<div class='login_popup'>";
+	html += "<div class='caption'>Melden Sie sich an</div>";
+	html += "<ul>";
+	html += "<a href='#' onclick='setCloseLoginHook(); return DISQUS.dtpl.actions.fire(\"auth.facebook\");'><li class='facebook'><div class='tbutton'>Facebook</div></li>";
+	html += "<a href='#' onclick='setCloseLoginHook(); return DISQUS.dtpl.actions.fire(\"auth.twitter\");'><li class='twitter'><div class='tbutton'>Twitter</div></li>";
+	html += "<a href='#' onclick='setCloseLoginHook(); return DISQUS.dtpl.actions.fire(\"auth.disqus\");'><li class='disqus'><div class='tbutton'>Disqus</div></li>";
+	html += "</ul>";
+	html += "</div>";
+	
+	$("body").append(html);
+}
+
+function setCloseLoginHook()
+{
+	$(window).bind('focus', function() {location.reload();});
+}
+
+function closeLoginPopup()
+{
+	$(".popup_wrapper").remove();
+	$(".login_popup").remove();
 }

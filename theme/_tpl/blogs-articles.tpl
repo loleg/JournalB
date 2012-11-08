@@ -8,8 +8,11 @@
 
 <script>$('.favorite').hide();</script>
 
-{{ assign var="articles_on_page" value="5" }}
+{{ php }} $template->assign('start',$_GET['ls-art0']); {{ /php }}
+{{ $articles_on_page = 5 }}
+{{ $articles_num_total = 0 }}
 
+<div class="dynamic-articlerows">
 <!-- /start articlerows/ -->
 {{ list_articles order="byPublishDate desc" length="`$articles_on_page`" }}
 
@@ -43,20 +46,16 @@
 		
 	</div>
 	
-	{{ if $gimme->current_list->at_end }}
-		<!-- /end articlerows/ -->
-
-		{{ $pages=ceil($gimme->current_list->count/$articles_on_page) }}
-		{{ $curpage=intval($gimme->url->get_parameter($gimme->current_list_id())) }}
-		{{ if $pages gt 1 && $curpage < $pages }}	
-			<!-- Page Navigation -->
-			<div class="weitere">
-				<div class="wline"></div>
-				<a href="{{ uripath options="section" }}?{{ urlparameters options="next_items" }}">weitere Einträge</a>
-			</div>
-			{{ $gimme->url->set_parameter($gimme->current_list_id(),$curpage) }}
-		{{ /if }}
-	
-	{{ /if }}
-		
+	{{ $articles_num_total = $gimme->current_list->count }}
+			
 {{ /list_articles }}
+
+{{ if ($start + $articles_on_page ) < $articles_num_total }}
+	<div class="weitere">
+		<div class="wline"></div>
+		<a href="{{ url options="section" }}?ls-art0={{ $start+5 }}&time={{ php }}echo time();{{ /php }}" onclick="return loadWeitereArtikel(this);">weitere Artikel</a>
+	</div>
+{{ /if }}
+
+<!-- /end articlerows/ -->
+</div>

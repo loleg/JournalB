@@ -1,7 +1,7 @@
 /* -- DEBUG -- */
 if (!navigator.userAgent.match(/Journal/))
 {
-	if (typeof DEBUG_MODE != 'undefined' && DEBUG_MODE && false) {
+	if (typeof DEBUG_MODE != 'undefined' && DEBUG_MODE) {
 		localStorage.clear(); 
 		var p = "/themes/publication_";
 		destroyLessCache(p + "1/theme_1/_css/");
@@ -31,11 +31,20 @@ $(document).bind("changeScreenMode",function(){
 // Reverse plugin
 jQuery.fn.reverse = [].reverse;
 
+var document_loaded = false;
+
+function isDocumentLoaded()
+{
+	return document_loaded;
+}
+
 // When the DOM is loaded
 $(document).ready(function() {
 
 	//calculateNewsboxOverflow();
-
+		
+	adjustNewsrows();
+	
 	articleImageAlts();
 	
 	if ($("#slider_box").length)
@@ -58,8 +67,9 @@ $(document).ready(function() {
 	
 	//collapsableElements();
 
-	$('.weitere a').click(loadWeitereArtikel);
-
 	scrollToArticleTop();
-
+	
+	document_loaded = true;
+	
+	if (navigator.userAgent.match(/Journal/) && getCookie('PHPSESSID')) loadCommunity();
 });

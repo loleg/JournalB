@@ -2,12 +2,16 @@
 
     <div class="row nav">
         <ul>
-			{{ if $gimme->issue->number > 5 or $gimme->issue->number == 3}} {{ $current_section = $gimme->section->number }} {{ /if }}
+			{{ if $gimme->section->url_name == 'alltag' || $gimme->section->url_name == 'politik' || $gimme->section->url_name == 'kultur' }} 
+				{{ $tpl_subsections = true }} 
+			{{ else }} 
+				{{ $tpl_subsections = false }} 
+			{{ /if }}
 			<li class="nav-front"><a href="/">Front</a></li>
 			<li class="nav-alltag {{ if $tpl_subsections and $gimme->section->url_name != 'alltag' }}unactive{{ /if }}"><a href="/mobile/alltag">alltag</a></li>
 			<li class="nav-politik {{ if $tpl_subsections and $gimme->section->url_name != 'politik' }}unactive{{ /if }}"><a href="/mobile/politik">politik</a></li>
 			<li class="nav-kultur {{ if $tpl_subsections and $gimme->section->url_name != 'kultur' }}unactive{{ /if }}"><a href="/mobile/kultur">kultur</a></li>
-			<li class="nav-fav"><a href="/favorites" style="background-size:0">Favoriten</a></li>
+			<li class="nav-fav"><a href="javascript: goToFavorites();" style="background-size:0">Favoriten</a></li>
 			<div class="clear"></div>
         </ul>
     </div>
