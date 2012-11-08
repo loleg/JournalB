@@ -22,7 +22,7 @@
 
         <div class="row content">
             
-            <div id="community">
+            <div id="community"></div>
 
         </div>
 
