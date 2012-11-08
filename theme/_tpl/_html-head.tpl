@@ -1,5 +1,5 @@
-{{ assign var="DEV_ENV" value="1" scope="global" }}
-{{ assign var="VER_ENV" value=".v1.5" scope="global" }}
+{{ assign var="DEV_ENV" value="0" scope="global" }}
+{{ assign var="VER_ENV" value=".v1.4" scope="global" }}
 <!DOCTYPE html>
 <!--[if IE]>
 <html class="ie" lang="de">
