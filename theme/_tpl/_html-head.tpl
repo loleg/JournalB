@@ -28,11 +28,7 @@
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
 		<script src="{{ url static_file='_js/less.min.js' }}" type="text/javascript"></script>
 	{{ else }}
-		<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/style$VER_ENV.css" }}">		
-	{{ /if }}
-	
-	{{ if $NATIVEAPP }}
-		<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application.css" }}">
+		<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/style$VER_ENV.css" }}">
 	{{ /if }}
 	
 	<link rel="stylesheet" type="text/css" media="print" href="{{ url static_file='_css/print.css' }}">
