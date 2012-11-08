@@ -8,8 +8,6 @@
 	{{ /if }}
 {{ /if }}
 
-<a name="mobile_startpoint"></a>
-
 {{ include file="_tpl/mobile-controlbar.tpl" }}
 
 {{ if $gimme->article->issue->number == 5 }}
