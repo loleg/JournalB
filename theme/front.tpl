@@ -28,7 +28,7 @@
 
 		<div class="row content">
 			
-			<div id="community">
+			<div id="community"></div>
 			
 			{{ include file="_tpl/community-front.tpl" }}
 

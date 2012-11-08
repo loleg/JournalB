@@ -35,7 +35,7 @@
             
 			{{ include file="_tpl/community-sectionbox.tpl" }}	
 			
-            <div id="community">
+            <div id="community"></div>
 
         </div>
 
