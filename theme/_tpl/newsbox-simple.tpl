@@ -43,6 +43,3 @@
 
 	<span class="favorite"><span>Favorite</span></span>
 </a>
-{{ if $NATIVEAPP }}
-	<a class="commentcount" href="{{ uri options="article" }}#disqus_thread"></a>
-{{ /if }}

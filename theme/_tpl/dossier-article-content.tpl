@@ -1,6 +1,4 @@
 <div class="contentbar section-dossiers contentbar-section-dossiers">
-
-	{{ include file="_tpl/control-sharebox.tpl" }}
 	
 	<a name="mobile_startpoint"></a>
 

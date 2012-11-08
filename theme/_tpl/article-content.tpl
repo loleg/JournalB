@@ -25,8 +25,6 @@
 </div>
 
 <div class="contentbar section-{{ $article_section }}">
-
-	{{ include file="_tpl/control-sharebox.tpl" }}
 	
 	<div class="miniarticle hidden">
 		{{ include file="_tpl/article-mini.tpl" }}

@@ -21,8 +21,16 @@
 
 <div id="fb-root"></div>
 
-{{ if !preg_match("/(iPad|iPhone)/", $smarty.server.HTTP_USER_AGENT) }}
-	<script type="text/javascript">
+<script type="text/javascript">
+
+if (NATIVE_APP) {
+	if ($('body').hasClass('shareable')) {
+		$.get('{{ url static_file="_html/control-sharebox.html" }}', 
+			function(data) { $('.contentbar').first().prepend(data); });
+	}
+}
+
+if (MOBILE_WEB) {
 	/* browser-update */
 	var $buoop = { l: 'de', text: 'Um die volle Funktionalit&auml;t der Journal-B-Website zu geniessen, empfehlen wir Ihnen, ihren Browser auf die neuste Version aufzur&uuml;sten' }
 	$buoop.ol = window.onload; 
@@ -34,8 +42,7 @@
 	 document.body.appendChild(e); 
 	} 
 	/* /browser-update */
-	</script>
-{{ /if }}
-
+}
+</script>
 </body>
 </html>

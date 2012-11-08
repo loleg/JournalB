@@ -1,4 +1,3 @@
-{{ if !$NATIVEAPP }}
 <div class="sharebox initial" style="position:absolute;visibility:hidden">
 	<div class="shareicon">
 		<a href="https://twitter.com/share" class="twitter-share-button" data-via="journalb" data-lang="de" data-related="journalb" data-hashtags="Bern">Twittern</a>
@@ -16,9 +15,8 @@
 	</div>
 	
 	<div class="shareicon" style="margin-right:0">
-		<a href="mailto:?subject={{ $gimme->article->name }} | {{ $gimme->publication->name }}&body={{ $gimme->url->url }}" class="shareicon-email">E-mail</a>
+		<script>document.write('<a href="mailto:?subject=' + document.title + '&body=' + document.location.href + '" class="shareicon-email">E-mail</a>');</script>
 	</div>
 	
 	<div style="clear:both"></div>
 </div>
-{{ /if }}
