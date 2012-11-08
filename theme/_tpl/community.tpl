@@ -43,6 +43,13 @@
     if ($('#disqus_thread').length == 0) {
     	$('body').append('<div class="hidden" id="disqus_thread"></div>');
     }
+    if (NATIVE_APP) {
+		$(".newsrows .newsbox.layoutsimple").each(function(){
+			$(this).find(".info,.info_block").first().prepend(
+				'<a class="commentcount" href="' + $(this).attr('href') + '#disqus_thread"></a>'
+			);
+		});
+	}
 	var disqus_config = function () { 
 		this.language = "de_formal";
 		this.callbacks.afterRender = [helloDisqus];

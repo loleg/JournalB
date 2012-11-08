@@ -258,14 +258,4 @@ function adjustNewsrows()
 	
 	$(".newsrows .content-single").removeClass('content-right');
 	$(".newsrows .content-single:odd").addClass('content-right');
-
-	if (!NATIVE_APP) { return; }
-	
-	// Move comment counts into info - necessary because Newscoop chokes on A inside of A
-	$(".newsrows .newsbox.layoutsimple").each(function(){
-		$(this).find(".info,.info_block").first().prepend(
-			'<a class="commentcount" href="' + $(this).attr('href') + '#disqus_thread"></a>'
-		);
-	});
-	
 }
