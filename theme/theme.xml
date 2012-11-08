@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<theme name="Journal B" designer="Apps with love" version="1.0" require="4.0.2">
+<theme name="Journal B" designer="Apps with love" version="1.5" require="4.0.2">
     <description>JournalB</description>
     
     <presentation-img src="themethumbs/front.jpg" name="Front page"/>
