@@ -11,7 +11,7 @@ class MobileController extends Zend_Controller_Action
 	/* Latest 50 articles */
 	public function indexAction()
 	{
-			// Logic in template
+		$this->_forward('mobile', "favorites");
 	}
 	
 	/* List of web resources */
@@ -50,6 +50,11 @@ class MobileController extends Zend_Controller_Action
 		exit();
 	}
 	
+	public function communityAction()
+	{
+		// Logic in template
+	}
+		
 }
 
 ?>

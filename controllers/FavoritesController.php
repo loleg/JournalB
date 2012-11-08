@@ -18,7 +18,13 @@ require_once('disqus/disqusapi.php');
 use Newscoop\Entity\Article;
 
 class FavoritesController extends Zend_Controller_Action
-{
+{    
+    // Account details
+	private $shortname = 'journalb'; 
+	private $PUBLIC_KEY = "u0MA56Y6obLOHN1euPdg8gRZngVCWuRPgzhT041PjeFG1w6WP1GtZ0ccA4B7ElwC";
+	private $SECRET_KEY = "NRzVRacJmapfkDXCx0lWh5QCZY5F30fEGsVRDYgnXPg1GmOfGH5SGmtPixUgWMmB";
+	private $homepage = "http://www.journal-b.ch";
+	private $redirect = "http://www.journal-b.ch/favorites";
 
 	/** @var Newscoop\Entity\Repository\ArticleRepository */
     private $articleRepository;
@@ -51,13 +57,6 @@ class FavoritesController extends Zend_Controller_Action
     private $refresh;
     /** @var DisqusAPI */
     private $disqusapi;
-    
-    // Account details
-	private $shortname = 'journalb-lab'; 
-	private $PUBLIC_KEY = "S2zPf5GHF44MxrBrcsjhUP8aZD5SHIdoSBqB1l10NBtMkjhC1AZAEPpWSqYZauFa";
-	private $SECRET_KEY = "Em5o6RFV2YKZgTowuo6QprVZ8WwLZ5SdhL9hmkAORZXsW5jzbJiPCGZgT6sfYqXr";
-	private $homepage = "http://bern.lab.sourcefabric.org";
-	private $redirect = "http://bern.lab.sourcefabric.org/favorites";
 	
 	// If we are not logged in, redirect us to login
 	private function ensureDisqusLogin($gotologin = true) {
@@ -201,6 +200,9 @@ class FavoritesController extends Zend_Controller_Action
 	private function fscache_set($uri, $val) {
 		file_put_contents($this->basefs . $uri, serialize($val));
 	}
+	private function fscache_time($uri) {
+		return filemtime($this->basefs . $uri);
+	}
 	
 	/* User favorites */
 	public function indexAction() {
@@ -278,10 +280,10 @@ class FavoritesController extends Zend_Controller_Action
         }, $articles);
 		
 	}
-	
+		
 	// Get a shortlist of our favorites if we're logged in
 	public function myfavesAction() {
-	
+		
 		// make sure the script is not being rendered
 		$this->_helper->layout()->setLayout('empty');
 		$this->_helper->viewRenderer->setNoRender(true);
@@ -299,12 +301,43 @@ class FavoritesController extends Zend_Controller_Action
 			$this->indexAction();
 			$faves = $this->session->faves;
 		}
-		
+				
 		die (json_encode(array(
 			'username'=>$this->username,
 			'favorites'=>$faves
 		)));
 			
+	}
+	
+	public function mobileAction()
+	{				
+		$faves = array();
+		
+		// reload our session or cache if needed
+		if (count($this->session->faves) > 0) {
+			$faves = $this->session->faves;
+		} elseif ($this->fscache_isset('jb_faves_' . $this->userid)) {
+			$faves = $this->fscache_get('jb_faves_' . $this->userid);
+		} else {	
+			$this->indexAction();
+			$faves = $this->session->faves;
+		}
+				
+		foreach ($faves as $id => $url)
+		{
+			$article = $this->getArticleById($id);
+			$faves[$id] = array("url" => $url, "time" => strtotime($article->getPublishDate()));
+		}
+		$this->view->faves = $faves;
+		
+		if ($this->fscache_isset('jb_faves_' . $this->userid))
+		{
+			$this->view->favorites_time = $this->fscache_time('jb_faves_' . $this->userid);
+		}
+		else
+		{
+			$this->view->favorites_time = 0;
+		}
 	}
 	
 	// Returns key of array hit if there is a subtring match
@@ -427,7 +460,7 @@ class FavoritesController extends Zend_Controller_Action
 		setcookie('jsdisqus', "", 1, "/");
 		unset($this->session->faves);
 		\Zend_Session::ForgetMe();
-		\Zend_Session::destroy(true);
+		\Zend_Session::destroy(true);		
 		$this->_redirect('/');
 	}
 	
