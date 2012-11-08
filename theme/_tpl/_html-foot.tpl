@@ -1,8 +1,7 @@
 {{ if $DEV_ENV }}
 <center style="font-size:60%">
 	{{ $smarty.server.HTTP_USER_AGENT }}
-	{{ if $NATIVEAPP }} - Native App Detected -{{ /if }}
-	<script language="JavaScript">document.write(NATIVE_APP)</script>
+	<script language="JavaScript">document.write('native:' + NATIVE_APP + ' mobile:' + MOBILE_WEB)</script>
 </center>
 <!-- DEV -->
 <script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
@@ -24,6 +23,7 @@
 <script type="text/javascript">
 
 if (NATIVE_APP) {
+	document.write('<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application.css" }}">');
 	if ($('body').hasClass('shareable')) {
 		$.get('{{ url static_file="_html/control-sharebox.html" }}', 
 			function(data) { $('.contentbar').first().prepend(data); });
