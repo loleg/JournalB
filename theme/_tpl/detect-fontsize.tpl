@@ -1,5 +1,5 @@
 <script>
 var fs = getCookie('fontSize');
-if (!fs) fs = 0;
+if (fs === undefined) fs = 1;
 $('body').addClass('font'+fs);
 </script>
