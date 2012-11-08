@@ -20,6 +20,7 @@
 <script type="text/javascript">
 
 if (NATIVE_APP) {
+	$('body').addClass('native-app');
 	document.write('<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application.css" }}">');
 	if ($('body').hasClass('shareable')) {
 		$.get('{{ url static_file="_html/control-sharebox.html" }}', 
@@ -30,6 +31,7 @@ if (NATIVE_APP) {
 }
 
 if (MOBILE_WEB) {
+	$('body').addClass('mobile-web');
 	/* browser-update */
 	var $buoop = { l: 'de', text: 'Um die volle Funktionalit&auml;t der Journal-B-Website zu geniessen, empfehlen wir Ihnen, ihren Browser auf die neuste Version aufzur&uuml;sten' }
 	$buoop.ol = window.onload; 
