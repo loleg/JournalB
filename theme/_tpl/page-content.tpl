@@ -1,6 +1,8 @@
 <div class="addbar"></div>
 
 <div class="contentbar section-page">
+
+	{{ include file="_html/control-sharebox.html" }}
 		
 	<article class="page">
 		{{ if $gimme->article->content_accessible }}    

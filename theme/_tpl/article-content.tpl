@@ -19,10 +19,12 @@
 {{ /if }}
 
 <div class="addbar">
-	{{ include file="_tpl/control-icons.tpl" }}
+	{{ include file="_html/control-icons.html" }}
 </div>
 
 <div class="contentbar section-{{ $article_section }}">
+
+	{{ include file="_html/control-sharebox.html" }}
 	
 	<div class="miniarticle hidden">
 		{{ include file="_tpl/article-mini.tpl" }}

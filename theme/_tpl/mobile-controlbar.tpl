@@ -5,5 +5,5 @@
 
     {{ include file="_tpl/search-controlbar.tpl" }}
         
-	{{ include file="_tpl/control-icons.tpl" }}
+	{{ include file="_html/control-icons.html" }}
 </div>

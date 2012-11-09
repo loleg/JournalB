@@ -21,10 +21,6 @@
 if (NATIVE_APP) {
 	$('body').addClass('native-app');
 	document.write('<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application.css" }}">');
-	if ($('body').hasClass('shareable')) {
-		$.get('{{ url static_file="_html/control-sharebox.html" }}', 
-			function(data) { $('.contentbar').first().prepend(data); });
-	}
 	$.get('/mobile/controlbar', 
 		function(data) { $('.controlbar_mobile_front').html(data); });
 }

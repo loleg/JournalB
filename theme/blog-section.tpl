@@ -14,10 +14,12 @@
 			{{ include file="_tpl/mobile-controlbar.tpl" }}
 		
 			<div class="addbar">
-				{{ include file="_tpl/control-icons.tpl" }}
+				{{ include file="_html/control-icons.html" }}
 			</div>
 			
 			<div class="contentbar">
+				{{ include file="_html/control-sharebox.html" }}
+			
 				{{ php }} $template->assign('start',$_GET['ls-art0']); {{ /php }}
 				{{ include file="_tpl/blogs-articles.tpl" }}
 			</div>
