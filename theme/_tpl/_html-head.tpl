@@ -14,7 +14,7 @@
     <script type="text/javascript">
 		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
 			document.cookie='HTTP_IS_RETINA=1;path=/';
-    	var disqus_shortname = 'journalb-lab';
+    	var disqus_shortname = 'journalb';
     	var DEBUG_MODE = ('{{ $DEV_ENV }}' == '1');
     	var NATIVE_APP = (navigator.userAgent.match(/Journal/) || false);
     	var MOBILE_WEB = (navigator.userAgent.match(/(Mobile|iPhone|iPad)/) || false);

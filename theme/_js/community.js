@@ -96,6 +96,10 @@ function loadCommunity()
 {
 	$.get('/mobile/community', function(data) {
 		$('#community').html(data);
+		
+		scaleCommunity();
+		
+		drawAds();
 	});
 	if (NATIVE_APP) {
     	// Move comment counts into info - necessary because Newscoop chokes on A inside of A

@@ -49,10 +49,6 @@ $(document).ready(function() {
 		if (is_gallery) initSlider();
 		else $("#slider_box").remove();
 	}
-			
-	drawAds();
-
-	scaleCommunity();
 		
 	initShareButton();
 	

@@ -18,8 +18,8 @@ require_once('disqus/disqusapi.php');
 use Newscoop\Entity\Article;
 
 class FavoritesController extends Zend_Controller_Action
-{    
-    // Account details
+{
+	// Account details
 	private $shortname = 'journalb-lab'; 
 	private $PUBLIC_KEY = "S2zPf5GHF44MxrBrcsjhUP8aZD5SHIdoSBqB1l10NBtMkjhC1AZAEPpWSqYZauFa";
 	private $SECRET_KEY = "Em5o6RFV2YKZgTowuo6QprVZ8WwLZ5SdhL9hmkAORZXsW5jzbJiPCGZgT6sfYqXr";
@@ -275,9 +275,9 @@ class FavoritesController extends Zend_Controller_Action
 		//die(count($articles)." articles");
 		
 		// Convert Article entity list to MetaArticles
-		$this->view->articles = array_map(function($article) {
+		$this->view->articles = array_reverse(array_map(function($article) {
             return new \MetaArticle($article->getLanguageId(), $article->getNumber());
-        }, $articles);
+        }, $articles));
 		
 	}
 		

@@ -6,7 +6,7 @@
 
 <script>$('.favorite').hide();</script>
 
-{{ php }} $template->assign('start',$_GET['ls-art0']); {{ /php }}
+{{ assign var="start" $smarty.get.ls-art0 nocache }}
 {{ $articles_on_page = 5 }}
 {{ $articles_num_total = 0 }}
 
