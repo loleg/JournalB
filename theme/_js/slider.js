@@ -182,6 +182,8 @@ function updateSliderSize()
 
 function hideActiveSlider()
 {
+	indicator_disable();
+
 	$("html").removeClass("active_slider");
 	$("body").attr("ontouchmove","");
 	$(".gallery_info").addClass("stable");
@@ -209,15 +211,13 @@ function showActiveSlider()
 	//Load high resolution image in online mode
 	if (getCookie('PHPSESSID')) //Detect online mode
 	{
-		if (NATIVE_APP) window.location = "indicator://enable";
+		indicator_enable();
 		loaded_images = 0;
 		$("#slider img").each(function(){
-			if (NATIVE_APP) {
-				$(this).load(function(){
-					loaded_images++;
-					if (loaded_images == $("#slider img").length) window.location = "indicator://disable";
-				});		
-			}
+			$(this).load(function(){
+				loaded_images++;
+				if (loaded_images == $("#slider img").length) indicator_disable();
+			});		
 			$(this).attr("src",$(this).attr("src").replace('470x315','1600x1072'));
 		});
 	}
@@ -239,4 +239,14 @@ function showActiveSlider()
 	updateSliderSize();
 	
 	if (NATIVE_APP) window.location = "fullscreen://enable";
+}
+
+function indicator_enable()
+{
+	$("body").append("<div class='indicator'><div></div></div>");
+}
+
+function indicator_disable()
+{
+	$(".indicator").remove();
 }
