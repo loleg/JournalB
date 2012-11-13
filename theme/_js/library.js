@@ -268,3 +268,20 @@ function controlIconsHover()
 		$(".controlicon").hover(function(){$(this).addClass('hover')}, function(){$(this).removeClass('hover')});
 	}
 }
+
+
+function animationNewsbox()
+{
+	alert(1);
+	$(".newsbox").bind('touchstart',function(){ 
+		$(this).css('-webkit-transform','scale(0.9)');
+	});
+	
+	$(".newsbox").bind('touchend',function(){ 
+		$(this).css('-webkit-transform','scale(1)');
+	});
+		
+	$(".newsbox").bind('touchcancel',function(){ 
+		$(this).css('-webkit-transform','scale(1)');
+	});
+}
