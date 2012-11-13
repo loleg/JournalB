@@ -3,6 +3,7 @@
 <body id="body" class="section-page">
 {{ include file="_tpl/detect-fontsize.tpl" }}
 
+<div class="prevent-horizontal-scroll">
 <div class="container">
 
     <div class="main">
@@ -36,5 +37,6 @@
 	{{ include file="_tpl/footer.tpl" }}
 
 </div><!-- /container -->
+</div>
 
 {{ include file="_tpl/_html-foot.tpl" }}

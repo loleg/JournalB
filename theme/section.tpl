@@ -2,6 +2,7 @@
 <!-- section.tpl -->
 <body id="body" class="section-page">
 
+<div class="prevent-horizontal-scroll">
 <div class="container">
 
 	<div class="main">
@@ -36,5 +37,6 @@
 	{{ include file="_tpl/footer.tpl" }}
 
 </div><!-- /container -->
+</div>
 
 {{ include file="_tpl/_html-foot.tpl" }}
