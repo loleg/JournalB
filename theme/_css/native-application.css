@@ -14,7 +14,6 @@
 .controlbar_mobile_front .logo { display: none !important; }
 
 .container .newsbox .favorite:hover {  background-image: url(../_img/favorite-grey.png); }
-.container .controlicon.favorite:hover 	{ background-image: url(../_img/control-favorite.png); }
 
 @media only screen and (min-width: 768px) {
 	.header  { margin-top: -60px; }

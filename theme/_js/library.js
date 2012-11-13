@@ -186,6 +186,7 @@ function aareTemperaturen()
 // Hide article except comments
 function showComments() {
 	$('header,.mcontentbar,.miniarticle,.box-under').toggle();
+	$('.controlicon.comments').toggleClass("checked");
 	document.location='#top';
 	return false;
 }
@@ -258,4 +259,12 @@ function adjustNewsrows()
 	
 	$(".newsrows .content-single").removeClass('content-right');
 	$(".newsrows .content-single:odd").addClass('content-right');
+}
+
+function controlIconsHover()
+{
+	if(!'ontouchstart' in document.documentElement)
+	{
+		$(".controlicon").hover(function(){$(this).addClass('hover')}, function(){$(this).removeClass('hover')});
+	}
 }

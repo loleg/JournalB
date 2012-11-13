@@ -50,6 +50,8 @@ $(document).ready(function() {
 		else $("#slider_box").remove();
 	}
 		
+	controlIconsHover();
+		
 	initShareButton();
 	
 	aareTemperaturen();
