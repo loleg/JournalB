@@ -72,15 +72,14 @@ function loginDisqus() {
 }
 
 function logoutDisqus() {
-	$.get('/favorites/logout', function(data) {
-		if (typeof console != 'undefined') console.log(data);
-	});
-	
-	var logoutlink = $('.dsq-logout-link a').attr('href');
-	
-	if (NATIVE_APP || window.confirm('Aus Journal B-Community abmelden?')) {
-		if (typeof logoutlink == 'undefined') window.location.reload();
-		else window.location = logoutlink;
+	if (window.confirm('Aus Journal B-Community abmelden?')) {
+		// log out the service
+		$.get('/favorites/logout', function(data) {
+			if (typeof console != 'undefined') console.log(data);
+		});
+		// log out DISQUS
+		var logoutlink = $('.dsq-logout-link a,#dsq-logout a').attr('href');	
+		if (typeof logoutlink != 'undefined') window.location = logoutlink;
 	}
 }
 
