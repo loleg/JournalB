@@ -78,7 +78,7 @@ function logoutDisqus() {
 	
 	var logoutlink = $('.dsq-logout-link a').attr('href');
 	
-	if (window.confirm('Aus Journal B-Community abmelden?')) {
+	if (NATIVE_APP || window.confirm('Aus Journal B-Community abmelden?')) {
 		if (typeof logoutlink == 'undefined') window.location.reload();
 		else window.location = logoutlink;
 	}
