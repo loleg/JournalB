@@ -18,3 +18,20 @@
 @media only screen and (min-width: 768px) {
 	.header  { margin-top: -60px; }
 }
+
+@-webkit-keyframes shakeit {
+	0% { -webkit-transform: translate(2px, 0px) rotate(0deg); }
+	20% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
+	40% { -webkit-transform: translate(2px, 0px) rotate(0deg); }
+	60% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
+	80% { -webkit-transform: translate(2px, 0px) rotate(0deg); }
+	100% { -webkit-transform: translate(0px, 0px) rotate(0deg); }
+}
+
+.favorite.tapped {
+	-webkit-animation-name: shakeit;
+	-webkit-animation-duration: 0.4s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}

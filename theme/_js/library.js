@@ -269,10 +269,8 @@ function controlIconsHover()
 	}
 }
 
-
 function animationNewsbox()
 {
-	alert(1);
 	$(".newsbox").bind('touchstart',function(){ 
 		$(this).css('-webkit-transform','scale(0.9)');
 	});

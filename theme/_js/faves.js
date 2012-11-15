@@ -192,9 +192,9 @@ function initFavorites() {
 			
 			// Update icon
 			if (vote == -1) {
-				$(this).removeClass('checked');
+				$(this).removeClass('checked tapped');
 			} else {
-				$(this).addClass('checked');
+				$(this).addClass('checked tapped');
 			}
 		}
 		return false;
