@@ -1,4 +1,4 @@
-{{ assign var="DEV_ENV" value="1" scope="global" }}
+{{ assign var="DEV_ENV" value="0" scope="global" }}
 {{ assign var="VER_ENV" value=".v1.6" scope="global" }}
 {{ assign var="DISQUSN" value="journalb-lab" }}
 <!DOCTYPE html>

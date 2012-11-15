@@ -328,20 +328,25 @@
     
     .newsbox:visited h1 span, .newsbox:visited h2 span { .underline("-black",1px,0px,95%); }
   
-    .newsbox.section-front:visited { 	background-color: lighten(@color-front, 5%); }
-    .newsbox.section-alltag:visited { 	background-color: lighten(@color-alltag, 5%); }
-    .newsbox.section-politik:visited { 	background-color: lighten(@color-politik, 5%); }
-    .newsbox.section-kultur:visited { 	background-color: lighten(@color-kultur, 5%); }
-    .newsbox.section-blogs:visited { 	background-color: lighten(@color-blogs, 5%); }
-    .newsbox.section-dossiers:visited { background-color: lighten(@color-dossiers, 5%); }
-    
-    .newsbox.section-front:active { 	background-color: lighten(@color-front, 5%); }
-    .newsbox.section-alltag:active { 	background-color: lighten(@color-alltag, 5%); }
-    .newsbox.section-politik:active { 	background-color: lighten(@color-politik, 5%); }
-    .newsbox.section-kultur:active { 	background-color: lighten(@color-kultur, 5%); }
-    .newsbox.section-blogs:active { 	background-color: lighten(@color-blogs, 5%); }
-    .newsbox.section-dossiers:active  { background-color: lighten(@color-dossiers, 5%); }
-	
+    .newsbox.section-front {
+    	&:visited, &:active, &:focus { background-color: lighten(@color-front, 5%); }
+    }
+    .newsbox.section-alltag {
+    	&:visited, &:active, &:focus { background-color: lighten(@color-alltag, 5%); }
+    }
+    .newsbox.section-politik {
+    	&:visited, &:active, &:focus { background-color: lighten(@color-politik, 5%); }
+    }
+    .newsbox.section-kultur {
+    	&:visited, &:active, &:focus { background-color: lighten(@color-kultur, 5%); }
+    }
+    .newsbox.section-blogs {
+    	&:visited, &:active, &:focus { background-color: lighten(@color-blogs, 5%); }
+    }
+    .newsbox.section-dossiers {
+    	&:visited, &:active, &:focus { background-color: lighten(@color-dossiers, 5%); }
+    }
+    	
     /* NB: This does not work: .newsbox:visited .newsboxcontent { background-color:rgba(255,255,255,0.5); } */
     
     .newsbox .commentcount { float: right; }
