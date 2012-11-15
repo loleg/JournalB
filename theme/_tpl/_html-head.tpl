@@ -1,4 +1,4 @@
-{{ assign var="DEV_ENV" value="0" scope="global" }}
+{{ assign var="DEV_ENV" value="1" scope="global" }}
 {{ assign var="VER_ENV" value=".v1.4" scope="global" }}
 <!DOCTYPE html>
 <!--[if IE]>
@@ -14,7 +14,7 @@
     <script type="text/javascript">
 		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
 			document.cookie='HTTP_IS_RETINA=1;path=/';
-    	var disqus_shortname = 'journalb';
+    	var disqus_shortname = 'journalb-lab';
     	var DEBUG_MODE = ('{{ $DEV_ENV }}' == '1');
     	var NATIVE_APP = (navigator.userAgent.match(/Journal/) || false);
     	var MOBILE_WEB = (navigator.userAgent.match(/(Mobile|iPhone|iPad)/) || false);

@@ -8,7 +8,7 @@ require_once($GLOBALS['g_campsiteDir'].'/classes/Issue.php');
  */
 class MobileController extends Zend_Controller_Action
 {
-	/* Latest 50 articles */
+	/* Latest N articles */
 	public function indexAction()
 	{
 		$this->_forward('mobile', "favorites");
