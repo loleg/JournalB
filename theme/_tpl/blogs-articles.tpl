@@ -6,7 +6,9 @@
 
 <script>$('.favorite').hide();</script>
 
-{{ assign var="start" $smarty.get.ls-art0 nocache }}
+{{ set_current_issue }}
+{{ set_default_section }}
+{{ $start = $gimme->url->get_parameter("ls-art0") }}
 {{ $articles_on_page = 5 }}
 {{ $articles_num_total = 0 }}
 

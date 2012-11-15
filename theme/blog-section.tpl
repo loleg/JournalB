@@ -20,8 +20,10 @@
 			
 			<div class="contentbar">
 				{{ include file="_html/control-sharebox.html" }}
-			
-				{{ include file="_tpl/blogs-articles.tpl" }}
+				{{ dynamic }}
+				{{ $params = implode(',', array($gimme->url->get_parameter("ls-art0"), $gimme->url->get_parameter("ls-art1"))) }}
+				{{ render file="_tpl/blogs-articles.tpl" params=$params cache=3600 }}
+				{{ /dynamic }}
 			</div>
             
         </div><!-- /content -->
@@ -33,9 +35,9 @@
         {{ include file="_tpl/community-header.tpl" }}
 
         <div class="row content">
-            
-			{{ include file="_tpl/community-sectionbox.tpl" }}	
-			
+
+			{{ include file="_tpl/community-sectionbox.tpl" }}
+
             <div id="community"></div>
 
         </div>
