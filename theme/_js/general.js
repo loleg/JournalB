@@ -42,7 +42,7 @@ $(document).ready(function() {
 		
 	adjustNewsrows();
 	
-	if  (NATIVE_APP) animationNewsbox();	
+	if  (NATIVE_APP) setupTouchAnimations();	
 	
 	articleImageAlts();
 	

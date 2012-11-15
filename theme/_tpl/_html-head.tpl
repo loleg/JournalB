@@ -1,5 +1,6 @@
 {{ assign var="DEV_ENV" value="1" scope="global" }}
-{{ assign var="VER_ENV" value=".v1.4" scope="global" }}
+{{ assign var="VER_ENV" value=".v1.6" scope="global" }}
+{{ assign var="DISQUSN" value="journalb-lab" }}
 <!DOCTYPE html>
 <!--[if IE]>
 <html class="ie" lang="de">
@@ -11,15 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
-    <script type="text/javascript">
-		if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1)
-			document.cookie='HTTP_IS_RETINA=1;path=/';
-    	var disqus_shortname = 'journalb-lab';
-    	var DEBUG_MODE = ('{{ $DEV_ENV }}' == '1');
-    	var NATIVE_APP = (navigator.userAgent.match(/Journal/) || false);
-    	var MOBILE_WEB = (navigator.userAgent.match(/(Mobile|iPhone|iPad)/) || false);
-    	if (navigator.userAgent.match(/Windows/)) { document.write('<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/windows-application.css' }}">'); }
-	</script>
+    <script type="text/javascript">if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1) document.cookie='HTTP_IS_RETINA=1;path=/';</script>
 	
    	{{ if $DEV_ENV }}
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">
@@ -59,22 +52,15 @@
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
 	<script>window.jQuery || document.write('<script src="{{ url static_file='_js/jquery.min.js' }}"><\/script>')</script>
-	<script>
-	// Get Cookie by name
-	function getCookie(c_name)
-	{
-		var i,x,y,ARRcookies=document.cookie.split(";");
-		for (i=0;i<ARRcookies.length;i++)
-		{
-		  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-		  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-		  x=x.replace(/^\s+|\s+$/g,"");
-		  if (x==c_name)
-			{
-			return unescape(y);
-			}
-		}
-	}
+	
+	<script type="text/javascript">
+		function getCookie(a){var b,d,c,e=document.cookie.split(";");for(b=0;b<e.length;b++)if(d=e[b].substr(0,e[b].indexOf("=")),c=e[b].substr(e[b].indexOf("=")+1),d=d.replace(/^\s+|\s+$/g,""),d==a)return unescape(c)};
+		var disqus_shortname = '{{ $DISQUSN }}';
+    	var DEBUG_MODE = ('{{ $DEV_ENV }}' == '1');
+    	var NATIVE_APP = (navigator.userAgent.match(/Journal/) || false);
+    	var MOBILE_WEB = (navigator.userAgent.match(/(Mobile|iPhone|iPad)/) || false);
+    	if (navigator.userAgent.match(/Windows/)) { document.write('<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/windows-application.css' }}">'); }
+    	if (NATIVE_APP) { document.write('<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application.css" }}">'); }
 	</script>
 	
 	<!--[if IE]>

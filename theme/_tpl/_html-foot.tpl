@@ -20,9 +20,7 @@
 <script type="text/javascript">
 if (NATIVE_APP) {
 	$('body').addClass('native-app');
-	document.write('<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application.css" }}">');
-	$.get('/mobile/controlbar', 
-		function(data) { $('.controlbar_mobile_front').html(data); });
+	$.get('/mobile/controlbar', function(data) { $('.controlbar_mobile_front').html(data); });
 }
 if (MOBILE_WEB) {
 	$('body').addClass('mobile-web');

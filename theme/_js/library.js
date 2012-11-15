@@ -29,6 +29,21 @@ function urlify(text, popup) {
     });
 }
 
+// Get Cookie by name
+function getCookieByName(c_name) {
+	var i,x,y,ARRcookies=document.cookie.split(";");
+	for (i=0;i<ARRcookies.length;i++)
+	{
+	  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+	  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+	  x=x.replace(/^\s+|\s+$/g,"");
+	  if (x==c_name)
+		{
+		return unescape(y);
+		}
+	}
+}
+
 // Set Cookie
 function setCookie(c_name,value,exdays)
 {
@@ -269,17 +284,10 @@ function controlIconsHover()
 	}
 }
 
-function animationNewsbox()
+function setupTouchAnimations()
 {
-	$(".newsbox").bind('touchstart',function(){ 
-		$(this).css('-webkit-transform','scale(0.9)');
-	});
-	
-	$(".newsbox").bind('touchend',function(){ 
-		$(this).css('-webkit-transform','scale(1)');
-	});
-		
-	$(".newsbox").bind('touchcancel',function(){ 
-		$(this).css('-webkit-transform','scale(1)');
-	});
+	var fTouchEnd = function() { $(this).css('-webkit-transform', 'scale(1)'); };		
+	$(".newsbox").bind('touchend', fTouchEnd)
+				 .bind('touchcancel', fTouchEnd)
+				 .bind('touchstart',function(){ $(this).css('-webkit-transform', 'scale(0.96)'); });
 }
