@@ -21,6 +21,10 @@ function helloDisqus() {
 		setCookie('jsdisqus', c, 7);
 	} else {
 		setCookie('jsdisqus', '', 7);
+		// Workaround for Facebook login
+		if (typeof facebookLoginStarted != 'undefined' && facebookLoginStarted) {
+			DISQUS.dtpl.actions.fire("auth.facebook");
+		}
 	}
 	initFavorites();
 	/* Sets the article count */

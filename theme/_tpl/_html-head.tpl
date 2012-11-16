@@ -1,14 +1,13 @@
-{{ assign var="DEV_ENV" value="1" scope="global" }}
-{{ assign var="VER_ENV" value=".v1.6a" scope="global" }}
+{{ assign var="DEV_ENV" value="0" scope="global" }}
+{{ assign var="VER_ENV" value=".v1.6" scope="global" }}
 {{ assign var="DISQUSN" value="journalb-lab" }}
 <!DOCTYPE html>
 <!--[if IE]>
 <html class="ie" lang="de">
 <![endif]--><!--[if !IE]><!-->
-<html lang="de" debug="true">
+<html lang="de">
 <!--<![endif]--> 
 <head>
-	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
