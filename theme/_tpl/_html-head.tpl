@@ -1,13 +1,14 @@
-{{ assign var="DEV_ENV" value="0" scope="global" }}
-{{ assign var="VER_ENV" value=".v1.6" scope="global" }}
+{{ assign var="DEV_ENV" value="1" scope="global" }}
+{{ assign var="VER_ENV" value=".v1.6a" scope="global" }}
 {{ assign var="DISQUSN" value="journalb-lab" }}
 <!DOCTYPE html>
 <!--[if IE]>
 <html class="ie" lang="de">
 <![endif]--><!--[if !IE]><!-->
-<html lang="de">
+<html lang="de" debug="true">
 <!--<![endif]--> 
 <head>
+	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -57,8 +58,8 @@
 		function getCookie(a){var b,d,c,e=document.cookie.split(";");for(b=0;b<e.length;b++)if(d=e[b].substr(0,e[b].indexOf("=")),c=e[b].substr(e[b].indexOf("=")+1),d=d.replace(/^\s+|\s+$/g,""),d==a)return unescape(c)};
 		var disqus_shortname = '{{ $DISQUSN }}';
     	var DEBUG_MODE = ('{{ $DEV_ENV }}' == '1');
-    	var NATIVE_APP = (navigator.userAgent.match(/Journal/) || false);
-    	var MOBILE_WEB = (navigator.userAgent.match(/(Mobile|iPhone|iPad)/) || false);
+    	var NATIVE_APP = (!!navigator.userAgent.match(/Journal/) || false);
+    	var MOBILE_WEB = (!!navigator.userAgent.match(/(Mobile|iPhone|iPad)/) || false);
     	if (navigator.userAgent.match(/Windows/)) { document.write('<link rel="stylesheet" type="text/css" href="{{ url static_file='_css/windows-application.css' }}">'); }
     	if (NATIVE_APP) { document.write('<link rel="stylesheet" type="text/css" href="{{ url static_file="_css/native-application.css" }}">'); }
 	</script>

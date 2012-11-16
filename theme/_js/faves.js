@@ -54,12 +54,9 @@ function loginDisqus() {
 	} else {
 		// Registration popup
 
-		if (navigator.userAgent.match(/(iPad|Journal)/))
-		{
+		if (NATIVE_APP) {
 			showLoginPopup();
-		}
-		else
-		{
+		} else {
 			DISQUS.dtpl.actions.fire('auth.login');
 		}
 		

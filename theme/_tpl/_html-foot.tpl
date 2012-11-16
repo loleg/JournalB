@@ -1,5 +1,5 @@
 {{ if $DEV_ENV }}
-<center style="font-size:60%"><script language="JavaScript">document.write(navigator.userAgent + ' - native:' + NATIVE_APP + ' mobile:' + MOBILE_WEB)</script></center>
+<center style="font-size:60%"><script language="JavaScript">document.write(navigator.userAgent + ' - native:' + NATIVE_APP + ' mobile:' + MOBILE_WEB + ' ver:{{ $VER_ENV }}')</script></center>
 <!-- DEV -->
 <script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/community.js' }}" type="text/javascript"></script>
