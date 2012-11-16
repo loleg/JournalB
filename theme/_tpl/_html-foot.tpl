@@ -19,11 +19,9 @@
 
 <script type="text/javascript">
 if (NATIVE_APP) {
-	$('body').addClass('native-app');
 	$.get('/mobile/controlbar', function(data) { $('.controlbar_mobile_front').html(data); });
 }
 if (MOBILE_WEB) {
-	$('body').addClass('mobile-web');
 	/* browser-update */
 	var $buoop = { l: 'de', text: 'Um die volle Funktionalit&auml;t der Journal-B-Website zu geniessen, empfehlen wir Ihnen, ihren Browser auf die neuste Version aufzur&uuml;sten' }
 	$buoop.ol = window.onload; 

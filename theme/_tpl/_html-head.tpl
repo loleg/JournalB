@@ -1,4 +1,4 @@
-{{ assign var="DEV_ENV" value="0" scope="global" }}
+{{ assign var="DEV_ENV" value="1" scope="global" }}
 {{ assign var="VER_ENV" value=".v1.6" scope="global" }}
 {{ assign var="DISQUSN" value="journalb-lab" }}
 <!DOCTYPE html>
@@ -12,7 +12,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
-    <script type="text/javascript">if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1) document.cookie='HTTP_IS_RETINA=1;path=/';</script>
+    <script type="text/javascript">
+    if ((window.devicePixelRatio===undefined?1:window.devicePixelRatio)>1) { document.cookie='HTTP_IS_RETINA=1;path=/'; }
+    </script>
 	
    	{{ if $DEV_ENV }}
 		<link rel="stylesheet/less" type="text/css" href="{{ url static_file='_css/style.less' }}">

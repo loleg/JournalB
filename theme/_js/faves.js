@@ -23,7 +23,9 @@ function helloDisqus() {
 		setCookie('jsdisqus', '', 7);
 		// Workaround for Facebook login
 		if (typeof facebookLoginStarted != 'undefined' && facebookLoginStarted) {
+			favoritesStartLogin = true;
 			DISQUS.dtpl.actions.fire("auth.facebook");
+			loginDisqus();
 		}
 	}
 	initFavorites();
@@ -53,7 +55,7 @@ function loginDisqus() {
 		}
 		return false;
 	};
-	if (DISQUS.jsonData.request.is_authenticated) {
+	if (DISQUS.jsonData.request.is_authenticated || favoritesStartLogin) {
 		return checkDisqusLogin();
 	} else {
 		// Registration popup
