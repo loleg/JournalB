@@ -217,6 +217,8 @@ function goToFavorites()
 
 function showLoginPopup()
 {
+	if ($('.login_popup').length > 0) return false;
+	
 	html = "<div class='popup_wrapper' onclick='closeLoginPopup();'></div>";
 	html += "<div class='login_popup'>";
 	html += "<div class='caption'>Melden Sie sich an</div>";
