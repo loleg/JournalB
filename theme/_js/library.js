@@ -291,3 +291,13 @@ function setupTouchAnimations()
 				 .bind('touchcancel', fTouchEnd)
 				 .bind('touchstart',function(){ $(this).css('-webkit-transform', 'scale(0.96)'); });
 }
+
+
+function pinchArticle()
+{
+	$("body").bind('gestureend',function(e){		
+		if (e.originalEvent.scale < 0.9) {
+			window.location = "/";
+		}
+	});
+}

@@ -5,6 +5,7 @@ var before_slide;
 var slides_num;
 var slider_easing = false;
 var slider_status = false;
+var full_images_loaded = 0;
 
 function initSlider()
 {
@@ -48,6 +49,12 @@ function initSlider()
 			min_move_x: 10,
 			min_move_y: 10,
 			preventDefaultEvents: false
+		});
+		
+		$("#slider ul").bind('gestureend',function(e){
+			if (!slider_status && e.originalEvent.scale > 1.0) {
+				changeSliderStatus();
+			}
 		});
 		
 	}
@@ -211,12 +218,11 @@ function showActiveSlider()
 	//Load high resolution image in online mode
 	if (getCookie('PHPSESSID')) //Detect online mode
 	{
-		indicator_enable();
-		loaded_images = 0;
+		if (full_images_loaded != $("#slider img").length) indicator_enable();
 		$("#slider img").each(function(){
 			$(this).load(function(){
-				loaded_images++;
-				if (loaded_images == $("#slider img").length) indicator_disable();
+				full_images_loaded++;
+				if (full_images_loaded == $("#slider img").length) indicator_disable();
 			});		
 			$(this).attr("src",$(this).attr("src").replace('470x315','1600x1072'));
 		});

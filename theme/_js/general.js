@@ -66,6 +66,8 @@ $(document).ready(function() {
 
 	scrollToArticleTop();
 	
+	if (NATIVE_APP && $("body").hasClass("article-page")) pinchArticle();
+	
 	document_loaded = true;
 	
 	loadCommunity();
