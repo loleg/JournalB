@@ -44,13 +44,14 @@ var favoritesHasLogin = false,
 function loginDisqus() {
 	if (!checkDisqusApi()) return false;
 	var checkDisqusLogin = function() {
+		if (!favoritesStartLogin) return;
 		if (DISQUS.jsonData.request.is_authenticated) {
 			if (favoritesStartLogin) {
 				window.location.reload();
 			} else {
 				return helloDisqus();
 			}
-		} else {
+		} else if ($("#dsq-login-box").length) {
 			window.setTimeout(checkDisqusLogin, 200);
 		}
 		return false;
@@ -244,4 +245,5 @@ function closeLoginPopup()
 {
 	$(".popup_wrapper").remove();
 	$(".login_popup").remove();
+	favoritesStartLogin = false;
 }
