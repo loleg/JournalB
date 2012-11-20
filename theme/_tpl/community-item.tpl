@@ -32,7 +32,12 @@
 
 	<div class="row adbox">
 		<div class="community-title grey">Anzeige</div>
-		<div class="title">{{ $gimme->article->where }}</div>
+		<a href="{{ $gimme->article->link }}">
+		{{ if $gimme->article->icon }}
+			<div class="image"><img src="{{ $gimme->article->icon }}" width="200" /></div>
+		{{ /if }}
+			<div class="title">{{ $gimme->article->where }}</div>
+		</a>
 		<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
 		<div class="lists"><a href="{{ $gimme->article->link }}">{{ $gimme->article->who }}</a></div>
 	</div>
