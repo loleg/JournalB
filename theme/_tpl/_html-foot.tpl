@@ -1,5 +1,5 @@
 {{ if $DEV_ENV }}
-<center style="font-size:60%"><script language="JavaScript">document.write(navigator.userAgent + ' - native:' + NATIVE_APP + ' mobile:' + MOBILE_WEB + ' v{{ $VER_ENV }}')</script></center>
+<center style="font-size:60%"><script language="JavaScript">document.write(navigator.userAgent + ' - native:' + NATIVE_APP + ' mobile:' + MOBILE_WEB + ' {{ $VER_ENV }}')</script></center>
 <!-- DEV -->
 <script src="{{ url static_file='_js/library.js' }}" type="text/javascript"></script>
 <script src="{{ url static_file='_js/community.js' }}" type="text/javascript"></script>
@@ -44,8 +44,12 @@ if ($('#disqus_thread').length == 0) {
 var disqus_config = function () { 
 	this.language = "de_formal";
 	this.callbacks.afterRender = [helloDisqus];
+	if (typeof disqus_identifier != 'undefined') {
+		this.page.identifier = disqus_identifier;
+		this.page.url = disqus_url;
+	}
 };
-(function() {
+$(document).ready(function() {
 	/* Forum widget */
 	var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 	dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
@@ -55,7 +59,7 @@ var disqus_config = function () {
     s.type = 'text/javascript';
     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
-})();
+});
 /* /disqus */
 
 /* flattr: */
