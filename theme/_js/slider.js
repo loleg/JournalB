@@ -165,6 +165,7 @@ function updateSliderSize()
 {
 	var window_height = window.innerHeight;
 	var window_width = window.innerWidth;
+	if (NATIVE_APP) window_height+=20;
 	
 	$(slider).height($(slider).width()*0.6702);
 	if (slider_status)
