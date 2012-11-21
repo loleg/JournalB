@@ -107,7 +107,11 @@ function initFavorites() {
 			
 			// Login link
 			$(".header .login").click(loginDisqus);
-			$("#dsq-form-area").click(loginDisqus);
+			
+			// Native comments tap
+			if (NATIVE_APP) {
+				$("#dsq-form-area").click(showLoginPopup);
+			}
 			
 		// Yes, we have data	
 		} else {			
@@ -235,6 +239,8 @@ function showLoginPopup()
 	html += "</div>";
 	
 	$("body").append(html);
+	
+	return false;
 }
 
 function setCloseLoginHook()
