@@ -107,6 +107,7 @@ function initFavorites() {
 			
 			// Login link
 			$(".header .login").click(loginDisqus);
+			$("#dsq-form-area").click(loginDisqus);
 			
 		// Yes, we have data	
 		} else {			
