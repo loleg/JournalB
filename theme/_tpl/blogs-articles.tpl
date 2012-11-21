@@ -1,3 +1,5 @@
+{{ set_current_issue }}
+{{ set_default_section }}
 <a name="mobile_startpoint"></a>
 
 <div class="titlebox section-blogs">
@@ -6,8 +8,6 @@
 
 <script>$('.favorite').hide();</script>
 
-{{ set_current_issue }}
-{{ set_default_section }}
 {{ $start = $gimme->url->get_parameter("ls-art0") }}
 {{ $articles_on_page = 5 }}
 {{ $articles_num_total = 0 }}
