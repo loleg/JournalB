@@ -165,6 +165,11 @@ function initFavorites() {
 		
 	// Favorites icon
 	$('.favorite').click(function() {
+	
+		if (NATIVE_APP && window.location.href.indexOf('http')<0) {
+			window.alert('Für die Favoritenfunktion ist eine Internet Verbinden erforderlich.');
+			return false;
+		}
 				
 		if (!favoritesHasLogin) {
 			loginDisqus();

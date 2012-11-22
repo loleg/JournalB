@@ -132,6 +132,7 @@
 		</div><!-- /forum -->
 		<script language="JavaScript">
 			var disqus_identifier = '{{ $gimme->article->number }}';
+			var disqus_url = 'http://{{ $gimme->publication->site }}' + '{{ uripath }}';
 		</script>
 		
 	{{ /if }}	
