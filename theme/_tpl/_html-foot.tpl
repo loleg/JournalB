@@ -38,7 +38,7 @@ if (MOBILE_WEB) {
 
 <script type="text/javascript">
 /* disqus: */
-if (NATIVE_APP && window.location.href.indexOf('http')<0) {
+if (NATIVE_APP && document.location.protocol != 'http:') {
 	$('#disqus_thread').html('Für die Kommentarfunktion ist eine Internetverbindung erforderlich.');
 	initFavorites();
 } else {

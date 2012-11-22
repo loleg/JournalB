@@ -168,7 +168,11 @@ function initFavorites() {
 	// Favorites icon
 	$('.favorite').click(function() {
 					
-		if (!favoritesHasLogin && document.location.protocol == 'http:') {
+		if (NATIVE_APP && document.location.protocol != 'http:') { 
+			// offline message: kNoConnectionFavorites
+			window.location = "fvr://add_to_favorites";
+			return false;
+		} else if (!favoritesHasLogin) {
 			loginDisqus();
 			return false;
 		}
@@ -188,6 +192,7 @@ function initFavorites() {
 		
 		// Execute call
 		if (url) {
+			var self = this;
 			if (url.indexOf('http:') != 0) 
 				url = document.location.protocol + '//' + document.location.host + url;
 			$.get('/favorites/vote?url=' + encodeURIComponent(url) 
@@ -202,9 +207,9 @@ function initFavorites() {
 			
 			// Update icon
 			if (vote == -1) {
-				$(this).removeClass('checked tapped');
+				$(self).removeClass('checked tapped');
 			} else {
-				$(this).addClass('checked tapped');
+				$(self).addClass('checked tapped');
 			}
 		}
 		return false;

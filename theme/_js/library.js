@@ -204,7 +204,7 @@ function showComments() {
 	$('.controlicon.comments').toggleClass("checked");
 	if (navigator.userAgent.match(/(Mobile|iPhone)/) !== undefined) {
 		document.location='#comments';
-		$(window).scrollTop($("#disqus_thread").offset().top-80);
+		$(window).scrollTop($("#disqus_thread").offset().top-(NATIVE_APP ? 0 : 80));
 	} else {
 		document.location='#top';
 	}

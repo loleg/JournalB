@@ -48,7 +48,9 @@
 		<a href="/favorites">Favoriten</a> | 
 		<a href="#" onclick="$('.header .icon-search').click()">Suche</a> | 
 		<a href="http://journalb.disqus.com/community.html?lang=de_formal" class="community-popup">Community</a> | 
-		<a href="http://{{ $gimme->publication->site }}/de/static/rss/">RSS</a> | 
+		<span class="community-rss">
+			<a href="http://{{ $gimme->publication->site }}/de/static/rss/">RSS</a> | 
+		</span>
 		<a href="http://eepurl.com/pgobL">Newsletter</a> | 
 		<a href="http://www.facebook.com/journalb.bern">Facebook</a> | 
 		<a href="http://twitter.com/journalb">Twitter</a>
