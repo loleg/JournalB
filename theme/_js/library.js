@@ -202,7 +202,9 @@ function aareTemperaturen()
 function showComments() {
 	$('header,.mcontentbar,.miniarticle,.box-under').toggle();
 	$('.controlicon.comments').toggleClass("checked");
-	document.location='#top';
+	document.location = 
+		(navigator.userAgent.match(/(Mobile|iPhone)/) !== undefined) 
+		? '#comments' : '#top';
 	return false;
 }
 
