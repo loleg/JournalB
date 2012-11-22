@@ -28,13 +28,14 @@ function helloDisqus() {
 			loginDisqus();
 		}
 	}
-	initFavorites();
 	/* Sets the article count */
 	if ($('#dsq-num-posts').length > 0 && $('#dsq-num-posts').text() != "0") {
 		$('.num-comments').html('(' + $('#dsq-num-posts').text() + ')');
 	} else if ($('.dsq-comment').length > 0) {
 		$('.num-comments').html('(' + $('.dsq-comment').length + ')');
 	}
+	/* Continue initializing the favorites */
+	initFavorites();
 	return true;
 }
 
@@ -57,6 +58,7 @@ function loginDisqus() {
 		return false;
 	};
 	if (DISQUS.jsonData.request.is_authenticated || favoritesStartLogin) {
+		favoritesHasLogin = true;
 		return checkDisqusLogin();
 	} else {
 		// Registration popup
@@ -165,13 +167,8 @@ function initFavorites() {
 		
 	// Favorites icon
 	$('.favorite').click(function() {
-	
-		if (NATIVE_APP && window.location.href.indexOf('http')<0) {
-			window.alert('Für die Favoritenfunktion ist eine Internet Verbinden erforderlich.');
-			return false;
-		}
-				
-		if (!favoritesHasLogin) {
+					
+		if (!favoritesHasLogin && document.location.protocol == 'http:') {
 			loginDisqus();
 			return false;
 		}

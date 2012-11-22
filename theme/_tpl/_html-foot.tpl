@@ -40,6 +40,7 @@ if (MOBILE_WEB) {
 /* disqus: */
 if (NATIVE_APP && window.location.href.indexOf('http')<0) {
 	$('#disqus_thread').html('Für die Kommentarfunktion ist eine Internetverbindung erforderlich.');
+	initFavorites();
 } else {
 	if ($('#disqus_thread').length == 0) {
 		$('body').append('<div class="hidden" id="disqus_thread"></div>');
