@@ -268,17 +268,19 @@ function adjustNewsrows()
 		content_double_num++;
 	});
 	
-	$(".newsrows .newsbox").show();
+	$(".newsrows .newsbox").css("display","block");
 	
 	if ($(".newsrows .weitere").length && $(".newsrows .content-single").length%2==1)
 	{
 		var obj = $(".newsrows .content-single").last();
 		$(".newsrows .newsbox").last().after(obj);
-		obj.hide();
+		$(obj).css("display","none");
 	}
 	
 	$(".newsrows .content-single").removeClass('content-right');
 	$(".newsrows .content-single:odd").addClass('content-right');
+	
+	$(".newsrows .newsbox").css("visibility","visible");
 }
 
 function controlIconsHover()
