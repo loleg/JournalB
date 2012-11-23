@@ -170,7 +170,6 @@ function initFavorites() {
 					
 		if (NATIVE_APP && document.location.protocol != 'http:') { 
 			// offline message: kNoConnectionFavorites
-			window.location = "fvr://add_to_favorites";
 			return false;
 		} else if (!favoritesHasLogin) {
 			loginDisqus();
@@ -198,13 +197,12 @@ function initFavorites() {
 			$.get('/favorites/vote?url=' + encodeURIComponent(url) 
 					+ '&title=' + encodeURI(title) + '&vote=' + vote, 
 				function(data) {
+					if (NATIVE_APP) {
+						window.location = "fvr://add_to_favorites";
+					}
 					if (typeof console != 'undefined') console.log(data);
 				});
-			
-			if (NATIVE_APP) {
-				window.location = "fvr://add_to_favorites?url="+url+"&vote="+vote;
-			}
-			
+
 			// Update icon
 			if (vote == -1) {
 				$(self).removeClass('checked tapped');
