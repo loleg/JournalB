@@ -1,5 +1,5 @@
 {{ assign var="DEV_ENV" value="1" scope="global" }}
-{{ assign var="VER_ENV" value=".v1.8" scope="global" }}
+{{ assign var="VER_ENV" value=".v1.9" scope="global" }}
 {{ assign var="DISQUSN" value="journalb-lab" }}
 <!DOCTYPE html>
 <!--[if IE]>
@@ -52,8 +52,8 @@
 	{{ /list_article_images }}
 	{{ /if }}
 	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
-	<script>window.jQuery || document.write('<script src="{{ url static_file='_js/jquery.min.js' }}"><\/script>')</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+	<script>window.jQuery || document.write('<script src="{{ url static_file='_js/jquery-1.8.3.min.js' }}"><\/script>')</script>
 	
 	<script type="text/javascript">
 		function getCookie(a){var b,d,c,e=document.cookie.split(";");for(b=0;b<e.length;b++)if(d=e[b].substr(0,e[b].indexOf("=")),c=e[b].substr(e[b].indexOf("=")+1),d=d.replace(/^\s+|\s+$/g,""),d==a)return unescape(c)};
