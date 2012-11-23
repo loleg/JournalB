@@ -52,7 +52,7 @@ function loginDisqus() {
 			} else {
 				return helloDisqus();
 			}
-		} else if ($("#dsq-login-box").length) {
+		} else if ($("#dsq-login-box,.dsq-login-box").length>0) {
 			window.setTimeout(checkDisqusLogin, 200);
 		}
 		return false;
