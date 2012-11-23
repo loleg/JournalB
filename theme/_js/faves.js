@@ -216,6 +216,10 @@ function initFavorites() {
 	});
 	// - Favorites icon
 	
+	// Hover events
+	if (!MOBILE_WEB && !NATIVE_APP) {
+		$('.container').addClass('allowhover');
+	}
 }
 
 function goToFavorites()
