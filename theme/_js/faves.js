@@ -28,13 +28,14 @@ function helloDisqus() {
 			loginDisqus();
 		}
 	}
-	initFavorites();
 	/* Sets the article count */
 	if ($('#dsq-num-posts').length > 0 && $('#dsq-num-posts').text() != "0") {
 		$('.num-comments').html('(' + $('#dsq-num-posts').text() + ')');
 	} else if ($('.dsq-comment').length > 0) {
 		$('.num-comments').html('(' + $('.dsq-comment').length + ')');
 	}
+	/* Continue initializing the favorites */
+	initFavorites();
 	return true;
 }
 
@@ -57,6 +58,7 @@ function loginDisqus() {
 		return false;
 	};
 	if (DISQUS.jsonData.request.is_authenticated || favoritesStartLogin) {
+		favoritesHasLogin = true;
 		return checkDisqusLogin();
 	} else {
 		// Registration popup
@@ -165,13 +167,12 @@ function initFavorites() {
 		
 	// Favorites icon
 	$('.favorite').click(function() {
-	
-		if (NATIVE_APP && window.location.href.indexOf('http')<0) {
-			window.alert('Für die Favoritenfunktion ist eine Internet Verbinden erforderlich.');
+					
+		if (NATIVE_APP && document.location.protocol != 'http:') { 
+			// offline message: kNoConnectionFavorites
+			window.location = "fvr://add_to_favorites";
 			return false;
-		}
-				
-		if (!favoritesHasLogin) {
+		} else if (!favoritesHasLogin) {
 			loginDisqus();
 			return false;
 		}
@@ -191,6 +192,7 @@ function initFavorites() {
 		
 		// Execute call
 		if (url) {
+			var self = this;
 			if (url.indexOf('http:') != 0) 
 				url = document.location.protocol + '//' + document.location.host + url;
 			$.get('/favorites/vote?url=' + encodeURIComponent(url) 
@@ -205,9 +207,9 @@ function initFavorites() {
 			
 			// Update icon
 			if (vote == -1) {
-				$(this).removeClass('checked tapped');
+				$(self).removeClass('checked tapped');
 			} else {
-				$(this).addClass('checked tapped');
+				$(self).addClass('checked tapped');
 			}
 		}
 		return false;
