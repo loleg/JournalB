@@ -224,13 +224,12 @@ function initFavorites() {
 
 function goToFavorites()
 {
-	if (DISQUS.jsonData.request.is_authenticated)
-	{
+	if (!checkDisqusApi()) {
+		window.location = "/favorites"; return false;
+	} else if (DISQUS.jsonData.request.is_authenticated) {
 		$("body").append("<form id='redirect' action='/favorites' method='post'></form>");
 		$("#redirect").submit();
-	}
-	else
-	{
+	} else {
 		loginDisqus();
 	}
 }
