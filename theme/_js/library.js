@@ -303,6 +303,7 @@ function setupTouchAnimations()
 function pinchArticle()
 {
 	$("body").bind('gestureend',function(e){		
+		if (slider_status) return;
 		if (e.originalEvent.scale < 0.9) {
 			window.location = "/";
 		}
