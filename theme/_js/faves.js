@@ -19,14 +19,11 @@ function helloDisqus() {
 		}
 		var c = DISQUS.jsonData.request.user_id + ";" + u;
 		setCookie('jsdisqus', c, 7);
-	} else {
-		setCookie('jsdisqus', '', 7);
+	} else if (typeof facebookLoginStarted != 'undefined' && facebookLoginStarted) {
 		// Workaround for Facebook login
-		if (typeof facebookLoginStarted != 'undefined' && facebookLoginStarted) {
-			favoritesStartLogin = true;
-			DISQUS.dtpl.actions.fire("auth.facebook");
-			loginDisqus();
-		}
+		favoritesStartLogin = true;
+		DISQUS.dtpl.actions.fire("auth.facebook");
+		loginDisqus();
 	}
 	/* Sets the article count */
 	if ($('#dsq-num-posts').length > 0 && $('#dsq-num-posts').text() != "0") {
@@ -47,6 +44,7 @@ function loginDisqus() {
 	var checkDisqusLogin = function() {
 		if (!favoritesStartLogin) return;
 		if (DISQUS.jsonData.request.is_authenticated) {
+			console.log('checkDisqus is auth');
 			if (NATIVE_APP || MOBILE_WEB) {
 				window.location.reload();
 			} else {
@@ -55,12 +53,13 @@ function loginDisqus() {
 				return helloDisqus();
 			}
 		} else {
+			console.log('checkDisqus NO auth');
 			window.setTimeout(checkDisqusLogin, 200);
 		}
 		return false;
 	};
 	if (DISQUS.jsonData.request.is_authenticated || favoritesStartLogin) {
-		favoritesHasLogin = true;
+		favoritesHasLogin = DISQUS.jsonData.request.is_authenticated;
 		return checkDisqusLogin();
 	} else {
 		// Registration popup
