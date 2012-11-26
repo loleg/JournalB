@@ -218,9 +218,10 @@ function loadWeitereArtikel(self) {
         var top = data.indexOf('/start articlerows/');
         var bot = data.indexOf('/end articlerows/');
 
-		$('.dynrows')
-			.append(data.substring(top - 6, bot - 6))
-			.find('.weitere').remove();
+		var dynrows = $('.dynrows');
+		dynrows.find('.weitere').remove();
+		dynrows.append(data.substring(top - 6, bot - 6));
+					
 		adjustNewsrows();
     }); 
     return false;
