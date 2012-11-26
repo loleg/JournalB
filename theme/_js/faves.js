@@ -40,28 +40,26 @@ function helloDisqus() {
 }
 
 // Process login request
-var favoritesHasLogin = false;
-var favoritesStartLogin = false;
-	
-function checkDisqusLoginRepeat() {
-	if (!favoritesStartLogin) return;
-	if (DISQUS.jsonData.request.is_authenticated) {
-		if (MOBILE_WEB || !helloDisqus()) {
-			window.location.reload();
-		} else {
-			closeLoginPopup();
-		}
-		return false;
-	} 
-	window.setTimeout(checkDisqusLoginRepeat, 200);
-	return false;
-}
-
+var favoritesHasLogin = false, 
+	favoritesStartLogin = false;
 function loginDisqus() {
 	if (!checkDisqusApi()) return false;
-	if (DISQUS.jsonData.request.is_authenticated) {
+	var checkDisqusLogin = function() {
+		if (!favoritesStartLogin) return;
+		if (DISQUS.jsonData.request.is_authenticated) {
+			if (favoritesStartLogin) {
+				window.location.reload();
+			} else {
+				return helloDisqus();
+			}
+		} else if ($("#dsq-login-box,.dsq-login-box").length>0) {
+			window.setTimeout(checkDisqusLogin, 200);
+		}
+		return false;
+	};
+	if (DISQUS.jsonData.request.is_authenticated || favoritesStartLogin) {
 		favoritesHasLogin = true;
-		return checkDisqusLoginRepeat();
+		return checkDisqusLogin();
 	} else {
 		// Registration popup
 
@@ -73,7 +71,7 @@ function loginDisqus() {
 		
 		if (!favoritesStartLogin) {
 			favoritesStartLogin = true;
-			window.setTimeout(checkDisqusLoginRepeat, 200);
+			window.setTimeout(checkDisqusLogin, 200);
 		}
 	}
 	return false;
@@ -96,9 +94,6 @@ function initFavorites() {
 	// ** Favorites	login
 	$.get('/favorites/myfaves', function(data) {
 		if (data == null || data == 'NOLOGIN') {
-			if (favoritesHasLogin && favoritesStartLogin) {
-				window.location.reload();
-			}
 			if (navigator.userAgent.match(/(Mobile|iPhone)/) && $(".forum").length > 0) {
 				$("#disqus_thread").prepend($(".header .dsq-login-buttons"))
 					.find('.dsq-login-buttons').show().css('text-align', 'center')
