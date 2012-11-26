@@ -47,14 +47,13 @@ function loginDisqus() {
 	var checkDisqusLogin = function() {
 		if (!favoritesStartLogin) return;
 		if (DISQUS.jsonData.request.is_authenticated) {
-			if (favoritesStartLogin) {
+			if (!helloDisqus()) {
 				window.location.reload();
-			} else {
-				return helloDisqus();
 			}
-		} else if ($("#dsq-login-box,.dsq-login-box").length>0) {
-			window.setTimeout(checkDisqusLogin, 200);
-		}
+			closeLoginPopup();
+			return false;
+		} 
+		window.setTimeout(checkDisqusLogin, 200);
 		return false;
 	};
 	if (DISQUS.jsonData.request.is_authenticated || favoritesStartLogin) {

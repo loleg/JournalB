@@ -20,7 +20,6 @@
     }
 	
     .newsbox {
-    	visibility: hidden;
         height: 245px;
         display: block;
         position: relative;
@@ -1648,7 +1647,7 @@
 		top: 0px;
 		position: fixed;
 		background: rgba(0,0,0,0.90);
-		z-index: 999;
+		z-index: 900;
 	}
 	.login_popup {
 		background: #ffffff;
@@ -1660,8 +1659,7 @@
 		margin-left: -135px;
 		margin-top: -125px;
 		padding: 20px;
-		z-index: 1000;
-		
+		z-index: 901; /* Don't overlap .dsq-popup */
 		.subheading;
 		letter-spacing: 1px;
 	}
@@ -1699,7 +1697,7 @@
 		height: 32px;
 		margin-top: -22px;
 		margin-left: -22px;
-		z-index: 99999;
+		z-index: 999;
 		background: #ffffff;
 		border-radius: 6px;
 		-webkit-border-radius: 6px;

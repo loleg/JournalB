@@ -268,8 +268,6 @@ function adjustNewsrows()
 		content_double_num++;
 	});
 	
-	$(".newsrows .newsbox").css("display","block");
-	
 	if ($(".newsrows .weitere").length && $(".newsrows .content-single").length%2==1)
 	{
 		var obj = $(".newsrows .content-single").last();
@@ -279,8 +277,6 @@ function adjustNewsrows()
 	
 	$(".newsrows .content-single").removeClass('content-right');
 	$(".newsrows .content-single:odd").addClass('content-right');
-	
-	$(".newsrows .newsbox").css("visibility","visible");
 }
 
 function controlIconsHover()
