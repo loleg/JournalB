@@ -40,16 +40,17 @@ function helloDisqus() {
 }
 
 // Process login request
-var favoritesHasLogin = false, 
-	favoritesStartLogin = false;
+var favoritesHasLogin = false;
+var favoritesStartLogin = false;
 	
 function checkDisqusLoginRepeat() {
 	if (!favoritesStartLogin) return;
 	if (DISQUS.jsonData.request.is_authenticated) {
-		if (!helloDisqus()) {
+		if (MOBILE_WEB || !helloDisqus()) {
 			window.location.reload();
+		} else {
+			closeLoginPopup();
 		}
-		closeLoginPopup();
 		return false;
 	} 
 	window.setTimeout(checkDisqusLoginRepeat, 200);
@@ -104,10 +105,12 @@ function initFavorites() {
 					.prepend('<p>Zum kommentieren bitte anmelden</p>')
 					.parent().find('.dsq-login-button-disqus').remove();
 				$(".dsq-unauthenticated").hide();
-				if (!favoritesStartLogin) {
-					favoritesStartLogin = true;
-					window.setTimeout(checkDisqusLoginRepeat, 200);
-				}
+				window.setTimeout(function() {
+					if (typeof DISQUS == 'undefined') return true;
+					if (DISQUS.jsonData.request.is_authenticated) {
+						$("#disqus_thread .dsq-login-buttons").hide();
+					}
+				}, 2000);
 			}
 			
 			// Login link
