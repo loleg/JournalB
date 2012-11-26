@@ -81,5 +81,7 @@ function loadCommunity()
 		$(".newsrows .commentcount").each(function(){
 			$(this).prev().find(".info,.info_block").first().prepend(this);
 		}).removeClass('hidden');
+	} else {
+		$(".newsrows .commentcount").attr('href','');
 	}
 }

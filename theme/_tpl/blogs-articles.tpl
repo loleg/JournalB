@@ -12,7 +12,7 @@
 {{ $articles_on_page = 5 }}
 {{ $articles_num_total = 0 }}
 
-<div class="dynamic-articlerows">
+<div class="dynrows">
 <!-- /start articlerows/ -->
 {{ list_articles order="byPublishDate desc" length="`$articles_on_page`" }}
 

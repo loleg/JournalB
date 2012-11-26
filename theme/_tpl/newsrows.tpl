@@ -1,4 +1,4 @@
-<div class="newsrows dynamic-articlerows">
+<div class="newsrows dynrows temprows">
 <!-- /start articlerows/ -->
 
 {{ set_current_issue }}

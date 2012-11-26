@@ -218,8 +218,9 @@ function loadWeitereArtikel(self) {
         var top = data.indexOf('/start articlerows/');
         var bot = data.indexOf('/end articlerows/');
 
-		$('.dynamic-articlerows .weitere').remove();
-		$('.dynamic-articlerows').append(data.substring(top - 6, bot - 6));
+		$('.dynrows')
+			.append(data.substring(top - 6, bot - 6))
+			.find('.weitere').remove();
 		adjustNewsrows();
     }); 
     return false;
@@ -249,14 +250,15 @@ function getArticleTitle()
 function adjustNewsrows()
 {
 	var content_double_num = 0;
-
-	$(".newsrows .content-double").each(function(){	
-		if($('.newsrows .newsbox').index(this)%2!=content_double_num%2)
+	var newsrows = $(".newsrows.dynrows").addClass("dynamic-articlerows");
+	
+	$(".content-double", newsrows).each(function(){	
+		if($(".newsbox", newsrows).index(this)%2!=content_double_num%2)
 		{
 			var i = 1;
-			while ($(".newsrows .newsbox").eq($('.newsrows .newsbox').index(this)+i).length)
+			while ($(".newsbox", newsrows).eq($(".newsbox", newsrows).index(this)+i).length)
 			{
-				var obj = $(".newsrows .newsbox").eq($('.newsrows .newsbox').index(this)+i);
+				var obj = $(".newsbox", newsrows).eq($(".newsbox", newsrows).index(this)+i);
 				if (obj.hasClass('content-single'))
 				{
 					$(this).before(obj);
@@ -268,15 +270,16 @@ function adjustNewsrows()
 		content_double_num++;
 	});
 	
-	if ($(".newsrows .weitere").length && $(".newsrows .content-single").length%2==1)
+	if ($(".weitere", newsrows).length && $(".content-single", newsrows).length%2==1)
 	{
-		var obj = $(".newsrows .content-single").last();
-		$(".newsrows .newsbox").last().after(obj);
-		$(obj).css("display","none");
+		var obj = $(".content-single", newsrows).last();
+		$(".newsbox", newsrows).last().after(obj);
+		obj.hide();
 	}
 	
-	$(".newsrows .content-single").removeClass('content-right');
-	$(".newsrows .content-single:odd").addClass('content-right');
+	// For browsers without CSS3 support
+	$(".content-single", newsrows).removeClass('content-right');
+	$(".content-single:odd", newsrows).addClass('content-right');
 }
 
 function controlIconsHover()
