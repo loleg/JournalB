@@ -42,27 +42,29 @@ function helloDisqus() {
 // Process login request
 var favoritesHasLogin = false, 
 	favoritesStartLogin = false;
+	
+function checkDisqusLoginRepeat() {
+	if (!favoritesStartLogin) return;
+	if (DISQUS.jsonData.request.is_authenticated) {
+		if (!helloDisqus()) {
+			window.location.reload();
+		}
+		closeLoginPopup();
+		return false;
+	} 
+	window.setTimeout(checkDisqusLoginRepeat, 200);
+	return false;
+}
+
 function loginDisqus() {
 	if (!checkDisqusApi()) return false;
-	var checkDisqusLogin = function() {
-		if (!favoritesStartLogin) return;
-		if (DISQUS.jsonData.request.is_authenticated) {
-			if (!helloDisqus()) {
-				window.location.reload();
-			}
-			closeLoginPopup();
-			return false;
-		} 
-		window.setTimeout(checkDisqusLogin, 200);
-		return false;
-	};
-	if (DISQUS.jsonData.request.is_authenticated || favoritesStartLogin) {
+	if (DISQUS.jsonData.request.is_authenticated) {
 		favoritesHasLogin = true;
-		return checkDisqusLogin();
+		return checkDisqusLoginRepeat();
 	} else {
 		// Registration popup
 
-		if (NATIVE_APP) {
+		if (NATIVE_APP || MOBILE_WEB) {
 			showLoginPopup();
 		} else {
 			DISQUS.dtpl.actions.fire('auth.login');
@@ -70,7 +72,7 @@ function loginDisqus() {
 		
 		if (!favoritesStartLogin) {
 			favoritesStartLogin = true;
-			window.setTimeout(checkDisqusLogin, 200);
+			window.setTimeout(checkDisqusLoginRepeat, 200);
 		}
 	}
 	return false;
@@ -93,17 +95,19 @@ function initFavorites() {
 	// ** Favorites	login
 	$.get('/favorites/myfaves', function(data) {
 		if (data == null || data == 'NOLOGIN') {
+			if (favoritesHasLogin && favoritesStartLogin) {
+				window.location.reload();
+			}
 			if (navigator.userAgent.match(/(Mobile|iPhone)/) && $(".forum").length > 0) {
 				$("#disqus_thread").prepend($(".header .dsq-login-buttons"))
 					.find('.dsq-login-buttons').show().css('text-align', 'center')
 					.prepend('<p>Zum kommentieren bitte anmelden</p>')
 					.parent().find('.dsq-login-button-disqus').remove();
-				window.setTimeout(function() {
-					if (typeof DISQUS == 'undefined') return true;
-					if (DISQUS.jsonData.request.is_authenticated) {
-						$("#disqus_thread .dsq-login-buttons").hide();
-					}
-				}, 2000);
+				$(".dsq-unauthenticated").hide();
+				if (!favoritesStartLogin) {
+					favoritesStartLogin = true;
+					window.setTimeout(checkDisqusLoginRepeat, 200);
+				}
 			}
 			
 			// Login link
@@ -259,5 +263,6 @@ function closeLoginPopup()
 {
 	$(".popup_wrapper").remove();
 	$(".login_popup").remove();
+	$("#disqus_thread .dsq-login-buttons").hide();
 	favoritesStartLogin = false;
 }
