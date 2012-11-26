@@ -280,6 +280,7 @@ function adjustNewsrows()
 	// For browsers without CSS3 support
 	$(".content-single", newsrows).removeClass('content-right');
 	$(".content-single:odd", newsrows).addClass('content-right');
+	newsrows.removeClass("temprows");
 }
 
 function controlIconsHover()
