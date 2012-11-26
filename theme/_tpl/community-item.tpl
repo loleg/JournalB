@@ -32,14 +32,14 @@
 
 	<div class="row adbox">
 		<div class="community-title grey">Anzeige</div>
-		<a href="{{ $gimme->article->link }}">
+		<a href="{{ $gimme->article->link }}" target="_blank">
 		{{ if $gimme->article->icon }}
 			<div class="image"><img width="100%" src="{{ $gimme->article->icon }}" /></div>
 		{{ /if }}
 			<div class="title">{{ $gimme->article->where }}</div>
 		</a>
 		<div class="description">{{ $gimme->article->quote|strip_tags }}</div>
-		<div class="lists"><a href="{{ $gimme->article->link }}">{{ $gimme->article->who }}</a></div>
+		<div class="lists"><a href="{{ $gimme->article->link }}" target="_blank">{{ $gimme->article->who }}</a></div>
 	</div>
 	
 {{ else }}
