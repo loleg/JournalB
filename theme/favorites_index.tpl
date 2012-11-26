@@ -12,7 +12,7 @@
 		<div class="row content">		
 
 			{{ if $view->articles }}
-				<div class="newsrows">
+				<div class="newsrows dynrows temprows">
 					{{ foreach $view->articles as $article }}
 
 						{{ $article_section = $article->section->url_name }}

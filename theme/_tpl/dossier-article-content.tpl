@@ -22,7 +22,7 @@
 	
 	{{ set_default_section }}
 
-	<div class="dossier-articles newsrows">
+	<div class="dossier-articles newsrows dynrows temprows">
 		{{ list_related_articles }}
 		
 			{{ $article_section = $gimme->article->section->url_name }}

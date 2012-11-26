@@ -1,6 +1,6 @@
 {{ assign var="blogs_on_page" value="10" }}
 
-<div class="newsrows">
+<div class="newsrows dynrows temprows">
 	{{ list_sections order="byNumber desc" length="`$blogs_on_page`" }}
 		
 		<div class="newsbox content-single section-blogs layoutsimple" style="cursor: auto !important;">
