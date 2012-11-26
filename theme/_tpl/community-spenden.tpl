@@ -47,11 +47,19 @@
 		</form>
 		</center>
 		
-		<!--
-		<br/>
-		<a href="https://www.yellowpay.ch" class="icon icon-postfinance" title="Spenden mit PostFinance"><span /></a>
-		<br/>
-		<small>Postcheckkonto: PC 80-667-0</small>
-		-->
+		<div class="spenden-post" style="margin-top:1em;">
+			<a title="Spenden mit Post" onclick="var posttbl = $('.spenden-post table'); if (posttbl.hasClass('hidden')) { posttbl.hide().removeClass('hidden').slideDown(); return false; }" href="https://www.postfinance.ch/de/priv/prod/pay/national/inpay.html" target="_blank" style="background:#FFE580 url('https://www.postfinance.ch/img/bg_request_online.gif') left top no-repeat; padding:0px 11px 0px 24px; text-decoration:none; color:black; line-height:18px; font:14px Verdana, Arial, Helvetica, sans-serif;">60-684782-3</a>
+			
+			<table class="hidden" style="margin-top:1em; text-align:left; font-size:12px;">
+			<tr><thead><th colspan="2" style="background:#FC0 url('https://www.postfinance.ch/img/about/logo/de.png') no-repeat center; width:100%; height:50px; padding:10px;"></th></thead></tr>
+			<tr><th>IBAN:</th><td>CH29 0900 0000 6068 4782 3</td></tr>
+			<tr><th>BIC:</th><td>POFICHBEXXX</td></tr>
+			<tr><th>Adresse:&nbsp;</th><td>
+Verein Berner Onlinemedien<br>
+Zinggstrasse 16<br>
+3007 Bern
+			</td></tr></table>
+		</div>
+		
     </div>
 </div>

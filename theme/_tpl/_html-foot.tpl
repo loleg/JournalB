@@ -72,7 +72,7 @@ if (NATIVE_APP && document.location.protocol != 'http:') {
 (function() {
 	var flt = document.createElement('script'); flt.type = 'text/javascript'; flt.async = true;
 	flt.src = '//api.flattr.com/js/0.6/load.js?mode=auto';
-//	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(flt);
+	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(flt);
 })();
 /* ]]> */
 /* /flattr */
