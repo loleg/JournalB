@@ -218,10 +218,9 @@ function loadWeitereArtikel(self) {
         var top = data.indexOf('/start articlerows/');
         var bot = data.indexOf('/end articlerows/');
 
-		var dynrows = $('.dynrows');
-		dynrows.find('.weitere').remove();
-		dynrows.append(data.substring(top - 6, bot - 6));
-					
+		$('.dynrows')
+			.append(data.substring(top - 6, bot - 6))
+			.find('.weitere').remove();
 		adjustNewsrows();
     }); 
     return false;
@@ -270,6 +269,15 @@ function adjustNewsrows()
 		}
 		content_double_num++;
 	});
+	
+	if($(".newsbox.front-blogs").length)
+	{
+		if($(".newsbox.front-blogs").offset().top != $(".newsbox.front-dossiers").offset().top)
+		{			
+			$(".newsbox.front-blogs").before($(".newsbox.front-dossiers").nextAll(".content-single").eq(0));
+			$(".newsbox.front-dossiers").before($(".newsbox.front-blogs"));
+		}
+	}
 	
 	if ($(".weitere", newsrows).length && $(".content-single", newsrows).length%2==1)
 	{

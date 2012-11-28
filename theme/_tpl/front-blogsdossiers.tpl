@@ -1,5 +1,4 @@
-
-<div class="content-single newsbox section-blogs layoutlist">
+<div class="content-single newsbox section-blogs layoutlist front-blogs">
 	<div class="newsboxcontent">
 		<h2><a href="/de/blogs">Neuste Blogs</a></h2>
 		<description>
@@ -21,7 +20,7 @@
 	</div>
 </div>
 
-<div class="content-single newsbox section-dossiers layoutlist">
+<div class="content-single newsbox section-dossiers layoutlist front-dossiers">
 	<div class="newsboxcontent">
 		<h2><a href="/de/dossiers">Aktuelle Dossiers</a></h2>
 		<description>
