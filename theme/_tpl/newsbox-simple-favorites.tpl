@@ -1,4 +1,4 @@
-<a class="content-single newsbox section-{{ $article_section }} layoutsimple" href="{{ $article->url }}">
+<a class="content-single newsbox section-{{ $article_section }} layoutsimple" href="{{ uri options="article" }}">
 
 	<div class="newsboxcontent">
 
@@ -40,3 +40,4 @@
 	<span class="favorite checked"><span>Favorite</span></span>
 	
 </a>
+<a class="commentcount hidden" href="{{ uri options="article" }}#disqus_thread"></a>
