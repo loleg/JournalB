@@ -13,7 +13,7 @@
 			
 				<h1>{{ $gimme->article->name }}</h1>
 						
-				{{ render file="_tpl/article-gallery.tpl" }}
+				{{ include file="_tpl/article-gallery.tpl" }}
 				
 			</header>
 
