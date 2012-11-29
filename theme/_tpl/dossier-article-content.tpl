@@ -9,7 +9,7 @@
 
 	<article>
 		<header> 
-			{{ include file="_tpl/article-gallery.tpl" }}
+			{{ render file="_tpl/article-gallery.tpl" }}
 		</header>
 		
 		{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}
