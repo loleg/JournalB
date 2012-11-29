@@ -9,7 +9,9 @@
 
 	<article>
 		<header> 
-			{{ render file="_tpl/article-gallery.tpl" }}
+			{{ dynamic }}
+				{{ render file="_tpl/article-gallery.tpl" }}
+			{{ /dynamic }}
 		</header>
 		
 		{{ if $gimme->article->subtitle != "" }}<span class="subtitle">{{ $gimme->article->subtitle }}</span>{{ /if }}

@@ -94,8 +94,10 @@
 					</div>
 				</div>
 			{{ /if }}
-						
+			
+			{{ dynamic }}
 				{{ render file="_tpl/article-gallery.tpl" }}
+			{{ /dynamic }}
 			</header>
 
 			<div class="mcontentbar">
