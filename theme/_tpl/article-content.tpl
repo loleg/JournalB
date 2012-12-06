@@ -1,13 +1,3 @@
-{{ if $gimme->preview }}
-	{{ if $gimme->article->issue->number > 2 }}
-		{{ include file="_tpl/newsbox.tpl" }}
-	{{ else }}
-	<div class="sidebar">
-		{{ include file="_tpl/community-item.tpl" }}
-	</div><br clear="all"/>
-	{{ /if }}
-{{ /if }}
-
 {{ include file="_tpl/mobile-controlbar.tpl" }}
 
 {{ if $gimme->article->issue->number == 5 }}
@@ -123,6 +113,16 @@
 	
 	{{ if $gimme->article->no_forum or $gimme->preview }}
 		<!-- Community disabled -->
+		
+		{{ if $gimme->preview }}
+			{{ if $gimme->article->issue->number > 2 }}
+				{{ include file="_tpl/newsbox.tpl" }}
+			{{ else }}
+				<div class="sidebar">
+					{{ include file="_tpl/community-item.tpl" }}
+				</div><br clear="all"/>
+			{{ /if }}
+		{{ /if }}
 		
 	{{ else }}
 		<!-- Article forum -->
