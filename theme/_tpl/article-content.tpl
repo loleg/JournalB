@@ -85,9 +85,8 @@
 				</div>
 			{{ /if }}
 			
-			{{ dynamic }}
-				{{ render file="_tpl/article-gallery.tpl" }}
-			{{ /dynamic }}
+			{{ include file="_tpl/article-gallery.tpl" }}
+			
 			</header>
 
 			<div class="mcontentbar">
