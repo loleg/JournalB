@@ -19,7 +19,7 @@ function helloDisqus() {
 		}
 		var c = DISQUS.jsonData.request.user_id + ";" + u;
 		setCookie('jsdisqus', c, 7);
-		if (NATIVE_APP) window.location = "login://logged-in";
+		if (NATIVE_APP) { window.location = "login://logged-in"; }
 	} else if (typeof facebookLoginStarted != 'undefined' && facebookLoginStarted) {
 		// Workaround for Facebook login
 		favoritesStartLogin = true;
