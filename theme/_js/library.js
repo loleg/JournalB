@@ -217,12 +217,12 @@ function loadWeitereArtikel(self) {
     $.get(self.attr('href'), function(data) {
         var top = data.indexOf('/start articlerows/');
         var bot = data.indexOf('/end articlerows/');
-
 		$('.dynrows')
 			.append(data.substring(top - 6, bot - 6))
-			.find('.weitere').remove();
+		// reformat page			
 		adjustNewsrows();
     }); 
+   	self.parent().remove();
     return false;
 }
 
