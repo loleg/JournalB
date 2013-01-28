@@ -222,7 +222,7 @@ function loadWeitereArtikel(self) {
 		// reformat page			
 		adjustNewsrows();
     }); 
-   	self.parent().remove();
+   	self.parent().slideUp();
     return false;
 }
 
