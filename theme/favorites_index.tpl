@@ -23,8 +23,12 @@
 						{{ if $article->authors|@count gt 0 }}
 							{{ $article_author = "`$article->authors[0]->first_name` `$article->authors[0]->last_name`" }}
 						{{ /if }}
-
-						{{ include file="_tpl/newsbox-simple-favorites.tpl" }}
+						
+						{{ if $article->frontpage_doubleview or $article->frontpage_image }}
+							{{ include file="_tpl/newsbox-bgimage-favorites.tpl" }}
+						{{ else }}
+							{{ include file="_tpl/newsbox-simple-favorites.tpl" }}
+						{{ /if }}
 						
 					{{ /foreach }}
 				</div>
