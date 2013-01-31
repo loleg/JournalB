@@ -15,8 +15,24 @@
 {{ $articles_on_page = 30 }}
 {{ $blogs_pos = 8 }}
 
+{{ $ads_first_position = 5 }}
+{{ $ads_interval = 10 }}
+
+{{ $ads = array() }}
+{{ $ads_num = 0 }}
+{{ $ads_rendered = 0 }}
+{{ $ads_shift = $smarty.cookies.ads_shift }}
+{{ if !$ads_shift }} {{ $ads_shift = 0 }} {{ /if }}
+
 {{ $start = $gimme->url->get_parameter("ls-art0") }}
 {{ $start2 = $gimme->url->get_parameter("ls-art1") }}
+
+{{ if !$start and !$start2 }}
+	{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue is 2 type is ad" }}  
+		{{ $ads[$ads_num] = {{ include file="_tpl/newsbox.tpl" }} }}
+		{{ $ads_num = $ads_num + 1 }}
+	{{ /list_articles }}
+{{ /if }}
 
 {{ $articles_num_1 = 0 }}
 {{ $articles_num_2 = 0 }}
@@ -25,6 +41,12 @@
 
 {{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue greater_equal 3 `$condition` is on" length="{{ $articles_on_page }}" }}  
   {{ if ($start + $articles_num_1)==$blogs_pos and $show_blogs }} {{ include file="_tpl/front-blogsdossiers.tpl" }} {{ /if }}
+  
+  {{ if ($ads_rendered < $ads_num) and ($articles_num_1 >= $ads_first_position) and (($articles_num_1 - $ads_first_position) % $ads_interval == 0) }}  	
+	{{ $ads[($ads_shift + $ads_rendered) % $ads_num] }}
+	{{ $ads_rendered = $ads_rendered + 1 }}
+  {{ /if }}
+  
   {{ include file="_tpl/newsbox.tpl" }}
   
   {{ $articles_num_1 = $articles_num_1 + 1 }}
@@ -33,12 +55,21 @@
 
 {{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue greater_equal 6 `$condition` is off" length="{{ $articles_on_page - $articles_num_1 }}" }}
   {{ if ($articles_on_page - $articles_num_1)>0 }}
+	{{ if ($ads_rendered < $ads_num) and (($articles_num_1 + $articles_num_2 - $ads_first_position) % $ads_interval == 0) }}  
+		{{ $ads[($ads_shift + $ads_rendered) % $ads_num] }}
+		{{ $ads_rendered = $ads_rendered + 1 }}
+	{{ /if }}
+  
     {{ include file="_tpl/newsbox.tpl" }}
   
     {{ $articles_num_2 = $articles_num_2 + 1 }}
   {{ /if }}
   {{ $articles_num_total_2 = $gimme->current_list->count }}
 {{ /list_articles }}
+
+{{ if !$start and !$start2 }}
+	{{ php }} setcookie('ads_shift', {{ ($ads_shift + $ads_rendered) % $ads_num }} ); {{ /php }}
+{{ /if }}
 
 {{ if ($start + $articles_num_1) < $articles_num_total_1 or ($start2 + $articles_num_2) < $articles_num_total_2 }}
   <div class="weitere" style="clear:both">
