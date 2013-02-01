@@ -42,8 +42,6 @@ $(document).ready(function() {
 		
 	adjustNewsrows();
 	
-	if  (NATIVE_APP) setupTouchAnimations();	
-	
 	articleImageAlts();
 	
 	if ($("#slider_box").length)

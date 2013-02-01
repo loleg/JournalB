@@ -300,15 +300,6 @@ function controlIconsHover()
 	}
 }
 
-function setupTouchAnimations()
-{
-	var fTouchEnd = function() { $(this).css('-webkit-transform', 'scale(1)'); };		
-	$(".newsbox").bind('touchend', fTouchEnd)
-				 .bind('touchcancel', fTouchEnd)
-				 .bind('touchstart',function(){ $(this).css('-webkit-transform', 'scale(0.96)'); });
-}
-
-
 function pinchArticle()
 {
 	$("body").bind('gestureend',function(e){		

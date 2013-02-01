@@ -3,9 +3,11 @@
 	{{ image rendition="topfront" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 
 	<div class="info_block">
-		<div style="float:right;font-size:12px;color:#888">WERBUNG</div>
-		<div>
+		<div class="info_ad">ANZEIGE</div>
+		{{ if $gimme->article->who }}
+		<div class="info_who">
 			<h1><span>{{ $gimme->article->who }}</span></h1>
 		</div>
+		{{ /if }}
 	</div>	
 </a>
