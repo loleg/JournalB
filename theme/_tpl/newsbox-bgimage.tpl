@@ -18,5 +18,4 @@
 	</div>
 
 	<span class="favorite"><span>Favorite</span></span>
-	
 </a>

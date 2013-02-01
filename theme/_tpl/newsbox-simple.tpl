@@ -43,4 +43,4 @@
 
 	<span class="favorite"><span>Favorite</span></span>
 </a>
-<a class="commentcount hidden" href="{{ uri options="article" }}#disqus_thread"></a>
+<a class="commentcount hidden" href="http://{{ $gimme->publication->site }}{{ uripath options="article" }}#disqus_thread"></a>
