@@ -28,7 +28,7 @@
 {{ $start2 = $gimme->url->get_parameter("ls-art1") }}
 
 {{ if !$start and !$start2 }}
-	{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue is 2 type is ad" }}  
+	{{ list_articles order="byPublishDate desc" ignore_issue="true" constraints="issue is 2 type is ad onFrontPage is on" }}  
 		{{ $ads[$ads_num] = {{ include file="_tpl/newsbox.tpl" }} }}
 		{{ $ads_num = $ads_num + 1 }}
 	{{ /list_articles }}
