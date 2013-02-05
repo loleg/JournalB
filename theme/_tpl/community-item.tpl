@@ -28,7 +28,7 @@
 		
 	</a>
 	
-{{ elseif $gimme->article->is_ad }}	
+{{ elseif $gimme->article->type_name == 'ad' }}	
 
 	<div class="row adbox">
 		<div class="community-title grey">Anzeige</div>
