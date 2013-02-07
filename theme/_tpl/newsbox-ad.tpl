@@ -1,5 +1,5 @@
 {{ image rendition="topfront" }}<img src="{{ $image->src }}" style="display: none;" />{{ /image }}
-<a class="content-single newsbox section-ad layoutbgimage" href="{{ $gimme->article->link }}"
+<a class="content-single newsbox section-ad layoutbgimage" href="{{ $gimme->article->link }}" target="_blank"
 	{{ image rendition="topfront" }} style="background-image: url({{ $image->src }});" {{ /image }}>
 
 	<div class="info_block">
