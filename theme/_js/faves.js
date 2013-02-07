@@ -80,15 +80,18 @@ function loginDisqus() {
 }
 
 function logoutDisqus() {
-	if (window.confirm('Aus Journal B-Community abmelden?')) {
-		// log out the service
-		$.get('/favorites/logout', function(data) {
-			if (typeof console != 'undefined') console.log(data);
-		});
+	if (!window.confirm('Aus Journal B-Community abmelden?')) return;
+	// log out the service
+	$.get('/favorites/logout');
+	window.setTimeout(function() {	
 		// log out DISQUS
 		var logoutlink = $('.dsq-logout-link a,#dsq-logout a').attr('href');	
-		if (typeof logoutlink != 'undefined') window.location = logoutlink;
-	}
+		if (typeof logoutlink != 'undefined') {
+			window.location = logoutlink;
+		} else {
+			window.location = '/favorites/logout';
+		}	
+	}, 500);
 }
 
 function initFavorites() {
