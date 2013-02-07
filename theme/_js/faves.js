@@ -93,6 +93,14 @@ function logoutDisqus() {
 
 function initFavorites() {
 	var myfaves = null, myfaveurls = [];
+	
+	// Disable favorites on mobile Web
+	if (!NATIVE_APP && navigator.userAgent.match(/(iPad|iPhone)/)) {
+		$(".header .login").hide();
+		$('.favorite').remove();
+		return;
+	} 
+		
 	// ** Favorites	login
 	$.get('/favorites/myfaves', function(data) {
 		if (data == null || data == 'NOLOGIN') {
@@ -160,12 +168,6 @@ function initFavorites() {
 		$(".header .login").show();
 		$(".nav li.nav-fav a").css('background-size', '');
 		
-		// Community link
-		$('.community-popup').click(function() {
-			if (!checkDisqusApi()) return true;
-			DISQUS.dtpl.actions.fire('community.show');
-			return false;	
-		});
 	}); // - Favorites login
 		
 	// Favorites icon
@@ -225,7 +227,13 @@ function initFavorites() {
 
 function goToFavorites()
 {
-	if (!checkDisqusApi()) {
+	if (!NATIVE_APP && navigator.userAgent.match(/(iPad|iPhone)/)) {
+		var confirm_text = 'Die Favoritenfunktion steht dir nun in der iOS App zur Verfügung. Jetzt Laden?';
+		if (window.confirm(confirm_text)) {
+			window.location = 'https://itunes.apple.com/de/app/journal-b/id582995221?mt=8#';
+		}
+		return false;
+	} else if (!checkDisqusApi()) {
 		window.location = "/favorites"; return false;
 	} else if (DISQUS.jsonData.request.is_authenticated) {
 		$("body").append("<form id='redirect' action='/favorites' method='post'></form>");
