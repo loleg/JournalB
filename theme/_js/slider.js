@@ -232,9 +232,13 @@ function showActiveSlider()
 	{
 		$(slider).append('<div class="carrow left" onclick="moveSlider(0);"></div>');
 		$(slider).append('<div class="carrow right" onclick="moveSlider(1);"></div>');
-		$(slider).append('<div class="close" onclick="changeSliderStatus();"></div>');
 		$("#slider ul").attr('onclick','');
 	}
+	
+	if (MOBILE_WEB || NATIVE_APP)
+		$(slider).append('<div class="close mobile_close" onclick="changeSliderStatus();"></div>');
+	else
+		$(slider).append('<div class="close" onclick="changeSliderStatus();"></div>');
 	
 	$("html").addClass("active_slider");
 	$("body").attr("ontouchmove","noElasticScroll(event);");
