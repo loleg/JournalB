@@ -222,7 +222,7 @@ function loadWeitereArtikel(self) {
 		// reformat page			
 		adjustNewsrows();
     }); 
-   	self.parent().slideUp();
+   	self.parent().fadeOut();
     return false;
 }
 
@@ -297,6 +297,15 @@ function controlIconsHover()
 	if(!'ontouchstart' in document.documentElement)
 	{
 		$(".controlicon").hover(function(){$(this).addClass('hover')}, function(){$(this).removeClass('hover')});
+	}
+}
+
+function setupSliderBox()
+{
+	if ($("#slider_box").length)
+	{
+		if (is_gallery) initSlider();
+		else $("#slider_box").remove();
 	}
 }
 

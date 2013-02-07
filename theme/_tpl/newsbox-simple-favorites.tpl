@@ -1,4 +1,4 @@
-<a class="content-single newsbox section-{{ $article_section }} layoutsimple" href="{{ $article->url }}">
+<a class="content-single newsbox section-{{ $article_section }} layoutsimple" href="{{ $article->url }}" ontouchstart="">
 
 	<div class="newsboxcontent">
 		<div class="newsboxheading">

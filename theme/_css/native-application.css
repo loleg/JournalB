@@ -21,9 +21,7 @@
 	.header  { margin-top: -60px; }
 }
 
-.newsbox:active {
-    -webkit-transform:scale(0.96);
-}
+/*.newsbox:active { -webkit-transform:scale(0.96); }*/
 
 @-webkit-keyframes shakeit {
 	0% { -webkit-transform: translate(2px, 0px); }

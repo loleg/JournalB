@@ -43,13 +43,11 @@ $(document).ready(function() {
 	adjustNewsrows();
 	
 	articleImageAlts();
+
+	setupFavorites();
 	
-	if ($("#slider_box").length)
-	{
-		if (is_gallery) initSlider();
-		else $("#slider_box").remove();
-	}
-		
+	setupSliderBox();
+			
 	controlIconsHover();
 		
 	initShareButton();
@@ -63,7 +61,7 @@ $(document).ready(function() {
 	//collapsableElements();
 
 	scrollToArticleTop();
-	
+		
 	if (NATIVE_APP && $("body").hasClass("article-page")) pinchArticle();
 	
 	document_loaded = true;

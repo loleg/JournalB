@@ -1,4 +1,4 @@
-<a class="content-single newsbox section-{{ $article_section }} layoutsimple" href="{{ uri options="article" }}">
+<a class="content-single newsbox section-{{ $article_section }} layoutsimple" href="{{ uri options="article" }}" ontouchstart="">
 
 	<div class="newsboxcontent">
 		<div class="newsboxheading">
@@ -43,4 +43,3 @@
 
 	<span class="favorite"><span>Favorite</span></span>
 </a>
-<a class="commentcount hidden" href="http://{{ $gimme->publication->site }}{{ uripath options="article" }}#disqus_thread"></a>

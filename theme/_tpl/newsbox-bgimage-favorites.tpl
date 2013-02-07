@@ -1,5 +1,5 @@
 <img src="{{ $article->image->imageurl }}" style="display: none;" />
-<a class="content-single newsbox section-{{ $article_section }} layoutbgimage" href="{{ $article->url }}"
+<a class="content-single newsbox section-{{ $article_section }} layoutbgimage" ontouchstart="" href="{{ $article->url }}"
 	style="background-image: url({{ $article->image->imageurl }});">
 
 	<div class="info_block">

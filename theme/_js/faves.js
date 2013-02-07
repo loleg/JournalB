@@ -98,12 +98,8 @@ function initFavorites() {
 	var myfaves = null, myfaveurls = [];
 	
 	// Disable favorites on mobile Web
-	if (!NATIVE_APP && navigator.userAgent.match(/(iPad|iPhone)/)) {
-		$(".header .login").hide();
-		$('.favorite').remove();
-		return;
-	} 
-		
+	if (!NATIVE_APP && navigator.userAgent.match(/(iPad|iPhone)/)) return;
+	
 	// ** Favorites	login
 	$.get('/favorites/myfaves', function(data) {
 		if (data == null || data == 'NOLOGIN') {
@@ -221,6 +217,15 @@ function initFavorites() {
 		return false;
 	});
 	// - Favorites icon
+}
+
+function setupFavorites() 
+{	
+	// Disable favorites on mobile Web
+	if (!NATIVE_APP && navigator.userAgent.match(/(iPad|iPhone)/)) {
+		$(".header .login").hide();
+		$('.favorite').remove();
+	} 
 	
 	// Hover events
 	if (!MOBILE_WEB && !NATIVE_APP) {
