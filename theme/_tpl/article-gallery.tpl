@@ -19,8 +19,19 @@
           {{ $url = $url|replace:'youtube.com/embed':'youtube.com/embed' }}
           {{ if preg_match("/youtube/", $url) }}
             <li class="sli_video"><iframe src="{{ $url }}?hl=de_DE" frameborder="0" alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
+            
+          {{ elseif preg_match("/vimeo/", $url) }}
+          	{{ $url = $url|replace:'/vimeo.com/':'/player.vimeo.com/video/' }}
+            <li class="sli_video"><iframe src="{{ $url }}?title=0&amp;byline=0&amp;portrait=0" frameborder="0" alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
+            
+          {{ elseif preg_match("/ustream/", $url) }}
+          	{{ $url = $url|replace:'ustream.tv/recorded/':'ustream.tv/embed/recorded/' }}
+          	{{ $url = $url|replace:'ustream.tv/channel/':'ustream.tv/embed/' }}
+            <li class="sli_video"><iframe src="{{ $url }}?v=3&amp;wmode=direct" scrolling="no" frameborder="0" alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
+                        
           {{ else }}
             <li class="sli_video"><iframe src="{{ $url }}" frameborder="0" alt="{{ $item->caption }}" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></li>
+            
           {{ /if }}
         {{ /if }}
       {{ /foreach }}
