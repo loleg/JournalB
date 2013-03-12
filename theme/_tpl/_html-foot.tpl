@@ -46,7 +46,7 @@ if (NATIVE_APP && document.location.protocol != 'http:') {
 		$('body').append('<div class="hidden" id="disqus_thread"></div>');
 	}
 	var disqus_config = function () { 
-		this.language = "de_formal";
+		this.language = "de";
 		this.callbacks.afterRender = [helloDisqus];
 		if (typeof disqus_identifier != 'undefined') {
 			this.page.identifier = disqus_identifier;
