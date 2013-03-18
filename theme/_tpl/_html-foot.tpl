@@ -45,9 +45,10 @@ if (NATIVE_APP && document.location.protocol != 'http:') {
 	if ($('#disqus_thread').length == 0) {
 		$('body').append('<div class="hidden" id="disqus_thread"></div>');
 	}
+	initFavorites();
 	var disqus_config = function () { 
 		this.language = "de";
-		this.callbacks.afterRender = [helloDisqus];
+		//this.callbacks.afterRender = [helloDisqus];
 		if (typeof disqus_identifier != 'undefined') {
 			this.page.identifier = disqus_identifier;
 			this.page.url = disqus_url;
@@ -64,6 +65,20 @@ if (NATIVE_APP && document.location.protocol != 'http:') {
 	    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
 	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
 	})();
+	
+	window.setTimeout(function() {
+		var app;
+		if (window.DISQUS.App) {
+		    app = window.DISQUS.App.get(0);
+		    if (app) {
+		        app.bind('session.identify', function(message) {
+		        	if (message.length > 0) {
+			            console.log("User id: " + message);
+			        }
+		        });
+		    }
+		}
+	}, 1200);
 }
 /* /disqus */
 

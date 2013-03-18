@@ -97,6 +97,11 @@ function logoutDisqus() {
 function initFavorites() {
 	var myfaves = null, myfaveurls = [];
 	
+	// Disqus 2012: disable favorites completely
+	$(".header .login").hide();
+	$('.favorite').remove();
+	return;
+	
 	// Disable favorites on mobile Web
 	if (!NATIVE_APP && navigator.userAgent.match(/(iPad|iPhone)/)) return;
 	

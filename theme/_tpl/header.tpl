@@ -8,10 +8,12 @@
 				{{ $tpl_subsections = false }} 
 			{{ /if }}
 			<li class="nav-front"><a href="/">Front</a></li>
-			<li class="nav-alltag {{ if $tpl_subsections and $gimme->section->url_name != 'alltag' }}unactive{{ /if }}"><a href="/mobile/alltag">alltag</a></li>
-			<li class="nav-politik {{ if $tpl_subsections and $gimme->section->url_name != 'politik' }}unactive{{ /if }}"><a href="/mobile/politik">politik</a></li>
-			<li class="nav-kultur {{ if $tpl_subsections and $gimme->section->url_name != 'kultur' }}unactive{{ /if }}"><a href="/mobile/kultur">kultur</a></li>
-			<li class="nav-fav"><a href="javascript: goToFavorites();" style="background-size:0">Favoriten</a></li>
+			<li class="nav-alltag {{ if $tpl_subsections and $gimme->section->url_name != 'alltag' }}unactive{{ /if }}"><a href="/mobile/alltag">Alltag</a></li>
+			<li class="nav-politik {{ if $tpl_subsections and $gimme->section->url_name != 'politik' }}unactive{{ /if }}"><a href="/mobile/politik">Politik</a></li>
+			<li class="nav-kultur {{ if $tpl_subsections and $gimme->section->url_name != 'kultur' }}unactive{{ /if }}"><a href="/mobile/kultur">Kultur</a></li>
+			{{ if !$gimme->search_articles_action->defined }} 
+			<li class="nav-fav"><a href="#" style="background-size:0">Suche</a></li>
+			{{ /if }}
 			<div class="clear"></div>
         </ul>
     </div>

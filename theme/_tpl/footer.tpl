@@ -45,7 +45,7 @@
 		
 		<div class="caption">Services</div>
 		<ul><li>
-		<a href="/favorites">Favoriten</a> | 
+		<!--<a href="/favorites">Favoriten</a> | -->
 		<a href="javascript:$('.header .icon-search').click()">Suche</a> | 
 		<a href="http://journalb.disqus.com/community.html?lang=de_formal" class="community-popup" onclick="if (checkDisqusApi()) {DISQUS.dtpl.actions.fire('community.show'); return false;}">Community</a> | 
 		<span class="community-rss">
