@@ -7,3 +7,6 @@
 [submodule "theme/_js/jquery.swipe"]
 	path = theme/_js/jquery.swipe
 	url = git://github.com/sgentile/jquery.swipe.git
+[submodule "theme/_js/chartjs"]
+	path = theme/_js/chartjs
+	url = git://github.com/loleg/Chart.js.git
