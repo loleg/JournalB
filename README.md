@@ -1,20 +1,18 @@
 # Journal B #
 
-This repository provides templates and backend support for an online publication based on Newscoop 4.
+This project provides templates and backend support for an online publication based on Newscoop by Sourcefabric
 
 The folder 'theme' contains all assets for the custom Journal B theme. The folders 'services' and 'controllers' has additional backend scripts we use on the site. Copy 'services' to the root folder in Newscoop, and the contents of 'controllers' into application/controllers.
 
-Links:
 - Journal B, http://journal-b.ch
 - Apps with love (Journal B developers), http://appswithlove.com
 - Sourcefabric (Newscoop developers), http://sourcefabric.org
 
-Authors:
-- Oleg Lavrovsky, Apps with love
-- Sergei Shmaliy, Moqod
-- Sergey Kopanev, Moqod
+Journal B von Verein Berner Onlinemedien (Apps with Love) steht unter einer
+Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter
+gleichen Bedingungen 3.0 Unported Lizenz.
 
-Copyright (c) 2012 Apps with love
+Copyright (c) 2012 Verein Berner Onlinemedien, Apps with love
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
